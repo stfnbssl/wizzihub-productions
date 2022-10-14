@@ -1,0 +1,51 @@
+module
+    $
+        var md = {
+            Name: "PackiPanel",
+            components: [],
+            icons: [],
+            props: [
+                {name: 'onSubmitGithubClone', type: 'any'}
+            ],
+            stateProps: [
+                {name: 'currentModal', type: 'string'}
+            ]
+        }
+        //
+    component/muiv3( &md )
+        $append imports
+            import ModalGithubClone from './ModalGithubClone'
+        $append props
+        $append state
+        => _handleDismissEditModal
+            _ this.setState
+                { 
+                    @ currentModal null
+        => _handleOpenModalGithubClone
+            _ this.setState
+                { 
+                    @ currentModal 'github-clone'
+        m render
+            const 
+                { 
+                    @ onSubmitGithubClone
+                = this.props
+            const 
+                { 
+                    @ currentModal
+                = this.state
+            return
+                div
+                    < Button
+                        @ onClick {this._handleOpenModalGithubClone}
+                    < ModalGithubClone 
+                        @ title "Clone github repository"
+                        @ action "Done"
+                        @ visible {currentModal === 'github-clone'}
+                        @ onDismiss {this._handleDismissEditModal}
+                        @ onSubmit
+                            => 
+                                param details
+                                _ onSubmitGithubClone(details)
+                                _ this._handleDismissEditModal()
+        $append styles

@@ -1,0 +1,68 @@
+html
+
+    $global
+      var locals = {}
+    $ 
+        var opt = {
+            section: 'Playground',
+        }
+        var ca = 'm-s color-header font-x font-w-s';
+        var sb = {
+            groups: [
+                { title: 'Getting started', items: [
+                    { title: 'Playground', href: '/ittf/playground/index.html.ittf' },
+                    { title: 'Web API', href: '/ittf/webapi/index.html.ittf' }
+                ]}, 
+                { title: 'Work in progress', items: [
+                    { title: 'Demo - Target technologies', href: '/ittf/demo/ttech' },
+                    { title: 'Demo - Apps', href: '/ittf/demo/apps' },
+                    { title: 'Lab', href: '/ittf/lab' },
+                    { title: 'Packi', href: '/static/packi/index.html' },
+                    { title: 'Productions', href: '/ittf/test/productions.html.ittf' },
+                ]}, 
+                { title: 'Packi', items: [
+                    { title: 'Html packi starter', href: '/~-/html.starter' },
+                    { title: 'Packi editor', href: '/~~/stfnbssl' },
+                    { title: 'Property editor', href: '/package/props' },
+                ]}, 
+                { title: 'Demos', items: [
+                    { title: 'Pure html', href: '/static/pure.html' },
+                    { title: 'Wizzi static pre-generated', href: '/static/wizzi.html' },
+                    { title: 'Wizzi generated on the fly', href: '/ittf/demo.wizzi.html.ittf' },
+                    { title: 'Webpack hello', href: '/ittf/demo.hello.webpack.html.ittf' },
+                    { title: 'Monaco editor', href: '/ittf/demo/ttech' },
+                ]}, 
+                
+            ]
+        }
+
+
+    layouts/site( &opt )
+
+        . flex-column
+            ul
+                $foreach group in sb.groups
+                    li
+                        class mt-8
+                        h5
+                            class px-3 mb-3 lg:mb-3 uppercase tracking-wide font-semibold text-sm lg:text-xs text-gray-900
+                            + ${group.title}
+                        ul
+                            $foreach item in group.items
+                                li
+                                    a
+                                        class px-3 py-2 transition-colors duration-200 relative block hover:text-gray-900 text-gray-500
+                                        href ${item.href}
+                                        span
+                                            class rounded-md absolute inset-0 bg-cyan-50 opacity-0
+                                        span
+                                            class relative
+                                            + ${item.title}   
+        . flex-colum
+            h3 common urls
+            p Packi Editor -> [host]/~~/[a|p|m|t]/[username]/[production_name]
+            p (a: artifact production, p: package production, m: meta production, t: tFolder)
+            p Packi Editor Example -> http://localhost:5000/~~/a/stfnbssl/html.starter
+            p Site Packi Browse -> [host]/~-/[production_name]
+            p User Packi Browse -> [host]/~/[username]/[production_name]
+

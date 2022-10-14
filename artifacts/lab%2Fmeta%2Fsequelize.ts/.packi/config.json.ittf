@@ -1,0 +1,8 @@
+{
+  [ tfolders
+    {
+      name "wizzihub"
+  [ contexts
+    {
+      propertyName "db"
+      artifactName "lab/meta/postgres.json"    

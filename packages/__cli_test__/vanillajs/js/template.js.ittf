@@ -1,0 +1,149 @@
+module
+    kind react
+    iife 
+        param window
+        var htmlEscapes
+            { 
+                @ '&' '&amp;'
+                @ '<' '&lt;'
+                @ '>' '&gt;'
+                @ '"' '&quot;'
+                @ '\'' '&#x27;'
+                @ '`' '&#x60;'
+        var escapeHtmlChar
+            function 
+                param chr
+                return htmlEscapes[chr]
+        var reUnescapedHtml = /[&<>"'`]/g
+        var reHasUnescapedHtml = new RegExp(reUnescapedHtml.source)
+        var escape
+            function 
+                param string
+                return 
+                    iif (string && reHasUnescapedHtml.test(string))
+                        then string.replace(reUnescapedHtml, escapeHtmlChar)
+                        else string
+            #
+                # *
+                # * Sets up defaults for all the Template methods such as a default template
+                # *
+                # * @constructor
+                # 
+        function Template
+            set this.defaultTemplate = '<li data-id="{{id}}" class="{{completed}}">' + '<div class="view">' + '<input class="toggle" type="checkbox" {{checked}}>' + '<label>{{title}}</label>' + '<button class="destroy"></button>' + '</div>' + '</li>'
+            #
+                # *
+                # * Sets up defaults for all the Template methods such as a default template
+                # *
+                # * @constructor
+                # 
+            #
+                # *
+                # * Creates an <li> HTML string and returns it for placement in your app.
+                # *
+                # * NOTE: In real life you should be using a templating engine such as Mustache
+                # * or Handlebars, however, this is a vanilla JS example.
+                # *
+                # * @param {object} data The object containing keys you want to find in the
+                # *                      template to replace.
+                # * @returns {string} HTML String of an <li> element
+                # *
+                # * @example
+                # * view.show({
+                # *	id: 1,
+                # *	title: "Hello World",
+                # *	completed: 0,
+                # * });
+                # 
+        set Template.prototype.show =
+            function 
+                param data
+                var 
+                    decl i
+                    decl l
+                var view = ''
+                for ; i < l; i++
+                    var template = this.defaultTemplate
+                    var completed = ''
+                    var checked = ''
+                    if data[i].completed
+                        set completed = 'completed'
+                        set checked = 'checked'
+                    set template = template.replace('{{id}}', data[i].id)
+                    set template = template.replace('{{title}}', escape(data[i].title))
+                    set template = template.replace('{{completed}}', completed)
+                    set template = template.replace('{{checked}}', checked)
+                    set view = view + template
+                return view
+            #
+                # *
+                # * Creates an <li> HTML string and returns it for placement in your app.
+                # *
+                # * NOTE: In real life you should be using a templating engine such as Mustache
+                # * or Handlebars, however, this is a vanilla JS example.
+                # *
+                # * @param {object} data The object containing keys you want to find in the
+                # *                      template to replace.
+                # * @returns {string} HTML String of an <li> element
+                # *
+                # * @example
+                # * view.show({
+                # *	id: 1,
+                # *	title: "Hello World",
+                # *	completed: 0,
+                # * });
+                # 
+            #
+                # *
+                # * Displays a counter of how many to dos are left to complete
+                # *
+                # * @param {number} activeTodos The number of active todos.
+                # * @returns {string} String containing the count
+                # 
+        set Template.prototype.itemCounter =
+            function 
+                param activeTodos
+                var plural
+                    iif activeTodos === 1
+                        then ''
+                        else 's'
+                return '<strong>' + activeTodos + '</strong> item' + plural + ' left'
+            #
+                # *
+                # * Displays a counter of how many to dos are left to complete
+                # *
+                # * @param {number} activeTodos The number of active todos.
+                # * @returns {string} String containing the count
+                # 
+            #
+                # *
+                # * Updates the text within the "Clear completed" button
+                # *
+                # * @param  {[type]} completedTodos The number of completed todos.
+                # * @returns {string} String containing the count
+                # 
+        set Template.prototype.clearCompletedButton =
+            function 
+                param completedTodos
+                if completedTodos > 0
+                    return 'Clear completed'
+                else
+                    return ''
+            #
+                # *
+                # * Updates the text within the "Clear completed" button
+                # *
+                # * @param  {[type]} completedTodos The number of completed todos.
+                # * @returns {string} String containing the count
+                # 
+            # Export to window
+        set window.app =
+            || 
+                + window.app
+                { 
+            # Export to window
+        set window.app.Template = Template
+        (
+            @ window
+        #
+            # jshint laxbreak:true

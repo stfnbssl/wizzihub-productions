@@ -1,0 +1,44 @@
+$group
+    
+    $include three/data/productions
+    $include prod-view-filter
+    < a
+        outline none
+        text-decoration none
+        padding 2px 1px 0
+    < a:link
+        color #265301
+    < a:visited
+        color #437a16
+    < a:focus
+        border-bottom 1px solid
+        background #bae498
+    < a:hover
+        border-bottom 1px solid
+        background #eefeee
+    < a:active
+        background #265301
+        color #cdfeaa     
+    < li
+      list-style-type none
+    . production-view
+      display none
+    . packi-view
+      display none
+    $foreach item in productionsData
+      . ${item.name}-li
+        display flex
+        flex-direction row
+        align-items stretch
+        justify-content left
+        background-color ${item.bgcolor}
+      . ${item.name}-li-div
+        width 33%
+    . packi-file-li
+      display flex
+      flex-direction row
+      align-items stretch
+      justify-content left
+    . packi-file-li-div
+      width 33%
+

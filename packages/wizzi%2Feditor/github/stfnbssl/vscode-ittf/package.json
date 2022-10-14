@@ -1,0 +1,26 @@
+{
+    "name": "ittf-sinthax-highlighter",
+    "displayName": "ITTF sinthax highlighter",
+    "description": "VsCode language extension for .ittf files",
+    "version": "0.0.1",
+    "author": {"name": "Stefano Bassoli", "email": "stfn.bssl@gmail.com"},
+    "engines": {
+        "vscode": "^1.32.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "ittf",
+            "aliases": ["ITTF", "ittf"],
+            "extensions": [".ittf"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "ittf",
+            "scopeName": "source.ittf",
+            "path": "./syntaxes/ittf.tmLanguage.json"
+        }]
+    }
+}

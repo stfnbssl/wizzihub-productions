@@ -1,0 +1,71 @@
+$group
+
+    $
+        var padTops = [20, 30, 100, 180];
+        var padBottoms = [20, 30, 100, 180];
+        var marTops = [20, 30, 100, 180];
+        var marBottoms = [20, 30, 100, 180];
+        //
+
+    function inject_page_styles
+
+        _ styles.InjectCss.addLink
+            @ "https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
+
+        _ styles.InjectCss.addText
+            {
+                { body
+                    @ margin 0
+                    @ "font-family" '"Roboto", "Arial", "Helvetica Neue", sans-serif'
+                    @ "font-weight" 400
+                    @ "font-size" "14px"
+                { "#container"
+                    @ width "75%"
+                    @ border "none"
+                    @ margin "auto"
+                { "#content"       
+                    @ padding "2rem"   
+                { ".row"
+                    @ display "-webkit-box"
+                    @ display "-webkit-flex"
+                    @ display "-moz-box"
+                    @ display "-ms-flexbox"
+                    @ display "flex"
+                    @ "-webkit-flex-wrap" "wrap"
+                    @ "-ms-flex-wrap" "wrap"
+                    @ "flex-wrap" "wrap"
+                { ".row-space"
+                    @ "-webkit-box-pack" "justify"
+                    @ "-webkit-justify-content" "space-between"
+                    @ "-moz-box-pack" "justify"
+                    @ "-ms-flex-pack" "justify"
+                    @ "justify-content" "space-between"
+                { ".col-2"
+                    @ width "-webkit-calc((100% - 60px) / 2)"
+                    @ width "-moz-calc((100% - 60px) / 2)"
+                    @ width "calc((100% - 60px) / 2)"
+                { "@media (max-width: 767px)"
+                    { ".col-2"
+                        @ width "100%"
+                # ==========================================================================
+                # BACKGROUND
+                # ========================================================================== 
+                { ".bg-blue"
+                    @ background "#2c6ed5"
+                { ".bg-red"
+                    @ background "#fa4251"
+                # ==========================================================================
+                # SPACING
+                # ========================================================================== 
+                $foreach mt in marTops
+                    { ".m-t-${mt}"
+                        @ "margin-top" "${mt}px"
+                $foreach mb in marBottoms
+                    { ".m-b-${mb}"
+                        @ "margin-bottom" "${mb}px"
+                $foreach pt in padTops
+                    { ".p-t-${pt}"
+                        @ "padding-top" "${pt}px"
+                $foreach pb in padBottoms
+                    { ".p-b-${pt}"
+                        @ "padding-bottom" "${pt}px"

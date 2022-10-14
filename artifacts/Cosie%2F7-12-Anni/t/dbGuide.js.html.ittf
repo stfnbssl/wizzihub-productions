@@ -1,0 +1,174 @@
+$group
+  class DbGuide
+    ctor
+      param gd
+      set this.gd = gd
+      set this.matrix = []
+
+    m setAgenda
+      var order
+        [
+          @ "Bambino"
+          @ "Alimentazione"
+          @ "Giochi-Movimento"
+          @ "Famiglia"
+          @ "Temi caldi"
+          @ "Pediatra"
+          @ "NpLNpM"
+      set this.agenda = []
+      foreach anno in this.matrix
+        var annoAgenda = []
+        var empty = false
+        while !empty
+          set empty = true
+          foreach item in order
+            foreach categoria in anno
+              foreach guida in categoria.guide
+                if !guida['a' + i]
+                  if categoria.nome == item
+                    set guida['a' + i] = true
+                    _ annoAgenda.push
+                      {
+                        @ guida guida
+                        @ daSettimana 0
+                        @ aSettimana 0
+                    set empty = false
+                    break
+        _ this.agenda.push
+          @ annoAgenda
+      _ this.setSettimaneAgenda
+      _ this.initMatrix
+      _ this.setMatrix
+    
+    m setSettimaneAgenda
+      foreach anno in this.agenda
+        foreach guidaAgenda in anno
+          set guidaAgenda.daSettimana = Math.floor((i+7)*52 + j * (52 / anno.length))
+          set guidaAgenda.aSettimana = Math.floor((i+7)*52 + (j+1) * (52 / anno.length))
+          set guidaAgenda.inizio = j * (52 / anno.length)
+          set guidaAgenda.durata = 52 / anno.length
+    
+    m initMatrix
+      set this.matrix = []
+      for var i=0; i<7; i++
+        const categorie = []
+        for var j=0; j<7; j++
+          _ categorie.push
+            {
+              @ nome null
+              @ numero 0
+              [ guide
+        _ this.matrix.push(categorie)
+    
+    m setMatrix
+      _ this.initMatrix
+      foreach p in this.gd.pediatri
+        foreach g in p.guide
+          foreach a in g.anni
+            set g.pediatra = p.nome
+            _ this.setMatrixItem
+              @ a
+              @ g.categoria
+              @ g
+
+    m setMatrixItem
+      param anno
+      param categoria
+      param guida
+      var anni
+        {
+          @ 7 0
+          @ 8 1
+          @ 9 2
+          @ 10 3
+          @ 11 4
+          @ 12 5
+          @ 13 6
+      var categorie
+        {
+          @ "Famiglia" 0
+          @ "Pediatra" 1
+          @ "Temi caldi" 2
+          @ "Alimentazione" 3
+          @ "NpLNpM" 4
+          @ "Bambino" 5
+          @ "Giochi-Movimento" 6
+      var item = this.matrix[anni[anno]][categorie[categoria]]
+      if !item
+        error 'setMatrixItem', anno, anni[anno], categoria, categorie[categoria], 'not found'
+      else
+        set item.numero++
+        set item.nome = categoria
+        _ item.guide.push
+          @ guida
+    
+    m guidePerAnno
+      var gd = this.gd
+      var gAnni
+        {
+      foreach p in gd.pediatri
+        foreach g in p.guide
+          foreach a in g.anni
+            if a in gAnni
+              set gAnni[a].numero++
+              _ gAnni[a].guide.push
+                @ g
+              if g.categoria in gAnni[a].categorie
+                set gAnni[a].categorie[g.categoria].numero++
+                _ gAnni[a].categorie[g.categoria].guide.push
+                  @ g
+              else
+                set gAnni[a].categorie[g.categoria]
+                  {
+                      @ numero 1
+                      [ guide
+                        @ g
+            else
+              set gAnni[a]
+                {
+                  @ numero 1
+                  [ guide
+                    @ g
+                  { categorie
+              set gAnni[a].categorie[g.categoria]
+                {
+                    @ numero 1
+                    [ guide
+                      @ g
+      set this.gAnni = gAnni                      
+
+    m guidePerCategoria
+      var gd = this.gd
+      var gCategorie
+        {
+      foreach p in gd.pediatri
+        foreach g in p.guide
+          if g.categoria in gCategorie
+            set gCategorie[g.categoria].numero++
+            _ gCategorie[g.categoria].guide.push
+              @ g
+            foreach a in g.anni
+              if a in gCategorie[g.categoria].anni
+                set gCategorie[g.categoria].anni[a].numero++
+                _ gCategorie[g.categoria].anni[a].guide.push
+                  @ g
+              else
+                set gCategorie[g.categoria].anni[a]
+                  {
+                      @ numero 1
+                      [ guide
+                        @ g
+          else
+            set gCategorie[g.categoria]
+              {
+                @ numero 1
+                [ guide
+                  @ g
+                { anni
+            foreach a in g.anni
+              set gCategorie[g.categoria].anni[a]
+                {
+                    @ numero 1
+                    [ guide
+                      @ g        
+      set this.gCategorie = gCategorie                            

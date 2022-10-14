@@ -1,0 +1,51 @@
+$group
+
+    $
+        var md = {
+            Prod: 'Artifact',
+            prod: 'artifact',
+            apiUrl: 'http://localhost:5000/api/v1'
+        }
+        //
+
+    iife_window()
+        set window.wizziApi = window.wizziApi || {}
+        set window.wizziApi.get${md.Prod}
+          function
+              param owner
+              param name
+              let url = '${md.apiUrl}/production/${md.prod}/' + owner
+              if name && name.length > 0
+                  set url += '/' + name
+              r_promise()
+                  _ axios
+                      { 
+                          @ method 'GET'
+                          @ url
+                      ._ then
+                          =>
+                              param response
+                              info 'get${md.Prod}List.response', response
+                              return 
+                                  _ resolve 
+                                      @ response.data
+                      catch_reject( get${md.Prod} )
+        
+        set window.wizziApi.put${md.Prod}
+          function
+              param id
+              param packiFiles
+              r_promise()
+                  _ axios
+                      { 
+                          @ method 'PUT'
+                          @ url '${md.apiUrl}/production/${md.prod}/' + id
+                          @ data packiFiles
+                      ._ then
+                          =>
+                              param response
+                              info 'put${md.Prod}.response', response
+                              _ resolve
+                                  @ response.data
+                      catch_reject( put${md.Prod} )
+          

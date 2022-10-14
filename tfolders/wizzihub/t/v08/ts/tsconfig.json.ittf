@@ -1,0 +1,29 @@
+$group
+    
+    { compilerOptions
+        target "es6"
+        module "commonjs"
+        moduleResolution "node"
+        { paths
+            *
+                [
+                    "node_modules/*"
+        esModuleInterop true
+        jsx "react-jsx"
+        sourceMap true
+        rootDir "./"
+        $if wzCtx.Build.useAzure
+            outDir "../Application"
+        $elif wzCtx.Build.useHeroku
+            outDir "./deploy"
+        $else
+            outDir "./dist"
+        baseUrl "."
+        importHelpers true
+        $if wzCtx.Build.typescript.useStrict
+            strict true
+    [ include
+        "src/**/*"
+        $hook include
+    [ exclude
+        "src/**/*.spec.*"

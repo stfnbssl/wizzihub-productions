@@ -1,0 +1,66 @@
+$group
+    # from https://gist.github.com/zkMake/54452ff4901d467a2c561c64a4bd2886
+    
+    iife_window()
+      
+      const showError
+          => 
+              param err
+              _ alert(err)
+      
+      set window.useFetchGet
+          => 
+              { 
+                  @ action
+                  @ param1
+                      = null
+                  @ param2
+                      = null
+                  @ initialState
+                      = null
+                  @ skip
+                      = false
+              const [data, setData] = useState(initialState)
+              const [isLoading, setIsLoading] = useState(true)
+              const [reload, setReload]
+                  _ useState
+                      { 
+                  # used to force running the api fetch in effect
+              _ useEffect
+                  => 
+                      let mounted = true
+                      if !skip
+                          _ setIsLoading(true)
+                          _ action
+                              @ param1
+                              @ param2
+                              ._ then
+                                  => 
+                                      param result
+                                      @expr mounted && setData(result)
+                                  ._ catch
+                                      @ showError
+                                  ._ finally
+                                      => 
+                                          @expr mounted && setIsLoading(false)
+                      return 
+                          => 
+                              set mounted = false
+                  [ 
+                      @ action
+                      @ param1
+                      @ param2
+                      @ reload
+                      @ skip
+                      $$ do not cleanup the effect unless these are changed
+                  # used to force running the api fetch in effect
+              const reloadData
+                  => 
+                      _ setReload
+                          { 
+              return 
+                  { 
+                      @ data
+                      @ setData
+                      @ isLoading
+                      @ reloadData

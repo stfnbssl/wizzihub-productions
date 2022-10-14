@@ -1,0 +1,79 @@
+$group
+    $params &md
+    export
+        :type ValidateResult
+            :{
+                :p isValid
+                    :boolean
+                :p message
+                    :string
+                    :optional
+    +
+    export
+        :type CRUDResult
+            :{
+                :p oper
+                    :string
+                :p ok
+                    :boolean
+                :p item
+                    :any
+                    :optional
+                :p message
+                    :string
+                    :optional
+    +
+    $if wzCtx.Build.usePacki || wzCtx.Build.useWizziJsonFactory
+        :type RequiredPackiFileAttributes
+            :{
+                :p contents
+                    :string
+                :p type
+                    :union
+                        :literal 'ASSET'
+                        :literal 'CODE'
+                :p generated
+                    :optional
+                    :boolean
+                :p bothRealAndGenerated
+                    :optional
+                    :boolean
+        +
+        export
+            :type PackiFiles
+                :{
+                    :index
+                        :ref RequiredPackiFileAttributes
+                        param x
+                            :string
+        +
+    $if wzCtx.Build.useGithub
+        export
+            :type GitRepositoryMeta
+                :{
+                    :p owner
+                        :string
+                    :p name
+                        :string
+                    :p description
+                        :string
+                    :p branches
+                        :[
+                            :string
+        +
+        export
+            :type ClonedGitRepository
+                :{
+                    :p owner
+                        :string
+                    :p name
+                        :string
+                    :p description
+                        :string
+                    :p branch
+                        :string
+                    :p commitHistory
+                        :any
+                    :p files
+                        :ref PackiFiles
+        +

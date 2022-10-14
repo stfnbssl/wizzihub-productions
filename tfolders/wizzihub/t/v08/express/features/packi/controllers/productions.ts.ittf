@@ -1,0 +1,143 @@
+$group
+    $params &md
+    $
+        var ctrl = {
+            name: 'Productions',
+            path: '/api/v1/productions'
+        }
+    controller( &ctrl )
+        $append imports
+            import fs
+                from 'fs'
+            import
+                @ fsTypes
+                from '../../filesystem'
+            import
+                @ wizziTypes
+                @ wizziProds
+                @ WizziFactory
+                from '../../wizzi'
+            import
+                @ PackiFiles
+                @ TemplateList
+                @ Template
+                from '../types'
+            import
+                @ file
+                from 'wizzi'
+        _ this.router.post
+            `lit
+                + /MTreeBuildupScript/:id
+            @ this.mTreeBuildupScript
+        _ this.router.post
+            `lit
+                + /artifact/:id
+            @ this.generateArtifact
+        _ this.router.post
+            `lit
+                + /transform/:id/:transformer
+            @ this.transformModel
+        _ this.router.post
+            `lit
+                + /job
+            @ this.executeJob
+        _ this.router.post
+            `lit
+                + /wizzify
+            @ this.wizzify
+        $append handlers
+            handler( mTreeBuildupScript )
+                const id = request.params.id
+                const files
+                    :ref PackiFiles
+                    = request.body
+                _ wizziProds.mTreeBuildupScript(id, files, {}).then
+                    =>
+                        param value
+                        _ sendSuccess
+                            @ response
+                            {
+                                @ mTreeBuildupScript value
+                    ._ catch
+                        =>
+                            param err
+                            error 'features.packi.controllers.production.mTreeBuildupScript.err', err
+                            _ sendFailure(response, err, 501)
+            handler( generateArtifact )
+                const id = request.params.id
+                const files
+                    :ref PackiFiles
+                    = request.body
+                _ wizziProds.generateArtifact(id, files).then
+                    =>
+                        param value
+                        _ sendSuccess
+                            @ response
+                            {
+                                @ generatedArtifact value
+                    ._ catch
+                        =>
+                            param err
+                            error 'features.packi.controllers.production.generateArtifact.err', err
+                            _ sendFailure(response, err, 501)
+            handler( transformModel )
+                const id = request.params.id
+                const transformer = request.params.transformer
+                const files
+                    :ref PackiFiles
+                    = request.body
+                _ wizziProds.transformModel
+                    @ id
+                    @ files
+                    {
+                    {
+                        @ transformer transformer
+                    ._ then
+                        =>
+                            param value
+                            _ sendSuccess
+                                @ response
+                                {
+                                    @ transformedModel value.transformResult
+                    ._ catch
+                        =>
+                            param err
+                            error 'features.packi.controllers.production.generateArtifact.err', err
+                            _ sendFailure(response, err, 501)
+            handler( executeJob )
+                const files
+                    :ref PackiFiles
+                    = request.body
+                _ wizziProds.executeJobs(files).then
+                    async=>
+                        param fsJson
+                        const files
+                            await
+                                _ WizziFactory.extractGeneratedFiles(fsJson)
+                        _ sendSuccess
+                            @ response
+                            {
+                                @ generatedArtifacts files
+                    ._ catch
+                        =>
+                            param err
+                            error 'features.packi.controllers.production.executeJob.err', err
+                            _ sendFailure(response, err, 501)
+            handler( wizzify )
+                const id = request.params.id
+                const files
+                    :ref PackiFiles
+                    = request.body
+                _ wizziProds.wizzify(files).then
+                    async=>
+                        param ittfResult
+                            :ref PackiFiles
+                        _ sendSuccess
+                            @ response
+                            {
+                                @ packiResult ittfResult
+                    ._ catch
+                        =>
+                            param err
+                            error 'features.packi.controllers.production.wizzify.err', err
+                            _ sendFailure(response, err, 501)

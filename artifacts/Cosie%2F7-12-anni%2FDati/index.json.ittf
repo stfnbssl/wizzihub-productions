@@ -1,0 +1,20 @@
+{
+  [ pediatri
+    {
+      nome "Costantino"
+      [ guide
+        $include costantino.json
+    {
+      nome "Maddalena"
+      [ guide
+        $include maddalena.json
+    {
+      nome "Francesca"
+      [ guide
+        $include francesca.json
+    {
+      nome "Anna"
+      [ guide
+        $include anna.json
+  { result
+    $$ $include result.json

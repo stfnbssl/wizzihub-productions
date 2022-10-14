@@ -1,0 +1,24 @@
+
+$group
+    head 
+        meta 
+            charset utf-8
+        @title WizziWay
+    style
+        $include css/base.css            
+        $include css/index.css            
+        $include css/wz.css            
+    body
+      $include html/main
+      js http://localhost:5000/~/stfnbssl/lab%2Fvanillajs%2Fjs?savecount=3&filepath=index.js.ittf
+    script
+      module
+        kind es6
+        $include js/defaults.js
+        $include js/styles.js
+        $include js/template.js
+        $include js/view.js
+        $include js/store.js
+        $include js/model.js
+        $include js/controller.js
+        $include js/app.js

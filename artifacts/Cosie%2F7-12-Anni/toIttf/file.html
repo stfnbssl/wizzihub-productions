@@ -1,0 +1,12 @@
+<script id="myJson" type="application/json">
+ { 
+   name: 'Foo' 
+ }
+</script>
+
+<script type="text/javascript">
+    $(function() {
+        var x = JSON.parse($('#myJson').html());
+        alert(x.name); //Foo
+     });
+</script>

@@ -1,0 +1,101 @@
+$group
+  {
+    n 1
+    titolo "Gli impegni di un ragazzo o una ragazza che cresce"
+    categoria "Temi caldi"
+    [ anni
+      10
+      $$ 13
+    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+  {
+    n 2
+    titolo "Le bevande"
+    categoria "Alimentazione"
+    [ anni
+      8
+    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+  {
+    n 3
+    titolo "Il sonno"
+    categoria "Pediatra"
+    [ anni
+      9
+      $$ 12
+    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+  {
+    n 6
+    titolo "Alimentazione"
+    categoria "Alimentazione"
+    [ anni
+      7
+      $$ 10
+    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+  {
+    n 4
+    titolo "I rituali di famiglia"
+    categoria "Temi caldi"
+    [ anni
+      7
+      11
+    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+  {
+    n 5
+    titolo "Il telefono cellulare"
+    categoria "Temi caldi"
+    [ anni
+      $$ 7
+      11
+    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+    message "Gli anni non ci sono, presi quelli del n 4"
+  {
+    n 7
+    titolo "I videogiochi"
+    categoria "Pediatra"
+    [ anni
+      8
+      11
+    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+  {
+    n 8
+    titolo "La disciplina"
+    categoria "Pediatra"
+    [ anni
+      $$ 7
+      9
+    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+  {
+    n 9
+    titolo "Le punizioni fisiche"
+    categoria "Pediatra"
+    [ anni
+      8
+    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+    message "Vedere come integrarlo con le guide di Anna"
+  $*
+  {
+    n 10
+    titolo "L’attività fisica"
+    categoria "Pediatra"
+    [ anni
+      8
+    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+    message "Vedere come integrarlo con le guide di Anna. Gli anni non ci sono, presi quelli del n 9"
+  *$
+  {
+    n 11
+    titolo "Il pediatra"
+    categoria "Pediatra"
+    [ anni
+      9
+      13
+    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+  {
+    n 12
+    titolo "Gli effetti dei media e la pubblicità"
+    categoria "Alimentazione"
+    [ anni
+      7
+      $$ 9
+      12
+    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+

@@ -1,0 +1,32 @@
+$group
+    $params &md 
+    
+    import 
+        as React
+        from 'react'
+
+    $hook imports
+    
+    $if md.muiImport != false
+      import ${md.Name}Unstyled
+        @ ${md.Name}UnstyledOwnerState
+        @ ${md.Name}UnstyledProps
+        from '@mui/base/${md.Name}Unstyled'
+    
+    const ${md.Name}
+      _ React.forwardRef 
+          function ${md.Name}
+            $if md.muiImport == false
+              $if md.propsRef
+                param props
+                  :ref ${md.propsRef}
+            $else
+              param props
+                :ref ${md.Name}UnstyledProps
+            $hook propsRef
+            param ref
+              :ref React.ForwardedRef
+                :param 
+                  :ref HTML${md.htmlName}Element
+            $hook
+    export-default ${md.Name} 

@@ -1,0 +1,118 @@
+$group
+    $
+      var myName = 'Store';
+      //
+    
+    iife_window( app, ${myName})
+        # globals api.Wizzi, mvc.LocalObjectStore
+        function ${myName}
+            param name
+            set this.name = name
+            set this.wzApi = api.Wizzi
+            set this.lsProduction = new mvc.LocalObjectStore('wzProductions')
+            set this.lsArtifact = new mvc.LocalObjectStore('wzArtifacts')
+            set this.lsPackage = new mvc.LocalObjectStore('wzPackages')
+            set this.lsPlugin = new mvc.LocalObjectStore('wzPlugins')
+            set this.lsMeta = new mvc.LocalObjectStore('wzMetas')
+            set this.lsTfolder = new mvc.LocalObjectStore('wzTFolders')
+
+        set ${myName}.prototype.findAllProductions
+            function 
+                param productionKind
+                param owner
+                param_callback( required, Method: ${myName}.findAllProductions )
+                var action = this.wzApi['get' + _.capitalize(productionKind)]
+                assert_not_null( action, Method: ${myName}.findAllProductions, productionKind )
+                _ action
+                  @ owner
+                  a_then_catch_throw( result, ${myName}.findAllProductions )
+                    log 'result', result
+                    _ this._matchProductionLocalData
+                      @ productionKind
+                      @ result.item
+                      @ callback
+
+        set ${myName}.prototype.findProduction
+            function 
+                param productionKind
+                param owner
+                param id
+                param_callback( required, Method: ${myName}.findProduction )
+                _ this.findAllProductions
+                  @ productionKind
+                  @ owner
+                  =>
+                    param items
+                    foreach item in items
+                      if item.id == id
+                        return
+                          _ callback
+                            @ item
+                    throw new Error('${myName}.findProduction.err not found: ' + productionKind + '/' + owner + '/' + id)
+        
+        set ${myName}.prototype._matchProductionLocalData
+            function 
+                param productionKind
+                param serverItems
+                param callback
+                var lsStore = this['ls' + _.capitalize(productionKind)]
+                assert_not_null( lsStore, Method: ${myName}._matchProductionLocalData, productionKind )
+                _ lsStore.findAll
+                  =>
+                    param lsItems
+                    const valid_lsItems = []
+                    foreach item in serverItems
+                      set item.packiFiles = JSON.parse(item.packiFiles)
+                      set item.__li_class = productionKind.toLowerCase() + '-li'
+                      set item.__li_div_class = productionKind.toLowerCase() + '-li-div'
+                      foreach lsItem in lsItems
+                        log 'item.id', item.id, 'lsItem.id', lsItem.id
+                        if item.id == lsItem.id
+                          log 'matched'
+                          set item.__selected = lsItem.__selected
+                          _ valid_lsItems.push(lsItem)
+                    _ lsStore.replace
+                      @ valid_lsItems
+                    log 'serverItems', serverItems
+                    return
+                      _ callback
+                        @ serverItems
+
+        set ${myName}.prototype.updateLocal
+            function 
+                param productionKind
+                param id
+                param updateData
+                var lsStore = this['ls' + _.capitalize(productionKind)]
+                assert_not_null( lsStore, Method: ${myName}.updateLocal, productionKind )
+                _ lsStore.save
+                  @ updateData
+                  @ id
+
+        set ${myName}.prototype.getLocalValue
+            function 
+                param productionKind
+                param name
+                param defaultValue
+                var lsStore = this['ls' + _.capitalize(productionKind)]
+                assert_not_null( lsStore, Method: ${myName}.setLocal, productionKind )
+                return
+                  _ lsStore.getValue
+                    @ name
+                    @ defaultValue
+
+        set ${myName}.prototype.setLocalValue
+            function 
+                param productionKind
+                param name
+                param value
+                var lsStore = this['ls' + _.capitalize(productionKind)]
+                assert_not_null( lsStore, Method: ${myName}.setLocal, productionKind )
+                return
+                  _ lsStore.setValue
+                    @ name
+                    @ value
+
+
+
+

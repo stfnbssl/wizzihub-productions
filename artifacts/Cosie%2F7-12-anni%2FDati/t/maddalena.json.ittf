@@ -1,0 +1,76 @@
+$group
+  {
+    n 1
+    titolo "Coltivare una buona immagine di sé"
+    categoria "Bambino"
+    [ anni
+      9
+    url "https://docs.google.com/document/d/1tALH-EylrdHlz5YdEopZxwNh2bCBRMBO9TLhx9eYa04/edit"
+  {
+    n 2
+    titolo "I commenti dei compagni sul proprio corpo possono fare male"
+    categoria "Bambino"
+    [ anni
+      8
+    url "https://docs.google.com/document/d/1tALH-EylrdHlz5YdEopZxwNh2bCBRMBO9TLhx9eYa04/edit"
+  {
+    n 3
+    titolo "NON MANDIAMO IL CERVELLO IN FUMO!"
+    categoria "Temi caldi"
+    [ anni
+      $$ 11
+      12
+    url "https://docs.google.com/document/d/1440gM7SZI-zLj46lHB9Y6OmRuYOPJOs6XXmjfJiJGc4/edit"
+  {
+    n 4
+    titolo "Fumo di sigaretta e Nicotina"
+    categoria "Pediatra"
+    [ anni
+      13
+    url "https://docs.google.com/document/d/1440gM7SZI-zLj46lHB9Y6OmRuYOPJOs6XXmjfJiJGc4/edit"
+  {
+    n 5
+    titolo "CONTINUARE A LEGGERE INSIEME"
+    categoria "NpLNpM"
+    [ anni
+      7
+      $$ 11
+    url "https://docs.google.com/document/d/1x5u7kMgJ4KZcoV6GHAvt11N4iy0mA4_XiuhTEqJY4hM/edit"
+  {
+    n 6
+    titolo "CRESCERE LEGGENDO"
+    categoria "NpLNpM"
+    [ anni
+      9
+      $$ 10
+    url "https://docs.google.com/document/d/1x5u7kMgJ4KZcoV6GHAvt11N4iy0mA4_XiuhTEqJY4hM/edit"
+  {
+    n 7
+    titolo "IMPARARE A SUONARE UNO STRUMENTO MUSICALE"
+    categoria "NpLNpM"
+    [ anni
+      8
+    url "https://docs.google.com/document/d/1x5u7kMgJ4KZcoV6GHAvt11N4iy0mA4_XiuhTEqJY4hM/edit"
+  {
+    n 8
+    titolo "SUONARE INSIEME"
+    categoria "NpLNpM"
+    [ anni
+      12
+    url "https://docs.google.com/document/d/1x5u7kMgJ4KZcoV6GHAvt11N4iy0mA4_XiuhTEqJY4hM/edit"
+  {
+    n 9
+    titolo "PREVENZIONE DEI DISTURBI DEL COMPORTAMENTO ALIMENTARE"
+    categoria "Bambino"
+    [ anni
+      10
+    url "https://docs.google.com/document/d/1lxptsbxE98XF_en0jktlpEmsvkxAbqtRRGwZ3-f94pM/edit"
+    message "categoria Bambino o Temi caldi"
+  {
+    n 10
+    titolo "SVILUPPO PUBERALE, Un corpo che cambia"
+    categoria "Bambino"
+    [ anni
+      9
+    url "https://docs.google.com/document/d/1XbfRKh-i9_mqvKvLkUMw7a8H2uPBD3xydGO-_4NNmEE/edit"
+

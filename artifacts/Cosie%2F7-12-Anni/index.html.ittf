@@ -1,0 +1,103 @@
+html 
+    $
+      var opt = {
+        title: 'COSIE 7-12 anni',
+        useWizziBrowser: true
+      }
+      //
+    
+    html/layouts/basic( &opt ) 
+      $append head-styles
+          style
+            . item
+              width 200px
+              position fixed
+              border 1px solid #bbbbbb
+              text-align center 
+            . titolo
+              margin 2px 0
+              font-size 0.9em
+              < a
+                text-decoration none
+                color #444444
+            . settimana
+              font-weight 700
+              margin-top 2px
+              font-size 0.8em
+            . categoria
+              font-size 0.7em
+              text-transform uppercase
+            . pediatra
+              font-size 0.8em
+            . anno
+              padding-top 5px
+              background-color #467586
+              color white
+
+              
+      $append body-scripts
+          js http://localhost:5000/~/stfnbssl/lab%2Fvanillajs%2Fjs?savecount=3&filepath=index.js.ittf
+
+      $
+          var gAnni = results.gAnni;
+          var gCategorie = results.gCategorie;
+          var matrix = results.matrix;
+          var agenda = results.agenda;
+          var margin = 80;
+          var hFactor = 16;
+          //
+
+      div
+        h2 Agenda guide per anno
+        style margin-left: ${margin}px;
+        $foreach anno in agenda
+          div
+            class item anno
+            style left:${margin + anno_index*200}px; 
+              \b top:${margin -30}px;
+              \b height:30px;
+            + ${anno_index + 7} anni
+        $
+          var rows = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
+          var ccolors = {
+            Famiglia: 'BACBA9',
+            Bambino: 'F9C99F',
+            Pediatra: 'EDF5FC',
+            Alimentazione: '96EDBB',
+            NpLNpM: 'E6F17E',
+            Temi_caldi: 'F68EAB',
+            Giochi_Movimento: '70F5FF'
+          }
+          function getColor(c) {
+            return _.replace(_.replace(c, ' ', '_'), '-', '_');
+          }
+
+          //
+        $foreach row in rows
+          div
+            $$ style display: flex;
+            $$ style position: relative;
+            $foreach anno in agenda
+              $if _.isObject(anno[row])
+                div
+                  class item
+                  style left:${margin + anno_index*200}px; 
+                    \b top:${margin + anno[row].inizio*hFactor}px;
+                    \b height:${anno[row].durata*hFactor}px; background-color:#${ccolors[getColor(anno[row].guida.categoria)]}; 
+                  div
+                    class settimana
+                    + settimane: ${anno[row].daSettimana}-${anno[row].aSettimana}
+                  div
+                    class titolo
+                    a
+                      + ${anno[row].guida.titolo[0].toUpperCase() + anno[row].guida.titolo.substr(1).toLowerCase()}
+                      href ${anno[row].guida.url}
+                      target _blank
+                  div
+                    span
+                      class categoria
+                      + &nbsp;(${anno[row].guida.categoria},
+                    span
+                      class pediatra
+                      + &nbsp;${anno[row].guida.pediatra}/${anno[row].guida.n})
+                  

@@ -1,0 +1,69 @@
+{
+  Name "Post"
+  Names "Posts"
+  name "post"
+  names "posts"
+  descr "Blog post"
+  [ query
+      { 
+        name "owner"
+        type "string"
+      { 
+        name "name"
+        type "string"
+  [ indexes
+      { 
+        unique true
+        [ fields
+          {
+            name "owner"
+          {
+            name "name"
+  [ fields
+      { 
+        name "id"
+        type "integer"
+        autoIncrement true
+        primaryKey true
+      { 
+        name "owner"
+        type "string"
+        allowNull false
+        defaultValue "stfnbssl"
+      { 
+        name "name"
+        type "string"
+        allowNull false
+        [ validate
+          {
+            name "is"
+            value "/^\w{3,}$/"
+      { 
+        name "title"
+        type "string"
+        allowNull false
+      { 
+        name "content"
+        type "string"
+        allowNull false
+      { 
+        name "state"
+        type "string"
+      { 
+        name "pubblished_at"
+        type "date"
+      { 
+        name "blog"
+        type "integer"
+        { references
+          model "Bar"
+          key "id"
+          deferrable "INITIALLY_IMMEDIATE"
+            $*
+            # With PostgreSQL, it is optionally possible to declare when to check the foreign key constraint, passing the Deferrable type.
+              # Options:
+              # - `Deferrable.INITIALLY_IMMEDIATE` - Immediately check the foreign key constraints
+              # - `Deferrable.INITIALLY_DEFERRED` - Defer all foreign key constraint check to the end of a transaction
+              # - `Deferrable.NOT` - Don't defer the checks at all (default) - This won't allow you to dynamically change the rule in a transaction
+            *$
+  

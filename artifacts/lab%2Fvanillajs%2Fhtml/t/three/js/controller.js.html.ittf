@@ -1,0 +1,334 @@
+$group
+    $
+      var myName = 'Controller';
+      //
+
+    iife_window( app, ${myName})
+        function ${myName}
+            param model
+            param view
+            var self = this
+            set self.model = model
+            set self.view = view
+            set self.activeProductionItems = []
+            $*
+            _ self.view.bind
+                @ 'newTodo'
+                function 
+                    param title
+                    _ self.addItem(title)
+            _ self.view.bind
+                @ 'itemEdit'
+                function 
+                    param item
+                    _ self.editItem(item.id)
+            _ self.view.bind
+                @ 'itemEditDone'
+                function 
+                    param item
+                    _ self.editItemSave(item.id, item.title)
+            _ self.view.bind
+                @ 'itemEditCancel'
+                function 
+                    param item
+                    _ self.editItemCancel(item.id)
+            _ self.view.bind
+                @ 'itemRemove'
+                function 
+                    param item
+                    _ self.removeItem(item.id)
+            *$
+            _ self.view.bind
+                @ 'packiViewClose'
+                function 
+                    param item
+                    _ self.closePackiView
+            _ self.view.bind
+                @ 'itemToggle'
+                function 
+                    param item
+                    _ self.toggleSelected(item.id, item.checked)
+            _ self.view.bind
+                @ 'prodItemShowPackiFiles'
+                function 
+                    param item
+                    _ self.showPackiFilesList(item.id)
+            _ self.view.bind
+                @ 'prodViewChange'
+                function 
+                    param data
+                    _ self.changeProductionView(data.value)
+            $*
+            _ self.view.bind
+                @ 'removeCompleted'
+                function 
+                    _ self.removeCompletedItems()
+            _ self.view.bind
+                @ 'toggleAll'
+                function 
+                    param status
+                    _ self.toggleAll(status.completed)
+            *$
+            #
+                # 
+                # Takes a model and view and acts as the controller between them
+                # 
+                # @constructor
+                # @param {object} model The model instance
+                # @param {object} view The view instance
+                # 
+        set ${myName}.prototype.initialize
+            function 
+                param locationHash
+                _ this.view.render
+                  @ 'showProductionView'
+                _ this.view.render
+                  @ 'setProductionView'
+                  _ this.model.getProductionView
+                _ this.setView
+                  @ locationHash
+        set ${myName}.prototype.closePackiView
+            function 
+              # TODO save state
+              _ this.view.render
+                @ 'showProductionView'
+        set ${myName}.prototype.setView =
+            function 
+                param locationHash
+                var route = locationHash.split('/')[1]
+                var page = route || ''
+                log '${myName}.setView', 'route', route, 'page', page
+                _ this._updateRouteFilterState(page)
+            #
+                # 
+                # Loads and initialises the view
+                # 
+                # @param {string} '' | 'active' | 'completed'
+                # 
+        set ${myName}.prototype.showProductionList
+            function 
+                param activeRoute
+                param activeProductionView
+                log '${myName}.showProductionList', 'activeRoute', activeRoute, 'activeProductionView', activeProductionView
+                _ this.model.getProduction
+                    @ activeRoute
+                    @ activeProductionView
+                    @ 'stfnbssl'
+                    =>
+                        param items
+                        set this.activeProductionItems = items
+                        _ this.view.render('showProductionEntries', items)
+            #
+                # 
+                # An event to fire on load. Will get all items and display them in the production-list
+                # 
+        set ${myName}.prototype.showPackiFilesList
+            function 
+                param productionId
+                log '${myName}.showPackiFilesList', 'productionId', productionId
+                foreach item in this.activeProductionItems
+                  if item.id == productionId
+                    const renderItems = []
+                    foreach k in Object.keys(item.packiFiles)
+                      _ renderItems.push
+                        {
+                          @ filePath k
+                          @ contents item.packiFiles[k].contents
+                    _ this.view.render('showPackiView')
+                    _ this.view.render('showPackiEntries', renderItems)
+            #
+                # 
+                # An event to fire on load. Will get all items and display them in the production-list
+                # 
+        set ${myName}.prototype.addItem =
+            function 
+                param title
+                var self = this
+                if title.trim() === ''
+                    return 
+                _ self.model.create
+                    @ title
+                    function 
+                        _ self.view.render('clearNewTodo')
+                        _ self._filter(true)
+            #
+                # *
+                # * An event to fire whenever you want to add an item. Simply pass in the event
+                # * object and it'll handle the DOM insertion and saving of the new item.
+                # 
+        set ${myName}.prototype.editItem =
+            function 
+                param id
+                var self = this
+                _ self.model.read
+                    @ id
+                    function 
+                        param data
+                        _ self.view.render
+                            @ 'editItem'
+                            { 
+                                @ id
+                                @ title data[0].title
+            #
+                # 
+                # * Triggers the item editing mode.
+                # 
+        set ${myName}.prototype.editItemSave =
+            function 
+                param id
+                param title
+                var self = this
+                set title = title.trim()
+                if title.length !== 0
+                    _ self.model.update
+                        @ id
+                        { 
+                            @ title
+                        function 
+                            _ self.view.render
+                                @ 'editItemDone'
+                                { 
+                                    @ id
+                                    @ title
+                else
+                    _ self.removeItem(id)
+            #
+                # 
+                # * Finishes the item editing mode successfully.
+                # 
+        set ${myName}.prototype.editItemCancel =
+            function 
+                param id
+                var self = this
+                _ self.model.read
+                    @ id
+                    function 
+                        param data
+                        _ self.view.render
+                            @ 'editItemDone'
+                            { 
+                                @ id
+                                @ title data[0].title
+            #
+                # 
+                # * Cancels the item editing mode.
+                # 
+        set ${myName}.prototype.removeProduction
+            function 
+                param id
+                _ this.model.remove
+                    @ id
+                    =>
+                        _ self.view.render('removeProduction', id)
+                _ self._filter()
+            #
+                # 
+                # By giving it an ID it'll find the DOM element matching that ID,
+                # remove it from the DOM and also remove it from storage.
+                # 
+                # @param {number} id The ID of the item to remove from the DOM and storage
+                # 
+        set ${myName}.prototype.toggleSelected =
+            function 
+                param id
+                param checked
+                param silent
+                log '${myName}.toggleSelected', id, checked, this._activeRoute
+                _ this.model.updateLocal
+                    @ this._activeRoute
+                    @ id
+                    { 
+                        @ __selected checked
+                    =>
+                        $*
+                        _ this.view.render
+                            @ 'elementComplete'
+                            { 
+                                @ id
+                                @ checked
+                        *$
+                if !silent
+                    _ this._filter()
+            #
+                # *
+                # * Give it an ID of a model and a checkbox and it will update the item
+                # * in storage based on the checkbox's state.
+                # *
+                # * @param {number} id The ID of the element to complete or uncomplete
+                # * @param {object} checkbox The checkbox to check the state of complete
+                # *                          or not
+                # * @param {boolean|undefined} silent Prevent re-filtering the todo items
+                # 
+        set ${myName}.prototype.changeProductionView =
+            function 
+                param value
+                log '${myName}.changeProductionView', value
+                _ this.model.setProductionView
+                    @ value
+                _ this._filter()
+
+        $*
+        set ${myName}.prototype._updateCount =
+            function 
+                var self = this
+                _ self.model.getCount
+                    function 
+                        param todos
+                        _ self.view.render('updateElementCount', todos.active)
+                        _ self.view.render
+                            @ 'clearCompletedButton'
+                            { 
+                                @ completed todos.completed
+                                @ visible todos.completed > 0
+                        _ self.view.render
+                            @ 'toggleAll'
+                            { 
+                                @ checked todos.completed === todos.total
+                        _ self.view.render
+                            @ 'contentBlockVisibility'
+                            { 
+                                @ visible todos.total > 0
+            #
+                # 
+                # Updates the pieces of the page which change depending on the remaining
+                # number of todos.
+                # 
+        *$
+        set ${myName}.prototype._filter =
+            function 
+                param force
+                var activeRoute = this._activeRoute.charAt(0).toUpperCase() + this._activeRoute.substr(1)
+                var activeProductionView
+                  _ this.model.getProductionView
+                log '${myName}._filter', 'activeRoute', activeRoute, 'activeProductionView', activeProductionView
+                $*
+                _ this._updateCount()
+                    # Update the elements on the page, which change with each completed todo
+                    # If the last active route isn't "All", or we're switching routes, we
+                    # re-create the todo item elements, calling:
+                    # this.show[Artifact|Package|Plugin|Meta|TFolder]();
+                *$
+                if force || this._lastActiveRoute !== activeRoute || this._lastProductionView !== activeProductionView
+                    _ this.showProductionList
+                      @ activeRoute
+                      @ activeProductionView
+                set this._lastActiveRoute = activeRoute
+                set this._lastProductionView = activeRoute
+            #
+                # 
+                # Re-filters the todo items, based on the active route.
+                # @param {boolean|undefined} force  forces a re-painting of todo items.
+                # 
+        set ${myName}.prototype._updateRouteFilterState =
+            function 
+                param currentPage
+                set this._activeRoute = currentPage
+                    # Store a reference to the active route, allowing us to re-filter productions
+                if currentPage === ''
+                    set this._activeRoute = 'Artifact'
+                _ this._filter()
+                _ this.view.render('setFilter', currentPage)
+            #
+                # 
+                # Simply updates the filter nav's selected states
+                # 

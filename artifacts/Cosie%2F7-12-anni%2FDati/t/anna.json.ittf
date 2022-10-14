@@ -1,0 +1,83 @@
+$group
+  {
+    n 1
+    titolo "Di quanta attività fisica ha bisogno il mio bambino ogni giorno?"
+    categoria "Giochi-Movimento"
+    [ anni
+      7
+    url "https://docs.google.com/document/d/1GOa42Nkl972XUFxlsaChMB3cafSA-P0Sh7sn5poinbI/edit#heading=h.2et92p0"
+  {
+    n 2
+    titolo "Attività fisica e salute"
+    categoria "Giochi-Movimento"
+    [ anni
+      8
+    url "https://docs.google.com/document/d/1GOa42Nkl972XUFxlsaChMB3cafSA-P0Sh7sn5poinbI/edit#heading=h.2et92p0"
+  {
+    n 3
+    titolo "Cosa possono fare i genitori per promuovere l’attività fisica a questa età?"
+    categoria "Giochi-Movimento"
+    [ anni
+      9
+    url "https://docs.google.com/document/d/1GOa42Nkl972XUFxlsaChMB3cafSA-P0Sh7sn5poinbI/edit#heading=h.2et92p0"
+  {
+    n 4
+    titolo "Il gioco libero e lo sport"
+    categoria "Giochi-Movimento"
+    [ anni
+      13
+    url "https://docs.google.com/document/d/1GOa42Nkl972XUFxlsaChMB3cafSA-P0Sh7sn5poinbI/edit#heading=h.2et92p0"
+  {
+    n 5
+    titolo "Il coraggio si impara"
+    categoria "Giochi-Movimento"
+    [ anni
+      7
+    url "https://docs.google.com/document/d/1GOa42Nkl972XUFxlsaChMB3cafSA-P0Sh7sn5poinbI/edit#heading=h.2et92p0"
+  $*
+  {
+      n 6
+      titolo "Il risveglio della natura (un esercizio di riscaldamento)"
+      categoria "Giochi-Movimento"
+      [ anni
+        6
+      url "https://docs.google.com/document/d/1GOa42Nkl972XUFxlsaChMB3cafSA-P0Sh7sn5poinbI/edit#heading=h.2et92p0"
+  *$
+  {
+    n 6
+    titolo "Bere al momento giusto facendo sport"
+    categoria "Giochi-Movimento"
+    [ anni
+      9
+    url "https://docs.google.com/document/d/1GOa42Nkl972XUFxlsaChMB3cafSA-P0Sh7sn5poinbI/edit#heading=h.2et92p0"
+  {
+    n 7
+    titolo "Le pressioni che devono affrontare i giovani atleti"
+    categoria "Giochi-Movimento"
+    [ anni
+      12
+    url "https://docs.google.com/document/d/1GOa42Nkl972XUFxlsaChMB3cafSA-P0Sh7sn5poinbI/edit#heading=h.2et92p0"
+  {
+    n 8
+    titolo "Giocare all’aria aperta: esempi di giochi antichi, ma sempre attuali"
+    categoria "Giochi-Movimento"
+    [ anni
+      8
+    url "https://docs.google.com/document/d/1GOa42Nkl972XUFxlsaChMB3cafSA-P0Sh7sn5poinbI/edit#heading=h.2et92p0"
+$* 
+  {
+    n 9
+    titolo "Giocare all’aria aperta è pericoloso?"
+    categoria "Giochi-Movimento"
+    [ anni
+      6
+    url "https://docs.google.com/document/d/1GOa42Nkl972XUFxlsaChMB3cafSA-P0Sh7sn5poinbI/edit#heading=h.2et92p0"
+*$
+  {
+    n 9
+    titolo "Il sale"
+    categoria "Alimentazione"
+    [ anni
+      12
+    url "https://docs.google.com/document/d/1GOa42Nkl972XUFxlsaChMB3cafSA-P0Sh7sn5poinbI/edit#heading=h.2et92p0"
+    

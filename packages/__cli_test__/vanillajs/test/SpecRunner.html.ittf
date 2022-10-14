@@ -1,0 +1,18 @@
+html 
+    head 
+        @title Jasmine Spec Runner
+        link 
+            rel stylesheet
+            href ../node_modules/jasmine-core/lib/jasmine-core/jasmine.css
+        js ../node_modules/jasmine-core/lib/jasmine-core/jasmine.js
+        js ../node_modules/jasmine-core/lib/jasmine-core/jasmine-html.js
+        js ../node_modules/jasmine-core/lib/jasmine-core/boot.js
+        js ControllerSpec.js
+        script 
+            module
+                kind react
+                set window.app =
+                    { 
+                    # Bootstrap app data
+        js ../js/controller.js
+    body 

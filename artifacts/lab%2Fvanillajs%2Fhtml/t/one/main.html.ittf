@@ -1,0 +1,62 @@
+
+$group
+    head 
+        meta 
+            charset utf-8
+        @title JS Issue Tracker
+        link 
+            rel stylesheet
+            href https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css
+            @ integrity sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u
+            crossorigin anonymous        
+    body
+        onload fetchIssues()
+        . container
+            h1 JS Issue Tracker
+                small by CodingTheSmartWay.com
+            . jumbotron
+                h3 Add New Issue:
+                form 
+                    id issueInputForm
+                    . form-group
+                        label Description
+                            for issueDescInput
+                        input 
+                            type text
+                            class form-control
+                            id issueDescInput
+                            placeholder Describe the issue ...
+                    . form-group
+                        label Severity
+                            for issueDescInput
+                        select 
+                            class form-control
+                            id issueSeverityInput
+                            option Low
+                                value Low
+                            option Medium
+                                value Medium
+                            option High
+                                value High
+                    . form-group
+                        label Assigned To
+                            for issueDescInput
+                        input 
+                            type text
+                            class form-control
+                            id issueAssignedToInput
+                            placeholder Enter responsible ...
+                    button Add
+                        type submit
+                        class btn btn-primary
+            . row
+                . col-lg-12
+                    div 
+                        id issuesList
+            . footer
+                p &copy CodingTheSmartWay.com     
+        js https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js
+        js https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js    
+        js http://chancejs.com/chance.min.js
+        script
+            $include one/main.js

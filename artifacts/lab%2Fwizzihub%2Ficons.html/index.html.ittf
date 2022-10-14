@@ -1,0 +1,37 @@
+html
+  $
+    var md = {
+      title: "Material Icons"
+    }
+    var count = 0;
+    var perRow = 8;
+    //
+
+  layouts/mui( & md )
+    $append components
+      styled( Frame, div )
+        @ float "left"
+        @ width "100px"
+      styled( Clear, div )
+        @ clear "both"
+      styled( Label, div )
+        @ fontSize "9px"
+    render
+      return 
+        div
+          $foreach icon in icons.children
+            $ count++
+            $if count > perRow
+              br 
+              < Clear
+              $ count = 0
+            < Frame
+              @ key {'${icon.name}'}
+              a
+                href https://raw.githubusercontent.com/marella/material-design-icons/main/svg/filled/${icon.name}.svg
+                span
+                  @ className "material-icons"
+                  + ${icon.name}
+              < Label
+                + ${icon.name}
+              

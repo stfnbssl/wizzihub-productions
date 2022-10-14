@@ -1,0 +1,57 @@
+$group
+    $params &md
+    $if wzCtx.Build.useMongoDb
+        import
+            @ Document
+            from "mongoose"
+    import
+        @ commonTypes
+        from '../../common'
+    export
+        :type PackiFiles
+            :ref commonTypes.PackiFiles
+    export
+        :type TemplateList
+            :[
+                :string
+    export
+        :type Template
+            :{
+                :p name
+                    :string
+                :p files
+                    :ref PackiFiles
+    export
+        :type IUser
+            :{
+                :p userId
+                    :string
+                :p email
+                    :string
+                :p createdAt
+                    :ref Date
+                :p lastAccess
+                    :ref Date
+    $if wzCtx.Build.useMongoDb
+        export
+            :interface IUserModel
+                :extends IUser
+                :extends Document
+    export
+        :type IPacki
+            :{
+                :p userId
+                    :string
+                :p repoOwner
+                    :string
+                :p repoName
+                    :string
+                :p clonedAt
+                    :ref Date
+                :p lastCommitWhenCloned
+                    :string
+    $if wzCtx.Build.useMongoDb
+        export
+            :interface IPackiModel
+                :extends IPacki
+                :extends Document

@@ -1,0 +1,52 @@
+$group
+    $params &md
+    import
+        @ deprecated 
+        from "typesafe-actions"
+    const 
+        {
+            @ createStandardAction
+        = deprecated
+    import 
+        @ ResponsePayload
+        from '../../store'
+    $hook imports
+    const NO_ERROR = '@@${md.name}/NO_ERROR'
+    $foreach action in md.actions
+        const ${action.kname.toUpperCase()}_REQUEST = '@@${md.name}/${action.kname.toUpperCase()}_REQUEST'
+        const ${action.kname.toUpperCase()}_SUCCESS = '@@${md.name}/${action.kname.toUpperCase()}_SUCCESS'
+        const ${action.kname.toUpperCase()}_ERROR = '@@${md.name}/${action.kname.toUpperCase()}_ERROR'
+    $hook consts
+    +
+    $foreach action in md.actions
+        export 
+            :interface ${_.capitalize(action.name)}RequestPayload
+                $foreach prop in action.requestProps
+                  setPropType( &prop )
+        +
+        export 
+            :interface ${_.capitalize(action.name)}ResponsePayload
+                $foreach prop in action.responseProps
+                  setPropType( &prop )
+        +
+    $hook payloads
+    $foreach action in md.actions
+        export 
+            const ${action.name}Request
+                _ createStandardAction(${action.kname.toUpperCase()}_REQUEST)
+                    :param 
+                        :ref ${_.capitalize(action.name)}RequestPayload
+        export 
+            const ${action.name}Success
+                _ createStandardAction(${action.kname.toUpperCase()}_SUCCESS)
+                    :param 
+                        :ref ${_.capitalize(action.name)}ResponsePayload
+        export 
+            const ${action.name}Error
+                _ createStandardAction(${action.kname.toUpperCase()}_ERROR)
+                    :param string                
+    $hook calls
+    export
+        const NoError
+            _ createStandardAction(NO_ERROR)
+                :param string

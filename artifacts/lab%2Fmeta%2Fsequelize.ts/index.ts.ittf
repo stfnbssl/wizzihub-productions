@@ -1,0 +1,69 @@
+module
+    $ 
+        var values = [];
+        var fields = [];
+        for (var i=0; i<tb.fields.length; i++) {
+          fields.push (tb.fields[i].name);
+          values.push ('$'+(i+1)); 
+        }
+        function getType(name) {
+          if (name == 'string') return 'STRING';
+          else if (name == 'number') return 'NUMBER';
+          else return name.toUpperCase();
+        }
+        function getDefaultValue(value, type) {
+          if (['string', 'text', 'citext'].indexOf(type) > -1) return '"' + value + '"';
+          else return value;
+        }
+
+    const 
+        { 
+            @ Sequelize
+            @ DataTypes
+        = require('sequelize')
+    const sequelize = new Sequelize('sqlite::memory:')
+    const ${tb.Name}
+        _ sequelize.define
+            @ '${tb.Name}'
+            { 
+                # Model attributes are defined here
+                $foreach fd in tb.fields
+                  { ${fd.name}
+                      @ type DataTypes.${getType(fd.type)}
+                      $if !!fd.allowNull == true
+                        @ allowNull false
+                      $else
+                        # allowNull defaults to true
+                      $if fd.defaultValue && fd.defaultValue.length > 0
+                        @ defaultValue ${getDefaultValue(fd.defaultValue, fd.type)}
+                      $if fd.autoIncrement
+                        @ autoIncrement true
+                      $if fd.primaryKey
+                        @ primaryKey true
+                      $if fd.comment && fd.comment.length > 0
+                        @ comment ${fd.comment)}
+                      $if fd.references
+                        { references
+                          @ model ${fd.references.model}
+                          @ key ${fd.references.key}
+                          @ deferrable Deferrable.${fd.references.deferrable}
+            { 
+                @ tableName '${tb.Names}'
+                $if tb.timestamps == false
+                  @ timestamps false
+                $if tb.indexes
+                  [ indexes
+                    $foreach ndx in tb.indexes
+                      {
+                        $if ndx.unique
+                          @ unique true
+                          [ fields
+                            $foreach fd in ndx.fields
+                              @ '${fd.name}'
+                $if tb.paranoid
+                  @ paranoid true
+
+        # `sequelize.define` also returns the model
+    _ console.log(${tb.Name} === sequelize.models.${tb.Name})
+        # `sequelize.define` also returns the model
+        # true

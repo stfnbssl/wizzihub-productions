@@ -1,0 +1,7 @@
+$group
+    $params l:integer, &opt
+    polyline
+        stroke ${opt.color}
+        fill ${opt.color}
+        stroke-width 2
+        points ${l} ${opt.ybottom} ${l} ${opt.ybottom - 20} ${l+100} ${opt.y1a+40} ${l+80} ${opt.y1a+20} ${l+80} ${opt.y1a} ${l+130} ${opt.y1a} ${l+100} ${opt.ybottom - 20} ${l+120} ${opt.ybottom - 20} ${l+120} ${opt.ybottom}

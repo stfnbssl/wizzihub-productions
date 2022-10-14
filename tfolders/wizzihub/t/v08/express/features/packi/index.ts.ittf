@@ -1,0 +1,63 @@
+$group
+    $params &md
+    import
+        @ ModelBuilderType
+        @ ControllerType
+        from '../app/types'
+    import
+        as packiTypes
+        from './types'
+        # import { UserModelBuilder, GetUserModel } from './mongo/user';
+    $if wzCtx.Build.usePacki
+        $if wzCtx.Build.useMongoDb
+            import
+                @ PackiModelBuilder
+                @ GetPackiModel
+                from './mongo/packi'
+                # import { UserModelBuilder, GetUserModel } from './mongo/user';
+        $if wzCtx.Build.useFilesystem
+            import
+                @ TemplatesController
+                from './controllers/templates'
+        import
+            @ PackiController
+            from './controllers/packi'
+        import
+            @ ProductionsController
+            from './controllers/productions'
+        $if wzCtx.Build.useMongoDb
+            $if wzCtx.Build.useGithub
+                import
+                    @ GithubController
+                    from './controllers/github'
+        $if wzCtx.Build.useMongoDb
+            const packiModelGetters
+                {
+                    @ GetPackiModel
+                        # GetUserModel
+            const packiModelBuilders
+                :[
+                    :ref ModelBuilderType
+                =
+                    [
+                        @ PackiModelBuilder
+                            # UserModelBuilder
+        const packiControllers
+            :[
+                :ref ControllerType
+            =
+                [
+                    $if wzCtx.Build.useFilesystem
+                        @ new TemplatesController()
+                    @ new PackiController()
+                    @ new ProductionsController()
+                    $if wzCtx.Build.useMongoDb
+                        $if wzCtx.Build.useGithub
+                            @ new GithubController()
+    export
+        @ packiTypes
+        $if wzCtx.Build.usePacki
+            $if wzCtx.Build.useMongoDb
+                @ packiModelGetters
+                @ packiModelBuilders
+            @ packiControllers

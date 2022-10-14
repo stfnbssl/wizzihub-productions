@@ -1,0 +1,56 @@
+html
+
+    $global
+      var locals = {}
+
+    $ 
+        var opt = {
+            section: 'Project',
+        }
+        var ca = 'm-s color-header font-x font-w-s';
+
+    layouts/site( &opt )
+
+        h1 ISSUES
+        . flex-row space-between m-t-xxl width-full
+            id stickyNavbar
+            . flex-row justify-center m-0-auto
+                a( TODOS, /ittf/site/project/todo.html.ittf, ${ca}
+                a( Issues, /ittf/site/project/issues.html.ittf, ${ca}
+
+        . container-70 
+            . flex-column space-between $$ bg-color-header color-header
+                . m-l-150 m-r-150 font-x font-w-s
+
+                    h1 ISSUES
+                    p In the Packi Editor the '$' ITTF Command must be followed by a space otherwise sinthax highlighting does not work correctly.
+            
+                    h1 Core
+                    p (Ok for message, but there are unnecessary actions?) get free of crypto/endec.ENCRYPTION_KEY message/action
+                    p Is the package wizzi-helpers still used ???
+                    p wizzi-legacy-v5 can be integrated in wizzi-core? Should be documented.
+                    p A wizzi macro expression should work even if there are spaces between graphs and expression ${'$'}{ '()' }
+                    p Delete UTC time from generation headings, they produce false changes to commit.
+                    
+                    h1 wizzi-core
+                    p json-model: errors lines in fragments are reported of mixer instead of mixed
+
+                    h1 Mongo Productions repository
+                    p The global context artifact 'wzctx' should be optional 
+                    p Before returning a production from MongoDB always check its integrity
+                    
+                    h1 Packi editor
+                    p The editor must show production name and kind (artifact|package|meta|tFolder).
+                    p Make a decent splitter work between edit content and result pane.
+                    p Result pane icons should be inside the pane. And should be decent.
+                    p The 'saved' message should be: 'Not modified', or 'Not yet saved' or 'Saved x seconds|minutes|hours ago'.
+                    p SavedPacki and PackiOptions are the same
+                    p pageforms: debounce checkname 1 second
+                    p pageforms: reset checkname error color when valid
+                    p checkname maybe unnecessary in apiv1* controllers
+
+                    h1 Lorem
+                    lorem 200
+                    
+                    
+    

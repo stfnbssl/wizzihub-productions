@@ -1,0 +1,4 @@
+html 
+    script
+      set window.__filename = 'browser'
+    $include one/main

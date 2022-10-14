@@ -1,0 +1,160 @@
+html 
+    $
+      var opt = {
+        title: 'COSIE 7-12 anni',
+        useWizziBrowser: true
+      }
+      //
+    
+    html/layouts/basic( &opt ) 
+      $append head-styles
+          style
+            . titolo
+              margin 4px 0
+              font-size 1em
+              < a
+                text-decoration none
+                color #333333
+            . pediatra
+              font-size 0.8em
+            . heading
+              color white
+              background-color #467586
+
+
+      $append body-scripts
+          js https://www.wizzihub.com/~/stfnbssl/lab%2Fvanillajs%2Fjs?savecount=3&filepath=index.js.ittf
+
+      $
+        if (false) {
+          var gAnni = gd.result.gAnni;
+          var gCategorie = gd.result.gCategorie;
+          var matrix = gd.result.matrix;
+          var agenda = gd.result.agenda;
+        } else {
+          var gAnni = results.gAnni;
+          var gCategorie = results.gCategorie;
+          var matrix = results.matrix;
+          var agenda = results.agenda;
+        }
+        var ccolors = {
+          Famiglia: 'BACBA9',
+          Bambino: 'F9C99F',
+          Pediatra: 'EDF5FC',
+          Alimentazione: '96EDBB',
+          NpLNpM: 'E6F17E',
+          Temi_caldi: 'F68EAB',
+          Giochi_Movimento: '70F5FF'
+        }
+        function getColor(c) {
+          return _.replace(_.replace(c, ' ', '_'), '-', '_');
+        }
+        //
+
+      
+      div
+        style margin:100px; font-size:0.9em; 
+        h1 Sintesi guide per anno e per categoria
+        table
+          style text-align: center;
+          thead
+            tr
+              th Anno
+                class heading
+              th Famiglia
+                class heading
+              th Pediatra
+                class heading
+              th Temi caldi
+                class heading
+              th Alimentazione
+                class heading
+              th NpLNpM
+                class heading
+              th Bambino
+                class heading
+              th Giochi-Movimento
+                class heading
+          tbody
+            $
+              var annoCount = 7
+              //
+            $foreach anno in matrix
+              tr
+                td ${annoCount}
+                  class heading
+                $ annoCount++
+                $foreach categoria in anno
+                  td
+                    style background-color: #${ccolors[getColor(categoria.nome)]}
+                    $if categoria.numero > 0
+                      div
+                        style display:flex; flex-direction:column; 
+                        $foreach guida in categoria.guide
+                          div
+                            class titolo
+                            a
+                              + ${guida.titolo[0].toUpperCase() + guida.titolo.substr(1).toLowerCase()}
+                              href ${guida.url}
+                              target _blank
+                          div 
+                            class pediatra
+                            + (${guida.pediatra}/${guida.n})
+
+      div
+        textarea
+          id output
+      script 
+          type text/javascript
+          module
+              kind es6
+              var Cosie_Data_Results_id = "63452ddb1f4146bbe29e720e";
+              $include dbGuide.js
+              _ fetch("https://www.wizzihub.com/~/stfnbssl/Cosie%2F7-12-anni%2FDati?savecount=3&filepath=index.json.ittf").then
+                  => 
+                      param response
+                      _ response.json()
+                  ._ then
+                      => 
+                          param gd
+                          # _ WizziBrowser.log gd
+                          log gd
+                          const gData = new DbGuide(gd)
+                          _ gData.guidePerAnno
+                          log gData.gAnni
+                          _ gData.guidePerCategoria
+                          log gData.gCategorie
+                          _ gData.setMatrix 
+                          log gData.matrix
+                          _ gData.setAgenda
+                          log gData.agenda
+                          set document.getElementById('output').value $$ innerHTML
+                            _ JSON.stringify
+                              {
+                                @ gAnni gData.gAnni
+                                @ gCategorie gData.gCategorie
+                                @ matrix gData.matrix
+                                @ agenda gData.agenda
+                              @ null
+                              @ 4
+                          if true
+                            _ api.Wizzi.putArtifact
+                              @ Cosie_Data_Results_id
+                              {
+                                { ['index.json']
+                                  @ type "CODE"
+                                  @ contents 
+                                    _ JSON.stringify
+                                      {
+                                        @ gAnni gData.gAnni
+                                        @ gCategorie gData.gCategorie
+                                        @ matrix gData.matrix
+                                        @ agenda gData.agenda
+                                      @ null
+                                      @ 4
+                              {
+                                @ wizzify true
+                              ._ then
+                                =>
+                                  param result
+                                  log 'upload result', result

@@ -1,0 +1,53 @@
+$group
+
+  function RepoSelect
+    const [open, setOpen] = React.useState(false)
+    const handleClickOpen
+        => 
+            _ setOpen(true)
+    const handleClose
+        => 
+            _ setOpen(false)
+    return 
+        div 
+            < Button 
+                @ variant "outlined"
+                @ onClick {handleClickOpen}
+                + Open form dialog
+            < Dialog 
+                @ open {open}
+                @ onClose {handleClose}
+                < DialogTitle 
+                    + Clone repository
+                < DialogContent 
+                    < DialogContentText 
+                        + To clone a github repository, please enter the owner and the name.
+                    < TextField 
+                        @ autoFocus
+                        @ margin "dense"
+                        @ id "owner"
+                        @ label "Owner"
+                        @ type "text"
+                        @ fullWidth
+                        @ variant "standard"
+                    < TextField 
+                        @ margin "dense"
+                        @ id "name"
+                        @ label "Name"
+                        @ type "text"
+                        @ fullWidth
+                        @ variant "standard"
+                    < TextField 
+                        @ margin "dense"
+                        @ id "branch"
+                        @ label "Branch"
+                        @ type "text"
+                        @ fullWidth
+                        @ variant "standard"
+                < DialogActions 
+                    < Button 
+                        @ onClick {handleClose}
+                        + Cancel
+                    < Button 
+                        @ onClick {handleClose}
+                        + Clone

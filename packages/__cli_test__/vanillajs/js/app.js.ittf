@@ -1,0 +1,23 @@
+module
+    kind react
+    iife 
+        function Todo
+            param name
+            set this.storage = new app.Store(name)
+            set this.model = new app.Model(this.storage)
+            set this.template = new app.Template()
+            set this.view = new app.View(this.template)
+            set this.controller = new app.Controller(this.model, this.view)
+            #
+                # *
+                # * Sets up a brand new Todo list.
+                # *
+                # * @param {string} name The name of your new to do list.
+                # 
+        var todo = new Todo('todos-vanillajs')
+        function setView
+            _ todo.controller.setView(document.location.hash)
+        _ $on(window, 'load', setView)
+        _ $on(window, 'hashchange', setView)
+        #
+            # global app, $on

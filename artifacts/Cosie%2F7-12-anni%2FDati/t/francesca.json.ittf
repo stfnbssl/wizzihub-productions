@@ -1,0 +1,68 @@
+$group
+  {
+    n 1
+    titolo "Adolescenza, famiglia e amici"
+    categoria "Famiglia"
+    [ anni
+      9
+    url "https://docs.google.com/document/d/1to1Q1iMZYtBmev9-J0O9yEzUIoyVpXWWWDUnNie3-Gg/edit"
+  {
+    n 2
+    titolo "Autonomia"
+    categoria "Famiglia"
+    [ anni
+      8
+      $$ 12
+    url "https://docs.google.com/document/d/1to1Q1iMZYtBmev9-J0O9yEzUIoyVpXWWWDUnNie3-Gg/edit"
+  {
+    n 3
+    titolo "Bullismo 1"
+    categoria "Famiglia"
+    [ anni
+      11
+    url "https://docs.google.com/document/d/1T6EcCfjJlWgbexY1WgSRXkF7QSM6wUve7fnImHiR3tw/edit"
+  {
+    n 4
+    titolo "Bullismo 2, Ma chi sono i bulli?"
+    categoria "Famiglia"
+    [ anni
+      11
+    url "https://docs.google.com/document/d/1T6EcCfjJlWgbexY1WgSRXkF7QSM6wUve7fnImHiR3tw/edit"
+  {
+    n 5
+    titolo "I disturbi alimentari"
+    categoria "Famiglia"
+    [ anni
+      10
+    url "https://docs.google.com/document/d/1J-_BJBn9AANVhIE9lYsoOpQLgnmgInA4Vvu38vckiTc/edit"
+  {
+    n 6
+    titolo "L’ansia non è solo una cosa da grandi"
+    categoria "Famiglia"
+    [ anni
+      7
+    url "https://docs.google.com/document/d/1P6RJPjfBDrYEPMxUMMWCOLWZ7M0OyScgZWUjqH4ApFk/edit"
+  {
+    n 7
+    titolo "Dire dei “no”"
+    categoria "Famiglia"
+    [ anni
+      7
+      $$ 10
+    url "https://drive.google.com/drive/folders/1-1_cv0KCnXT4jCgTDH3Eyg-yGe7BNlSM"
+  {
+    n 8
+    titolo "Temo che mio figlio sia troppo remissivo"
+    categoria "Famiglia"
+    [ anni
+      9
+    url "https://docs.google.com/document/d/1huLqch39VdWRlwiQEUoKi_zTfdWAsnksIR9DPYwTus8/edit"
+  {
+    n 9
+    titolo "Rispettare l’ambiente"
+    categoria "Famiglia"
+    [ anni
+      7
+      13
+    url "https://docs.google.com/document/d/1JUHyLM5QsTBvmgVXHeXgjhUGCGRAC4nSbw2gmCZNqkw/edit"
+    message "correggere per i 13 anni l'uso della bicicletta"

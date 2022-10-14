@@ -1,0 +1,196 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "ITTF",
+	"patterns": [
+		{ "include": "#commentNode" },
+		{ "include": "#nodeRoot" },
+		{ "include": "#nodeLeaf" },
+        { "include": "#interpolation" },
+        { "include": "#interpolation_2" },
+		{ "include": "#command" },
+		{ "include": "#mix" },
+		{ "include": "#include" },
+        { "include": "#script" }
+	],
+	"repository": {
+		"commentNode": {
+			"patterns": [{
+				"match": "^\\s*(\\$\\$)(.*)$",
+				"name": "comment.line.number-sign.ittf"
+			},{
+				"begin": "^\\s*\\$\\*",
+				"end": "\\*\\$",
+				"name": "comment.line.number-sign.ittf"
+			}]
+		},
+		"comment": {
+			"patterns": [
+				{
+					"begin": "\\$\\$",
+					"end": "\\n",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.comment.ittf"
+						}
+					},
+					"name": "comment.line.number-sign.ittf"
+				},
+				{
+					"begin": "\\$\\*",
+					"end": "\\*\\$",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.comment.ittf"
+						}
+					},
+					
+					"name": "comment.line.number-sign.ittf"
+				}
+			]				
+		},
+		"nodeRoot": {
+			"patterns": [{
+				"begin": "^([^($\\s]++)(?!\\()",
+				"end": "$",
+				"beginCaptures": {
+					"1": { "name": "entity.name.function.root"}
+				},
+				"patterns": [
+					{
+						"include": "#interpolation"
+					},
+                    {
+						"include": "#value"
+					},
+					{
+						"include": "#comment"
+					}
+				]
+			}]
+		},
+		"nodeLeaf": {
+			"patterns": [{
+				"begin": "^\\s+([^($\\s]++)(?!\\()",
+				"end": "$",
+				"beginCaptures": {
+					"1": { "name": "entity.name.function.leaf"}
+				},
+				"patterns": [
+					{
+						"include": "#interpolation"
+					},
+					{
+						"include": "#interpolation_2"
+					},
+                    {
+						"include": "#value"
+					},
+					{
+						"include": "#comment"
+					}
+				]
+			}]
+		},
+		"value": {
+			"patterns": [{
+					"match": "[ \\t](\\w+)",
+					"name": "support.type"
+				},{
+					"match": "(\\w+)",
+					"name": "support.class"
+				}]
+		},
+		"interpolation": {
+			"patterns": [{
+				"match": "(\\$\\{)([^\\}]+)(\\})",
+				"captures": {
+					"1": { "name" : "keyword" },
+					"2": { "name" : "string" },
+					"3": { "name" : "keyword" }
+				}
+			}]
+		},
+		"interpolation_2": {
+			"patterns": [{
+				"match": "^(\\s*)(\\$\\{)([^\\}]+)(\\})(\\s*)",
+				"captures": {
+					"1": { "name" : "keyword" },
+					"2": { "name" : "string" },
+					"3": { "name" : "keyword" },
+                    "4": { "name" : "string" }
+				}
+			}]
+		},
+        "command": {
+			"patterns": [
+				{
+					"match": "^\\s*(?!\\$include|\\$global)(\\$\\w+)\\s+(.*)",
+					"captures": {
+						"1": { "name" : "variable.parameter" },
+						"2": { "name" : "string" }
+					}
+				}
+			]
+		},
+		"mix": {
+			"patterns": [
+				{
+					"begin": "^\\s*([-_\\.\\/\\w]++)(\\()",
+					"end": "(\\))$|$",
+					"beginCaptures": {
+						"1": { "name": "keyword" },
+						"2": { "name" : "punctuation.separator.mix.arguments.ittf" }
+					},
+					"endCaptures": {
+						"1": { "name" : "punctuation.separator.mix.arguments.ittf" }
+					},
+					"patterns": [
+						{
+							"name": "punctuation.separator.mix.arguments.ittf",
+							"match": "\\,"
+						},{
+							"include": "#argument"
+						}
+					]
+				}
+			]
+		},
+		"argument": {
+			"patterns": [
+				{
+					"match": "\\s*([^\\,\\)]*)\\s*",
+					"captures": {
+						"1": { "name" : "support.function.mix" }
+					}
+				}
+			]
+		},
+		"include": {
+			"patterns": [
+				{
+                    "match": "^\\s*(\\$include)\\s+(.*)$",
+					"captures": {
+						"1": { "name" : "keyword" },
+						"2": { "name" : "support.type" }
+					}
+				}
+			]
+		},
+		"script": {
+			"patterns": [
+				{
+					"begin": "^(\\s+)(\\$global|\\$)(\\s*)",
+					"end": "^(?=\\1\\w.*$)",
+					"beginCaptures": {
+                        "2": { "name": "string" }
+					},
+					"patterns": [{
+						"name": "string",
+						"match": "^(.*)"
+					}]
+				}
+			]
+		}
+	},
+	"scopeName": "source.ittf"
+}

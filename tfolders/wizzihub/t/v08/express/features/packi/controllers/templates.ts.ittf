@@ -1,0 +1,148 @@
+$group
+    $params &md
+    import
+        @ Router
+        @ Request
+        @ Response
+        from 'express'
+    import
+        as bodyParser
+        from 'body-parser'
+    import
+        @ ControllerType
+        @ AppInitializerType
+        from '../../app/types'
+    import
+        @ fsTypes
+        from '../../filesystem'
+    import
+        @ PackiFiles
+        @ TemplateList
+        @ Template
+        from '../types'
+    import
+        @ sendPromiseResult
+        @ sendSuccess
+        @ sendFailure
+        from '../../../utils/sendResponse'
+    var jsonParser = bodyParser.json()
+    export
+        class TemplatesController
+            :implements ControllerType
+            p path
+                :public
+                = '/api/v1/templates'
+            p router
+                :public
+                _ Router()
+            p fsDb
+                :public
+                :union
+                    :ref fsTypes.FsDb
+                    :undefined
+            => initialize
+                param initValues
+                    :ref AppInitializerType
+                set this.fsDb = initValues.fsDb
+                _ this.router.get(this.path, this.getAllTemplates)
+                _ this.router.get
+                    `lit
+                        +
+                        @ this.path
+                        + /:id
+                    @ this.getTemplateById
+                _ this.router.get
+                    `lit
+                        +
+                        @ this.path
+                        + /__starter
+                    @ this.getStarterTemplate
+                _ this.router.post
+                    `lit
+                        +
+                        @ this.path
+                        + /:uid/:id
+                    @ this.saveTemplate
+            +
+            p getAllTemplates
+                :private
+                async=>
+                    param request
+                        :ref Request
+                    param response
+                        :ref Response
+                    _ sendPromiseResult
+                        :param
+                            :[
+                                :string
+                        @ response
+                        _
+                            (
+                                @expr this.fsDb
+                                    :as
+                                        :ref fsTypes.FsDb
+                            ._ getPackiTemplatesList
+            +
+            p getTemplateById
+                :private
+                async=>
+                    param request
+                        :ref Request
+                    param response
+                        :ref Response
+                    const id = request.params.id
+                    const template
+                        await
+                            _
+                                (
+                                    @expr this.fsDb
+                                        :as
+                                            :ref fsTypes.FsDb
+                                ._ getPackiTemplate
+                                    @ id
+                    _ sendSuccess(response, template)
+            +
+            p getStarterTemplate
+                :private
+                async=>
+                    param request
+                        :ref Request
+                    param response
+                        :ref Response
+                    const template
+                        await
+                            _
+                                (
+                                    @expr this.fsDb
+                                        :as
+                                            :ref fsTypes.FsDb
+                                ._ getStarterTemplate
+                    _ sendSuccess(response, template)
+            +
+            p saveTemplate
+                :private
+                async=>
+                    param request
+                        :ref Request
+                    param response
+                        :ref Response
+                    const id = request.params.id
+                    const files
+                        :ref PackiFiles
+                        = request.body.files
+                    _
+                        (
+                            @expr this.fsDb
+                                :as
+                                    :ref fsTypes.FsDb
+                        ._ savePackiTemplate
+                            @ id
+                            @ files
+                        ._ then
+                            =>
+                                param result
+                                _ sendSuccess(response, result)
+                        ._ catch
+                            =>
+                                param err
+                                _ sendFailure(response, err, 501)

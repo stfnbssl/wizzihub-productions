@@ -1,0 +1,20 @@
+$group
+    $
+      var myName = 'Styles';
+      //
+
+    iife_window( app, ${myName})
+        const ${myName}
+          {
+            @ productionListItem
+              function
+                param kind
+                return
+                  {
+                    @ __li_class kind + '-li'
+                    @ __li_div_class kind + '-li-div'
+            @ packiFileListItem
+              {
+                @ __li_class 'packi-file-li'
+                @ __li_div_class 'packi-file-li-div'
+

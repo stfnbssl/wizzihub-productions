@@ -1,0 +1,8 @@
+$group
+    $params &md
+    import
+        as fsTypes
+        from './types'
+    +
+    export
+        @ fsTypes

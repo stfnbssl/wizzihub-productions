@@ -1,0 +1,26 @@
+{
+  Name "Todo"
+  Names "Todos"
+  name "todo"
+  names "todos"
+  descr "Todo"
+  [ indexes
+  [ fields
+      { 
+        name "id"
+        type "integer"
+        autoIncrement true
+        primaryKey true
+      { 
+        name "activity"
+        type "string"
+        allowNull false
+      { 
+        name "category"
+        type "string"
+        allowNull false
+      { 
+        name "done"
+        type "boolean"
+        defaultValue "false"
+        allowNull false

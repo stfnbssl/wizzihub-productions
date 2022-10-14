@@ -1,0 +1,59 @@
+$group
+    $params &md
+    import
+        @ Schema
+        @ Model
+        @ model
+        from "mongoose"
+    import
+        @ ModelBuilderType
+        from "../../app/types"
+    import
+        @ IPackiModel
+        from "../types"
+    const PackiSchema
+        :ref Schema
+            :param
+                :ref IPackiModel
+        =
+            new Schema
+                {
+                    { userId
+                        @ type Schema.Types.ObjectId
+                        @ required true
+                        @ ref 'User'
+                    @ repoOwner String
+                    @ repoName String
+                    @ clonedAt Date
+                    @ lastCommitWhenCloned String
+        # mongoose models creation is centralized
+        # mongodb calls buildModel() when starting, after connection has been established
+        # controllers call GetPackiModel() when initialized, after buildModel() has benn called
+    export
+        :type PackiModelType
+            :ref Model
+                :param
+                    :ref IPackiModel
+        # mongoose models creation is centralized
+        # mongodb calls buildModel() when starting, after connection has been established
+        # controllers call GetPackiModel() when initialized, after buildModel() has benn called
+    let packiModel
+        :ref PackiModelType
+    export
+        function GetPackiModel
+            :return
+                :ref PackiModelType
+            return packiModel
+    export
+        const PackiModelBuilder
+            :ref ModelBuilderType
+            =
+                {
+                    @ buildModel
+                        =>
+                            set packiModel =
+                                _ model
+                                    :param
+                                        :ref IPackiModel
+                                    @ "Packi"
+                                    @ PackiSchema
