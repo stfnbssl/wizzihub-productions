@@ -1,87 +1,28 @@
 $group
     section 
-        class todoapp
+        class wzapp
         header 
-            class header
+            class wzapp-header
             h1 WizziWay
             input 
-                class new-todo
+                class what-todo
                 placeholder What do you want to do?
                 autofocus 
         div
-          class production-view
-          footer 
-              class footer
-              span 
-                  class todo-count
-              ul 
-                  class filters
-                  li 
-                      a Artifact
-                          href #/artifact
-                          class selected
-                  li 
-                      a Package
-                          href #/package
-                  li 
-                      a Plugin
-                          href #/plugin
-                  li 
-                      a Meta
-                          href #/meta
-                  li 
-                      a tFolder
-                          href #/tfolder
-          section 
-              class production-view-filter
-              div
-                  class production-view-kind
-                  div 
-                      input 
-                          type radio
-                          id prod-view-all
-                          name prod-view-kind
-                          value all
-                      label All
-                          for prod-view-all
-                  div 
-                      input 
-                          type radio
-                          id prod-view-selected
-                          name prod-view-kind
-                          value selected
-                      label Selected
-                          for prod-view-selected
-                  div 
-                      input 
-                          type radio
-                          id prod-view-unselected
-                          name prod-view-kind
-                          value unselected
-                      label Unselected
-                          for prod-view-unselected
-          section 
-            class main
-            ul 
-                class production-list
-        div
-          class packi-view
-          section 
-              class packi-bar
-              style display: flex;
-              button
-                class packi-view-close
-                + close
-          section 
-              class main
-            ul 
-                class packi-files-list
-      footer 
-          class info
-          $$ p Double-click to edit a todo
-          p Wizzi is created by
-              a Stefano Bassoli
-                  href https://github.com/stfnbssl
-          p VanillaJS design inspired by
-              a Oscar Godson & Christoph Burgmer
-                  href https://github.com/tastejs/todomvc/tree/gh-pages/examples/vanillajs
+          class productions-container
+          div
+            class productions-explorer
+            $include production-view
+            $include packi-view
+          div
+            class productions-details
+            div
+              class code-editor-container
+        footer 
+            class info
+            p Wizzi is created by
+                a Stefano Bassoli
+                    href https://github.com/stfnbssl
+            p VanillaJS design inspired by
+                a Oscar Godson & Christoph Burgmer
+                    href https://github.com/tastejs/todomvc/tree/gh-pages/examples/vanillajs

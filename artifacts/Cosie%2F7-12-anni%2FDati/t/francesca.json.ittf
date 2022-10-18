@@ -16,14 +16,7 @@ $group
     url "https://docs.google.com/document/d/1to1Q1iMZYtBmev9-J0O9yEzUIoyVpXWWWDUnNie3-Gg/edit"
   {
     n 3
-    titolo "Bullismo 1"
-    categoria "Famiglia"
-    [ anni
-      11
-    url "https://docs.google.com/document/d/1T6EcCfjJlWgbexY1WgSRXkF7QSM6wUve7fnImHiR3tw/edit"
-  {
-    n 4
-    titolo "Bullismo 2, Ma chi sono i bulli?"
+    titolo "Bullismo"
     categoria "Famiglia"
     [ anni
       11

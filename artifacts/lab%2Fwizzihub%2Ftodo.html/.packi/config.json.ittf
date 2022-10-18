@@ -1,7 +1,7 @@
 {
   [ tfolders
     {
-      name "wizzihub/html"
+      $$ name "wizzihub/html"
   [ contexts
     $*
     {

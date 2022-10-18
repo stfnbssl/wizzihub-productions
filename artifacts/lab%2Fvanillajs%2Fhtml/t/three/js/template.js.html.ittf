@@ -30,7 +30,7 @@ $group
             @ data-id {{ctx._id}}
             @ class {{ctx.__li_class}}
             div
-              @ class {{ctx.__li_div_class}}
+              @ class {{ctx.__li_div_class}}-check
               if ctx.__selected
                 input
                   @ class toggle
@@ -43,19 +43,24 @@ $group
             div
               @ class {{ctx.__li_div_class}}
               a {{ ctx.name }} 
-                @ href http://localhost:5000/~~/a/{{ ctx.owner }}/{{ ctx.name }}
+                @ href /~~/{{ ctx.__productionChar }}/{{ ctx.owner }}/{{ ctx.name }}
                 @ target _blank
             div
               @ class {{ctx.__li_div_class}}
               button
                 @ class prod-item-btn prod-item-btn-files
                 + files
-        html_f tmplPackiFileItem
-          li 
-            @ data-id {{ctx.filePath}}
-            @ class {{ctx.__li_class}}
             div
               @ class {{ctx.__li_div_class}}
+              button
+                @ class prod-item-btn destroy
+                + delete
+        html_f tmplPackiFileItem
+          li 
+            @ data-filepath {{ctx.filePath}}
+            @ class {{ctx.__li_class}}
+            div
+              @ class {{ctx.__li_div_class}}-check
               if ctx.__selected
                 input
                   @ class toggle
@@ -66,9 +71,13 @@ $group
                   @ class toggle
                   @ type checkbox
             div
-              @ class {{ctx.__li_div_class}}
+              @ class {{ctx.__li_div_class}} editable
               a {{ ctx.filePath }} 
-                @ href #
+            div
+              @ class {{ctx.__li_div_class}}
+              button
+                @ class packi-item-btn destroy
+                + delete
         function ${myName}
         set ${myName}.prototype.showProductionList =
             function 
@@ -98,4 +107,36 @@ $group
                       _ tmplPackiFileItem
                         @ styledItem
                 return view.join('\n')
+        set ${myName}.prototype.showCodeEditorForm
+            function 
+                return
+                    {
+                        @ id "code-editor-form"
+                        $$ @ title "Code editor"
+                        @ class ""
+                        [ controls
+                            {
+                                @ type "group"
+                                @ direction "row"
+                                [ controls
+                                    {
+                                        @ id "owner"
+                                        @ label "owner"
+                                        @ type "text"
+                                        @ required true
+                                    {
+                                        @ id "name"
+                                        @ label "name"
+                                        @ type "text"
+                                        @ required true
+                                    {
+                                        @ id "filePath"
+                                        @ label "path"
+                                        @ type "text"
+                                        @ required true
+                            {
+                                @ id "contents"
+                                @ label "contents"
+                                @ type "ittf-editor"
+                                @ height 500
 

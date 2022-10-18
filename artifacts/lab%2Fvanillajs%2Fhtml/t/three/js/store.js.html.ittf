@@ -10,6 +10,7 @@ $group
             set this.name = name
             set this.wzApi = api.Wizzi
             set this.lsProduction = new mvc.LocalObjectStore('wzProductions')
+            set this.lsPacki = new mvc.LocalObjectStore('wzPacki')
             set this.lsArtifact = new mvc.LocalObjectStore('wzArtifacts')
             set this.lsPackage = new mvc.LocalObjectStore('wzPackages')
             set this.lsPlugin = new mvc.LocalObjectStore('wzPlugins')
@@ -55,28 +56,49 @@ $group
                 param productionKind
                 param serverItems
                 param callback
+                $$ loog '${myName}.prototype._matchProductionLocalData.serverItems', serverItems
                 var lsStore = this['ls' + _.capitalize(productionKind)]
                 assert_not_null( lsStore, Method: ${myName}._matchProductionLocalData, productionKind )
                 _ lsStore.findAll
                   =>
                     param lsItems
+                    $$ loog '${myName}.prototype._matchProductionLocalData.lsItems', lsItems
                     const valid_lsItems = []
                     foreach item in serverItems
-                      set item.packiFiles = JSON.parse(item.packiFiles)
+                      if typeof item.packiFiles == 'string'
+                        set item.packiFiles = JSON.parse(item.packiFiles)
                       set item.__li_class = productionKind.toLowerCase() + '-li'
                       set item.__li_div_class = productionKind.toLowerCase() + '-li-div'
                       foreach lsItem in lsItems
-                        log 'item.id', item.id, 'lsItem.id', lsItem.id
+                        $$ loog 'item.id', item.id, 'lsItem.id', lsItem.id
                         if item.id == lsItem.id
-                          log 'matched'
+                          $$ loog 'matched'
                           set item.__selected = lsItem.__selected
                           _ valid_lsItems.push(lsItem)
                     _ lsStore.replace
                       @ valid_lsItems
-                    log 'serverItems', serverItems
+                    $$ loog 'serverItems', serverItems
                     return
                       _ callback
                         @ serverItems
+
+        set ${myName}.prototype.putPackiDiffs
+            function 
+                param productionKind
+                param id
+                param packiDiffs
+                param options
+                param_callback( required, Method: ${myName}.putPackiDiffs )
+                var action = this.wzApi['put' + _.capitalize(productionKind) + 'PackiDiffs']
+                assert_not_null( action, Method: ${myName}.putPackiDiffs, productionKind )
+                _ action
+                  @ id
+                  @ packiDiffs
+                  @ options
+                  a_then_catch_throw( result, ${myName}.putPackiDiffs )
+                    log '${myName}.putPackiDiffs.result', result
+                    _ callback
+                      @ result
 
         set ${myName}.prototype.updateLocal
             function 
@@ -113,6 +135,35 @@ $group
                     @ name
                     @ value
 
+        set ${myName}.prototype.updateSelectedPackiFile
+            function 
+                param productionKind
+                param productionId
+                param filePath
+                param checked
+                var selectedList
+                  _ this.getSelectedPackiFiles
+                    @ productionKind
+                    @ productionId
+                if checked
+                    if selectedList.indexOf(filePath) < 0
+                      _ selectedList.push(filePath)
+                else
+                    set selectedList = selectedList.filter(e => e !== filePath)
+                _ this.setLocalValue
+                  @ productionKind
+                  @ 'Prod' + productionId
+                  _ JSON.stringify
+                    @ selectedList
 
-
+        set ${myName}.prototype.getSelectedPackiFiles
+            function 
+                param productionKind
+                param productionId
+                return
+                  _ JSON.parse
+                    _ this.getLocalValue
+                      @ productionKind
+                      @ 'Prod' + productionId
+                      @ '[]'
 

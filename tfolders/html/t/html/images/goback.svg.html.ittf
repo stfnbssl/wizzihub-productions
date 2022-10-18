@@ -1,0 +1,10 @@
+svg
+    $params color|#000, bgcolor|#fff, viewBox|0 0 24 24
+    $
+        //
+    preserve-aspect-ratio xMidYMid meet
+    viewBox ${viewBox}
+    polygon
+      stroke ${color}
+      fill ${color}
+      @ points 4,12, 12,20 6,14 22,14 22,10 6,10 12,4 4,12

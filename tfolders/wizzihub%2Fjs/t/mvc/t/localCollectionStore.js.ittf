@@ -24,14 +24,14 @@ $group
             function 
                 param query
                 param_callback( required, Method: ${myName}.find )
-                var items = JSON.parse(localStorage.getItem(this._dbName))
+                var items = JSON.parse(localStorage.getItem(this._dbName) || '[]')
                 _ callback.call
                     @ this
                     _ items.filter
                         function 
-                            param todo
+                            param item
                             for var q in query
-                                if query[q] !== todo[q]
+                                if query[q] !== item[q]
                                     return false
                             return true
             #
@@ -51,7 +51,7 @@ $group
         set ${myName}.prototype.findAll =
             function 
                 param_callback( required, Method: ${myName}.findAll )
-                _ callback.call(this, JSON.parse(localStorage.getItem(this._dbName)))
+                _ callback.call(this, JSON.parse(localStorage.getItem(this._dbName) || '[]'))
             #
                 # 
                 # Will retrieve all data from the collection
@@ -63,7 +63,7 @@ $group
                 param updateData
                 param id
                 param_callback()
-                var items = JSON.parse(localStorage.getItem(this._dbName))
+                var items = JSON.parse(localStorage.getItem(this._dbName) || '[]')
                 if id
                     log '${myName}.prototype.save', id
                     var matched = false
@@ -103,7 +103,7 @@ $group
             function 
                 param id
                 param_callback()
-                var items = JSON.parse(localStorage.getItem(this._dbName))
+                var items = JSON.parse(localStorage.getItem(this._dbName) || '[]')
                 for var i = 0; i < items.length; i++
                     if items[i].id == id
                         _ items.splice(i, 1)

@@ -23,7 +23,7 @@ html
 
 
       $append body-scripts
-          js https://www.wizzihub.com/~/stfnbssl/lab%2Fvanillajs%2Fjs?savecount=3&filepath=index.js.ittf
+          js /~/stfnbssl/lab%2Fvanillajs%2Fjs?savecount=3&filepath=index.js.ittf
 
       $
         if (false) {

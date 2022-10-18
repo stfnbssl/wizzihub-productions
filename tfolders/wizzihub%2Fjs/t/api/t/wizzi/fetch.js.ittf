@@ -59,6 +59,35 @@ $group
               # @param {PackiFiles} packiFiles. A PackiFiles object, contains all the production's files.
               #     
 
+        set ${md.ApiName}.put${md.Prod}PackiDiffs
+          function
+              param id
+              param packiDiffs
+              param options
+              # updateArtifactProduction(request.params.id, request.body.owner, request.body.name, request.body.description, request.body.mainIttf, request.body.wizziSchema, JSON.stringify(request.body.packiFiles))
+              log '${md.ApiName}.put${md.Prod}PackiDiffs', 'id', id, 'packiDiffs', Object.keys(packiDiffs), 'options', options
+              r_promise()
+                  _ api.Fetch.put
+                      { 
+                          @ url '${md.apiUrl}/production/${md.prod}/packidiffs/' + encodeURIComponent(id)
+                          { body
+                            @ packiDiffs
+                            @ options
+                      ._ then
+                          =>
+                              param response
+                              info 'put${md.Prod}PackiDiffs.response', response
+                              _ resolve
+                                  @ response
+                      catch_reject( put${md.Prod}PackiDiffs )
+          #
+              # 
+              # Updates a ${md.Prod}Production applying a diff object
+              # 
+              # @param {string} id The id of the production item
+              # @param {PackiFiles} packiDiffs. A diff object, contains insert, deletes and updates.
+              #     
+
         set ${md.ApiName}.create${md.Prod}
           function
               param owner

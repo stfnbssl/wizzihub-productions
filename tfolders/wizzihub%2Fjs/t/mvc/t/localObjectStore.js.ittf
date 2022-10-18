@@ -25,7 +25,7 @@ $group
             function 
                 param name
                 param value
-                var itemObj = JSON.parse(localStorage.getItem(this._dbName))
+                var itemObj = JSON.parse(localStorage.getItem(this._dbName) || '{}')
                 set itemObj[name] = value
                 _ localStorage.setItem(this._dbName, JSON.stringify(itemObj))
                 return itemObj
@@ -41,7 +41,7 @@ $group
             function 
                 param name
                 param defaultValue
-                var itemObj = JSON.parse(localStorage.getItem(this._dbName))
+                var itemObj = JSON.parse(localStorage.getItem(this._dbName) || '{}')
                 log '${myName}.getValue', name, defaultValue, name in itemObj, itemObj
                 if name in itemObj
                   log '${myName}.getValue.return', itemObj[name]

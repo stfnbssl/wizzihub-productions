@@ -4,7 +4,7 @@ $group
         var myName = 'Wizzi';
         var mdObj = {
             ApiName: 'Wizzi',
-            apiUrl: 'http://localhost:5000/api/v1',
+            apiUrl: '/api/v1',
             items: [
               { Prod: 'Artifact', prod: 'artifact'},
               { Prod: 'Package', prod: 'package'},

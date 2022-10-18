@@ -235,7 +235,7 @@ $group
                             \b path !== selectedFileName
                             _ this._initializeFile(path, file.contents)
         
-        set ${myName}.prototype.componentWillUnmount
+        set ${myName}.prototype.dispose
             function
                 _ this._disposables.forEach
                     =>

@@ -5,6 +5,8 @@ $group
     
     iife_window( mvc, ${myName}, increment, Underscore)
 
+      set ${myName}.disposables = {}
+
       set ${myName}.build
         function
             param __html
@@ -133,7 +135,7 @@ $group
                     elif ctx.type == 'ittf-editor'
                         div
                             id {{ ctx.id }}
-                            @ style height:{{ (ctx.height || '400px') }};width:100%;
+                            @ style height:{{ (ctx.height || '400') }}px;width:100%;
 
                           $*
                           @ style display:flex;flex:1;flex-direction:column;height:{{ (ctx.height || '400px') }};width:100%;
@@ -398,28 +400,9 @@ $group
                                                   @ item.id
                                                   @ data()['file.ittf'].contents
                                       @ readOnly false
-                              $*
-                              const _handleResize
-                                  _ _.debounce
-                                      => 
-                                          param p1
-                                          param p2
-                                          log 'p1, p2', p1, p2
-                                          log '+++++ ', monacoEditor?.layout
-                                          _ monacoEditor?.layout?.()
-                                      @ 50
-                                      { 
-                                          @ leading true
-                                          @ trailing true
-                              var i_vertical = $('#' + item.id + '-vertical')
-                              var i_horizontal = $('#' + item.id + '-horizontal')
-                              _ i_horizontal.contentWindow.addEventListener
-                                @ 'resize'
-                                @ _handleResize
-                              _ i_vertical.contentWindow.addEventListener
-                                @ 'resize'
-                                @ _handleResize
-                              *$
+                              set ${myName}.disposables[item.id]
+                                [
+                                  @ monacoEditor
                               _ monacoEditor.render
                   catch err
                       log err
@@ -482,6 +465,16 @@ $group
                       set rule.$error.innerHTML = 'Please enter the ' + item.label + ' value.'
                   else
                     set rule.$error.innerHTML = '&nbsp;'
+
+      set ${myName}.dispose
+        function
+            param $
+            param item
+            const dispArray = ${myName}.disposables[item.id]
+            if dispArray
+              foreach disp in dispArray
+                  _ disp.dispose
+
 
 
 

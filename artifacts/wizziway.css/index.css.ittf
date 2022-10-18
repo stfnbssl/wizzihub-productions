@@ -1,0 +1,10 @@
+css
+  $
+    var md = {
+      useFlex: true,
+      useGrid: true,
+    }
+    //
+
+  css/tailwind/layout/index(&md)
+  css/tailwind/text(&md)

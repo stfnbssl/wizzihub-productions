@@ -4,11 +4,21 @@ $group
       //
 
     iife_window( app, ${myName})
+        
+        const productionChars
+            {
+              @ "artifact" "a"
+              @ "package" "p"
+              @ "plugin" "l"
+              @ "meta" "m"
+              @ "tfolder" "t"
+        
         function ${myName}
             param storage
             param defaults
             set this.storage = storage
             set this.defaults = defaults
+            set this.wzApi = api.Wizzi
             #
                 # 
                 # Creates a new Model instance and hooks up the storage.
@@ -55,6 +65,8 @@ $group
                   @ owner
                   =>
                     param items
+                    foreach item in items
+                      set item.__productionChar = productionChars[productionKind.toLowerCase()]
                     if activeProductionView == 'all'
                       _ callback
                         @ items
@@ -95,6 +107,61 @@ $group
                   @ id
                   @ callback
         
+        set ${myName}.prototype.updatePackiFile
+            function 
+                param productionKind
+                param productionId
+                param filePath
+                param oldContents
+                param newContents
+                param_callback( required, Method: ${myName}.updatePackiFile )
+                if oldContents.trim() == newContents.trim()
+                  return
+                    _ callback
+                      {
+                        @ message 'Nothin changed'
+                const pm
+                  new this.wzApi.PackiManager
+                _ pm.putCodeFile
+                  @ filePath
+                  @ oldContents
+                const fileDiffs
+                  _ pm.getFileDiffs
+                    @ filePath
+                    @ newContents
+                const packiDiffs
+                  {
+                    { [filePath]
+                      @ d 0
+                      @ diffs fileDiffs
+                _ this.storage.putPackiDiffs
+                  @ productionKind
+                  @ productionId
+                  @ packiDiffs
+                  {
+                  @ callback
+
+        set ${myName}.prototype.updateSelectedPackiFile
+            function 
+                param productionKind
+                param productionId
+                param filePath
+                param checked
+                _ this.storage.updateSelectedPackiFile
+                  @ productionKind
+                  @ productionId
+                  @ filePath
+                  @ checked
+        
+        set ${myName}.prototype.getSelectedPackiFiles
+            function 
+                param productionKind
+                param productionId
+                return
+                  _ this.storage.getSelectedPackiFiles
+                    @ productionKind
+                    @ productionId
+
         set ${myName}.prototype.updateLocal
             function 
                 param productionKind
@@ -104,8 +171,8 @@ $group
                   @ productionKind
                   @ id
                   @ updateData
-        
-        set ${myName}.prototype.getProductionView
+
+        set ${myName}.prototype.getProductionViewKind
             function 
                 return
                   _ this.storage.getLocalValue
@@ -113,12 +180,50 @@ $group
                     @ 'productionView'
                     @ this.defaults.productionView
         
-        set ${myName}.prototype.setProductionView
+        set ${myName}.prototype.setProductionViewKind
             function 
                 param value
                 _ this.storage.setLocalValue
                   @ 'production'
                   @ 'productionView'
+                  @ value
+
+        set ${myName}.prototype.getProductionValue
+            function 
+                param name
+                param defaultValue
+                return
+                  _ this.storage.getLocalValue
+                    @ 'production'
+                    @ name
+                    @ defaultValue
+
+        set ${myName}.prototype.setProductionValue
+            function 
+                param name
+                param value
+                _ this.storage.setLocalValue
+                  @ 'production'
+                  @ name
+                  @ value
+
+        set ${myName}.prototype.getPackiValue
+            function 
+                param name
+                param defaultValue
+                return
+                  _ this.storage.getLocalValue
+                    @ 'packi'
+                    @ name
+                    @ defaultValue
+
+        set ${myName}.prototype.setPackiValue
+            function 
+                param name
+                param value
+                _ this.storage.setLocalValue
+                  @ 'packi'
+                  @ name
                   @ value
 
 

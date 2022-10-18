@@ -14,8 +14,9 @@ $group
             
             div
                 class form-card
-                div {{ ctx.title }}
-                    class form-title
+                if ctx.title
+                    div {{ ctx.title }}
+                        class form-title
                 div
                     id {{ ctx.id }}-message-warning
                     class m-b-s
@@ -40,16 +41,6 @@ $group
                             class submit
                             id reset
                             name reset
-          $*
-          var temp = []    
-          _ Form.build
-              @ temp
-              @ ctx
-          div
-            id {{ ctx.id }}
-            class {{ ctx.class }} 
-            + {{ temp.join('') }} 
-          *$
         
       set ${myName}.setup
         function
@@ -160,19 +151,19 @@ $group
       set ${myName}.start
         function
             param $
-            param form
+            param model
             param context
-            param_object( form, required, Function mvc.${myName}.start )
+            param_object( model, required, Function mvc.${myName}.start )
             param_object( context, required, Function mvc.${myName}.start )
 
-            foreach item in form.controls
+            foreach item in model.controls
                 _ mvc.Control.start
                     @ $
                     @ item
                     @ context
 
             if context.onSubmit
-                var el = $('#' + form.id)
+                var el = $('#' + model.id)
                 _ $on
                     @ el
                     @ 'submit'
@@ -180,14 +171,14 @@ $group
                         param event
                         _ event.preventDefault
                         const invalids = []
-                        foreach item in form.controls
+                        foreach item in model.controls
                           _ mvc.Control.validate
                             @ item
-                            @ form.validation_rules
+                            @ model.validation_rules
                             @ context
                             @ invalids
                         if invalids.length == 0
-                          log "form submitted", form.id
+                          log "model submitted", model.id
                           _  context.onSubmit
                         else
                           log 'invalid forms', invalids
@@ -195,27 +186,25 @@ $group
       set ${myName}.start_validation
         function
             param $
-            param form
-            param_object( form, required, Function mvc.${myName}.start_validation )
+            param model
+            param_object( model, required, Function mvc.${myName}.start_validation )
 
             var rules = {}
-            foreach item in form.controls
+            foreach item in model.controls
                 _ mvc.Control.start_validation
                     @ $
                     @ item
                     @ rules
-            set form.validation_rules = rules
+            set model.validation_rules = rules
 
-            $* TODO
-            _ $('#' + form.id).validate
-                { 
-                    @ rules rules
-                    @ errorElement 'div'
-                    @ onfocusout
-                        function 
-                            param element
-                            log 'onfocusout', element
-                            _ $(element).valid
-                            log $(element).valid()
-            *$
-
+      set ${myName}.dispose
+        function
+            param $
+            param container
+            param model
+            foreach item in model.controls
+                _ mvc.Control.dispose
+                  @ $
+                  @ item
+            var container = container.nodeName ? container : $(container)
+            set container.innerHTML = ''
