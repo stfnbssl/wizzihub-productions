@@ -1,0 +1,11 @@
+${$2}group
+  ${$2}params kind|@@null, message|@@null
+  param callback
+  ${$2}if kind == 'required'
+    if !callback
+      throw new Error('The callback parameter is required. ${$2}{message}.')
+  ${$2}else
+    set callback =
+        || 
+            + callback
+            function 

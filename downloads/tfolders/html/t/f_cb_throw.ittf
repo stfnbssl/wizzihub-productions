@@ -1,0 +1,9 @@
+$group
+    $params result|notUsed
+    function
+        param err
+        param ${result}
+        if err
+            log 'err', err
+            throw err
+        $hook

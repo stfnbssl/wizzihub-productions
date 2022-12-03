@@ -1,0 +1,142 @@
+$group
+    $
+      var myName = 'Template';
+      //
+
+    iife_window( app, ${myName})
+        var htmlEscapes
+            { 
+                @ '&' '&amp;'
+                @ '<' '&lt;'
+                @ '>' '&gt;'
+                @ '"' '&quot;'
+                @ '\'' '&#x27;'
+                @ '`' '&#x60;'
+        var escapeHtmlChar
+            function 
+                param chr
+                return htmlEscapes[chr]
+        var reUnescapedHtml = /[&<>"'`]/g
+        var reHasUnescapedHtml = new RegExp(reUnescapedHtml.source)
+        var escape
+            function 
+                param string
+                return 
+                    iif (string && reHasUnescapedHtml.test(string))
+                        then string.replace(reUnescapedHtml, escapeHtmlChar)
+                        else string
+        html_f tmplProductionList
+          li 
+            @ data-id {{ctx._id}}
+            @ class {{ctx.__li_class}}
+            div
+              @ class {{ctx.__li_div_class}}-check
+              if ctx.__selected
+                input
+                  @ class toggle
+                  @ type checkbox
+                  @ checked
+              else
+                input
+                  @ class toggle
+                  @ type checkbox
+            div
+              @ class {{ctx.__li_div_class}}
+              a {{ ctx.name }} 
+                @ href /~~/{{ ctx.__productionChar }}/{{ ctx.owner }}/{{ ctx.name }}
+                @ target _blank
+            div
+              @ class {{ctx.__li_div_class}}
+              button
+                @ class prod-item-btn prod-item-btn-files
+                + files
+            div
+              @ class {{ctx.__li_div_class}}
+              button
+                @ class prod-item-btn destroy
+                + delete
+        html_f tmplPackiFileItem
+          li 
+            @ data-filepath {{ctx.filePath}}
+            @ class {{ctx.__li_class}}
+            div
+              @ class {{ctx.__li_div_class}}-check
+              if ctx.__selected
+                input
+                  @ class toggle
+                  @ type checkbox
+                  @ checked
+              else
+                input
+                  @ class toggle
+                  @ type checkbox
+            div
+              @ class {{ctx.__li_div_class}} editable
+              a {{ ctx.filePath }} 
+            div
+              @ class {{ctx.__li_div_class}}
+              button
+                @ class packi-item-btn destroy
+                + delete
+        function ${myName}
+        set ${myName}.prototype.showProductionList =
+            function 
+                param data
+                var view = []
+                _ data.map
+                  =>
+                    param item
+                    _ view.push
+                      _ tmplProductionList
+                        @ item
+                return view.join('\n')
+        set ${myName}.prototype.showPackiFilesList =
+            function 
+                param data
+                param style
+                var view = []
+                _ data.map
+                  =>
+                    param item
+                    const styledItem
+                      _ Object.assign
+                        {
+                        @ item
+                        @ style
+                    _ view.push
+                      _ tmplPackiFileItem
+                        @ styledItem
+                return view.join('\n')
+        set ${myName}.prototype.showCodeEditorForm
+            function 
+                return
+                    {
+                        @ id "code-editor-form"
+                        $$ @ title "Code editor"
+                        @ class ""
+                        [ controls
+                            {
+                                @ type "group"
+                                @ direction "row"
+                                [ controls
+                                    {
+                                        @ id "owner"
+                                        @ label "owner"
+                                        @ type "text"
+                                        @ required true
+                                    {
+                                        @ id "name"
+                                        @ label "name"
+                                        @ type "text"
+                                        @ required true
+                                    {
+                                        @ id "filePath"
+                                        @ label "path"
+                                        @ type "text"
+                                        @ required true
+                            {
+                                @ id "contents"
+                                @ label "contents"
+                                @ type "ittf-editor"
+                                @ height 500
+

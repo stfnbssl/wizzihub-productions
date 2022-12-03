@@ -1,0 +1,76 @@
+html
+  body
+    div
+      style margin:100px
+      
+      h2 MoveTo path commands
+      div
+        a https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#moveto_path_commands
+          href https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#moveto_path_commands
+      $include path-d/m.svg
+      
+      h2 LineTo path commands
+      div
+        a https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#lineto_path_commands
+          href https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#lineto_path_commands
+      $include path-d/l.svg
+      
+      h2 Cubic Bézier Curve
+      div
+        a https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#cubic_b%C3%A9zier_curve
+          href https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#cubic_b%C3%A9zier_curve
+      $include path-d/c-s.svg
+      
+      h2 Quadratic Bézier Curve
+      div
+        a https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#quadratic_b%C3%A9zier_curve
+          href https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#quadratic_b%C3%A9zier_curve
+      $include path-d/q-t.svg
+
+      h2 Elliptical Arc Curve
+      div
+        a https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#elliptical_arc_curve
+          href https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#elliptical_arc_curve
+      $include path-d/a.svg
+
+      h2 ClosePath
+      div
+        a https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#closepath
+          href https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#closepath
+      $include path-d/z.svg      
+
+      h2 ViewBox sample 0 0 100 100
+      div
+        a https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox
+          href https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox
+      $include svg-viewbox/s1.svg            
+
+      h2 ViewBox sample 0 0 10 10
+      div
+        a https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox
+          href https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox
+      $include svg-viewbox/s2.svg                  
+
+      h2 ViewBox sample -5 -5 10 10
+      div
+        a https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox
+          href https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox
+      $include svg-viewbox/s3.svg 
+
+      h2 Preserve aspect ratio
+      div
+        a https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio
+          href https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio
+      div
+        style
+            < path
+                @ fill yellow
+                @ stroke black
+                @ stroke-width 8px
+                @ stroke-linecap round
+                @ stroke-linejoin round
+                @ pointer-events none
+            < rect:hover
+                + rect:active
+                @ outline 1px solid red      
+        $include svg-preserve-aspect-ratio/s1.svg       

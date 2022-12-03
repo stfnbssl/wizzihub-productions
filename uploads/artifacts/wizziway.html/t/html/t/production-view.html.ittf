@@ -1,0 +1,71 @@
+$group
+    div
+      class production-view
+      section 
+          class production-kinds
+          span 
+              class todo-count
+          ul 
+              class filters
+              li 
+                  a Artifacts
+                      href #/artifact
+                      class selected
+              li 
+                  a Packages
+                      href #/package
+              li 
+                  a Plugins
+                      href #/plugin
+              li 
+                  a Metas
+                      href #/meta
+              li 
+                  a tFolders
+                      href #/tfolder
+      section 
+          class production-view-filter flex justify-content-space-between
+          div
+              class production-view-search
+              input 
+                  type search
+                  class production-view-search-field m-s p-s
+                  placeholder Find a production …
+                  autocomplete off
+                  @ aria-label Find a production …
+          div
+              class production-view-kind
+              div 
+                  input 
+                      type radio
+                      id prod-view-all
+                      name prod-view-kind
+                      value all
+                  label All
+                      for prod-view-all
+              div 
+                  input 
+                      type radio
+                      id prod-view-selected
+                      name prod-view-kind
+                      value selected
+                  label Selected
+                      for prod-view-selected
+              div 
+                  input 
+                      type radio
+                      id prod-view-unselected
+                      name prod-view-kind
+                      value unselected
+                  label Unselected
+                      for prod-view-unselected
+          div
+              class production-view-new m-t-m
+              div
+                  style width:24px
+                  html/images/addDocument.svg()
+
+      section 
+        class main
+        ul 
+            class production-list

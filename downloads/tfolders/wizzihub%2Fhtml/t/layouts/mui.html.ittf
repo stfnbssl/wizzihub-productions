@@ -1,0 +1,217 @@
+$group
+  $params &md
+  lang en
+  dir ltr
+  head 
+      @title ${md.title}
+      meta 
+          charset utf-8 
+      meta 
+          name viewport 
+          content minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no
+      link 
+          rel stylesheet
+          href https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap
+      link 
+          rel stylesheet
+          href https://fonts.googleapis.com/icon?family=Material+Icons
+      link 
+          rel stylesheet
+          href https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.4.1/css/ionicons.min.css
+      @style
+        . root
+          @ padding 10px    
+        $hook headstyles
+  body 
+      # root
+      $$ js https://cdn.jsdelivr.net/combine/npm/react@16.12/umd/react.development.js,npm/react-dom@16.12/umd/react-dom.development.js,npm/@material-ui/core@4.8/umd/material-ui.development.js,npm/@babel/standalone@7.8/babel.min.js
+      js https://unpkg.com/react@latest/umd/react.development.js
+      js https://unpkg.com/react-dom@latest/umd/react-dom.development.js
+      js https://unpkg.com/@mui/material@latest/umd/material-ui.development.js
+      $$ js https://cdn.jsdelivr.net/npm/@material-ui/core@4.8/umd/material-ui.development.js
+      js https://unpkg.com/babel-standalone@latest/babel.min.js
+      js /public/wz.js
+      $$ TODO js https://unpkg.com/react-router-dom/umd/react-router-dom.min.js
+
+      $hook bodyscripts
+      
+      script
+          type text/babel
+          module
+            kind react
+            info "MaterialUI", MaterialUI
+            const ReactRouterDOM = window.ReactRouterDOM
+            const classnames = window.classNames
+            const 
+                { 
+                  @ colors
+                  @ createGenerateClassName
+                  @ createMuiTheme
+                  @ createTheme
+                  @ createStyles
+                  @ fade
+                  $$ @ makeStyles
+                  @ styled
+                  @ jssPreset
+                  @ withMobileDialog
+                  @ withStyles
+                  @ withTheme
+                  @ withWidth
+                  @ AppBar
+                  @ Avatar
+                  @ Backdrop
+                  @ Badge
+                  @ BottomNavigation
+                  @ BottomNavigationAction
+                  @ Box
+                  @ Button
+                  @ ButtonBase
+                  @ Card
+                  @ CardActionArea
+                  @ CardActions
+                  @ CardContent
+                  @ CardHeader
+                  @ CardMedia
+                  @ Checkbox
+                  @ Chip
+                  @ CircularProgress
+                  @ ClickAwayListener
+                  @ Collapse
+                  @ Container
+                  @ CssBaseline
+                  @ Dialog
+                  @ DialogActions
+                  @ DialogContent
+                  @ DialogContentText
+                  @ DialogTitle
+                  @ Divider
+                  @ Drawer
+                  @ ExpansionPanel
+                  @ ExpansionPanelActions
+                  @ ExpansionPanelDetails
+                  @ ExpansionPanelSummary
+                  @ Fab
+                  @ Fade
+                  @ FilledInput
+                  @ FormControl
+                  @ FormControlLabel
+                  @ FormGroup
+                  @ FormHelperText
+                  @ FormLabel
+                  @ Grid
+                  @ GridList
+                  @ GridListTile
+                  @ GridListTileBar
+                  @ Grow
+                  @ Hidden
+                  @ Icon
+                  @ IconButton
+                  @ Input
+                  @ InputAdornment
+                  @ InputBase
+                  @ InputLabel
+                  @ LinearProgress
+                  @ Link
+                  @ List
+                  @ ListItem
+                  @ ListItemAvatar
+                  @ ListItemIcon
+                  @ ListItemSecondaryAction
+                  @ ListItemText
+                  @ ListSubheader
+                  @ Menu
+                  @ MenuItem
+                  @ MenuList
+                  @ MobileStepper
+                  @ Modal
+                  @ ModalManager
+                  @ NativeSelect
+                  @ NoSsr
+                  @ OutlinedInput
+                  @ Paper
+                  @ Popover
+                  @ Popper
+                  @ Portal
+                  @ Radio
+                  @ RadioGroup
+                  @ RootRef
+                  @ Select
+                  @ Slide
+                  @ Snackbar
+                  @ SnackbarContent
+                  @ Step
+                  @ StepButton
+                  @ StepConnector
+                  @ StepContent
+                  @ StepIcon
+                  @ StepLabel
+                  @ Stepper
+                  @ SvgIcon
+                  @ SwipeableDrawer
+                  @ Switch
+                  @ Tab
+                  @ Table
+                  @ TableBody
+                  @ TableCell
+                  @ TableFooter
+                  @ TableHead
+                  @ TablePagination
+                  @ TableRow
+                  @ TableSortLabel
+                  @ Tabs
+                  @ TextField
+                  @ ThemeProvider
+                  @ Toolbar
+                  @ Tooltip
+                  @ Typography
+                  @ Zoom
+                = MaterialUI
+
+            $hook imports
+            
+            const theme
+                _ createTheme
+                    { 
+                        { palette
+                            { primary
+                                @ light colors.purple[300]
+                                @ main colors.purple[500]
+                                @ dark colors.purple[700]
+                            { secondary
+                                @ light colors.yellow[300]
+                                @ main colors.yellow[500]
+                                @ dark colors.yellow[700]
+                        { typography
+                            @ useNextVariants true
+            
+            $hook components
+
+            $*
+            const useStyles
+                _ makeStyles
+                    => 
+                        param theme
+                        (
+                            { 
+                                { root
+                                    @ margin theme.spacing(6, 0, 3)
+                                { lightBulb
+                                    @ verticalAlign 'middle'
+                                    @ marginRight theme.spacing(1)
+            *$
+           
+            react App
+                state
+                  $hook state
+                style
+                  $hook styles
+                $hook
+            $$ const App = withStyles(styles)(Index)
+            const container = document.querySelector('#root')
+            const root = ReactDOM.createRoot(container) 
+            _ root.render
+                < ThemeProvider 
+                    @ theme {theme}
+                    < CssBaseline 
+                    < App 
+                # CssBaseline kickstart an elegant, consistent, and simple baseline to build upon.                

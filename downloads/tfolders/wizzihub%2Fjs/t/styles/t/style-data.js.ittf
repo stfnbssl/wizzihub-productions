@@ -1,0 +1,18 @@
+$group
+
+    $
+      var myName = 'computeStyleData';
+      //
+    
+    iife_window( styles, ${myName})
+        
+        function ${myName}
+            param styleData
+            if styleData && styleData.colors && styleData.shadows
+                return styleData
+            log '${myName}.styles.Colors', styles.Colors
+            log '${myName}.styles.Shadows', styles.Shadows
+            return
+              {
+                  @ Colors styles.Colors
+                  @ Shadows styles.Shadows

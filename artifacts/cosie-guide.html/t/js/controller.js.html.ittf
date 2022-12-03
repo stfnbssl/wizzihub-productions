@@ -1,0 +1,202 @@
+$group
+    $
+      var myName = 'Controller';
+      //
+
+    iife_window( app, ${myName})
+        function ${myName}
+            param model
+            param view
+            var self = this
+            set self.model = model
+            set self.view = view
+            set self.activeGuida = null
+            set self.guideSearchTerm = ''
+            $*
+                GUIDAS
+            *$
+            _ self.view.bind
+                @ 'guideViewSearchChange'
+                function 
+                    param data
+                    $$ _ alert('guideViewSearchChange:' + data.value)
+                    _ self.changeGuideSearchTerm
+                      @ data.value
+
+            _ self.view.bind
+                @ 'onViewGuida'
+                function 
+                    param data
+                    $$ _ alert('onViewGuida: ' + data)
+                    _ self.showGuida
+                      @ data
+
+            _ self.view.bind
+                @ 'onViewDuplicato'
+                function 
+                    param data
+                    $$ _ alert('onViewDuplicato: ' + JSON.stringify(data))
+                    _ self.showDuplicato
+                      @ data.id
+                      @ data.idMaster
+
+        set ${myName}.prototype.initialize
+            function 
+                param locationHash
+                set this.guideSearchTerm
+                  _ this.model.getGuideValue
+                    @ 'searchTerm'
+                    @ ''
+                set this.guideCategoria
+                  _ this.model.getGuideValue
+                    @ 'categoria'
+                    @ ''
+                set this.guideTitolo
+                  _ this.model.getGuideValue
+                    @ 'titolo'
+                    @ ''
+                _ this.view.render
+                  @ 'setGuideSearchTerm'
+                  @ this.guideSearchTerm
+                _ this.model.getTabelle
+                  =>
+                    param tabelle
+                    _ this.view.render
+                      @ 'setGuideSelects'
+                      @ tabelle
+                    _ this.view.bind
+                        @ 'guideSelectCategoriaChange'
+                        =>
+                            param data
+                            _ this.changeGuideCategoria
+                              @ data.value
+                    _ this.view.bind
+                        @ 'guideSelectTitoloChange'
+                        =>
+                            param data
+                            _ this.changeGuideTitolo
+                              @ data.value
+                    _ this.view.render
+                      @ 'setGuideSelectCategoria'
+                      @ this.guideCategoria
+                    _ this.view.render
+                      @ 'setGuideSelectTitolo'
+                      @ this.guideTitolo
+                _ this.setView
+                  @ locationHash
+        
+        $*
+            ROUTE
+        *$
+        set ${myName}.prototype.setView =
+            function 
+                param locationHash
+                var route = locationHash.split('/')[1]
+                var page = route || ''
+                log '${myName}.setView', 'route', route, 'page', page
+                _ this._updateRouteFilterState(page)
+
+        set ${myName}.prototype._updateRouteFilterState =
+            function 
+                param currentPage
+                set this._activeRoute = currentPage
+                if currentPage === ''
+                    set this._activeRoute = currentPage = 'guide'
+                
+                if this._activeRoute == 'guide'
+                  _ this.view.render
+                    @ 'showGuideView'
+                  _ this._filterGuide
+                
+                if this._activeRoute == 'duplicati'
+                  _ this.view.render
+                    @ 'showDuplicatiView'
+                  _ this.showDuplicatiList
+                
+                _ this.view.render('setFilter', currentPage)
+            #
+                # 
+                # Simply updates the filter nav's selected states
+                # 
+
+
+        set ${myName}.prototype.changeGuideSearchTerm
+            function 
+                param value
+                log '${myName}.changeGuideSearchTerm', value
+                set this.guideSearchTerm = value
+                _ this.model.setGuideValue
+                  @ 'searchTerm'
+                  @ value
+                _ this._filterGuide
+
+        set ${myName}.prototype.changeGuideCategoria
+            function 
+                param value
+                log '${myName}.changeGuideCategoria', value
+                set this.guideCategoria = value
+                _ this.model.setGuideValue
+                  @ 'categoria'
+                  @ value
+                _ this._filterGuide
+
+        set ${myName}.prototype.changeGuideTitolo
+            function 
+                param value
+                log '${myName}.changeGuideTitolo', value
+                set this.guideTitolo = value
+                _ this.model.setGuideValue
+                  @ 'titolo'
+                  @ value
+                _ this._filterGuide
+
+        set ${myName}.prototype._filterGuide =
+            function 
+                log '${myName}._filterGuide'
+                _ this.showGuideList
+
+        set ${myName}.prototype.showGuideList
+            function 
+                log '${myName}.showGuideList'
+                _ this.model.getGuide
+                    @ this.guideSearchTerm
+                    @ this.guideCategoria
+                    @ this.guideTitolo
+                    =>
+                        param items
+                        set this.activeGuideItems = items
+                        _ this.view.render('showGuideList', items)
+
+        set ${myName}.prototype.showGuida
+            function
+                param id 
+                log '${myName}.showGuida'
+                _ this.model.getGuida
+                    @ id
+                    =>
+                        param item
+                        set this.activeGuida = item
+                        _ this.view.render('showGuideDetails', item)
+
+        set ${myName}.prototype.showDuplicatiList
+            function 
+                log '${myName}.showDuplicatiList'
+                _ this.model.getDuplicati
+                    =>
+                        param items
+                        set this.activeDuplicatiItems = items
+                        _ this.view.render('showDuplicatiList', items)
+
+        set ${myName}.prototype.showDuplicato
+            function
+                param id 
+                param idMaster 
+                log '${myName}.showDuplicato', id, idMaster
+                _ this.model.getDuplicato
+                    @ id
+                    @ idMaster
+                    =>
+                        param item
+                        set this.activeDuplicato = item
+                        _ this.view.render('showDuplicatiDetails', item)
+

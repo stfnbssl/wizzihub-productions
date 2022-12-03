@@ -1,0 +1,21 @@
+$group
+  $$ https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#closepath
+  svg
+      view-box 0 -1 30 11
+      xmlns http://www.w3.org/2000/svg
+      path
+          stroke red
+          d 
+            \ M 5,1
+            \ l -4,8 8,0
+      path
+          stroke red
+          d 
+            \ M 15,1
+            \ l -4,8 8,0 -4,-8
+      path
+          stroke red
+          d 
+            \ M 25,1
+            \ l -4,8 8,0
+            \ z

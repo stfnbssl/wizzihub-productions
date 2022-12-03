@@ -1,0 +1,366 @@
+$group
+    $
+      var myName = 'Controller';
+      //
+
+    iife_window( app, ${myName})
+        function ${myName}
+            param model
+            param view
+            var self = this
+            set self.model = model
+            set self.view = view
+            set self._activeRoute
+            set self.activeProductionItems = []
+            set self.activeProduction = null
+            set self.activePackiViewKind = 'all'
+            set self.activePackiSearchTerm = ''
+            _ self.view.bind
+                @ 'prodViewChange'
+                function 
+                    param data
+                    _ self.changeProductionView(data.value)
+            _ self.view.bind
+                @ 'prodItemToggle'
+                function 
+                    param item
+                    _ self.toggleSelectedProdItem(item.id, item.checked)
+            _ self.view.bind
+                @ 'prodItemOpenPackiFiles'
+                function 
+                    param item
+                    _ self.openPackiFiles(item.id)
+            _ self.view.bind
+                @ 'packiViewChange'
+                function 
+                    param data
+                    # _ alert('changePackiView:' + data.value)
+                    _ self.changePackiView(data.value)
+            _ self.view.bind
+                @ 'packiViewNewItem'
+                function 
+                    param item
+                    _ self.requestAddPackiItem
+            _ self.view.bind
+                @ 'packiViewClose'
+                function 
+                    param item
+                    _ self.closePackiView
+            _ self.view.bind
+                @ 'packiItemToggle'
+                function 
+                    param item
+                    # _ alert('toggleSelectedPackiItem:' + item.id + ' / ' + item.checked)
+                    _ self.toggleSelectedPackiItem(item.id, item.checked)
+            _ self.view.bind
+                @ 'packiItemEdit'
+                function 
+                    param filePath
+                    log '${myName}.filePath', filePath
+                    if filePath
+                      _ self.showCodeEditor(filePath)
+            _ self.view.bind
+                @ 'packiItemRemove'
+                function 
+                    param item
+                    _ alert('packiItemRemove:' + item.id + ' / ' + item.name)
+                    # _ self.removePackiItem(item.id)
+
+            #
+                # 
+                # Takes a model and view and acts as the controller between them
+                # 
+                # @constructor
+                # @param {object} model The model instance
+                # @param {object} view The view instance
+                # 
+        set ${myName}.prototype.initialize
+            function 
+                param locationHash
+                _ this.view.render
+                  @ 'showProductionView'
+                _ this.view.render
+                  @ 'setProductionViewKind'
+                  _ this.model.getProductionViewKind
+                _ this.setView
+                  @ locationHash
+        set ${myName}.prototype.setView =
+            function 
+                param locationHash
+                var route = locationHash.split('/')[1]
+                var page = route || ''
+                log '${myName}.setView', 'route', route, 'page', page
+                _ this._updateRouteFilterState(page)
+            #
+                # 
+                # Loads and initialises the view
+                # 
+                # @param {string} '' | 'active' | 'completed'
+                # 
+
+        set ${myName}.prototype.editItem =
+            function 
+                param id
+                var self = this
+                _ self.model.read
+                    @ id
+                    function 
+                        param data
+                        _ self.view.render
+                            @ 'editItem'
+                            { 
+                                @ id
+                                @ title data[0].title
+            #
+                # 
+                # * Triggers the item editing mode.
+                # 
+        set ${myName}.prototype.editItemSave =
+            function 
+                param id
+                param title
+                var self = this
+                set title = title.trim()
+                if title.length !== 0
+                    _ self.model.update
+                        @ id
+                        { 
+                            @ title
+                        function 
+                            _ self.view.render
+                                @ 'editItemDone'
+                                { 
+                                    @ id
+                                    @ title
+                else
+                    _ self.removeItem(id)
+            #
+                # 
+                # * Finishes the item editing mode successfully.
+                # 
+        set ${myName}.prototype.editItemCancel =
+            function 
+                param id
+                var self = this
+                _ self.model.read
+                    @ id
+                    function 
+                        param data
+                        _ self.view.render
+                            @ 'editItemDone'
+                            { 
+                                @ id
+                                @ title data[0].title
+            #
+                # 
+                # * Cancels the item editing mode.
+                # 
+        set ${myName}.prototype.changeProductionView =
+            function 
+                param value
+                log '${myName}.changeProductionView', value
+                _ this.model.setProductionViewKind
+                    @ value
+                _ this._filterProduction()
+        set ${myName}.prototype._filterProduction =
+            function 
+                param force
+                var activeRoute = this._activeRoute.charAt(0).toUpperCase() + this._activeRoute.substr(1)
+                var activeProductionViewKind
+                  _ this.model.getProductionViewKind
+                log '${myName}._filterProduction', 'activeRoute', activeRoute, 'activeProductionViewKind', activeProductionViewKind
+                if force || this._lastActiveRoute !== activeRoute || this._lastProductionView !== activeProductionViewKind
+                    _ this.showProductionList
+                      @ activeRoute
+                      @ activeProductionViewKind
+                set this._lastActiveRoute = activeRoute
+                set this._lastProductionView = activeProductionViewKind
+            #
+                # 
+                # Re-filters the production items, based on the active route.
+                # @param {boolean|undefined} force  forces a re-painting of production items.
+                # 
+        set ${myName}.prototype.showProductionList
+            function 
+                param activeRoute
+                param activeProductionViewKind
+                log '${myName}.showProductionList', 'activeRoute', activeRoute, 'activeProductionViewKind', activeProductionViewKind
+                _ this.model.getProduction
+                    @ activeRoute
+                    @ activeProductionViewKind
+                    @ 'stfnbssl'
+                    =>
+                        param items
+                        set this.activeProductionItems = items
+                        _ this.view.render('showProductionEntries', items)
+            #
+                # 
+                # An event to fire on load. Will get all production items and display them in the production-list
+                # 
+        set ${myName}.prototype.toggleSelectedProdItem
+            function 
+                param id
+                param checked
+                param silent
+                log '${myName}.toggleSelectedProdItem', id, checked, this._activeRoute
+                _ this.model.updateLocal
+                    @ this._activeRoute
+                    @ id
+                    { 
+                        @ __selected checked
+                    =>
+                if !silent
+                    _ this._filterProduction()
+        set ${myName}.prototype.removeProduction
+            function 
+                param id
+                _ this.model.remove
+                    @ id
+                    =>
+                        _ self.view.render('removeProduction', id)
+                _ self._filterProduction()
+        $*
+            PACKI ITEMS
+        *$
+        set ${myName}.prototype.openPackiFiles
+            function 
+                param productionId
+                log '${myName}.openPackiFiles', 'productionId', productionId
+                foreach item in this.activeProductionItems
+                  if item.id == productionId
+                    set this.activeProduction = item
+                set this.activePackiViewKind
+                  _ this.model.getPackiValue
+                    @ 'viewKind' + productionId 
+                    @ 'all'
+                set this.activePackiSearchTerm
+                  _ this.model.getPackiValue
+                    @ 'searchTerm' + productionId 
+                    @ 'all'
+                _ this.view.render
+                    @ 'showPackiView'
+                    {
+                      @ kind this._activeRoute
+                      @ owner item.owner
+                      @ name item.name
+                _ this.view.render
+                  @ 'setPackiViewKind'
+                  @ this.activePackiViewKind
+                _ this._filterPackiFiles
+
+        set ${myName}.prototype._filterPackiFiles
+            function 
+                const viewKind = this.activePackiViewKind
+                const packiFiles = this.activeProduction.packiFiles
+                const selected 
+                  _ this.model.getSelectedPackiFiles
+                    @ this._activeRoute
+                    @ this.activeProduction.id
+                const renderItems = []
+                foreach k in Object.keys(packiFiles)
+                  if viewKind == 'all' ||
+                    \b viewKind == 'selected' && selected.indexOf(k) > -1 ||
+                    \b viewKind == 'unselected' && selected.indexOf(k) < 0
+                  _ renderItems.push
+                    {
+                      @ filePath k
+                      @ contents packiFiles[k].contents
+                _ this.view.render('showPackiEntries', renderItems)
+        
+        set ${myName}.prototype.changePackiView
+            function 
+                param value
+                log '${myName}.changePackiView', value
+                set this.activePackiViewKind = value
+                _ this.model.setPackiValue
+                  @ 'viewKind' + this.activeProduction.id
+                  @ value
+                _ this._filterPackiFiles
+        
+        set ${myName}.prototype.toggleSelectedPackiItem
+            function 
+                param filePath
+                param checked
+                param silent
+                log '${myName}.toggleSelectedPackiItem', filePath, checked, this._activeRoute, this.activeProduction
+                _ this.model.updateSelectedPackiFile
+                  @ this._activeRoute
+                  @ this.activeProduction.id
+                  @ filePath
+                  @ checked
+                $*
+                if !silent
+                    _ this._filterPacki()
+                *$
+
+        set ${myName}.prototype.showCodeEditor
+            function 
+                param filePath
+                _ this.view.bind
+                  @ 'codeEditUpdate'
+                  =>
+                      param originalValues
+                      param formValues
+                      # todo 
+                      _ this.model.updatePackiFile
+                        @ this._activeRoute
+                        @ this.activeProduction.id
+                        @ filePath
+                        @ originalValues.contents
+                        @ formValues.contents
+                        =>
+                          param result
+                          _ alert
+                            _ JSON.stringify
+                              @ result
+                              @ null
+                              @ 2
+                _ this.view.render
+                  @ 'codeEditFile'
+                  {
+                    @ productionKind this._activeRoute
+                    @ productionOwner this.activeProduction.owner
+                    @ productionName this.activeProduction.name
+                    @ filePath filePath
+                    @ contents this.activeProduction.packiFiles[filePath].contents
+
+        set ${myName}.prototype.requestAddPackiItem
+            function 
+                param title
+                _ alert('requestAddPackiItem ' + title)
+
+        set ${myName}.prototype.executeAddPackiItem
+            function 
+                param title
+
+        set ${myName}.prototype.requestRemovePackiItem
+            function 
+                param id
+                _ alert('requestRemovePackiItem ' + title)
+
+        set ${myName}.prototype.executeRemovePackiItem
+            function 
+                param id
+
+        set ${myName}.prototype.closePackiView
+            function 
+              # TODO save state
+              _ this.view.render
+                @ 'showProductionView'
+
+        $*
+            ROUTE
+        *$
+        set ${myName}.prototype._updateRouteFilterState =
+            function 
+                param currentPage
+                set this._activeRoute = currentPage
+                    # Store a reference to the active route, allowing us to re-filter productions
+                if currentPage === ''
+                    set this._activeRoute = 'Artifact'
+                _ this._filterProduction()
+                _ this.view.render('setFilter', currentPage)
+            #
+                # 
+                # Simply updates the filter nav's selected states
+                # 

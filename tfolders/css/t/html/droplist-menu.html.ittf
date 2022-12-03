@@ -1,0 +1,192 @@
+. nav
+    input 
+        type checkbox
+        id togglemenu
+    label Menu &#9776;
+        for togglemenu
+        class togglemenu
+    input 
+        type radio
+        id p0
+        name mainmenu
+    input 
+        type radio
+        id p1
+        name mainmenu
+    input 
+        type radio
+        id p2
+        name mainmenu
+    input 
+        type radio
+        id p3
+        name mainmenu
+    input 
+        type radio
+        id p4
+        name mainmenu
+    label 
+        for p0
+        id closemenu
+    ul 
+        li 
+            label Womenwear
+                for p1
+                class opentop
+                span Spring &amp; Summer Collection
+            label 
+                for p0
+                class closetop
+            div 
+                ul 
+                    li 
+                        a Floral Print Dresses
+                            href index.html
+                    li 
+                        a Sleeveless Dresses
+                            href index.html
+                    li 
+                        a Pure Cotton Dresses
+                            href index.html
+                    li 
+                        a Linen Blend Dresses
+                            href index.html
+                    li 
+                        a Buttoned Dresses
+                            href index.html
+                ul 
+                    li 
+                        a Flared Denim Jeans
+                            href index.html
+                    li 
+                        a Bootleg Jeans
+                            href index.html
+                    li 
+                        a Cropped Jeans
+                            href index.html
+                    li 
+                        a Jeggings
+                            href index.html
+                ul 
+                    li 
+                        class noborder
+                        img 
+                            src /menus/cssplaydroplist/womenswear.jpg
+                            alt 
+        li 
+            label Mail Order
+                for p2
+                class opentop
+                span Special Offers &amp; Clearance
+            label 
+                for p0
+                class closetop
+            div 
+                ul 
+                    li 
+                        a Pleated Skirts
+                            href index.html
+                    li 
+                        a Belted Skirts
+                            href index.html
+                    li 
+                        a Panelled Skirts
+                            href index.html
+                ul 
+                    li 
+                        a Pure Cotton Blouses
+                            href index.html
+                    li 
+                        a Pure Silk Blouses
+                            href index.html
+                    li 
+                        a Floral Print Blouses
+                            href index.html
+                ul 
+                    li 
+                        class noborder
+                        img 
+                            src /menus/cssplaydroplist/skirts.jpg
+                            alt 
+        li 
+            label Accessories
+                for p3
+                class opentop
+                span Jewellery &amp; Handbags
+            label 
+                for p0
+                class closetop
+            div 
+                ul 
+                    li 
+                        a Silk Scarves
+                            href index.html
+                    li 
+                        a Chiffon Scarves
+                            href index.html
+                    li 
+                        a Crinkle Scarves
+                            href index.html
+                    li 
+                        a Butterfly Scarves
+                            href index.html
+                ul 
+                    li 
+                        a Pendant Necklaces
+                            href index.html
+                    li 
+                        a Pearl Earings
+                            href index.html
+                    li 
+                        a Stud Earings
+                            href index.html
+                    li 
+                        a Diamond Rings
+                            href index.html
+                    li 
+                        a Emerald Rings
+                            href index.html
+                ul 
+                    li 
+                        class noborder
+                        img 
+                            src /menus/cssplaydroplist/jewellery.jpg
+                            alt 
+        li 
+            label Home &amp; Garden
+                for p4
+                class opentop
+                span Electrical &amp; Furniture
+            label 
+                for p0
+                class closetop
+            div 
+                ul 
+                    li 
+                        a Wide Screen Televisions
+                            href index.html
+                    li 
+                        a DVD &amp; Blue Ray Players
+                            href index.html
+                    li 
+                        a Computers, Tablets &amp; Smartphones
+                            href index.html
+                ul 
+                    li 
+                        a Three Piece Suits
+                            href index.html
+                    li 
+                        a Dining Tables &amp; Chairs
+                            href index.html
+                    li 
+                        a Bedroom Furniture
+                            href index.html
+                    li 
+                        a Garden Furniture
+                            href index.html
+                ul 
+                    li 
+                        class noborder
+                        img 
+                            src /menus/cssplaydroplist/furniture.jpg
+                            alt 

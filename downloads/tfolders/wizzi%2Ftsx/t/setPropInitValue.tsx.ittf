@@ -1,0 +1,23 @@
+$group
+  $params &prop
+    $if prop.type == 'string'
+      $if prop.defaultValue
+          @ ${prop.name} "${prop.defaultValue}"
+      $else
+          @ ${prop.name} null
+    $elif prop.type == '['
+      $if prop.defaultValue
+          @ ${prop.name} "${prop.defaultValue}"
+      $else
+          @ ${prop.name} []
+    $elif prop.type == '{'
+      $if prop.defaultValue
+          @ ${prop.name} "${prop.defaultValue}"
+      $else
+          @ ${prop.name} {}
+    $else
+      $if prop.defaultValue
+          @ ${prop.name} ${prop.defaultValue}
+      $else
+          @ ${prop.name} null
+

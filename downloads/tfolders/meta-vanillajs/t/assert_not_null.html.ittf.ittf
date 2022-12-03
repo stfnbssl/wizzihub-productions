@@ -1,0 +1,6 @@
+${$2}group
+  ${$2}params name, message, parameter|@@null
+  if !${$2}{name}
+    throw new Error('The value of "${$2}{name}" cannot be null. 
+      \b ${$2}{parameter != null ? 'Check parameter "' + parameter + '": \' + ' + parameter + " + '." : ''} ${$2}{message}.')
+

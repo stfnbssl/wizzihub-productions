@@ -1,0 +1,7 @@
+html
+    $include ./friends
+    ul
+        lia.html( stefi, www.stefi.com
+        lia.html( annie, www.annie.com
+        $foreach f in friends
+            lia.html( ${f}, www.${f}.com

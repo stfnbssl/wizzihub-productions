@@ -1,0 +1,564 @@
+module
+    kind react
+    import EventEmitter from 'events'
+        #
+            # *
+            # * Vanilla JS Modal compatible with Bootstrap
+            # * modal-vanilla 0.12.0 <https://github.com/KaneCohen/modal-vanilla>
+            # * Copyright 2020 Kane Cohen <https://github.com/KaneCohen>
+            # * Available under BSD-3-Clause license
+            # 
+    let _factory = null
+    const _defaults
+        _ Object.freeze
+            { 
+                @ el null
+                @ animate true
+                    # Existing DOM element that will be 'Modal-ized'.
+                @ animateClass 'fade'
+                    # Show Modal using animation.
+                @ animateInClass 'show'
+                    # 
+                @ appendTo 'body'
+                    # 
+                @ backdrop true
+                    # DOM element to which constructed Modal will be appended.
+                @ keyboard true
+                    # Boolean or 'static', Show Modal backdrop blocking content.
+                @ title false
+                    # Close modal on esc key.
+                @ header true
+                    # Content of the title in the constructed dialog.
+                @ content false
+                    # Show header content.
+                @ footer true
+                    # Either string or an HTML element.
+                @ buttons null
+                    # Footer content. By default will use buttons.
+                @ headerClose true
+                    # 
+                @ construct false
+                    # Show close button in the header.
+                @ transition 300
+                    # Creates new HTML with a given content.
+                @ backdropTransition 150
+                    # 
+                    # 
+    const _buttons
+        _ deepFreeze
+            { 
+                [ dialog
+                    { 
+                        @ text 'Cancel'
+                        @ value false
+                        { attr
+                            @ 'class' 'btn btn-default'
+                            @ 'data-dismiss' 'modal'
+                    { 
+                        @ text 'OK'
+                        @ value true
+                        { attr
+                            @ 'class' 'btn btn-primary'
+                            @ 'data-dismiss' 'modal'
+                [ alert
+                    { 
+                        @ text 'OK'
+                        { attr
+                            @ 'class' 'btn btn-primary'
+                            @ 'data-dismiss' 'modal'
+                [ confirm
+                    { 
+                        @ text 'Cancel'
+                        @ value false
+                        { attr
+                            @ 'class' 'btn btn-default'
+                            @ 'data-dismiss' 'modal'
+                    { 
+                        @ text 'OK'
+                        @ value true
+                        { attr
+                            @ 'class' 'btn btn-primary'
+                            @ 'data-dismiss' 'modal'
+    const _templates
+        { 
+            @ container '<div class="modal"></div>'
+            @ dialog '<div class="modal-dialog"></div>'
+            @ content '<div class="modal-content"></div>'
+            @ header '<div class="modal-header"></div>'
+            @ headerClose '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>'
+            @ body '<div class="modal-body"></div>'
+            @ footer '<div class="modal-footer"></div>'
+            @ backdrop '<div class="modal-backdrop"></div>'
+    function deepFreeze
+        param obj
+        for 
+            left
+                let k
+            in obj
+            if Array.isArray(obj[k])
+                _ obj[k].forEach
+                    => 
+                        param v
+                        _ deepFreeze(v)
+            else
+                if obj[k] !== null && typeof obj[k] === 'object'
+                    _ Object.freeze(obj[k])
+        return Object.freeze(obj)
+    function guid
+        return (((1 + Math.random()) * 65536) | 0).toString(16) + (((1 + Math.random()) * 65536) | 0).toString(16)
+    function data
+        param el
+        param prop
+        param value
+        let prefix = 'data'
+        let elData
+            || 
+                + el[prefix]
+                { 
+        if typeof value === 'undefined'
+            if el[prefix] && el[prefix][prop]
+                return el[prefix][prop]
+            else
+                var dataAttr
+                    _ el.getAttribute
+                        `lit 
+                            + 
+                            @ prefix
+                            + -
+                            @ prop
+                            + 
+                if typeof dataAttr !== 'undefined'
+                    return dataAttr
+                return null
+        else
+            set elData[prop] = value
+            set el[prefix] = elData
+            return el
+    function build
+        param html
+        param all
+        if html.nodeName
+            return html
+        set html = html.replace(/(\t|\n$)/g, '')
+        if !_factory
+            set _factory = document.createElement('div')
+        set _factory.innerHTML = ''
+        set _factory.innerHTML = html
+        if all === true
+            return _factory.childNodes
+        else
+            return _factory.childNodes[0]
+    function calcScrollbarWidth
+        let inner
+        let width
+        let outerWidth
+        let outer = document.createElement('div')
+        _ Object.assign
+            @expr outer.style
+            { 
+                @ visibility 'hidden'
+                @ width '100px'
+        _ document.body.appendChild(outer)
+        set outerWidth = outer.offsetWidth
+        set outer.style.overflow = 'scroll'
+        set inner = document.createElement('div')
+        set inner.style.width = '100%'
+        _ outer.appendChild(inner)
+        set width = outerWidth - inner.offsetWidth
+        _ document.body.removeChild(outer)
+        return width
+    function getPath
+        param node
+        let nodes
+            [ 
+                @ node
+        while node.parentNode
+            set node = node.parentNode
+            _ nodes.push(node)
+        return nodes
+    class Modal
+        super EventEmitter
+        set templates
+            static
+            param templates
+            set this._baseTemplates = templates
+        get templates
+            static
+            return 
+                _ Object.assign
+                    { 
+                    @ _templates
+                    || 
+                        + Modal._baseTemplates
+                        { 
+        set buttons
+            static
+            param buttons
+            set this._baseButtons = buttons
+        get buttons
+            static
+            return 
+                _ Object.assign
+                    { 
+                    @ _buttons
+                    || 
+                        + Modal._baseButtons
+                        { 
+        set options
+            static
+            param options
+            set this._baseOptions = options
+        get options
+            static
+            return 
+                _ Object.assign
+                    { 
+                    @ _defaults
+                    || 
+                        + Modal._baseOptions
+                        { 
+        get version
+            static
+            return '0.12.0'
+        m alert
+            static
+            param message
+            param _options
+                =
+                    { 
+            let options
+                _ Object.assign
+                    { 
+                    @ _defaults
+                    { 
+                        @ title message
+                        @ content false
+                        @ construct true
+                        @ headerClose false
+                        @ buttons Modal.buttons.alert
+                    @ _options
+            return new Modal(options)
+        m confirm
+            static
+            param question
+            param _options
+                =
+                    { 
+            let options
+                _ Object.assign
+                    { 
+                    @ _defaults
+                    { 
+                        @ title question
+                        @ content false
+                        @ construct true
+                        @ headerClose false
+                        @ buttons Modal.buttons.confirm
+                    @ _options
+            return new Modal(options)
+        ctor 
+            param options
+                =
+                    { 
+            _ super()
+            set this.id = guid()
+            set this.el = null
+            set this._html =
+                { 
+            set this._events =
+                { 
+            set this._visible = false
+            set this._pointerInContent = false
+            set this._options =
+                _ Object.assign
+                    { 
+                    @expr Modal.options
+                    @ options
+            set this._templates =
+                _ Object.assign
+                    { 
+                    @expr Modal.templates
+                    || 
+                        + options.templates
+                        { 
+            set this._html.appendTo = document.querySelector(this._options.appendTo)
+            set this._scrollbarWidth = calcScrollbarWidth()
+            if this._options.buttons === null
+                set this._options.buttons = Modal.buttons.dialog
+            if this._options.el
+                let el = this._options.el
+                if typeof this._options.el == 'string'
+                    set el = document.querySelector(this._options.el)
+                    if !el
+                        throw 
+                            new Error
+                                `lit 
+                                    + Selector: DOM Element&nbsp;
+                                    @ this._options.el
+                                    + &nbsp;not found.
+                _ data(el, 'modal', this)
+                set this.el = el
+            else
+                set this._options.construct = true
+            if this._options.construct
+                _ this._render()
+            else
+                _ this._mapDom()
+        m _render
+            let html = this._html
+            let o = this._options
+            let t = this._templates
+            let animate
+                iif o.animate
+                    then o.animateClass
+                    else false
+            set html.container = build(t.container)
+            set html.dialog = build(t.dialog)
+            set html.content = build(t.content)
+            set html.header = build(t.header)
+            set html.headerClose = build(t.headerClose)
+            set html.body = build(t.body)
+            set html.footer = build(t.footer)
+            if animate
+                _ html.container.classList.add(animate)
+            _ this._setHeader()
+            _ this._setContent()
+            _ this._setFooter()
+            set this.el = html.container
+            _ html.dialog.appendChild(html.content)
+            _ html.container.appendChild(html.dialog)
+            return this
+        m _mapDom
+            let html = this._html
+            let o = this._options
+            if this.el.classList.contains(o.animateClass)
+                set o.animate = true
+            set html.container = this.el
+            set html.dialog = this.el.querySelector('.modal-dialog')
+            set html.content = this.el.querySelector('.modal-content')
+            set html.header = this.el.querySelector('.modal-header')
+            set html.headerClose = this.el.querySelector('.modal-header .close')
+            set html.body = this.el.querySelector('.modal-body')
+            set html.footer = this.el.querySelector('.modal-footer')
+            _ this._setHeader()
+            _ this._setContent()
+            _ this._setFooter()
+            return this
+        m _setHeader
+            let html = this._html
+            let o = this._options
+            if o.header && html.header
+                if o.title.nodeName
+                    set html.header.innerHTML = o.title.outerHTML
+                else
+                    if typeof o.title === 'string'
+                        set html.header.innerHTML =
+                            `lit 
+                                + <h4 class="modal-title">
+                                @ o.title
+                                + </h4>
+                if this.el === null && html.headerClose && o.headerClose
+                    _ html.header.appendChild(html.headerClose)
+                if o.construct
+                    _ html.content.appendChild(html.header)
+        m _setContent
+            let html = this._html
+            let o = this._options
+            if o.content && html.body
+                if typeof o.content === 'string'
+                    set html.body.innerHTML = o.content
+                else
+                    set html.body.innerHTML = o.content.outerHTML
+                if o.construct
+                    _ html.content.appendChild(html.body)
+        m _setFooter
+            let html = this._html
+            let o = this._options
+            if o.footer && html.footer
+                if o.footer.nodeName
+                    set html.footer.ineerHTML = o.footer.outerHTML
+                else
+                    if typeof o.footer === 'string'
+                        set html.footer.innerHTML = o.footer
+                    else
+                        if !html.footer.children.length
+                            _ o.buttons.forEach
+                                => 
+                                    param button
+                                    let el = document.createElement('button')
+                                    _ data(el, 'button', button)
+                                    set el.innerHTML = button.text
+                                    _ el.setAttribute('type', 'button')
+                                    for 
+                                        left
+                                            let j
+                                        in button.attr
+                                        _ el.setAttribute(j, button.attr[j])
+                                    _ html.footer.appendChild(el)
+                if o.construct
+                    _ html.content.appendChild(html.footer)
+        m _setEvents
+            let o = this._options
+            let html = this._html
+            set this._events.keydownHandler = this._handleKeydownEvent.bind(this)
+            _ document.body.addEventListener('keydown', this._events.keydownHandler)
+            set this._events.mousedownHandler = this._handleMousedownEvent.bind(this)
+            _ html.container.addEventListener('mousedown', this._events.mousedownHandler)
+            set this._events.clickHandler = this._handleClickEvent.bind(this)
+            _ html.container.addEventListener('click', this._events.clickHandler)
+            set this._events.resizeHandler = this._handleResizeEvent.bind(this)
+            _ window.addEventListener('resize', this._events.resizeHandler)
+        m _handleMousedownEvent
+            param e
+            set this._pointerInContent = false
+            let path = getPath(e.target)
+            _ path.every
+                => 
+                    param node
+                    if node.classList && node.classList.contains('modal-content')
+                        set this._pointerInContent = true
+                        return false
+                    return true
+        m _handleClickEvent
+            param e
+            let path = getPath(e.target)
+            _ path.every
+                => 
+                    param node
+                    if node.tagName === 'HTML'
+                        return false
+                    if this._options.backdrop !== true && node.classList.contains('modal')
+                        return false
+                    if node.classList.contains('modal-content')
+                        return false
+                    if node.getAttribute('data-dismiss') === 'modal'
+                        _ this.emit('dismiss', this, e, data(e.target, 'button'))
+                        _ this.hide()
+                        return false
+                    if !this._pointerInContent && node.classList.contains('modal')
+                        _ this.emit('dismiss', this, e, null)
+                        _ this.hide()
+                        return false
+                    return true
+            set this._pointerInContent = false
+        m _handleKeydownEvent
+            param e
+            if e.which === 27 && this._options.keyboard
+                _ this.emit('dismiss', this, e, null)
+                _ this.hide()
+        m _handleResizeEvent
+            param e
+            _ this._resize()
+        m show
+            let o = this._options
+            let html = this._html
+            _ this.emit('show', this)
+            _ this._checkScrollbar()
+            _ this._setScrollbar()
+            _ document.body.classList.add('modal-open')
+            if o.construct
+                _ html.appendTo.appendChild(html.container)
+            set html.container.style.display = 'block'
+            set html.container.scrollTop = 0
+            if o.backdrop !== false
+                _ this.once
+                    @ 'showBackdrop'
+                    => 
+                        _ this._setEvents()
+                        if o.animate
+                            @expr html.container.offsetWidth
+                        _ html.container.classList.add(o.animateInClass)
+                            # Force reflow
+                        _ setTimeout
+                            => 
+                                set this._visible = true
+                                _ this.emit('shown', this)
+                            @expr o.transition
+                _ this._backdrop()
+            else
+                _ this._setEvents()
+                if o.animate
+                    @expr html.container.offsetWidth
+                _ html.container.classList.add(o.animateInClass)
+                    # Force reflow
+                _ setTimeout
+                    => 
+                        set this._visible = true
+                        _ this.emit('shown', this)
+                    @expr o.transition
+            _ this._resize()
+            return this
+        m toggle
+            if this._visible
+                _ this.hide()
+            else
+                _ this.show()
+        m _resize
+            var modalIsOverflowing = this._html.container.scrollHeight > document.documentElement.clientHeight
+            set this._html.container.style.paddingLeft =
+                iif !this.bodyIsOverflowing && modalIsOverflowing
+                    then this._scrollbarWidth + 'px'
+                    else ''
+            set this._html.container.style.paddingRight =
+                iif this.bodyIsOverflowing && !modalIsOverflowing
+                    then this._scrollbarWidth + 'px'
+                    else ''
+        m _backdrop
+            let html = this._html
+            let t = this._templates
+            let o = this._options
+            let animate
+                iif o.animate
+                    then o.animateClass
+                    else false
+            set html.backdrop = build(t.backdrop)
+            if animate
+                _ html.backdrop.classList.add(animate)
+            _ html.appendTo.appendChild(html.backdrop)
+            if animate
+                @expr html.backdrop.offsetWidth
+            _ html.backdrop.classList.add(o.animateInClass)
+            _ setTimeout
+                => 
+                    _ this.emit('showBackdrop', this)
+                @expr this._options.backdropTransition
+        m hide
+            let html = this._html
+            let o = this._options
+            let contCList = html.container.classList
+            _ this.emit('hide', this)
+            _ contCList.remove(o.animateInClass)
+            if o.backdrop
+                let backCList = html.backdrop.classList
+                _ backCList.remove(o.animateInClass)
+            _ this._removeEvents()
+            _ setTimeout
+                => 
+                    _ document.body.classList.remove('modal-open')
+                    set document.body.style.paddingRight = this.originalBodyPad
+                @expr o.backdropTransition
+            _ setTimeout
+                => 
+                    if o.backdrop
+                        _ html.backdrop.parentNode.removeChild(html.backdrop)
+                    set html.container.style.display = 'none'
+                    if o.construct
+                        _ html.container.parentNode.removeChild(html.container)
+                    set this._visible = false
+                    _ this.emit('hidden', this)
+                @expr o.transition
+            return this
+        m _removeEvents
+            if this._events.keydownHandler
+                _ document.body.removeEventListener('keydown', this._events.keydownHandler)
+            _ this._html.container.removeEventListener('mousedown', this._events.mousedownHandler)
+            _ this._html.container.removeEventListener('click', this._events.clickHandler)
+            _ window.removeEventListener('resize', this._events.resizeHandler)
+        m _checkScrollbar
+            set this.bodyIsOverflowing = document.body.clientWidth < window.innerWidth
+        m _setScrollbar
+            set this.originalBodyPad = document.body.style.paddingRight || ''
+            if this.bodyIsOverflowing
+                let basePadding = parseInt(this.originalBodyPad || 0, 10)
+                set document.body.style.paddingRight = basePadding + this._scrollbarWidth + 'px'
+    export-default Modal

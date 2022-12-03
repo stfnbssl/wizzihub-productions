@@ -1,0 +1,152 @@
+${$2}group
+    ${$2}
+      var myName = 'Controller';
+      //
+
+    iife_window${$p2} app, ${$2}{myName})
+        function ${$2}{myName}
+            param model
+            param view
+            var self = this
+            set self.model = model
+            set self.view = view
+            set self.activeMediaItem = null
+            set self.mediaSearchTerm = ''
+            ${$2}*
+                GUIDAS
+            *${$2}
+            _ self.view.bind
+                @ 'mediaViewSearchChange'
+                function 
+                    param data
+                    ${$2}${$2} _ alert('mediaViewSearchChange:' + data.value)
+                    _ self.changeMediaSearchTerm
+                      @ data.value
+
+            _ self.view.bind
+                @ 'onViewMediaItem'
+                function 
+                    param data
+                    ${$2}${$2} _ alert('onViewMediaItem: ' + data)
+                    _ self.showMediaItem
+                      @ data
+
+
+        set ${$2}{myName}.prototype.initialize
+            function 
+                param locationHash
+                set this.mediaSearchTerm
+                  _ this.model.getMediaValue
+                    @ 'searchTerm'
+                    @ ''
+                set this.mediaCategoria
+                  _ this.model.getMediaValue
+                    @ 'categoria'
+                    @ ''
+                _ this.view.render
+                  @ 'setMediaSearchTerm'
+                  @ this.mediaSearchTerm
+                _ this.model.getTabelle
+                  =>
+                    param tabelle
+                    log "${$2}{myName}.prototype.initialize", tabelle
+                    _ this.view.render
+                      @ 'setMediaSelects'
+                      @ tabelle
+                    _ this.view.bind
+                        @ 'mediaSelectCategoriaChange'
+                        =>
+                            param data
+                            _ this.changeMediaCategoria
+                              @ data.value
+                    _ this.view.render
+                      @ 'setMediaSelectCategoria'
+                      @ this.mediaCategoria
+                _ this.setView
+                  @ locationHash
+        
+        ${$2}*
+            ROUTE
+        *${$2}
+        set ${$2}{myName}.prototype.setView =
+            function 
+                param locationHash
+                var route = locationHash.split('/')[1]
+                var page = route || ''
+                log '${$2}{myName}.setView', 'route', route, 'page', page
+                _ this._updateRouteFilterState(page)
+
+        set ${$2}{myName}.prototype._updateRouteFilterState =
+            function 
+                param currentPage
+                set this._activeRoute = currentPage
+                if currentPage === ''
+                    set this._activeRoute = currentPage = 'media'
+                
+                if this._activeRoute == 'media'
+                  _ this.view.render
+                    @ 'showMediaView'
+                  _ this._filterMedia
+                
+                if this._activeRoute == 'other'
+                  _ this.view.render
+                    @ 'showOtherView'
+                
+                _ this.view.render('setFilter', currentPage)
+            #
+                # 
+                # Simply updates the filter nav's selected states
+                # 
+
+
+        set ${$2}{myName}.prototype.changeMediaSearchTerm
+            function 
+                param value
+                log '${$2}{myName}.changeMediaSearchTerm', value
+                set this.mediaSearchTerm = value
+                _ this.model.setMediaValue
+                  @ 'searchTerm'
+                  @ value
+                _ this._filterMedia
+
+        set ${$2}{myName}.prototype.changeMediaCategoria
+            function 
+                param value
+                log '${$2}{myName}.changeMediaCategoria', value
+                set this.mediaCategoria = value
+                _ this.model.setMediaValue
+                  @ 'categoria'
+                  @ value
+                _ this._filterMedia
+
+        set ${$2}{myName}.prototype._filterMedia =
+            function 
+                log '${$2}{myName}._filterMedia'
+                _ this.showMediaList
+
+        set ${$2}{myName}.prototype.showMediaList
+            function 
+                log '${$2}{myName}.showMediaList'
+                _ this.model.getMedia
+                    @ this.mediaSearchTerm
+                    @ this.mediaCategoria
+                    =>
+                        param items
+                        set this.activeMediaItems = items
+                        _ this.view.render('showMediaList', items)
+
+        set ${$2}{myName}.prototype.showMediaItem
+            function
+                param id 
+                log '${$2}{myName}.showMediaItem'
+                _ this.model.getMediaItem
+                    @ id
+                    =>
+                        param item
+                        set this.activeMediaItem = item
+                        _ this.view.render('showMediaItem', item)
+                        if item.kind == 'video'
+                          if item.videoKind == 'youtube'
+                            _ youTubePlayerChangeVideoId
+                              @ item.videoId
+                              @ item.time

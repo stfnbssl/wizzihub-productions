@@ -1,0 +1,168 @@
+$group
+    $
+      var myName = 'View';
+      //
+
+    iife_window( app, ${myName})
+        function ${myName}
+            param template
+            param styles
+            set this.template = template
+            set this.styles = styles
+            set this.ENTER_KEY = 13
+            set this.ESCAPE_KEY = 27
+            #
+            set this.$guideRoute = qs('.route-guide')
+            set this.$duplicatiRoute = qs('.route-duplicati')
+            #
+            set this.$guideView = qs('.guide-view')
+            set this.$guideViewSearch = qs('.guide-view-search-field')
+            set this.$guideViewSelectCategoria = qs('.guide-view-select-categoria')
+            set this.$guideViewSelectTitolo = qs('.guide-view-select-titolo')
+            set this.$guideSelectCategoria = null
+            set this.$guideSelectTitolo = null
+            set this.$guideList = qs('.guide-list')
+            set this.$guideDetails = qs('.guide-details')
+            set this.$guideRepeats = qs('.guide-repeats')
+            #
+            set this.$duplicatiView = qs('.duplicati-view')
+            set this.$duplicatiList = qs('.duplicati-list')
+            set this.$duplicatiDetailsA = qs('.duplicati-details-a')
+            set this.$duplicatiDetailsB = qs('.duplicati-details-b')
+
+        set ${myName}.prototype._setFilter =
+            function 
+                param currentPage
+                set qs('.filters .selected').className = ''
+                set qs('.filters [href="#/' + currentPage + '"]').className = 'selected'
+
+        set ${myName}.prototype.render =
+            function 
+                param viewCmd
+                param parameter
+                var self = this
+                var viewCommands
+                    { 
+                        @ setGuideSearchTerm
+                            function 
+                                set self.$guideViewSearch.value = parameter
+                        @ setGuideSelectCategoria
+                            function 
+                                set self.$guideSelectCategoria.value = parameter
+                        @ setGuideSelectTitolo
+                            function 
+                                set self.$guideSelectTitolo.value = parameter
+                        @ setGuideSelects
+                            function 
+                                set self.$guideViewSelectCategoria.innerHTML = self.template.showGuideSelectCategoria(parameter.categorie)
+                                set self.$guideViewSelectTitolo.innerHTML = self.template.showGuideSelectTitolo(parameter.titoli)
+                        @ showGuideView
+                            function 
+                                log '${myName}.render.showGuideView'
+                                set self.$guideView.style.display = 'block'
+                                set self.$duplicatiView.style.display = 'none'
+                        @ showDuplicatiView
+                            function 
+                                log '${myName}.render.showDuplicatiView'
+                                set self.$guideView.style.display = 'none'
+                                set self.$duplicatiView.style.display = 'block'
+                        @ showGuideList
+                            function 
+                                set self.$guideList.innerHTML = self.template.showGuideList(parameter)
+                        @ showGuideDetails
+                            function 
+                                set self.$guideDetails.innerHTML = self.template.showGuideDetails(parameter)
+                                set self.$guideRepeats.innerHTML = self.template.showGuideRepeats(parameter)
+                        @ showDuplicatiList
+                            function 
+                                log '${myName}.render.showDuplicatiList', parameter
+                                set self.$duplicatiList.innerHTML = self.template.showDuplicatiList(parameter)
+                        @ showDuplicatiDetails
+                            function 
+                                set self.$duplicatiDetailsA.innerHTML = self.template.showDuplicatiDetails(parameter.a)
+                                set self.$duplicatiDetailsB.innerHTML = self.template.showDuplicatiDetails(parameter.b)
+                        @ setFilter
+                            function 
+                              log '${myName}.render.setFilter', parameter
+                              set qs('.filters .selected').className = ''
+                              if qs('.filters [href="#/' + parameter + '"]')
+                                set qs('.filters [href="#/' + parameter + '"]').className = 'selected'
+                                log '${myName}.render.setFilter 2', parameter
+                _ viewCommands[viewCmd]()
+
+        set ${myName}.prototype.bind =
+            function 
+                param event
+                param handler
+                var self = this
+                if event === 'guideViewSearchChange'
+
+                    log '${myName}.bind', self.$guideViewSearch
+                    _ $on
+                        @ self.$guideViewSearch
+                        @ 'input'
+                        function 
+                            log '${myName}.bind', 'guideViewSearchChange', this.value
+                            _ handler
+                                { 
+                                    @ value this.value
+
+                elif event === 'guideSelectCategoriaChange'
+                    set this.$guideSelectCategoria = qs('.guide-select-categoria')
+                    log '${myName}.bind', self.$guideSelectCategoria
+                    _ $on
+                        @ self.$guideSelectCategoria
+                        @ 'change'
+                        =>
+                            param event
+                            _ handler
+                              {
+                                @ value event.target.value
+
+                elif event === 'guideSelectTitoloChange'
+                    set this.$guideSelectTitolo = qs('.guide-select-titolo')
+                    log '${myName}.bind', self.$guideSelectTitolo
+                    _ $on
+                        @ self.$guideSelectTitolo
+                        @ 'change'
+                        =>
+                            param event
+                            _ handler
+                              {
+                                @ value event.target.value
+
+                elif event === 'onViewGuida'
+                    info 'binding onViewGuida self.$guideList'
+                    _ $on
+                        @ self.$guideList
+                        @ 'click'
+                        function 
+                            param event
+                            var target = event.target
+                            var result = null
+                            while target && result == null
+                              if target.tagName == 'LI'
+                                set result = target
+                                info 'on click self.$guideList', result, result.dataset, result.dataset.id
+                              set target = target.parentNode
+                            _ handler(result && result.dataset.id)
+
+                elif event === 'onViewDuplicato'
+                    info 'binding onViewDuplicato self.$duplicatiList'
+                    _ $on
+                        @ self.$duplicatiList
+                        @ 'click'
+                        function 
+                            param event
+                            var target = event.target
+                            var result = null
+                            while target && result == null
+                              if target.tagName == 'LI'
+                                set result = target
+                                info 'on click self.$duplicatiList', result, result.dataset, result.dataset.id
+                              set target = target.parentNode
+                            if result
+                              _ handler
+                                {
+                                  @ id result.dataset.id
+                                  @ idMaster result.dataset.idmaster

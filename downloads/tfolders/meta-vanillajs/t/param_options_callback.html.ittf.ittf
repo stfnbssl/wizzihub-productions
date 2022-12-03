@@ -1,0 +1,9 @@
+${$2}group
+  ${$2}params message
+  param options
+  param callback
+  if !callback
+    set callback = options
+    set options = {}
+  if !callback
+    throw new Error('The callback parameter is required. ${$2}{message}.')

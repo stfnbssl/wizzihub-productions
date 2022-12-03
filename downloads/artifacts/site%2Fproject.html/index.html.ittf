@@ -1,0 +1,40 @@
+html
+
+    $ 
+        var opt = {
+            section: 'Project',
+        }
+        var clazz = 'm-s color-header font-x font-w-s';
+        var sb = {
+            groups: [
+                { title: 'Day to day topics', items: [
+                    { title: 'TODO', href: '/~/stfnbssl/site/project/todo.html' },
+                    { title: 'Issues', href: '/~/stfnbssl/site/project/issues.html' },
+                ]}, 
+            ]
+        }
+
+
+    html/layouts/site( &opt )
+
+        . flex-column
+            ul
+                $foreach group in sb.groups
+                    li
+                        class mt-8
+                        h5
+                            class px-3 mb-3 lg:mb-3 uppercase tracking-wide font-semibold text-sm lg:text-xs text-gray-900
+                            + ${group.title}
+                        ul
+                            $foreach item in group.items
+                                li
+                                    a
+                                        class px-3 py-2 transition-colors duration-200 relative block hover:text-gray-900 text-gray-500
+                                        href ${item.href}
+                                        span
+                                            class rounded-md absolute inset-0 bg-cyan-50 opacity-0
+                                        span
+                                            class relative
+                                            + ${item.title}        
+
+

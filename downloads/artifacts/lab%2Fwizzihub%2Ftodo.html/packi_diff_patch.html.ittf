@@ -1,0 +1,289 @@
+html
+  body
+    js /public/utils/diff_match_patch_uncompressed.js
+    script
+      var __filename = 'packi_diff_match'
+      $include packiManager
+
+      function sortObjectKeys
+        param unordered
+        return
+          _ Object.keys(unordered).sort().reduce
+              => 
+                  param obj
+                  param key
+                  set obj[key] = unordered[key]
+                  return obj
+              {       
+      
+      function packiFilesToArray
+        param packiFiles
+        log 'packiFilesToArray.packiFiles', packiFiles
+        const result = []
+        foreach key in Object.keys(packiFiles)
+          _ result.push
+            {
+              @ path key
+              @ type packiFiles[key].type
+              @ contents packiFiles[key].contents
+        log 'packiFilesToArray.result', result
+        return result
+
+      function packiFilesToSortedArray
+        param packiFiles
+        log 'packiFilesToSortedArray.packiFiles', packiFiles
+        const orderedPackiFiles
+          _ sortObjectKeys
+            @ packiFiles
+        const result
+          _ packiFilesToArray
+            @ orderedPackiFiles
+        log 'packiFilesToSortedArray.result', result
+        return result
+
+      function folderToText
+        param packiFiles
+        log 'folderToText.packiFiles', packiFiles
+        const orderedPackiFilesArray
+          _ packiFilesToSortedArray
+            @ packiFiles
+        const result = []
+        foreach item in orderedPackiFilesArray
+          const lines = item.contents.split('\n')
+          foreach line in lines
+            _ result.push
+              @ '[--' + item.path + '--]' + line
+        log 'folderToText.result', result.join('\n')
+        return result.join('\n')
+      
+      function diffPackiFiles
+        param packiFilesA
+        param packiFilesB
+        log 'diffPackiFiles.packiFilesA', packiFilesA
+        log 'diffPackiFiles.packiFilesB', packiFilesB
+        const textA
+          _ folderToText
+            @ packiFilesA
+        const textB
+          _ folderToText
+            @ packiFilesB
+        const result
+          _ diff_lineMode
+            @ textA
+            @ textB
+        log 'diffPackiFiles.result', result
+        return result
+
+      function patchPackiFilesFromDiffs
+        param packiFiles
+        param diffs
+        log 'patchPackiFilesFromDiffs.packiFiles', packiFiles
+        log 'patchPackiFilesFromDiffs.diffs', diffs
+        const textA
+          _ folderToText
+            @ packiFiles
+        var dmp = new diff_match_patch()
+        const patches 
+          _ dmp.patch_make(textA, diffs)
+        const [textB, results]
+          _ dmp.patch_apply(patches, textA)
+        log 'patchPackiFilesFromDiffs.textB', textB,
+          \b 'results', results
+        return [textB, results]
+
+      function getSamplePackiFile_1
+        const result = {}
+        set result['alpha.txt']
+          {
+            @ type 'CODE'
+            @ contents
+              [
+                @ 'pesci'
+                @ 'toro'
+                @ 'leone'
+                ._ join('\n')
+        set result['beta.txt']
+          {
+            @ type 'CODE'
+            @ contents
+              [
+                @ 'venere'
+                @ 'marte'
+                @ 'saturno'
+                ._ join('\n')
+        set result['sigma.txt']
+          {
+            @ type 'CODE'
+            @ contents
+              [
+                @ 'orione'
+                @ 'via lattea'
+                ._ join('\n')
+        set result['tau.txt']
+          {
+            @ type 'CODE'
+            @ contents
+              [
+                @ 'same'
+                @ 'medesimo'
+                ._ join('\n')
+        return result
+
+      function getSamplePackiFile_2
+        const result = {}
+        set result['alpha.txt']
+          {
+            @ type 'CODE'
+            @ contents
+              [
+                @ 'pesci'
+                @ 'leone'
+                ._ join('\n')
+        set result['beta.txt']
+          {
+            @ type 'CODE'
+            @ contents
+              [
+                @ 'venere'
+                @ 'giove'
+                @ 'saturno'
+                ._ join('\n')
+        set result['gamma.txt']
+          {
+            @ type 'CODE'
+            @ contents
+              [
+                @ 'tirreno'
+                @ 'adriatico'
+                ._ join('\n')
+        set result['tau.txt']
+          {
+            @ type 'CODE'
+            @ contents
+              [
+                @ 'same'
+                @ 'medesimo'
+                ._ join('\n')
+        return result
+
+      # test start
+      _ packiFilesToArray
+        _ getSamplePackiFile_1
+      _ packiFilesToSortedArray
+        _ getSamplePackiFile_1
+      _ folderToText
+        _ getSamplePackiFile_1
+      const pm1
+        new PackiManager
+          _ getSamplePackiFile_1
+      const packiDiffs
+        _ pm1.getPackiFilesDiffs
+          _ getSamplePackiFile_2
+      log 'pm1.packiDiffs', packiDiffs
+      const pm2
+        new PackiManager
+          _ getSamplePackiFile_1
+      _ pm2.applyPatch
+        @ packiDiffs
+      const areequals
+        _ pm2.equals
+          _ getSamplePackiFile_2
+      log 'getSamplePackiFile_2()', getSamplePackiFile_2()
+      log 'pm2.packiFiles', pm2.packiFiles
+      log 'areequals', areequals
+
+      const pm3
+        new PackiManager
+          _ getSamplePackiFile_1
+      log 'pm3.packiFiles pre', pm3.packiFiles
+      _ pm3.deleteFile
+        @ 'alpha.txt'
+      _ pm3.deleteFile
+        @ 'tau.txt'
+      _ pm3.putCodeFile
+        @ 'mu.txt'
+        @ 'first\nsecond'
+      log 'pm3.packiFiles post', pm3.packiFiles
+
+      function testFileDiffPatch
+        const pm1
+          new PackiManager
+            _ getSamplePackiFile_1
+        const pm2
+          new PackiManager
+            _ getSamplePackiFile_2
+        const alphaOld = pm1.getFileContent('alpha.txt')
+        const alphaNew = pm2.getFileContent('alpha.txt')
+        const diffs
+          _ pm1.getFileDiffs
+            @ 'alpha.txt'
+            @ alphaNew
+        _ pm1.applyFileDiffs
+          @ 'alpha.txt'
+          @ diffs
+        const alphaOldPatched = pm1.getFileContent('alpha.txt')
+        log 'testFileDiffPatch', '\n', alphaOld, '\n',alphaNew, '\n',alphaOldPatched, '\n',alphaOldPatched == alphaNew
+
+      _ testFileDiffPatch
+
+
+
+      $*
+      const diffs
+        _ diffPackiFiles
+            _ getSamplePackiFile_1
+            _ getSamplePackiFile_2
+      # _ diff_cleanupEfficiency(diffs)            
+      _ patchPackiFilesFromDiffs
+        _ getSamplePackiFile_1
+        @ diffs
+      *$
+      $*
+
+      var text0
+        [
+          @ 'html'
+          @ '    aaaa'
+          @ '    body'
+          ._ join('\n')
+      var text1
+        [
+          @ 'html'
+          @ '    aaaa'
+          @ '    body'
+          ._ join('\n')
+      var text2
+        [
+          @ 'html'
+          @ '    head'
+          ._ join('\n')
+      var dmp = new diff_match_patch();
+      var diff0
+        _ diff_lineMode
+          @ text0
+          @ text1
+      log 'text0, text1, diff0', text1, text2, diff0
+      var diff1
+        _ dmp.diff_main
+          @ text1
+          @ text2
+      log 'text1, text2, diff1', text1, text2, diff1
+      var diff2
+        _ diff_lineMode
+          @ text1
+          @ text2
+      log 'text1, text2, diff1', text1, text2, diff2
+
+      *$
+
+      function diff_lineMode
+        param text1
+        param text2
+        var dmp = new diff_match_patch()
+        var a = dmp.diff_linesToChars_(text1, text2)
+        var lineText1 = a.chars1
+        var lineText2 = a.chars2
+        var lineArray = a.lineArray
+        var diffs = dmp.diff_main(lineText1, lineText2, false)
+        _ dmp.diff_charsToLines_(diffs, lineArray)
+        return diffs

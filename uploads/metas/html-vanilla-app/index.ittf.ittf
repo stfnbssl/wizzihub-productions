@@ -1,0 +1,7 @@
+template basic
+  $ 
+      var $2 = '${"$"}';
+      var $3 = '${' + $2 + '}';
+      var $p2 = '${"("}';
+
+  $include ./src/index

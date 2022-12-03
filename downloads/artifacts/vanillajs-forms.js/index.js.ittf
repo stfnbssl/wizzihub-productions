@@ -1,0 +1,6 @@
+module
+  kind es6
+  $include vanillajs-core
+  $include vanillajs-utils
+  $include vanillajs-controls
+  $include vanillajs-forms

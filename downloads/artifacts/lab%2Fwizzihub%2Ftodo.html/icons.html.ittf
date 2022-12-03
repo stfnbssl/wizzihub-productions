@@ -1,0 +1,35 @@
+html
+  $
+    var md = {
+    }
+    var count = 0;
+    var perRow = 8;
+    //
+
+  layouts/mui( & md )
+    $append components
+      styled( Frame, div )
+        @ float "left"
+        @ width "100px"
+      styled( Clear, div )
+        @ clear "both"
+      styled( Label, div )
+        @ fontSize "9px"
+    render
+      # const classes = useStyles()
+      return 
+        div
+          $foreach icon in icons.children
+            $ count++
+            $if count > perRow
+              br
+              < Clear
+              $ count = 0
+            < Frame
+              @ key {'${icon.name}'}
+              span
+                @ className "material-icons"
+                + ${icon.name}
+              < Label
+                + ${icon.name}
+              

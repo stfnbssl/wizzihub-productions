@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monaco Editor Demo</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/monaco-editor/0.20.0/min/vs/editor/editor.main.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <h2>Monaco Editor Sync Loading Sample - PHP 案例</h2>
+    <div id="container" style="width:800px;height:600px;border:1px solid grey"></div>
+
+    <h2>Monaco Editor Sync Loading Sample - 不可编辑</h2>
+    <div id="container1" style="width:800px;height:600px;border:1px solid grey"></div>
+
+    <h2>Monaco Editor Sync Loading Sample - 键盘事件</h2>
+    <div id="container2" style="width:800px;height:600px;border:1px solid grey"></div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/monaco-editor/0.20.0/min/vs/loader.min.js"></script>
+
+    <script>
+        const phpCode = `
+<?php
+
+$arrUids = [2368859867];
+//获取用户信息
+$objUclude = new Hk_Ds_User_Ucloud();
+// 批量获取用户信息
+$uInfos = $objUclude->getUserInfo($arrUids);
+
+echo json_encode($uInfos);
+
+`
+
+const jsonCode = JSON.stringify({
+	"2368859867": {
+		"avatar": "",
+		"experience": 84,
+		"grade": 7,
+		"phone": "11500809686",
+		"sex": 0,
+		"uid": 2368859867,
+		"uname": "11500809686",
+		"wealth": 0,
+		"regTime": 1557474905,
+		"entryYear": 2017,
+		"ulevel": 2
+	}
+}, null, 4)
+
+const jsCode = `
+function hello() {
+	alert('Hello world!');
+}
+`
+
+
+        require.config({ paths: { 'vs': 'https://cdn.bootcdn.net/ajax/libs/monaco-editor/0.20.0/min/vs' } });
+
+        require(['vs/editor/editor.main'], function () {
+            var editor = monaco.editor.create(document.getElementById('container'), {
+                value: phpCode,
+                language: 'php'
+            });
+
+            var editor1 = monaco.editor.create(document.getElementById('container1'), {
+                value: jsonCode,
+                language: 'json',
+                readOnly: true
+            });
+
+            var editor2 = monaco.editor.create(document.getElementById('container2'), {
+                value: jsCode,
+                language: "javascript",
+            });
+
+            var bindRun = editor2.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, function() {
+                console.log(editor2.getValue())
+                alert('do anything')
+            })
+        });
+    </script>
+    </script>
+</body>
+
+</html>

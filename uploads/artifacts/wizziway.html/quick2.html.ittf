@@ -1,0 +1,77 @@
+html 
+    $
+      var opt = {
+        title: 'Quick samples',
+        useWizziBrowser: true,
+        useMonaco: true,
+      }
+      //
+    html/layouts/basic( &opt )
+      $append body-scripts
+        js http://localhost:5000/~/stfnbssl/lab%2Fvanillajs%2Fjs?savecount=3&filepath=index.js.ittf
+      # container
+          style width:800px;height:600px;border:1px solid grey
+        script 
+            module
+                kind react
+                const ittfCode
+                  [
+                    @ 'html'
+                    @ '    div Hello'
+                    ._ join('\n')
+                const jsonCode
+                    _ JSON.stringify
+                        { 
+                            { "2368859867"
+                                @ "avatar" ""
+                                @ "experience" 84
+                                @ "grade" 7
+                                @ "phone" "11500809686"
+                                @ "sex" 0
+                                @ "uid" 2368859867
+                                @ "uname" "11500809686"
+                                @ "wealth" 0
+                                @ "regTime" 1557474905
+                                @ "entryYear" 2017
+                                @ "ulevel" 2
+                        @ null
+                        @ 4
+                _ editors.MonacoEditor.setup
+                    function
+                        $*
+                        _ require.config
+                            { 
+                                { paths
+                                    @ 'vs' 'https://cdn.bootcdn.net/ajax/libs/monaco-editor/0.20.0/min/vs'
+                        _ require
+                            [ 
+                                @ 'vs/editor/editor.main'
+                        *$
+                        var monacoEditor = new editors.MonacoEditor()
+                        _ monacoEditor.setProps
+                            {
+                                @ container 'container'
+                                { files
+                                  { ['file.ittf']
+                                    @ type 'CODE'
+                                    @ contents ittfCode $$ jsonCode
+                                @ selectedFileName 'file.ittf'
+                                @ autoFocus true
+                                @ updateFiles
+                                  =>
+                                      param data
+                                      log 'monacoEditor.updateFiles.data', data()
+                                @ onSelectFile
+                                  =>
+                                      param data
+                                      log 'monacoEditor.onSelectFile.data', data
+                                @ readOnly false
+                        _ monacoEditor.render
+                        $*
+                        var editor
+                            _ monaco.editor.create
+                                _ document.getElementById('container')
+                                { 
+                                    @ value jsonCode
+                                    @ language 'json'
+                        *$

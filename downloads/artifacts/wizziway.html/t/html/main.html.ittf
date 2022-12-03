@@ -1,0 +1,28 @@
+$group
+    section 
+        class wzapp
+        header 
+            class wzapp-header
+            h1 WizziWay
+            input 
+                class what-todo
+                placeholder What do you want to do?
+                autofocus 
+        div
+          class productions-container
+          div
+            class productions-explorer
+            $include production-view
+            $include packi-view
+          div
+            class productions-details
+            div
+              class code-editor-container
+        footer 
+            class info
+            p Wizzi is created by
+                a Stefano Bassoli
+                    href https://github.com/stfnbssl
+            p VanillaJS design inspired by
+                a Oscar Godson & Christoph Burgmer
+                    href https://github.com/tastejs/todomvc/tree/gh-pages/examples/vanillajs

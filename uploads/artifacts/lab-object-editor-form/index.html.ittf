@@ -1,0 +1,22 @@
+html 
+    $$ one: https://medium.com/codingthesmartway-com-blog/pure-javascript-building-a-real-world-application-from-scratch-5213591cfcd6
+    $$ $include one/main
+    $$ two: https://github.com/tastejs/todomvc/tree/gh-pages/examples/vanillajs
+    $$ $include two/main
+    
+    head 
+        meta 
+            charset utf-8
+        @title Object editor form
+    css /~/stfnbssl/lab%2Fvanillajs%2Fcss?filepath=index.css.ittf
+    style
+        $$ $include css/base.css            
+    body
+        $$ $include html/main
+        script
+            set window.__filename = 'browser'
+
+        js /~/stfnbssl/wizziway.js?savecount=3&filepath=index.js.ittf
+        script
+            module
+                kind es6

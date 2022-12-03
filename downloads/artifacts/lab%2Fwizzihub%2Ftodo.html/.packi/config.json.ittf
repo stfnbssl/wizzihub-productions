@@ -1,0 +1,10 @@
+{
+  [ tfolders
+    {
+      $$ name "wizzihub/html"
+  [ contexts
+    $*
+    {
+      propertyName "icons"
+      artifactName "lab/wizzihub/icons.ittf"  
+    *$

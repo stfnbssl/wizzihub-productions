@@ -1,0 +1,12 @@
+$group
+    $params name
+    $params name
+    +
+    p ${name}
+        :private
+        async=>
+            param request
+                :ref AuthRequest
+            param response
+                :ref Response
+            $hook

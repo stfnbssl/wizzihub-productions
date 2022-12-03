@@ -1,0 +1,105 @@
+html
+
+    $global
+      var locals = {}
+    $ 
+        var opt = {
+            /* TODO For ittf(s) documents, user SHOULD BE set in the global Artifact Generation Context */
+            section: 'Productions',
+            stickyNav: 'stickyNavbar',
+            stickyNavOffset: 50,
+        }
+        var ca = 'm-s font-x font-w-s';
+
+    layouts/site( &opt )
+        $append head-styles-2
+            style
+                . t-grid 
+                    display grid
+                    grid-template-columns repeat(2, 1fr)
+                . t-item-l
+                    padding 10px
+                    border-bottom 1px solid gray
+                . t-item-r
+                    padding 10px
+                    border-bottom 1px solid gray
+
+        . flex-row space-between m-t-xxl width-full
+            id stickyNavbar
+            . flex-row justify-center m-0-auto
+                a( Artifacts, /productions/artifacts, ${ca}
+                a( Packages, /productions/packages, ${ca}
+                a( Plugins, /productions/plugins, ${ca}
+                a( Metas, /productions/metas, ${ca}
+                a( tFolders, /productions/tfolders, ${ca}
+
+        . m-200 t-grid
+            . t-item-l
+                h2 Artifact productions
+            . t-item-r
+                p Are productions of a single software artifact
+            . t-item-l
+                h4 Data artifacts
+            . t-item-r
+                p Are software artifacts that expose structured data
+            . t-item-l
+                p JSON, Xml, Yaml
+            . t-item-r
+                p ...
+            . t-item-l
+                h4 Document artifacts
+            . t-item-r
+                p ...
+            . t-item-l
+                p Html, Css, Svg, Pdf, Ppt, Word, Kindle
+            . t-item-r
+                p ...
+            . t-item-l
+                h4 Code artifacts
+            . t-item-r
+                p ...
+            . t-item-l
+                p Javascript, Typescript
+            . t-item-r
+                p ...
+            . t-item-l
+                h4 Wizzi artifacts
+            . t-item-r
+                p ...
+            . t-item-l
+                p wfSchema, wfJob
+            . t-item-r
+                p ...
+            . t-item-l
+                h2 Package productions
+            . t-item-r
+                p ...
+            . t-item-l
+                h2 Plugin productions
+            . t-item-r
+                p ...
+            . t-item-l
+                h2 Meta productions
+            . t-item-r
+                p ...
+            . t-item-l
+                p Artifact production templates, Package production templates
+            . t-item-r
+                p ...
+            . t-item-l
+                h2 tFolders
+            . t-item-r
+                p ...
+            . t-item-l
+                p Document artifact fragments, Code artifact fragments
+            . t-item-r
+                p ...
+
+            p
+                lorem 200
+            p
+                lorem 200
+            p
+                lorem 200
+            p
+                lorem 200

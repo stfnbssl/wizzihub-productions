@@ -1,0 +1,195 @@
+module
+    kind react
+    iife 
+        param window
+        function Store
+            param name
+            param callback
+            set callback =
+                || 
+                    + callback
+                    function 
+            set this._dbName = name
+            if !localStorage.getItem(name)
+                var todos = []
+                _ localStorage.setItem(name, JSON.stringify(todos))
+            _ callback.call(this, JSON.parse(localStorage.getItem(name)))
+            #
+                # *
+                # * Creates a new client side storage object and will create an empty
+                # * collection if no collection already exists.
+                # *
+                # * @param {string} name The name of our DB we want to use
+                # * @param {function} callback Our fake DB uses callbacks because in
+                # * real life you probably would be making AJAX calls
+                # 
+            #
+                # *
+                # * Finds items based on a query given as a JS object
+                # *
+                # * @param {object} query The query to match against (i.e. {foo: 'bar'})
+                # * @param {function} callback	 The callback to fire when the query has
+                # * completed running
+                # *
+                # * @example
+                # * db.find({foo: 'bar', hello: 'world'}, function (data) {
+                # *	 // data will return any items that have foo: bar and
+                # *	 // hello: world in their properties
+                # * });
+                # 
+        set Store.prototype.find =
+            function 
+                param query
+                param callback
+                if !callback
+                    return 
+                var todos = JSON.parse(localStorage.getItem(this._dbName))
+                _ callback.call
+                    this this
+                    _ todos.filter
+                        function 
+                            param todo
+                            for 
+                                left
+                                    var q
+                                in query
+                                if query[q] !== todo[q]
+                                    return false
+                            return true
+            #
+                # *
+                # * Finds items based on a query given as a JS object
+                # *
+                # * @param {object} query The query to match against (i.e. {foo: 'bar'})
+                # * @param {function} callback	 The callback to fire when the query has
+                # * completed running
+                # *
+                # * @example
+                # * db.find({foo: 'bar', hello: 'world'}, function (data) {
+                # *	 // data will return any items that have foo: bar and
+                # *	 // hello: world in their properties
+                # * });
+                # 
+            #
+                # *
+                # * Will retrieve all data from the collection
+                # *
+                # * @param {function} callback The callback to fire upon retrieving data
+                # 
+        set Store.prototype.findAll =
+            function 
+                param callback
+                set callback =
+                    || 
+                        + callback
+                        function 
+                _ callback.call(this, JSON.parse(localStorage.getItem(this._dbName)))
+            #
+                # *
+                # * Will retrieve all data from the collection
+                # *
+                # * @param {function} callback The callback to fire upon retrieving data
+                # 
+            #
+                # *
+                # * Will save the given data to the DB. If no item exists it will create a new
+                # * item, otherwise it'll simply update an existing item's properties
+                # *
+                # * @param {object} updateData The data to save back into the DB
+                # * @param {function} callback The callback to fire after saving
+                # * @param {number} id An optional param to enter an ID of an item to update
+                # 
+        set Store.prototype.save =
+            function 
+                param updateData
+                param callback
+                param id
+                var todos = JSON.parse(localStorage.getItem(this._dbName))
+                set callback =
+                    || 
+                        + callback
+                        function 
+                    # If an ID was actually given, find the item and update each property
+                if id
+                    for var i = 0; i < todos.length; i++
+                        if todos[i].id === id
+                            for 
+                                left
+                                    var key
+                                in updateData
+                                set todos[i][key] = updateData[key]
+                            break 
+                    _ localStorage.setItem(this._dbName, JSON.stringify(todos))
+                    _ callback.call(this, todos)
+                else
+                    set updateData.id = new Date().getTime()
+                        # Generate an ID
+                    _ todos.push(updateData)
+                    _ localStorage.setItem(this._dbName, JSON.stringify(todos))
+                    _ callback.call
+                        this this
+                        [ 
+                            @ updateData
+            #
+                # *
+                # * Will save the given data to the DB. If no item exists it will create a new
+                # * item, otherwise it'll simply update an existing item's properties
+                # *
+                # * @param {object} updateData The data to save back into the DB
+                # * @param {function} callback The callback to fire after saving
+                # * @param {number} id An optional param to enter an ID of an item to update
+                # 
+            #
+                # *
+                # * Will remove an item from the Store based on its ID
+                # *
+                # * @param {number} id The ID of the item you want to remove
+                # * @param {function} callback The callback to fire after saving
+                # 
+        set Store.prototype.remove =
+            function 
+                param id
+                param callback
+                var todos = JSON.parse(localStorage.getItem(this._dbName))
+                for var i = 0; i < todos.length; i++
+                    if todos[i].id == id
+                        _ todos.splice(i, 1)
+                        break 
+                _ localStorage.setItem(this._dbName, JSON.stringify(todos))
+                _ callback.call(this, todos)
+            #
+                # *
+                # * Will remove an item from the Store based on its ID
+                # *
+                # * @param {number} id The ID of the item you want to remove
+                # * @param {function} callback The callback to fire after saving
+                # 
+            #
+                # *
+                # * Will drop all storage and start fresh
+                # *
+                # * @param {function} callback The callback to fire after dropping the data
+                # 
+        set Store.prototype.drop =
+            function 
+                param callback
+                var todos = []
+                _ localStorage.setItem(this._dbName, JSON.stringify(todos))
+                _ callback.call(this, todos)
+            #
+                # *
+                # * Will drop all storage and start fresh
+                # *
+                # * @param {function} callback The callback to fire after dropping the data
+                # 
+            # Export to window
+        set window.app =
+            || 
+                + window.app
+                { 
+            # Export to window
+        set window.app.Store = Store
+        (
+            @ window
+        #
+            # jshint eqeqeq:false

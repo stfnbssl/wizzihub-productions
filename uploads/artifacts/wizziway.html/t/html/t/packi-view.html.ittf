@@ -1,0 +1,73 @@
+$group
+    div
+      class packi-view
+      section 
+          class packi-bar flex-column
+          div
+            class flex
+            div
+              button
+                class packi-view-close
+                div
+                  style width: 24px; 
+                  html/images/goback.svg()
+            div
+              class packi-view-path
+              div
+                class packi-view-path-kind
+              div &nbsp; / &nbsp;
+              div
+                class packi-view-path-owner
+              div &nbsp; / &nbsp;
+              div
+                class packi-view-path-name
+          div
+            class packi-view-bar flex justify-content-space-between
+            div
+              class packi-view-search
+              input 
+                  type search
+                  class packi-view-search-field m-s p-s
+                  placeholder Find a file…
+                  autocomplete off
+                  @ aria-label Find a file…
+                  $$ @ value {this.state.l_search}
+                  $$ @ onChange {this.handleInputChange}
+            div
+                class packi-view-kind flex font-m m-t-m
+                div 
+                    input 
+                        type radio
+                        id packi-view-all
+                        name packi-view-kind
+                        value all
+                    label All
+                        for packi-view-all
+                div 
+                    input 
+                        type radio
+                        id packi-view-selected
+                        name packi-view-kind
+                        value selected
+                    label Selected
+                        for packi-view-selected
+                div 
+                    input 
+                        type radio
+                        id packi-view-unselected
+                        name packi-view-kind
+                        value unselected
+                    label Unselected
+                        for packi-view-unselected
+
+            div
+              class packi-view-bar-new m-t-m
+              div
+                  style width:24px
+                  html/images/addDocument.svg()
+
+      section 
+          class main
+        ul 
+            class packi-files-list
+

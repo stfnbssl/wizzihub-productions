@@ -1,0 +1,25 @@
+$group
+
+    {
+      kind "youtube"
+      id "6Se-gtyAdIY"
+      name "BIGA - COME CREARLA E GESTIRLA - TUTTI I SEGRETI!"
+      author "Schifano_Luigi"
+      authorId "@Lapizzafattaamano"
+      categoria "Pane e pizza"
+      [ items
+        {
+          name "Il controllo della temperatura della biga"
+          time "3:20"
+        {
+          name "Miscelazione della biga"
+          time "6:00"
+        {
+          name "Esempio di miscelazione della biga"
+          time "8:00"
+        {
+          name "Messa a riposo della biga"
+          time "9:00"
+        {
+          name "Come giudicare quando la biga è pronta"
+          time "10:00"

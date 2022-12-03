@@ -1,0 +1,145 @@
+$group
+    $params &md
+    import
+        @ Router
+        @ Request
+        @ Response
+        from 'express'
+    import
+        as bodyParser
+        from 'body-parser'
+    import
+        @ ControllerType
+        @ AppInitializerType
+        from '../../app/types'
+    import
+        @ githubTypes
+        @ githubApiCalls
+        @ githubUtils
+        from '../../github'
+    import
+        @ authManager
+        from '../../auth'
+    import
+        @ PackiFiles
+        @ TemplateList
+        @ Template
+        from '../types'
+    import
+        @ sendPromiseResult
+        @ sendSuccess
+        @ sendFailure
+        from '../../../utils/sendResponse'
+    import
+        @ TokenError
+        from 'passport-oauth2'
+    var jsonParser = bodyParser.json()
+    export
+        class GithubController
+            :implements ControllerType
+            p path
+                :public
+                = '/api/v1/github'
+            p router
+                :public
+                _ Router()
+            => initialize
+                param initValues
+                    :ref AppInitializerType
+                _ this.router.get
+                    `lit
+                        +
+                        @ this.path
+                        + /ownedrepos/:uid
+                    @ this.getOwnedRepositories
+                _ this.router.get
+                    `lit
+                        +
+                        @ this.path
+                        + /clone/:uid/:owner/:name/:branch/:kind
+                    @ this.cloneRepository
+                _ this.router.post
+                    `lit
+                        +
+                        @ this.path
+                        + /commit/:uid/:owner/:name/:branch
+                    @ this.commitRepository
+            p getOwnedRepositories
+                :private
+                async=>
+                    param request
+                        :ref Request
+                    param response
+                        :ref Response
+                    const accessToken
+                        await
+                            _ authManager.getAccessTokenFromAccount(request.params.uid, 'github.com')
+                    const repos
+                        await
+                            _ githubApiCalls.getRepositories(accessToken)
+                    const reposMeta
+                        _ repos.map
+                            =>
+                                param value
+                                _ githubUtils.apiRepositoryToMeta(value)
+                    _ sendSuccess(response, reposMeta)
+            p cloneRepository
+                :private
+                async=>
+                    param request
+                        :ref Request
+                    param response
+                        :ref Response
+                    const owner = request.params.owner
+                    const name = request.params.name
+                    const branch = request.params.branch
+                    const kind = request.params.kind
+                    const accessToken
+                        await
+                            _ authManager.getAccessTokenFromAccount(request.params.uid, 'github.com')
+                    const repo
+                        await
+                            _ githubApiCalls.cloneBranch
+                                {
+                                    @ owner
+                                    @ name
+                                    @ token accessToken
+                                @ branch
+                                @ kind
+                    _ sendSuccess(response, repo)
+            p commitRepository
+                :private
+                async=>
+                    param request
+                        :ref Request
+                    param response
+                        :ref Response
+                    const owner = request.params.owner
+                    const name = request.params.name
+                    const branch = request.params.branch
+                    const files
+                        :ref PackiFiles
+                        = request.body.files
+                    _ authManager.getAccessTokenFromAccount(request.params.uid, 'github.com').then
+                        =>
+                            param accessToken
+                            _ githubApiCalls.updateBranch
+                                @ files
+                                {
+                                    @ owner
+                                    @ name
+                                    @ token accessToken
+                                @ branch
+                                ._ then
+                                    =>
+                                        param repo
+                                        _ sendSuccess(response, repo)
+                                ._ catch
+                                    =>
+                                        param err
+                                        _ sendFailure(response, err, 401)
+                        ._ catch
+                            =>
+                                param err
+                                _ console.log('packi.github.commitRepository.owner.name.err', owner, name, err)
+                                _ sendFailure(response, err, 501)

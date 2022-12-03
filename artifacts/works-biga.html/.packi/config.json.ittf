@@ -1,0 +1,6 @@
+{
+  [ tfolders
+  [ contexts
+    {
+      artifactName "works-biga.json" 
+      propertyName "db"  

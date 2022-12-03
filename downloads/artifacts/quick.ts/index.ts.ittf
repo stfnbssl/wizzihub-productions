@@ -1,0 +1,16 @@
+module
+  const res
+    yield 
+      _ call
+        @ callApi
+        @ post
+        @ config.API_URL
+        @ 'productions/artifact/' + encodeURIComponent(action.payload.filePath)
+        @ action.payload.files
+
+  function* wizziRequest
+      yield takeEvery(getType(wizziActions.generateArtifactRequest), handleGenerateArtifactRequest)
+      yield takeEvery(getType(wizziActions.mTreeBuildupScriptRequest), handleMTreeBuildupScriptRequest)
+      yield takeEvery(getType(wizziActions.mTreeRequest), handleMTreeRequest)
+      yield takeEvery(getType(wizziActions.executeJobRequest), handleExecuteJobRequest)
+

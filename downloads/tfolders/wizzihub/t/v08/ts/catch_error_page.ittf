@@ -1,0 +1,11 @@
+$group
+    $params message
+    ._ catch
+        =>
+            param err
+                :any
+            _ response.render
+                @ 'error.html.ittf'
+                {
+                    @ message '${message}'
+                    @ error err

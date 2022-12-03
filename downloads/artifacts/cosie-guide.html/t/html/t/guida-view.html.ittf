@@ -1,0 +1,19 @@
+$group
+    div
+      class guide-view
+      
+      section 
+          class guide-view-filter flex justify-content-space-between
+          div
+              class guide-view-search
+              input 
+                  type search
+                  class guide-view-search-field m-s p-s
+                  placeholder Find a guida …
+                  autocomplete off
+                  @ aria-label Find a guida …
+
+      section 
+        class main
+        ul 
+            class guide-list

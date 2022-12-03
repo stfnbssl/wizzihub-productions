@@ -1,0 +1,22 @@
+$group
+
+    {
+      kind "youtube"
+      id "GQ7pAvm53oA"
+      name "Come fare la pizza Con la Biga 100% di Roberto Susta"
+      author "Roberto Susta"
+      authorId "@pizzaiolonapoletano5242"
+      categoria "Pane e pizza"
+      [ items
+        {
+          name "Malto di Astasico"
+          time "9:44"
+        {
+          name "Olio alla fine dell'impasto"
+          time "13:38"
+        {
+          name "Messa in massa e nido d'ape (post-impasto con biga)"
+          time "13:55"
+        {
+          name "Il taglio della pizza"
+          time "17:15"

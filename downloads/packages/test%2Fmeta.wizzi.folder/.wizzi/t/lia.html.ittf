@@ -1,0 +1,5 @@
+$group
+    $params text, href
+    li
+        a ${text}
+            href ${href}

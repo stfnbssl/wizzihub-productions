@@ -1,0 +1,66 @@
+$group
+  
+  $global
+    var locals = {
+      user: {}
+    }
+  
+  $
+    var opt = {
+      useReact: true,
+      react: {},
+      useAxios: true,
+    }
+    //
+
+  layouts/site(&opt)
+    # root
+
+    $append body-scripts
+      script
+        type text/babel
+        module
+          kind react
+          const useState = React.useState
+          const useEffect = React.useEffect
+          log 'useState', useState
+          log 'useEffect', useEffect
+          $include js/wizziapis.js
+          $include js/useFetchGet.js
+          function Demo
+              const 
+                  { 
+                      @ data
+                      @ isLoading
+                      @ reloadData
+                  =
+                      _ useFetchGet
+                          {
+                              @ action wizziApi.getArtifact
+                              @ param1 'stfnbssl'
+                              @ param2 null
+                              @ initialState []
+                              @ skip false
+              return 
+                  div
+                    @ style
+                      {
+                        @ margin '30px'
+                    h1 
+                      + Hello
+                    iif isLoading == false && data
+                      then
+                        _ data.item.map
+                          =>
+                            param item
+                            param ndx
+                            div
+                              @ key {ndx}
+                              p 
+                                + {item.owner} / {item.name}
+                      else
+                        p 
+                          + Loading ...
+          _ ReactDOM.render
+              < Demo 
+              _ document.getElementById('root')        

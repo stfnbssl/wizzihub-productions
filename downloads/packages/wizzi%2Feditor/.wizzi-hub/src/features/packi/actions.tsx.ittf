@@ -1,0 +1,53 @@
+module
+  $
+    var md = {
+      name: 'packi',
+      actions: [
+        { 
+          name: 'githubClone', 
+          kname: 'GITHUB_CLONE',
+          requestProps:[
+            { name: 'owner', type: 'string'},
+            { name: 'name', type: 'string'},
+            { name: 'branch', type: 'string'},
+          ],
+          responseProps:[
+            { name: 'clonedGithubRepo', type: 'PackiFiles', ref: true},
+          ]
+        }
+      ]
+    }
+    //
+  redux/actions( &md )
+    $append imports
+        import 
+            @ PackiFiles
+            from './types'
+    $append consts
+        const EXECUTE_JOB_SUCCESS = '@@packi/EXECUTE_JOB_SUCCESS'
+        const EXECUTE_WIZZI_META_FOLDER_SUCCESS = '@@packi/EXECUTE_WIZZI_META_FOLDER_SUCCESS'
+    $append payloads
+        export 
+            :interface JobResponsePayload
+                :extends ResponsePayload
+                :p generatedArtifacts
+                    :ref PackiFiles
+                :p previousArtifacts
+                    :ref PackiFiles
+        export 
+            :interface WizziMetaFolderResponsePayload
+                :extends ResponsePayload
+                :p generatedIttfDocuments
+                    :ref PackiFiles
+
+    $append calls
+        export 
+            const executeJobSuccess
+                _ createStandardAction(EXECUTE_JOB_SUCCESS)
+                    :param 
+                        :ref JobResponsePayload
+        export 
+            const executeWizziMetaFolderSuccess
+                _ createStandardAction(EXECUTE_WIZZI_META_FOLDER_SUCCESS)
+                    :param 
+                        :ref WizziMetaFolderResponsePayload

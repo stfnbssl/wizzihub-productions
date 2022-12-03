@@ -1,0 +1,41 @@
+$group
+    lang en
+    head 
+        meta 
+            charset UTF-8
+        @title React Markdown Preview
+        meta 
+            name keywords
+            content react,component,markdown,preview
+        meta 
+            name description
+            content React component preview markdown text in web browser. The minimal amount of CSS to replicate the GitHub Markdown style.
+        js https://unpkg.com/@babel/standalone@7.17.5/babel.min.js
+        js https://unpkg.com/react@17.x/umd/react.development.js
+        js https://unpkg.com/react-dom@17.x/umd/react-dom.development.js
+        js https://unpkg.com/@uiw/codepen-require-polyfill/index.js
+        link 
+            rel stylesheet
+            href https://unpkg.com/@uiw/react-markdown-preview/dist/markdown.css
+    body 
+        a @uiw/react-markdown-preview
+            href https://uiwjs.github.io/react-markdown-preview
+        div 
+            id container
+            style padding: 24px
+        js https://unpkg.com/@uiw/react-markdown-preview/dist/markdown.min.js
+        script 
+            type text/babel
+            module
+                kind react
+                import MarkdownPreview from '@uiw/react-markdown-preview'
+                const source
+                    `lit 
+                        + ## MarkdownPreview \n\n> todo: React component preview markdown text.&nbsp;
+                function Demo
+                    return 
+                        < MarkdownPreview 
+                            @ source {source}
+                _ ReactDOM.render
+                    < Demo 
+                    _ document.getElementById('container')

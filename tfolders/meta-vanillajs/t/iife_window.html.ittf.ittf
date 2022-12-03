@@ -1,0 +1,14 @@
+${$2}group
+  ${$2}params ns|@@null, obj|@@null
+  
+  iife 
+    param window
+    param _
+    ${$2}if ns != null
+      set window.${$2}{ns} = window.${$2}{ns} || {}
+    ${$2}hook
+    ${$2}if obj != null
+      set window.${$2}{ns}.${$2}{obj} = ${$2}{obj}
+    (
+      @ window
+      @ utils.Underscore

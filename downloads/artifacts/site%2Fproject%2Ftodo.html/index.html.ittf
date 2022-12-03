@@ -1,0 +1,64 @@
+html
+
+    $global
+      var locals = {}
+    $ 
+        var opt = {
+            section: 'Project',
+        }
+        var ca = 'm-s color-header font-x font-w-s';
+
+    layouts/site( &opt )
+
+        . flex-row space-between m-t-xxl width-full
+            id stickyNavbar
+            . flex-row justify-center m-0-auto
+                a( TODOS, /ittf/site/project/todo.html.ittf, ${ca}
+                a( Issues, /ittf/site/project/issues.html.ittf, ${ca}
+
+        . container-70 
+            . flex-column space-between $$ bg-color-header color-header
+                . m-l-150 m-r-150 font-x font-w-s
+                    h1 TODO
+                    p Complete metaproduction for Wizzi Plugins. Code-schema, Document-schema, Data-schema.
+                    p Implement folder scan on json packi files.
+                    p set -apple-system as default font.
+                    p Finish the demo app 'CSS Editor'.
+                    p Compile webpack bundle on the fly.
+                    ul
+                        li
+                            a Use an in-memory webpack compiler to get specific files or file trees.
+                                href https://gist.github.com/mark-bradshaw/ce2d449e30a856fe3b41
+                        li
+                            a webpack memory compile
+                                href https://github.com/krakenjs/webpack-mem-compile
+                        li
+                            a Webpack Virtual Modules is a plugin that allows for dynamical generation of in-memory virtual modules for JavaScript builds created with webpack. 
+                                href https://github.com/sysgears/webpack-virtual-modules
+                    p From pure javascript upload an Artfact production and then get back the generated artifact.
+                    p Create pure javascript/typescript examples for webpack + react + material ui
+                        \b then implement child-process exec of a webpack compile: 
+                        a example gist
+                            href https://gist.github.com/nyteshade/f4b4f5cc6fad6f91196902e2858168d9
+                    p Continue the lab/react/Properties Editor, to be used for executing a Wizzi Meta Production.
+                    p Create the first Wizzi Meta Plugin.
+                    p Eliminate the 'dist' folder from wizzi packages.
+                    p Restyle and update the readme.md of wizzi packages.
+                    p Create and publish plugins from Package Productions.
+                    
+                    h2 Old works
+                    p In the wizzi/docs there is an interesting  file TreeView, is it working
+                    p In the wizzi/wizzi-demo package there are plenty of examples. Use them incheat sheets also
+                    p example: packages\wizzi-demo\.wizzi\examples\starter\essentials\mtrees\level_1\step_1__copy\treeview_1.html.ittf
+                    
+                    h2 Package wizzi.editor
+                    p Manage SaveState
+                    p From modal "Edit Production Details" update the production data base: use the production Rest Api
+                    p Synthax highlight generated code
+        
+                    h1 Good reads
+                    ul
+                        li
+                            a twitter-lite-and-high-performance-react-progressive-web-apps-at-scale
+                                href https://medium.com/@paularmstrong/twitter-lite-and-high-performance-react-progressive-web-apps-at-scale-d28a00e780a3#3732
+        

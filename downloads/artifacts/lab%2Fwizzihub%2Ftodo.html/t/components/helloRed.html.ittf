@@ -1,0 +1,21 @@
+$group
+  $
+    var md = {
+      Name: "HelloRed"
+    }
+    //
+  component( &md )
+    $append functions
+      styled( Frame, div )
+        @ color "red"
+    render
+      return
+        < Frame
+          @ sx
+            {
+              @ m 3
+              @ borderColor
+                => 
+                  param theme
+                  return theme.palette.primary.main
+          + Hello

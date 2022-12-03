@@ -1,0 +1,234 @@
+$group
+    $
+      var myName = 'Model';
+      //
+
+    iife_window( app, ${myName})
+        
+        const productionChars
+            {
+              @ "artifact" "a"
+              @ "package" "p"
+              @ "plugin" "l"
+              @ "meta" "m"
+              @ "tfolder" "t"
+        
+        function ${myName}
+            param storage
+            param defaults
+            set this.storage = storage
+            set this.defaults = defaults
+            set this.wzApi = api.Wizzi
+            #
+                # 
+                # Creates a new Model instance and hooks up the storage.
+                # 
+                # @constructor
+                # @param {object} storage A reference to the client side storage class
+                # 
+        set ${myName}.prototype.createProduction =
+            function 
+                param productionKind
+                param owner
+                param name
+                param_options_callback( Method: ${myName}.createProduction )
+                var newItem
+                    { 
+                        @ owner owner
+                        @ name name
+                if productionKind.toLowerCase() == 'artifact'
+                  assert_not_null( options.mainIttf, Method: ${myName}.createProduction, options )
+                  assert_not_null( options.wizziSchema, Method: ${myName}.createProduction, options )
+                  set newItem.mainIttf = options.mainIttf
+                  set newItem.wizziSchema = options.wizziSchema
+                _ this.storage.createProduction
+                  @ productionKind
+                  @ newItem
+                  @ callback
+            #
+                # 
+                # Creates a new Wizzi Production
+                # 
+                # @param {string} [owner] The owner of the production
+                # @param {string} [name] The name of the production
+                # @param {object} [options] Extra options.
+                # @param {function} [callback] The callback to fire after the production is created
+                # 
+        set ${myName}.prototype.getProduction
+            function 
+                param productionKind
+                param viewKind
+                param activePackiSearchTerm
+                param owner
+                param_callback( required, Method: ${myName}.getProduction )
+                _ this.storage.findAllProductions
+                  @ productionKind
+                  @ owner
+                  =>
+                    param items
+                    foreach item in items
+                      set item.__productionChar = productionChars[productionKind.toLowerCase()]
+                    _ callback
+                      _ items.filter
+                        =>
+                          param item
+                          $$ log '${myName}.getProduction.item', item.__selected, viewKind
+                          var ok = false
+                          if activePackiSearchTerm && activePackiSearchTerm.length > 0
+                            set ok = item.name.indexOf(activePackiSearchTerm) > -1
+                          else
+                            set ok = viewKind == 'all' ||
+                              \b viewKind == 'selected' && item.__selected ||
+                              \b viewKind == 'unselected' && !item.__selected
+                          return ok
+            #
+                # 
+                # Finds and returns a production in storage. If no query is given it'll simply
+                # return everything. If you pass in a string or number it'll look that up as
+                # the ID of the model to find. Lastly, you can pass it an object to match
+                # against.
+                # 
+                # @param {string|number|object} [query] A query to match models against
+                # @param {function} [callback] The callback to fire after the model is found
+                # 
+                # @example
+                # model.read(1, func); // Will find the model with an ID of 1
+                # model.read('1'); // Same as above
+                # //Below will find a model with foo equalling bar and hello equalling world.
+                # model.read({ foo: 'bar', hello: 'world' });
+                # 
+        
+        set ${myName}.prototype.getProductionPacki
+            function 
+                param productionKind
+                param owner
+                param id
+                param_callback( required, Method: ${myName}.getProductionPacki )
+                _ this.storage.findProduction
+                  @ productionKind
+                  @ owner
+                  @ id
+                  @ callback
+        
+        set ${myName}.prototype.updatePackiFile
+            function 
+                param productionKind
+                param productionId
+                param filePath
+                param oldContents
+                param newContents
+                param_callback( required, Method: ${myName}.updatePackiFile )
+                if oldContents.trim() == newContents.trim()
+                  return
+                    _ callback
+                      {
+                        @ message 'Nothin changed'
+                const pm
+                  new this.wzApi.PackiManager
+                _ pm.putCodeFile
+                  @ filePath
+                  @ oldContents
+                const fileDiffs
+                  _ pm.getFileDiffs
+                    @ filePath
+                    @ newContents
+                const packiDiffs
+                  {
+                    { [filePath]
+                      @ d 0
+                      @ diffs fileDiffs
+                _ this.storage.putPackiDiffs
+                  @ productionKind
+                  @ productionId
+                  @ packiDiffs
+                  {
+                  @ callback
+
+        set ${myName}.prototype.updateSelectedPackiFile
+            function 
+                param productionKind
+                param productionId
+                param filePath
+                param checked
+                _ this.storage.updateSelectedPackiFile
+                  @ productionKind
+                  @ productionId
+                  @ filePath
+                  @ checked
+        
+        set ${myName}.prototype.getSelectedPackiFiles
+            function 
+                param productionKind
+                param productionId
+                return
+                  _ this.storage.getSelectedPackiFiles
+                    @ productionKind
+                    @ productionId
+
+        set ${myName}.prototype.updateLocal
+            function 
+                param productionKind
+                param id
+                param updateData
+                _ this.storage.updateLocal
+                  @ productionKind
+                  @ id
+                  @ updateData
+
+        set ${myName}.prototype.getProductionViewKind
+            function 
+                return
+                  _ this.storage.getLocalValue
+                    @ 'production'
+                    @ 'productionView'
+                    @ this.defaults.productionView
+        
+        set ${myName}.prototype.setProductionViewKind
+            function 
+                param value
+                _ this.storage.setLocalValue
+                  @ 'production'
+                  @ 'productionView'
+                  @ value
+
+        set ${myName}.prototype.getProductionValue
+            function 
+                param name
+                param defaultValue
+                return
+                  _ this.storage.getLocalValue
+                    @ 'production'
+                    @ name
+                    @ defaultValue
+
+        set ${myName}.prototype.setProductionValue
+            function 
+                param name
+                param value
+                _ this.storage.setLocalValue
+                  @ 'production'
+                  @ name
+                  @ value
+
+        set ${myName}.prototype.getPackiValue
+            function 
+                param name
+                param defaultValue
+                return
+                  _ this.storage.getLocalValue
+                    @ 'packi'
+                    @ name
+                    @ defaultValue
+
+        set ${myName}.prototype.setPackiValue
+            function 
+                param name
+                param value
+                _ this.storage.setLocalValue
+                  @ 'packi'
+                  @ name
+                  @ value
+
+
+
+

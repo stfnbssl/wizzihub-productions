@@ -1,0 +1,8 @@
+{
+  [ tfolders
+    {
+      name "wizzi/tsx"
+  [ contexts
+    {
+      $$ propertyName "..name.."
+      $$ artifactName "..name.."

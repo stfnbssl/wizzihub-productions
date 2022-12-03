@@ -1,0 +1,6 @@
+{
+    [ properties
+        {
+            name "name"
+            type "string"
+        string( kind )

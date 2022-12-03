@@ -1,0 +1,71 @@
+$group
+
+  let apiIsReady = false
+  let timer
+  set window.onYouTubePlayerAPIReady =
+      function 
+          set apiIsReady = true
+
+  function loadPlayer
+      info "loadPlayer start"
+      var tag = document.createElement('script')
+      set tag.src = "https://www.youtube.com/player_api"
+      var firstScriptTag = document.getElementsByTagName('script')[0]
+      _ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
+      info "loadPlayer end"
+
+  function addVideo
+      info "addVideo"
+      set player =
+          new YT.Player
+              @ 'player'
+              { 
+                  @ height '360'
+                  @ width '640'
+                  @ videoId 'M7lc1UVf-VE'
+                  { playerVars
+                    @ rel '0'
+                  { events
+                      @ 'onReady' onPlayerReady
+                      @ 'onStateChange' onPlayerStateChange
+
+  function onPlayerReady
+      param event
+      info "onPlayerReady"
+      _ event.target.playVideo()
+  
+  var done = false
+  function onPlayerStateChange
+      param event
+      if event.data == YT.PlayerState.PLAYING && !done
+          info "onPlayerStateChange"
+          _ setTimeout(stopVideo, 6000)
+          set done = true
+  function stopVideo
+      info "stopVideo"    
+      _ player.stopVideo()
+
+
+  function init
+      param opts
+      info "init"
+      _ loadPlayer()
+      set timer =
+          _ setInterval
+              function checkAPIReady
+                  info "checkAPIReady", apiIsReady
+                  if apiIsReady
+                      set timer = clearInterval(timer)
+                      _ addVideo
+                          $*
+                          @ opts.video
+                          @ opts.playerVars 
+                          *$
+              @ 200
+  
+  iife
+    _ init
+
+
+
+

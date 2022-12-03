@@ -1,0 +1,9 @@
+$group
+  $
+    var productionsData = [
+      { name: 'artifact', bgcolor: '#eefeee'},
+      { name: 'package', bgcolor: '#eeefee'},
+      { name: 'plugin', bgcolor: '#efeeee'},
+      { name: 'meta', bgcolor: '#feeeee'},
+      { name: 'tfolder', bgcolor: '#eeeefe'},
+    ];

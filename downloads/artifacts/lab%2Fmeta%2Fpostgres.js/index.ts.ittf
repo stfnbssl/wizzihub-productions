@@ -1,0 +1,25 @@
+module
+  
+  $ 
+    var md = {
+        Name: 'Post',
+        descr: 'Blog post',
+        prefix: 'post',
+        query: [
+            { name: 'owner', type: 'string' },
+            { name: 'name', type: 'string' },
+        ],
+        fields: [
+            { name: 'owner', type: 'string' },
+            { name: 'name', type: 'string' },
+            { name: 'title', type: 'string' },
+            { name: 'content', type: 'string' },
+            { name: 'state', type: 'string' },
+            { name: 'pubblished_at', type: 'date' },
+        ],
+        created_at: true,
+        updated_at: true,
+        update_delete_by_id: true
+    }
+
+  function create

@@ -1,0 +1,322 @@
+$group
+    iife_window() 
+        function Controller
+            param model
+            param view
+            var self = this
+            set self.model = model
+            set self.view = view
+            _ self.view.bind
+                @ 'newTodo'
+                function 
+                    param title
+                    _ self.addItem(title)
+            _ self.view.bind
+                @ 'itemEdit'
+                function 
+                    param item
+                    _ self.editItem(item.id)
+            _ self.view.bind
+                @ 'itemEditDone'
+                function 
+                    param item
+                    _ self.editItemSave(item.id, item.title)
+            _ self.view.bind
+                @ 'itemEditCancel'
+                function 
+                    param item
+                    _ self.editItemCancel(item.id)
+            _ self.view.bind
+                @ 'itemRemove'
+                function 
+                    param item
+                    _ self.removeItem(item.id)
+            _ self.view.bind
+                @ 'itemToggle'
+                function 
+                    param item
+                    _ self.toggleComplete(item.id, item.completed)
+            _ self.view.bind
+                @ 'removeCompleted'
+                function 
+                    _ self.removeCompletedItems()
+            _ self.view.bind
+                @ 'toggleAll'
+                function 
+                    param status
+                    _ self.toggleAll(status.completed)
+            #
+                # *
+                # * Takes a model and view and acts as the controller between them
+                # *
+                # * @constructor
+                # * @param {object} model The model instance
+                # * @param {object} view The view instance
+                # 
+        set Controller.prototype.setView =
+            function 
+                param locationHash
+                var route = locationHash.split('/')[1]
+                var page = route || ''
+                _ this._updateFilterState(page)
+            #
+                # *
+                # * Loads and initialises the view
+                # *
+                # * @param {string} '' | 'active' | 'completed'
+                # 
+        set Controller.prototype.showAll =
+            function 
+                var self = this
+                _ self.model.read
+                    function 
+                        param data
+                        _ self.view.render('showEntries', data)
+            #
+                # *
+                # * An event to fire on load. Will get all items and display them in the
+                # * todo-list
+                # 
+        set Controller.prototype.showActive =
+            function 
+                var self = this
+                _ self.model.read
+                    { 
+                        @ completed false
+                    function 
+                        param data
+                        _ self.view.render('showEntries', data)
+            #
+                # *
+                # * Renders all active tasks
+                # 
+        set Controller.prototype.showCompleted =
+            function 
+                var self = this
+                _ self.model.read
+                    { 
+                        @ completed true
+                    function 
+                        param data
+                        _ self.view.render('showEntries', data)
+            #
+                # *
+                # * Renders all completed tasks
+                # 
+        set Controller.prototype.addItem =
+            function 
+                param title
+                var self = this
+                if title.trim() === ''
+                    return 
+                _ self.model.create
+                    @ title
+                    function 
+                        _ self.view.render('clearNewTodo')
+                        _ self._filter(true)
+            #
+                # *
+                # * An event to fire whenever you want to add an item. Simply pass in the event
+                # * object and it'll handle the DOM insertion and saving of the new item.
+                # 
+        set Controller.prototype.editItem =
+            function 
+                param id
+                var self = this
+                _ self.model.read
+                    @ id
+                    function 
+                        param data
+                        _ self.view.render
+                            @ 'editItem'
+                            { 
+                                @ id
+                                @ title data[0].title
+            #
+                # 
+                # * Triggers the item editing mode.
+                # 
+        set Controller.prototype.editItemSave =
+            function 
+                param id
+                param title
+                var self = this
+                set title = title.trim()
+                if title.length !== 0
+                    _ self.model.update
+                        @ id
+                        { 
+                            @ title
+                        function 
+                            _ self.view.render
+                                @ 'editItemDone'
+                                { 
+                                    @ id
+                                    @ title
+                else
+                    _ self.removeItem(id)
+            #
+                # 
+                # * Finishes the item editing mode successfully.
+                # 
+        set Controller.prototype.editItemCancel =
+            function 
+                param id
+                var self = this
+                _ self.model.read
+                    @ id
+                    function 
+                        param data
+                        _ self.view.render
+                            @ 'editItemDone'
+                            { 
+                                @ id
+                                @ title data[0].title
+            #
+                # 
+                # * Cancels the item editing mode.
+                # 
+        set Controller.prototype.removeItem =
+            function 
+                param id
+                var self = this
+                _ self.model.remove
+                    @ id
+                    function 
+                        _ self.view.render('removeItem', id)
+                _ self._filter()
+            #
+                # *
+                # * By giving it an ID it'll find the DOM element matching that ID,
+                # * remove it from the DOM and also remove it from storage.
+                # *
+                # * @param {number} id The ID of the item to remove from the DOM and
+                # * storage
+                # 
+        set Controller.prototype.removeCompletedItems =
+            function 
+                var self = this
+                _ self.model.read
+                    { 
+                        @ completed true
+                    function 
+                        param data
+                        _ data.forEach
+                            function 
+                                param item
+                                _ self.removeItem(item.id)
+                _ self._filter()
+            #
+                # *
+                # * Will remove all completed items from the DOM and storage.
+                # 
+        set Controller.prototype.toggleComplete =
+            function 
+                param id
+                param completed
+                param silent
+                var self = this
+                _ self.model.update
+                    @ id
+                    { 
+                        @ completed
+                    function 
+                        _ self.view.render
+                            @ 'elementComplete'
+                            { 
+                                @ id
+                                @ completed
+                if !silent
+                    _ self._filter()
+            #
+                # *
+                # * Give it an ID of a model and a checkbox and it will update the item
+                # * in storage based on the checkbox's state.
+                # *
+                # * @param {number} id The ID of the element to complete or uncomplete
+                # * @param {object} checkbox The checkbox to check the state of complete
+                # *                          or not
+                # * @param {boolean|undefined} silent Prevent re-filtering the todo items
+                # 
+        set Controller.prototype.toggleAll =
+            function 
+                param completed
+                var self = this
+                _ self.model.read
+                    { 
+                        @ completed !completed
+                    function 
+                        param data
+                        _ data.forEach
+                            function 
+                                param item
+                                _ self.toggleComplete(item.id, completed, true)
+                _ self._filter()
+            #
+                # *
+                # * Will toggle ALL checkboxes' on/off state and completeness of models.
+                # * Just pass in the event object.
+                # 
+        set Controller.prototype._updateCount =
+            function 
+                var self = this
+                _ self.model.getCount
+                    function 
+                        param todos
+                        _ self.view.render('updateElementCount', todos.active)
+                        _ self.view.render
+                            @ 'clearCompletedButton'
+                            { 
+                                @ completed todos.completed
+                                @ visible todos.completed > 0
+                        _ self.view.render
+                            @ 'toggleAll'
+                            { 
+                                @ checked todos.completed === todos.total
+                        _ self.view.render
+                            @ 'contentBlockVisibility'
+                            { 
+                                @ visible todos.total > 0
+            #
+                # *
+                # * Updates the pieces of the page which change depending on the remaining
+                # * number of todos.
+                # 
+        set Controller.prototype._filter =
+            function 
+                param force
+                var activeRoute = this._activeRoute.charAt(0).toUpperCase() + this._activeRoute.substr(1)
+                _ this._updateCount()
+                    # Update the elements on the page, which change with each completed todo
+                    # If the last active route isn't "All", or we're switching routes, we
+                    # re-create the todo item elements, calling:
+                    # this.show[All|Active|Completed]();
+                if force || this._lastActiveRoute !== 'All' || this._lastActiveRoute !== activeRoute
+                    _ this['show' + activeRoute]()
+                set this._lastActiveRoute = activeRoute
+            #
+                # *
+                # * Re-filters the todo items, based on the active route.
+                # * @param {boolean|undefined} force  forces a re-painting of todo items.
+                # 
+        set Controller.prototype._updateFilterState =
+            function 
+                param currentPage
+                set this._activeRoute = currentPage
+                    # Store a reference to the active route, allowing us to re-filter todo
+                    # items as they are marked complete or incomplete.
+                if currentPage === ''
+                    set this._activeRoute = 'All'
+                _ this._filter()
+                _ this.view.render('setFilter', currentPage)
+            #
+                # 
+                # Simply updates the filter nav's selected states
+                # 
+            # Export to window
+        set window.app =
+            || 
+                + window.app
+                { 
+            # Export to window
+        set window.app.Controller = Controller

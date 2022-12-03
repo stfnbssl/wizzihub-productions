@@ -1,0 +1,14 @@
+$group
+  $*
+  (
+    iife 
+      param window
+      $hook
+      (
+        @ window
+  *$
+  iife 
+    param window
+    $hook
+    (
+      @ window

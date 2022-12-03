@@ -1,0 +1,412 @@
+$group
+    $
+      var myName = 'View';
+      //
+
+    iife_window( app, ${myName})
+        function ${myName}
+            param template
+            param styles
+            set this.template = template
+            set this.styles = styles
+            set this.ENTER_KEY = 13
+            set this.ESCAPE_KEY = 27
+            #
+            set this.$whatTodo = qs('.what-todo')
+            #
+            set this.$productionView = qs('.production-view')
+            set this.$productionViewSearch = qs('.production-view-search-field')
+            set this.$productionViewKind = qs('.production-view-kind')
+            set this.$productionViewNewItem = qs('.production-view-new')
+            set this.$productionList = qs('.production-list')
+            #
+            set this.$packiView = qs('.packi-view')
+            set this.$packiViewSearch = qs('.packi-view-search-field')
+            set this.$packiViewKind = qs('.packi-view-kind')
+            set this.$packiViewClose = qs('.packi-view-close')
+            set this.$packiViewNewItem = qs('.packi-view-bar-new')
+            set this.$packiFilesList = qs('.packi-files-list')
+            set this.$packiViewPath
+              {
+                @ kind qs('.packi-view-path-kind')
+                @ owner qs('.packi-view-path-owner')
+                @ name qs('.packi-view-path-name')
+         
+            #
+            set this.$codeEditor = qs('.code-editor-container')
+            $*
+            set this.$productionItemCounter = qs('.production-count')
+            set this.$clearCompleted = qs('.clear-completed')
+            set this.$main = qs('.main')
+            set this.$footer = qs('.footer')
+            set this.$newproduction = qs('.new-production')
+            *$
+            #
+                # 
+                # Has two entry points:
+                # 
+                #   - bind(eventName, handler)
+                #     Takes a production application event and registers the handler
+                #   - render(command, parameterObject)
+                #     Renders the given command with the options
+                # 
+        set ${myName}.prototype._setFilter =
+            function 
+                param currentPage
+                set qs('.filters .selected').className = ''
+                set qs('.filters [href="#/' + currentPage + '"]').className = 'selected'
+        
+        set ${myName}.prototype._createPackiFile
+            function 
+              param productionKind
+              param productionOwner
+              param productionName
+              log '${myName}.prototype._createPackiFile', productionOwner, productionName
+              const formData
+                _ this.template.createPackiFileForm
+              const originalValues
+                {
+                  @ productionKind
+                  @ owner productionOwner
+                  @ name productionName
+                  @ ''
+                  @ ''
+              _ mvc.Form.setup
+                @ qs
+                @ this.$codeEditor
+                @ formData
+                @ originalValues
+                {
+                    @ onSubmit
+                        =>
+                            param formValues
+                            log '${myName}.prototype._createPackiFile.onSubmit.formValues', formValues
+                            _ this.createPackiFileHandler
+                              @ originalValues
+                              @ formValues
+                    @ onCancel
+                        =>
+                            _ mvc.Form.dispose
+                              @ formData
+        set ${myName}.prototype._editPackiFile =
+            function 
+              param productionKind
+              param productionOwner
+              param productionName
+              param filePath
+              param contents
+              log '${myName}.prototype._editPackiFile', productionOwner, productionName, filePath, contents
+              const formData
+                _ this.template.editPackiFileForm
+              const originalValues
+                {
+                  @ productionKind
+                  @ owner productionOwner
+                  @ name productionName
+                  @ filePath
+                  @ contents
+              _ mvc.Form.setup
+                @ qs
+                @ this.$codeEditor
+                @ formData
+                @ originalValues
+                {
+                    @ onSubmit
+                        =>
+                            param formValues
+                            log 'onSubmit formValues', formValues
+                            _ this.editPackiFileHandler
+                              @ originalValues
+                              @ formValues
+                    @ onCancel
+                        =>
+                            _ mvc.Form.dispose
+                              @ formData
+
+        set ${myName}.prototype._createPackiFile
+            function 
+              param productionKind
+              param productionOwner
+              param productionName
+              log '${myName}.prototype._createPackiFile', productionOwner, productionName
+              const formData
+                _ this.template.createPackiFileForm
+              const originalValues
+                {
+                  @ productionKind
+                  @ owner productionOwner
+                  @ name productionName
+                  @ filePath ''
+                  @ contents ''
+              _ mvc.Form.setup
+                @ qs
+                @ this.$codeEditor
+                @ formData
+                @ originalValues
+                {
+                    @ onSubmit
+                        =>
+                            param formValues
+                            log 'onSubmit formValues', formValues
+                            _ this.createPackiFileHandler
+                              @ originalValues
+                              @ formValues
+                    @ onCancel
+                        =>
+                            _ mvc.Form.dispose
+                              @ formData
+
+        set ${myName}.prototype.render =
+            function 
+                param viewCmd
+                param parameter
+                var self = this
+                var viewCommands
+                    { 
+                        @ setProductionViewKind
+                            function 
+                                set qs('#prod-view-' + parameter).checked = true
+                        @ setProductionSearchTerm
+                            function 
+                                set self.$productionViewSearch.value = parameter
+                        @ showProductionView
+                            function 
+                                log '${myName}.render.showProductionView'
+                                _ mvc.Form.dispose
+                                  @ qs
+                                  @ self.$codeEditor
+                                  _ self.template.editPackiFileForm
+                                set self.$packiView.style.display = 'none'
+                                set self.$whatTodo.style.display = 'block'
+                                set self.$productionView.style.display = 'block'
+                        @ showProductionEntries
+                            function 
+                                set self.$productionList.innerHTML = self.template.showProductionList(parameter)
+                        @ setPackiViewKind
+                            function 
+                                set qs('#packi-view-' + parameter).checked = true
+                        @ setPackiSearchTerm
+                            function 
+                                set self.$packiViewSearch.value = parameter
+                        @ showPackiView
+                            function 
+                                log '${myName}.render.showPackiView'
+                                set self.$whatTodo.style.display = 'none'
+                                set self.$productionView.style.display = 'none'
+                                set self.$packiViewPath.kind.innerHTML = parameter.kind
+                                set self.$packiViewPath.owner.innerHTML = parameter.owner
+                                set self.$packiViewPath.name.innerHTML = parameter.name
+                                set self.$packiView.style.display = 'block'
+                        @ showPackiFiles
+                            function 
+                                set self.$packiFilesList.innerHTML
+                                  _ self.template.showPackiFilesList
+                                    @ parameter
+                                    @ self.styles.packiFileListItem
+                        @ createPackiFile
+                            function
+                                _ self._createPackiFile
+                                  @ parameter.productionKind
+                                  @ parameter.productionOwner
+                                  @ parameter.productionName
+                        @ editPackiFile
+                            function
+                                _ self._editPackiFile
+                                  @ parameter.productionKind
+                                  @ parameter.productionOwner
+                                  @ parameter.productionName
+                                  @ parameter.filePath
+                                  @ parameter.contents 
+                        @ contentBlockVisibility
+                            function 
+                                set self.$footer.style.display =
+                                    iif parameter.visible
+                                        then 'block'
+                                        else 'none'
+                        @ setFilter
+                            function 
+                              set qs('.filters .selected').className = ''
+                              if qs('.filters [href="#/' + parameter + '"]')
+                                set qs('.filters [href="#/' + parameter + '"]').className = 'selected'
+                        @ clearNewproduction
+                            function 
+                                set self.$newproduction.value = ''
+                _ viewCommands[viewCmd]()
+        set ${myName}.prototype._prodItemId =
+            function 
+                param element
+                var li = $parent(element, 'li')
+                return li.dataset.id
+        set ${myName}.prototype._packiItemId =
+            function 
+                param element
+                var li = $parent(element, 'li')
+                return li.dataset.filepath
+        set ${myName}.prototype.bind =
+            function 
+                param event
+                param handler
+                var self = this
+                if event === 'prodViewChange'
+                    log '${myName}.bind', self.$productionViewKind
+                    _ $delegate
+                        @ self.$productionViewKind
+                        @ 'input[name="prod-view-kind"]'
+                        @ 'change'
+                        function 
+                            log '${myName}.bind', 'prodViewChange', this.value
+                            _ handler
+                                { 
+                                    @ value this.value
+                elif event === 'prodViewSearchChange'
+                    log '${myName}.bind', self.$productionViewSearch
+                    _ $on
+                        @ self.$productionViewSearch
+                        @ 'input'
+                        function 
+                            log '${myName}.bind', 'prodViewSearchChange', this.value
+                            _ handler
+                                { 
+                                    @ value this.value
+                elif event === 'prodItemToggle'
+                    _ $delegate
+                        @ self.$productionList
+                        @ '.toggle'
+                        @ 'click'
+                        function 
+                            param e
+                            _ e.stopPropagation()
+                            log '${myName}.bind', 'prodItemToggle', self._prodItemId(this)
+                            _ handler
+                                { 
+                                    @ id self._prodItemId(this)
+                                    @ checked this.checked
+                elif event === 'prodViewNewItem'
+                    log '${myName}.binding', 'prodViewNewItem'
+                    _ $on
+                        @ self.$productionViewNewItem
+                        @ 'click'
+                        function 
+                            log '${myName}.bind', 'prodViewNewItem'
+                            _ handler
+                elif event === 'prodItemEdit'
+                    _ $delegate
+                        @expr self.$productionList
+                        @ 'li label'
+                        @ 'dblclick'
+                        function 
+                            # TODO replace A Link with this
+                            _ handler
+                                { 
+                                    @ id self._prodItemId(this)
+                elif event === 'prodItemOpenPackiFiles'
+                    _ $delegate
+                        @ self.$productionList
+                        @ '.prod-item-btn-files'
+                        @ 'click'
+                        function 
+                            log '${myName}.bind', 'prodItemOpenPackiFiles', self._prodItemId(this)
+                            _ handler
+                                { 
+                                    @ id self._prodItemId(this)
+                elif event === 'prodItemRemove'
+                    _ $delegate
+                        @expr self.$productionList
+                        @ '.destroy'
+                        @ 'click'
+                        function 
+                            _ handler
+                                { 
+                                    @ id self._prodItemId(this)
+                elif event === 'packiViewChange'
+                    log '${myName}.bind', self.$packiViewKind
+                    _ $delegate
+                        @ self.$packiViewKind
+                        @ 'input[name="packi-view-kind"]'
+                        @ 'change'
+                        function 
+                            log '${myName}.bind', 'packiViewChange', this.value
+                            _ handler
+                                { 
+                                    @ value this.value
+                elif event === 'packiViewSearchChange'
+                    log '${myName}.bind', self.$packiViewSearch
+                    _ $on
+                        @ self.$packiViewSearch
+                        @ 'input'
+                        function 
+                            log '${myName}.bind', 'packiViewSearchChange', this.value
+                            _ handler
+                                { 
+                                    @ value this.value
+                elif event === 'packiItemToggle'
+                    _ $delegate
+                        @ self.$packiFilesList
+                        @ '.toggle'
+                        @ 'click'
+                        function 
+                            param e
+                            _ e.stopPropagation() 
+                            log '${myName}.bind', 'packiItemToggle', self._packiItemId(this)
+                            _ handler
+                                { 
+                                    @ id self._packiItemId(this)
+                                    @ checked this.checked
+                elif event === 'packiViewClose'
+                    log '${myName}.binding', 'packiViewClose'
+                    _ $on
+                        @ self.$packiViewClose
+                        @ 'click'
+                        function 
+                            log '${myName}.bind', 'packiViewClose'
+                            _ handler
+                elif event === 'onCreatePackiFile'
+                    log '${myName}.binding', 'onCreatePackiFile'
+                    _ $on
+                        @ self.$packiViewNewItem
+                        @ 'click'
+                        function 
+                            log '${myName}.bind', 'onCreatePackiFile'
+                            _ handler
+                elif event === 'onEditPackiFile'
+                    info 'binding onEditPackiFile self.$packiFilesList'
+                    _ $on
+                        @ self.$packiFilesList
+                        @ 'click'
+                        function 
+                            param event
+                            var target = event.target
+                            if !target.classList.contains('editable')
+                              return
+                            var result = null
+                            while target && result == null
+                              if target.tagName == 'LI'
+                                set result = target
+                                info 'on click self.$packiFilesList', result, result.dataset, result.dataset.filepath
+                              set target = target.parentNode
+                            _ handler(result && result.dataset.filepath)
+                elif event === 'packiItemRemove'
+                    _ $delegate
+                        @expr self.$packiFilesList
+                        @ '.destroy'
+                        @ 'click'
+                        function 
+                            _ handler
+                                { 
+                                    @ id self._packiItemId(this)
+                elif event === 'editPackiFile'
+                    set this.editPackiFileHandler = handler
+                elif event === 'createPackiFile'
+                    set this.createPackiFileHandler = handler
+                elif event === 'newproduction'
+                    info 'binding self.$newproduction'
+                    _ $on
+                        @ self.$newproduction
+                        @ 'change'
+                        function 
+                            info 'on change self.$newproduction', self.$newproduction.value
+                            _ handler(self.$newproduction.value)
+                else
+                    throw new Error('Unknown View.bind event: ' + event)
+    #
+        # global qs, qsa, $on, $parent, $delegate

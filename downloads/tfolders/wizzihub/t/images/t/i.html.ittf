@@ -1,0 +1,12 @@
+$group
+    $params l:integer, &opt
+    polyline
+        stroke ${opt.color}
+        fill ${opt.color}
+        stroke-width 2
+        points ${l} ${opt.ybottom} ${l+10} ${opt.y1+80} ${l+40} ${opt.y1+80} ${l+50} ${opt.ybottom}
+    path
+        stroke ${opt.color}
+        fill ${opt.color}
+        stroke-width 2
+        d M${l+30}, ${opt.y1+20} C${l+60},${opt.y1+40} ${l+0},${opt.y1+60} ${l+30}, ${opt.y1+74}

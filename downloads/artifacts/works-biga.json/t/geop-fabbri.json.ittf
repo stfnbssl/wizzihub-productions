@@ -1,0 +1,39 @@
+$group
+
+    {
+      kind "youtube"
+      id "vuJryeyBfB0"
+      name "Dario Fabbri: Capire l'attualità attraverso la Geopolitica"
+      author "Dario Fabbri"
+      authorId "@FestaScienzaFilosofia"
+      categoria "Geopolitica"
+      [ items
+        {
+          name "Di che cosa si occupa la geopolitica"
+          time "7:42"
+        {
+          name "Il metodo di indagine della geopolitica"
+          time "22:28"
+
+    {
+      kind "youtube"
+      id "giGnmBXWsEU"
+      name "Dario Fabbri - Dalla Guerra fredda al nuovo disordine mondiale (1)"
+      author "Dario Fabbri"
+      authorId "@IsrecPiacenza"
+      categoria "Geopolitica"
+      [ items
+        {
+          name "Orizzonte strategico Stati Uniti"
+          time "10:15"
+    {
+      kind "youtube"
+      id "vwVSFDCgW3c"
+      name "Italia terreno di contesa. Dario Fabbri, una strategia per l'Italia"
+      author "Dario Fabbri"
+      authorId "@circolodossettidimilano347"
+      categoria "Geopolitica"
+      [ items
+        {
+          name "Perché l'Ungheria ha meno paura dei russi rispetto alla Polonia"
+          time "10:02"

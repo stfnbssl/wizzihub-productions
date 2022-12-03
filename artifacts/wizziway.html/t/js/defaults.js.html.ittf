@@ -1,0 +1,10 @@
+$group
+    $
+      var myName = 'Defaults';
+      //
+
+    iife_window( app, ${myName})
+        const ${myName}
+          {
+            @ productionView 'all' 
+              # [all | selected | unselected]

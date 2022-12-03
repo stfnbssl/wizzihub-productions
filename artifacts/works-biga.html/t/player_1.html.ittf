@@ -1,0 +1,98 @@
+$group
+  main 
+    section 
+        . center
+            h2 YouTube
+                code iframe
+                + embed
+            div 
+                id YouTube-player
+            div 
+                span 
+                    class nowrap
+                    button 1
+                        onclick document.getElementById('YouTube-video-id').value='yG0oBPtyNb0'; youTubePlayerChangeVideoId();
+                        title In the summertime (Mungo Jerry)
+                    button 2
+                        onclick document.getElementById('YouTube-video-id').value='F2Ug3VkFuDw'; youTubePlayerChangeVideoId();
+                        title Peter Popoff pris la main dans le sac par James Randi
+                    button 3
+                        onclick document.getElementById('YouTube-video-id').value='1X9RvuSuU_Y'; youTubePlayerChangeVideoId();
+                        title The Steven Seagal Show #002
+                    button 4
+                        onclick document.getElementById('YouTube-video-id').value='LHdsMXEwLNE'; youTubePlayerChangeVideoId();
+                        title The Man from Earth (Richard Schenkman)
+                span 
+                    class nowrap margin-left-m margin-right-m
+                    label videoId
+                        for YouTube-video-id
+                    ++ :
+                    input 
+                        id YouTube-video-id
+                        type text
+                        value yG0oBPtyNb0
+                        size 12
+                        pattern [_\-0-9A-Za-z]{11}
+                        onchange youTubePlayerChangeVideoId();
+                span 
+                    class nowrap
+                    button Play
+                        onclick youTubePlayerPlay();
+                    button Pause
+                        onclick youTubePlayerPause();
+                    button Stop
+                        onclick youTubePlayerStop();
+            div 
+                input 
+                    id YouTube-player-progress
+                    type range
+                    value 0
+                    min 0
+                    max 100
+                    onchange youTubePlayerCurrentTimeChange(this.value);
+                    oninput youTubePlayerCurrentTimeSlide();
+                label duration
+                    for YouTube-player-progress
+            div 
+                input 
+                    id YouTube-player-volume
+                    type range
+                    value 50
+                    min 0
+                    max 100
+                    onchange youTubePlayerVolumeChange(this.value);
+                label volume
+                    for YouTube-player-volume
+        . framed
+            div 
+                id YouTube-player-infos
+            div 
+                id YouTube-player-errors
+            div 
+                id YouTube-player-fixed-infos
+    section 
+        h2 References
+        ul 
+            li 
+                ++ This example on my website:
+                strong 
+                    a YouTube
+                        href http://www.opimedia.be/DS/webdev/YouTube/
+                        abbr API
+                        + example
+            li 
+                ++ YouTube:
+                ul 
+                    li 
+                        a 
+                            href https://developers.google.com/youtube/iframe_api_reference
+                            em YouTube Player
+                                abbr API
+                                + Reference for
+                                code iframe
+                                + Embeds
+                    li 
+                        a 
+                            href https://developers.google.com/youtube/player_parameters
+                            em YouTube Embedded Players and Player Parameters
+

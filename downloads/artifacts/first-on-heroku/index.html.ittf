@@ -1,0 +1,11 @@
+html
+  
+  $global
+    var isWizziStudio = false;
+    var locals = { users: {}}
+
+  $ 
+    var opt = {}
+  
+  layouts/site(&opt)
+    h1 Hello

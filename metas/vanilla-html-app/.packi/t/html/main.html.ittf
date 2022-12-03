@@ -1,0 +1,81 @@
+$group
+    section 
+        div
+          style display:flex;
+          div
+            h1 Cosie
+          div
+            style display:flex;
+            class filters
+            div
+              style margin:18px 130px; font-size: 1.4em;
+              a Guide
+                href #/guide
+                class selected
+            div
+              style margin:18px 30px; font-size: 1.4em;
+              a Duplicati
+                href #/duplicati
+                class 
+    section 
+        $*
+        class wzapp
+        header 
+            class wzapp-header
+            h2 Guide Cosie
+        *$
+        div
+          class guide-view
+          div
+            class guide-container
+            div
+              class guide-explorer
+              section 
+                class guide-view-filter flex justify-content-space-between
+                div
+                  class guide-view-search
+                  input 
+                    type search
+                    class guide-view-search-field m-s p-s
+                    placeholder Find a guida …
+                    autocomplete off
+                    @ aria-label Find a guida …
+                div
+                  class guide-view-select-categoria
+                  style padding-top:20px;
+                div
+                  class guide-view-select-titolo
+                  style padding-top:20px;
+              section 
+                class main
+                ul 
+                    class guide-list
+            div
+              class guide-details-box
+              div
+                class guide-details
+            div
+              class guide-repeats-box
+              div
+                class guide-repeats
+        div
+          class duplicati-view
+          div
+            class duplicati-container
+            div
+              class duplicati-explorer
+              section 
+                class main
+                ul 
+                    class duplicati-list
+            div
+              class duplicati-details-box
+              div
+                class duplicati-details duplicati-details-a
+              div
+                class duplicati-details duplicati-details-b
+        footer 
+            class info
+            p Powered by Wizzi. Wizzi is created by
+                a Stefano Bassoli
+                    href https://github.com/stfnbssl

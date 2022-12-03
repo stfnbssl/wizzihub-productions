@@ -1,0 +1,85 @@
+
+$group
+    lang en
+    data-framework javascript 
+    head 
+        meta 
+            charset utf-8
+        @title VanillaJS • TodoMVC
+        link 
+            rel stylesheet
+            href node_modules/todomvc-common/base.css
+        link 
+            rel stylesheet
+            href node_modules/todomvc-app-css/index.css
+        style
+          $include node_modules/todomvc-common/base.css            
+          $include node_modules/todomvc-app-css/index.css            
+    body 
+        section 
+            class todoapp
+            header 
+                class header
+                h1 todos
+                input 
+                    class new-todo
+                    placeholder What needs to be done?
+                    autofocus 
+            section 
+                class main
+                input 
+                    id toggle-all
+                    class toggle-all
+                    type checkbox
+                label Mark all as complete
+                    for toggle-all
+                ul 
+                    class todo-list
+            footer 
+                class footer
+                span 
+                    class todo-count
+                ul 
+                    class filters
+                    li 
+                        a All
+                            href #/
+                            class selected
+                    li 
+                        a Active
+                            href #/active
+                    li 
+                        a Completed
+                            href #/completed
+                button Clear completed
+                    class clear-completed
+        footer 
+            class info
+            p Double-click to edit a todo
+            p Created by
+                a Oscar Godson
+                    href http://twitter.com/oscargodson
+            p Refactored by
+                a Christoph Burgmer
+                    href https://github.com/cburgmer
+            p Part of
+                a TodoMVC
+                    href http://todomvc.com
+        $*
+        js node_modules/todomvc-common/base.js
+        js js/helpers.js
+        js js/store.js
+        js js/template.js
+        js js/view.js
+        js js/controller.js
+        js js/app.js        
+        *$
+        script 
+            $include node_modules/todomvc-common/base.js            
+            $include two/js/helpers.js 
+            $include two/js/store.js 
+            $include two/js/model.js 
+            $include two/js/template.js 
+            $include two/js/view.js 
+            $include two/js/controller.js 
+            $include two/js/app.js 

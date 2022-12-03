@@ -1,0 +1,35 @@
+{
+  Name "Project"
+  name "project"
+  [ tables
+    $include ./category
+    $include ./todo
+    $include ./issue
+  [ relations
+    {
+      kind "one-to-many"
+      ltable "Category"
+      rtable "Todo"
+    {
+      kind "one-to-many"
+      ltable "Category"
+      rtable "Issue"
+  $*
+  Name "Blog"
+  [ tables
+    $include ./user
+    $include ./blog
+    $include ./post
+  [ relations
+    {
+      kind "one-to-one"
+      ltable "Blog"
+      rtable "User"
+      { foreignKey    
+        name "user_id"
+        allowNull false
+    {
+      kind "one-to-many"
+      ltable "Blog"
+      rtable "Post"
+  *$

@@ -1,0 +1,13 @@
+{
+  [ tfolders
+    {
+      name 'html'
+  [ contexts
+    {
+      propertyName "gd"
+      artifactName "Cosie/7-12-anni/Dati"
+    {
+      propertyName "results"
+      artifactName "Cosie/7-13-anni/Data/Results"
+
+          

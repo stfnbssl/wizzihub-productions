@@ -1,0 +1,37 @@
+{
+  Name "Blog"
+  Names "Blogs"
+  name "blog"
+  names "blogs"
+  descr "Blog"
+  [ indexes
+      { 
+        unique true
+        [ fields
+          {
+            name "owner"
+          {
+            name "name"
+  [ fields
+      { 
+        name "id"
+        type "integer"
+        autoIncrement true
+        primaryKey true
+      { 
+        name "owner"
+        type "string"
+        allowNull false
+        defaultValue "stfnbssl"
+      { 
+        name "name"
+        type "string"
+        allowNull false
+        [ validate
+          {
+            name "is"
+            value "/^\w{3,}$/"
+      { 
+        name "title"
+        type "string"
+        allowNull false

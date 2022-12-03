@@ -1,0 +1,7 @@
+${$2}group
+    ${$2}params result|notUsed, message|@@null
+    ._ then
+        =>
+            param ${$2}{result}
+            ${$2}hook
+    catch_throw${$p2} ${$2}{message} )

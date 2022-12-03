@@ -1,0 +1,283 @@
+$group
+    #
+        # ================================================================
+        # This copyright notice must be untouched at all times.
+        # The original version of this stylesheet and the associated (x)html
+        # is available at http://www.cssplay.co.uk/menus/cssplay-responsive-multi-level-menu-three.html
+        # Copyright (c) Stu Nicholls. All rights reserved.
+        # This stylesheet and the assocaited (x)html may be modified in any
+        # way to fit your requirements.
+        # ===================================================================
+    . cssplay_menu
+        width 100%
+        background #ccc
+        text-align center
+        height 45px
+        position relative
+        z-index 100
+    . cssplay_menu > span
+        display none
+    . cssplay_menu input
+        position absolute
+        display none
+    . cssplay_menu label
+        display none
+    . cssplay_menu ul
+        margin 0
+        padding 0
+        list-style none
+        white-space nowrap
+        text-align left
+    . cssplay_menu ul
+        display inline-block
+    . cssplay_menu ul
+        @ *display inline
+    . cssplay_menu li
+        margin 0
+        padding 0
+        list-style none
+    . cssplay_menu li
+        display inline-block
+        display inline
+    . cssplay_menu ul ul
+        position absolute
+        left -9999px
+        border-left 1px solid #ddd
+        border-right 1px solid #ddd
+    . cssplay_menu > ul
+        margin 0 auto
+    . cssplay_menu > ul > li
+        float left
+        display block
+        position relative
+    . cssplay_menu ul ul li a
+        border-top 1px solid #ddd
+    . cssplay_menu > ul > li.has-sub > a
+        background-image url(down.png)
+        background-repeat no-repeat
+        background-position right center
+    . cssplay_menu ul ul > li.has-sub > a
+        background-image url(right.png)
+        background-repeat no-repeat
+        background-position right center
+    . cssplay_menu ul li.left ul > li.has-sub > a
+        background-image url(left.png)
+        background-repeat no-repeat
+        background-position left center
+    . cssplay_menu ul li b
+        display block
+        width 100%
+        height 45px
+        background transparent
+        position relative
+        z-index 10
+        -webkit-transition 0s 0.5s
+        transition 0s 0.5s
+    . cssplay_menu ul ul li b
+        margin-top -45px
+    . cssplay_menu ul li b
+        @ *display none
+    . cssplay_menu ul
+        background #ccc
+    . cssplay_menu a
+        display block
+        font normal 14px "PT Sans", arial, sans-serif
+        color #000
+        line-height 45px
+        text-decoration none
+        padding 0 30px 0 10px
+    . cssplay_menu > ul > li > a
+        float left
+        text-transform uppercase
+    . cssplay_menu ul li:hover > ul
+        visibility visible
+        left -1px
+        top 45px
+        opacity 1
+    . cssplay_menu ul ul li:hover > ul
+        visibility visible
+        left 100%
+        top auto
+        margin-top -46px
+    . cssplay_menu li.left:hover > ul
+        visibility visible
+        left auto
+        right -1px
+        top 45px
+    . cssplay_menu li.left ul li:hover > ul
+        visibility visible
+        left auto
+        right 100%
+        top auto
+        margin-top -46px
+    . cssplay_menu ul li:hover > b
+        width 0
+    . cssplay_menu li.left ul a
+        text-align right
+        padding 0 10px 0 30px
+    . cssplay_menu li:hover > a
+        + .cssplay_menu li.left ul li:hover > a
+        background-color #bbb
+        text-decoration underline
+    . backimage
+        display block
+        width 100%
+        height 500px
+        background url(ski.jpg) no-repeat center center
+        background-size cover
+    media only screen and (max-width:768px)
+        . cssplay_menu ul li b
+            display none
+        . cssplay_menu
+            height 0
+            padding-top 45px
+            background #bbb
+            position relative
+        . cssplay_menu > label
+            display block
+            width 36px
+            height 36px
+            background #ddd
+            border-radius 5px
+            position absolute
+            right 10px
+            top 5px
+            cursor pointer
+        . cssplay_menu > label:before
+            display block
+            content ""
+            width 18px
+            height 2px
+            background #000
+            position absolute
+            left 50%
+            top 50%
+            margin-left -9px
+            margin-top -1px
+            -webkit-transition 0.25s
+            transition 0.25s
+        . cssplay_menu > label:after
+            display block
+            content ""
+            width 2px
+            height 18px
+            background #000
+            position absolute
+            left 50%
+            top 50%
+            margin-left -1px
+            margin-top -9px
+            -webkit-transition 0.25s
+            transition 0.25s
+        . cssplay_menu > span
+            display block
+            font normal 14px "PT Sans", arial,sans-serif
+            color #000
+            position absolute
+            left 10px
+            top 15px
+        . cssplay_menu li
+            display block
+        . cssplay_menu ul
+            + .cssplay_menu ul ul
+            margin 0
+            display block
+            position static
+            max-height 0
+            overflow hidden
+            -webkit-transition 0.25s
+            transition 0.25s
+        . cssplay_menu > ul > li.has-sub > a
+            background-image none
+        . cssplay_menu ul ul > li.has-sub > a
+            background-image none
+        . cssplay_menu ul li.left ul > li.has-sub > a
+            background-image none
+        . cssplay_menu ul li
+            float none
+            display block
+            position relative
+        . cssplay_menu ul li label
+            display block
+            width 36px
+            height 36px
+            background #ddd
+            border-radius 5px
+            position absolute
+            right 10px
+            top 5px
+            cursor pointer
+        . cssplay_menu ul ul li label
+            margin-top 0
+        . cssplay_menu ul li label:before
+            display block
+            content ""
+            width 18px
+            height 2px
+            background #000
+            position absolute
+            left 50%
+            top 50%
+            margin-left -9px
+            margin-top -1px
+            -webkit-transition 0.25s
+            transition 0.25s
+        . cssplay_menu ul li label:after
+            display block
+            content ""
+            width 2px
+            height 18px
+            background #000
+            position absolute
+            left 50%
+            top 50%
+            margin-left -1px
+            margin-top -9px
+            -webkit-transition 0.25s
+            transition 0.25s
+        . cssplay_menu ul
+            background #ccc
+            border 0
+        . cssplay_menu a
+            display block
+            font normal 14px arial,sans-serif
+            color #000
+            line-height 45px
+            text-decoration none
+            padding 0 20px 0 10px
+        . cssplay_menu ul li a
+            float none
+            border-top 1px solid #aaa
+        . cssplay_menu ul ul li a:before
+            content ""
+            display block
+            width 15px
+            height 45px
+            background url(right.png) no-repeat left 15px
+            float left
+        . cssplay_menu ul ul li > ul
+            margin-top 0
+        . cssplay_menu li.left ul li > ul
+            margin-top 0
+        . cssplay_menu ul ul li:hover > ul
+            margin-top 0
+        . cssplay_menu li.left ul li:hover > ul
+            margin-top 0
+        . cssplay_menu li.left ul a
+            text-align left
+            padding 0 20px 0 10px
+        . cssplay_menu li:hover > a
+            + .cssplay_menu li.left ul li:hover > a
+            background-color #ccc
+            text-decoration none
+        . cssplay_menu input:checked ~ label:before
+            -webkit-transform rotate(360deg)
+            transform rotate(360deg)
+        . cssplay_menu input:checked ~ label:after
+            -webkit-transform rotate(270deg)
+            transform rotate(270deg)
+        . cssplay_menu input:checked ~ ul
+            max-height 3000px
+        . cssplay_menu ul ul
+            border 0
+            margin 0 15px

@@ -1,0 +1,17 @@
+{
+  Name "Category"
+  Names "Categories"
+  name "category"
+  names "categories"
+  descr "Category"
+  [ indexes
+  [ fields
+      { 
+        name "id"
+        type "integer"
+        autoIncrement true
+        primaryKey true
+      { 
+        name "name"
+        type "string"
+        allowNull false

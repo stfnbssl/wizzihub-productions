@@ -1,0 +1,26 @@
+{
+  Name "Issue"
+  Names "Issues"
+  name "issue"
+  names "issues"
+  descr "Issue"
+  [ indexes
+  [ fields
+      { 
+        name "id"
+        type "integer"
+        autoIncrement true
+        primaryKey true
+      { 
+        name "description"
+        type "string"
+        allowNull false
+      { 
+        name "category"
+        type "string"
+        allowNull false
+      { 
+        name "closed"
+        type "boolean"
+        defaultValue "false"
+        allowNull false

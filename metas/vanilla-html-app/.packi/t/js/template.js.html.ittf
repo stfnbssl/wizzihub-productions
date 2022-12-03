@@ -1,0 +1,196 @@
+$group
+    $
+      var myName = 'Template';
+      //
+
+    iife_window( app, ${myName})
+
+        function select_option
+            param __html
+            param ctx
+            log 'select_option', ctx.value, ctx.label
+            _ __html.push('<option')
+            _ __html.push(' value="' + ctx.value + '"')
+            if ctx.selected
+                _ __html.push(' selected="selected"')
+            _ __html.push('>')
+            _ __html.push(ctx.label)
+            _ __html.push('</option>')   
+
+        html_f tmplSelect
+          div
+            class {{ ctx.class }}
+            select {{ ctx.options }}
+                name {{ ctx.id }}
+                id {{ ctx.id }}
+                class {{ ctx.id }}
+
+        html_f tmplGuideList
+          li 
+            @ data-id {{ctx.id}}
+            @ class guida-item
+            div
+              @ class guida-item-name
+              a {{ ctx.titolo_label }} / {{ ctx.categoria_label }} / {{ ctx.abstract_label }} 
+                $$ @ href #
+            div
+              @ class guida-item-btn
+              a backend
+                @ href https://cosie.lepida.it/backoffice/news/gestione/{{ ctx.id }}
+                @ target _blank
+
+
+        html_f tmplGuideDetails
+          div
+            h2 {{ ctx.categoria_label }}
+            h2 {{ ctx.titolo_label }}
+            div
+              + {{ ctx.testo }}
+        
+        html_f tmplGuideRepeats
+          div
+            + {{ ctx.token }} : {{ ctx.count }}
+
+        html_f tmplDuplicatiList
+          li 
+            @ data-id {{ctx.id}}
+            @ data-idmaster {{ctx.idMaster}}
+            @ class duplicato-item
+            div
+              @ class duplicato-item-name
+              a {{ ctx.checkString }} / a: {{ ctx.id }} / b: {{ ctx.idMaster }} 
+                $$ @ href #
+            div
+              @ class duplicato-item-btn
+              a backend a
+                @ href https://cosie.lepida.it/backoffice/news/gestione/{{ ctx.id }}
+                @ target _blank
+            div
+              @ class duplicato-item-btn
+              a backend b
+                @ href https://cosie.lepida.it/backoffice/news/gestione/{{ ctx.idMaster }}
+                @ target _blank
+
+        html_f tmplDuplicatiDetails
+          div
+            h2 {{ ctx.categoria_label }}
+            h2 {{ ctx.titolo_label }}
+            div
+              + {{ ctx.testo }}
+
+        function ${myName}
+
+        set ${myName}.prototype.showGuideSelectCategoria
+            function 
+                param data
+                var options = []
+                var aOptions = []
+                _ select_option
+                    @ aOptions
+                    {
+                      @ label "Annulla"
+                      @ value '0'
+                _ options.push
+                    _ aOptions.join('')
+                for const k of Object.keys(data)
+                    var aOptions = []
+                    _ select_option
+                        @ aOptions
+                        {
+                          @ label data[k]
+                          @ value k
+                    _ options.push
+                        _ aOptions.join('')
+                var view = []
+                _ view.push
+                  _ tmplSelect
+                    {
+                      @ id 'guide-select-categoria'
+                      @ class 'guide-select'
+                      @ options options.join('\n')
+                return view.join('\n')
+        
+        set ${myName}.prototype.showGuideSelectTitolo
+            function 
+                param data
+                var options = []
+                var aOptions = []
+                _ select_option
+                    @ aOptions
+                    {
+                      @ label "Annulla"
+                      @ value '0'
+                _ options.push
+                    _ aOptions.join('')
+                for const k of Object.keys(data)
+                    var aOptions = []
+                    _ select_option
+                        @ aOptions
+                        {
+                          @ label data[k]
+                          @ value k
+                    _ options.push
+                        _ aOptions.join('')
+                var view = []
+                _ view.push
+                  _ tmplSelect
+                    {
+                      @ id 'guide-select-titolo'
+                      @ class 'guide-select'
+                      @ options options.join('\n')
+                return view.join('\n')
+
+        set ${myName}.prototype.showGuideList =
+            function 
+                param data
+                var view = []
+                _ data.map
+                  =>
+                    param item
+                    _ view.push
+                      _ tmplGuideList
+                        @ item
+                return view.join('\n')
+
+        set ${myName}.prototype.showGuideDetails =
+            function 
+                param data
+                var view = []
+                _ view.push
+                  _ tmplGuideDetails
+                    @ data
+                return view.join('\n')
+
+        set ${myName}.prototype.showGuideRepeats =
+            function 
+                param data
+                var view = []
+                _ data.repeats.map
+                  =>
+                    param item
+                    _ view.push
+                      _ tmplGuideRepeats
+                        @ item
+                return view.join('\n')
+
+        set ${myName}.prototype.showDuplicatiList =
+            function 
+                param data
+                var view = []
+                _ data.map
+                  =>
+                    param item
+                    _ view.push
+                      _ tmplDuplicatiList
+                        @ item
+                return view.join('\n')
+
+        set ${myName}.prototype.showDuplicatiDetails =
+            function 
+                param data
+                var view = []
+                _ view.push
+                  _ tmplDuplicatiDetails
+                    @ data
+                return view.join('\n')
+

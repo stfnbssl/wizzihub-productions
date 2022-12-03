@@ -1,0 +1,22 @@
+{
+  [ videos
+    {
+      name "BIGA - COME CREARLA E GESTIRLA - TUTTI I SEGRETI!"
+      author "Schifano_Luigi"
+      url "https://www.youtube.com/watch?v=6Se-gtyAdIY"
+      [ items
+        {
+          name "il controllo della temperatura della biga"
+          time "3:20"
+        {
+          name "miscelazione della biga"
+          time "6:00"
+        {
+          name "esempio miscelazione della biga"
+          time "8:00"
+        {
+          name "messa a riposo"
+          time "9:00"
+        {
+          name "come giudicare quando è pronta"
+          time "10:00"

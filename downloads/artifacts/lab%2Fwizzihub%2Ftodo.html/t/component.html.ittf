@@ -1,0 +1,14 @@
+$group
+  $params &md
+
+  const ${md.Name}
+    iife
+      $hook functions
+      react ${md.Name}Comp
+          state
+            $hook state
+          style
+            $hook styles
+          $hook
+      $$ return withStyles(styles)(${md.Name}Comp)
+      return ${md.Name}Comp

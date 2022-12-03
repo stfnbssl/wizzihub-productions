@@ -1,0 +1,31 @@
+html
+  body
+    # root
+    script
+      # var text = 'aa___schema___bb.ittf'
+      var text = 't/aa.ittf'
+      set document.getElementById('root').innerHTML 
+        _ interpolate_filename
+          @ text
+          {
+            @ schema 'db'
+      function interpolate_filename 
+        param text
+        param ctx
+        var result = []
+        var pos = text.indexOf('__')
+        while pos > -1
+          var first = text.substr(0, pos)
+          var remain = text.substring(pos + 2)
+          set pos = remain.indexOf('__')
+          if pos > -1
+            _ result.push(first)
+            if ctx[remain.substr(0, pos)]
+              _ result.push(ctx[remain.substr(0, pos)])
+            else
+              _ result.push(remain.substr(0, pos))
+            set remain = remain.substring(pos + 2)
+            set text = remain
+            set pos = text.indexOf('__')
+        _ result.push(text)
+        return result.join('')

@@ -1,0 +1,74 @@
+module
+    import 
+        @ ModelBuilderType
+        from '../features/app'
+    import 
+        @ ConfigType
+        from '../features/config'
+    import
+        @ Sequelize
+        from 'sequelize'
+    const db
+        {
+            @ sequelize null
+            @ Sequelize null
+        :any
+    +
+    let sequelize
+      :ref Sequelize
+    +
+    export
+        function sequelizeStart
+            param config
+                :ref ConfigType
+            param modelBuilders
+                :[ 
+                    :ref ModelBuilderType
+            +
+            set sequelize
+                new Sequelize
+                  @ config.SequelizeUrl
+                    { 
+                        @ dialect config.SequelizeDialect
+                        @ storage config.SequelizeStorage
+                        @ logQueryParameters true
+                        @ benchmark true
+                # https://sequelize.org/api/v7/classes/sequelize#constructo
+            _ modelBuilders.forEach
+                => 
+                    param builder
+                    _ builder.buildModel
+                      @ sequelize
+            _ modelBuilders.forEach
+                => 
+                    param builder
+                    _ builder.applyExtraSetup
+                      @ sequelize
+    +
+    export 
+        const close
+            => 
+                if sequelize
+                  _ sequelize.close()      
+
+    class User
+        super Model 
+        p id
+            :number 
+            # this is ok! The 'declare' keyword ensures this field will not be emitted by TypeScript.
+    _ User.init
+        { 
+            { id
+                @ type DataTypes.INTEGER
+                @ autoIncrement true
+                @ primaryKey true
+        { 
+            @ sequelize
+    const user
+        new User
+            { 
+                @ id 1
+    @expr user.id
+        # 1
+
+

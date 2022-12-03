@@ -1,0 +1,59 @@
+$group
+    $params &md
+    import 
+        as React
+        from 'react'
+    import 
+        @ withStyles
+        @ createStyles
+        @ Theme
+        from '@material-ui/core/styles'
+    $if md.components
+      $foreach comp in md.components
+          import ${comp} from '@material-ui/core/${comp}'
+    $if md.icons
+      $foreach icon in md.icons
+          import 
+              @ ${comp}Icon
+              from '../../assets/${comp}Icon'
+    $hook imports
+    :type Props
+        :{ 
+            :p classes
+                :any 
+            $foreach prop in md.props
+                setPropType( &prop )
+            $hook props
+    :type State
+        :{ 
+            $foreach prop in md.stateProps
+                setPropType( &prop )
+            $hook state
+    class ${md.Name}Comp
+        super React.Component
+            :param 
+                :ref Props
+            :param 
+                :ref State
+            $hook ctor
+        p state
+            :ref State
+            { 
+                $foreach prop in md.stateProps
+                    setPropInitValue( &prop )
+                $hook stateInitValues
+        $hook
+    const muiStyles
+        => 
+            param theme
+                :ref Theme
+            _ createStyles
+                { 
+                    $hook styles
+    export
+        const ${md.Name}
+            _ withStyles
+                @ muiStyles
+                (
+                    @ ${md.Name}Comp
+    export-default ${md.Name}

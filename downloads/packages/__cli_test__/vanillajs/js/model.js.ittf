@@ -1,0 +1,191 @@
+module
+    kind react
+    iife 
+        param window
+        function Model
+            param storage
+            set this.storage = storage
+            #
+                # *
+                # * Creates a new Model instance and hooks up the storage.
+                # *
+                # * @constructor
+                # * @param {object} storage A reference to the client side storage class
+                # 
+            #
+                # *
+                # * Creates a new todo model
+                # *
+                # * @param {string} [title] The title of the task
+                # * @param {function} [callback] The callback to fire after the model is created
+                # 
+        set Model.prototype.create =
+            function 
+                param title
+                param callback
+                set title = title || ''
+                set callback =
+                    || 
+                        + callback
+                        function 
+                var newItem
+                    { 
+                        @ title title.trim()
+                        @ completed false
+                _ this.storage.save(newItem, callback)
+            #
+                # *
+                # * Creates a new todo model
+                # *
+                # * @param {string} [title] The title of the task
+                # * @param {function} [callback] The callback to fire after the model is created
+                # 
+            #
+                # *
+                # * Finds and returns a model in storage. If no query is given it'll simply
+                # * return everything. If you pass in a string or number it'll look that up as
+                # * the ID of the model to find. Lastly, you can pass it an object to match
+                # * against.
+                # *
+                # * @param {string|number|object} [query] A query to match models against
+                # * @param {function} [callback] The callback to fire after the model is found
+                # *
+                # * @example
+                # * model.read(1, func); // Will find the model with an ID of 1
+                # * model.read('1'); // Same as above
+                # * //Below will find a model with foo equalling bar and hello equalling world.
+                # * model.read({ foo: 'bar', hello: 'world' });
+                # 
+        set Model.prototype.read =
+            function 
+                param query
+                param callback
+                var queryType = typeof query
+                set callback =
+                    || 
+                        + callback
+                        function 
+                if queryType === 'function'
+                    set callback = query
+                    return this.storage.findAll(callback)
+                else
+                    if queryType === 'string' || queryType === 'number'
+                        set query = parseInt(query, 10)
+                        _ this.storage.find
+                            { 
+                                @ id query
+                            @ callback
+                    else
+                        _ this.storage.find(query, callback)
+            #
+                # *
+                # * Finds and returns a model in storage. If no query is given it'll simply
+                # * return everything. If you pass in a string or number it'll look that up as
+                # * the ID of the model to find. Lastly, you can pass it an object to match
+                # * against.
+                # *
+                # * @param {string|number|object} [query] A query to match models against
+                # * @param {function} [callback] The callback to fire after the model is found
+                # *
+                # * @example
+                # * model.read(1, func); // Will find the model with an ID of 1
+                # * model.read('1'); // Same as above
+                # * //Below will find a model with foo equalling bar and hello equalling world.
+                # * model.read({ foo: 'bar', hello: 'world' });
+                # 
+            #
+                # *
+                # * Updates a model by giving it an ID, data to update, and a callback to fire when
+                # * the update is complete.
+                # *
+                # * @param {number} id The id of the model to update
+                # * @param {object} data The properties to update and their new value
+                # * @param {function} callback The callback to fire when the update is complete.
+                # 
+        set Model.prototype.update =
+            function 
+                param id
+                param data
+                param callback
+                _ this.storage.save(data, callback, id)
+            #
+                # *
+                # * Updates a model by giving it an ID, data to update, and a callback to fire when
+                # * the update is complete.
+                # *
+                # * @param {number} id The id of the model to update
+                # * @param {object} data The properties to update and their new value
+                # * @param {function} callback The callback to fire when the update is complete.
+                # 
+            #
+                # *
+                # * Removes a model from storage
+                # *
+                # * @param {number} id The ID of the model to remove
+                # * @param {function} callback The callback to fire when the removal is complete.
+                # 
+        set Model.prototype.remove =
+            function 
+                param id
+                param callback
+                _ this.storage.remove(id, callback)
+            #
+                # *
+                # * Removes a model from storage
+                # *
+                # * @param {number} id The ID of the model to remove
+                # * @param {function} callback The callback to fire when the removal is complete.
+                # 
+            #
+                # *
+                # * WARNING: Will remove ALL data from storage.
+                # *
+                # * @param {function} callback The callback to fire when the storage is wiped.
+                # 
+        set Model.prototype.removeAll =
+            function 
+                param callback
+                _ this.storage.drop(callback)
+            #
+                # *
+                # * WARNING: Will remove ALL data from storage.
+                # *
+                # * @param {function} callback The callback to fire when the storage is wiped.
+                # 
+            #
+                # *
+                # * Returns a count of all todos
+                # 
+        set Model.prototype.getCount =
+            function 
+                param callback
+                var todos
+                    { 
+                        @ active 0
+                        @ completed 0
+                        @ total 0
+                _ this.storage.findAll
+                    function 
+                        param data
+                        _ data.forEach
+                            function 
+                                param todo
+                                if todo.completed
+                                    set todos.completed++
+                                else
+                                    set todos.active++
+                                set todos.total++
+                        _ callback(todos)
+            #
+                # *
+                # * Returns a count of all todos
+                # 
+            # Export to window
+        set window.app =
+            || 
+                + window.app
+                { 
+            # Export to window
+        set window.app.Model = Model
+        (
+            @ window

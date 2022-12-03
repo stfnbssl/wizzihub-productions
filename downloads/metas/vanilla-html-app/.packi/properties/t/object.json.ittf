@@ -1,0 +1,6 @@
+{
+    $params name
+    name "${name}"
+    type "object"
+    [ properties
+        $hook

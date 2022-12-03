@@ -1,0 +1,66 @@
+$group
+    function fetchIssues
+        var issues = JSON.parse(localStorage.getItem('issues')) || []
+        var issuesList = document.getElementById('issuesList')
+        set issuesList.innerHTML = ''
+        for var i = 0; i < issues.length; i++
+            var id = issues[i].id
+            var desc = issues[i].description
+            var severity = issues[i].severity
+            var assignedTo = issues[i].assignedTo
+            var status = issues[i].status
+            set issuesList.innerHTML += '<div class="well">' + 
+              \b '<h6>Issue ID: ' + id + '</h6>' + 
+              \b '<p><span class="label label-info">' + status + 
+              \b '</span></p>' + '<h3>' + desc + '</h3>' + 
+              \b '<p><span class="glyphicon glyphicon-time"></span> ' + 
+              \b severity + ' ' + '<span class="glyphicon glyphicon-user"></span> ' + assignedTo + '</p>' + 
+              \b '<a href="#" class="btn btn-warning" onclick="setStatusClosed(\'' + id + '\')">Close</a> ' +
+              \b '<a href="#" class="btn btn-danger" onclick="deleteIssue(\'' + id + '\')">Delete</a>' + '</div>'
+    
+    function saveIssue
+        param e
+        var issueId = chance.guid()
+        var issueDesc = document.getElementById('issueDescInput').value
+        var issueSeverity = document.getElementById('issueSeverityInput').value
+        var issueAssignedTo = document.getElementById('issueAssignedToInput').value
+        var issueStatus = 'Open'
+        var issue
+            { 
+                @ id issueId
+                @ description issueDesc
+                @ severity issueSeverity
+                @ assignedTo issueAssignedTo
+                @ status issueStatus
+        if localStorage.getItem('issues') === null
+            var issues = []
+            _ issues.push(issue)
+            _ localStorage.setItem('issues', JSON.stringify(issues))
+        else
+            var issues = JSON.parse(localStorage.getItem('issues'))
+            _ issues.push(issue)
+            _ localStorage.setItem('issues', JSON.stringify(issues))
+        _ document.getElementById('issueInputForm').reset()
+        _ fetchIssues()
+        _ e.preventDefault()   
+    
+    function setStatusClosed
+        param id
+        var issues = JSON.parse(localStorage.getItem('issues')) || []
+        for var i = 0; i < issues.length; i++
+            if issues[i].id == id
+                set issues[i].status = "Closed"
+        _ localStorage.setItem('issues', JSON.stringify(issues))
+        _ fetchIssues()                 
+
+    function deleteIssue
+        param id
+        var issues = JSON.parse(localStorage.getItem('issues')) || []
+        for var i = 0; i < issues.length; i++
+            if issues[i].id == id
+                _ issues.splice(i, 1)
+        _ localStorage.setItem('issues', JSON.stringify(issues))
+        _ fetchIssues()
+
+    _ document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
+

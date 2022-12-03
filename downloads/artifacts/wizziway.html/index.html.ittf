@@ -1,0 +1,45 @@
+html 
+    $$ one: https://medium.com/codingthesmartway-com-blog/pure-javascript-building-a-real-world-application-from-scratch-5213591cfcd6
+    $$ $include one/main
+    $$ two: https://github.com/tastejs/todomvc/tree/gh-pages/examples/vanillajs
+    $$ $include two/main
+    
+    $
+        var md = {
+            hasBorderedControls: true,
+        }
+        //
+
+    head 
+        meta 
+            charset utf-8
+        @title WizziWay
+    css /~/stfnbssl/wizziway.css?savecount=17&filepath=index.css.ittf
+    css /~/stfnbssl/lab%2Fvanillajs%2Fcss?savecount=17&filepath=index.css.ittf
+    style
+        $include css/base.css            
+        $include css/index.css            
+        $include css/wz.css            
+    body
+        $include html/main
+        script
+            set window.__filename = 'browser'
+
+        script 
+            src https://cdn.bootcdn.net/ajax/libs/monaco-editor/0.20.0/min/vs/loader.min.js
+            crossorigin anonymous   
+        js /public/utils/diff_match_patch_uncompressed.js   
+        js /~/stfnbssl/wizziway.js?savecount=3&filepath=index.js.ittf
+        script
+            module
+                kind es6
+                $include js/defaults.js
+                $include js/styles.js
+                $include js/template.js
+                $include js/view.js
+                $include js/store.js
+                $include js/model.js
+                $include js/controller.js
+                $include js/app.js
+                $include html/forms/inject_styles.js
+                _ inject_form_styles

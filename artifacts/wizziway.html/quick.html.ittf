@@ -1,0 +1,65 @@
+html
+  head
+    css https://cdn.jsdelivr.net/npm/modern-css-reset@1.4.0/dist/reset.min.css
+    style
+      . main
+        margin 50px
+      . list-item
+        display flex
+        flex-direction row
+        align-items stretch
+        justify-content left
+        gap 20%
+      . list-cell
+        width 33%
+  body
+    # root
+    script
+      module
+        kind es6
+        $$ $include three/js/model.js
+        $$ assert_not_null( nameX, MessageX, paramX )
+        $if true
+          var ctx
+            {
+              @ __class 'list-item'
+              [ items
+                {
+                  @ name 'alpha'
+                {
+                  @ name 'beta'
+                  @ checked true
+                {
+                  @ name 'gamma'
+          var view
+            _ tmplProductionList
+              @ ctx
+          set document.getElementById('root').innerHTML = view
+          html_f tmplProductionList
+            ul
+              foreach item in ctx.items
+                li 
+                  @ data-id {{item.name}}
+                  @ class {{ctx.__class}}
+                  div
+                    @ class list-cell
+                    if item.checked
+                      input
+                        @ class toggle
+                        @ type checkbox
+                        @ checked
+                    else
+                      input
+                        @ class toggle
+                        @ type checkbox
+                  div
+                    @ class list-cell
+                    a {{ item.name}} {{ item.name }} 
+                      @ href http://localhost:5000/~~/a/{{ ctx.owner }}/{{ ctx.name }}
+                      @ target _blank
+                  div
+                    @ class list-cell
+                    button
+                      @ class 
+                      + destroy
+

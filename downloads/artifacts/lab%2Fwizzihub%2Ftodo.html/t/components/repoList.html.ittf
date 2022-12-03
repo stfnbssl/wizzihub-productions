@@ -1,0 +1,50 @@
+$group
+  $
+    var md = {
+      Name: "RepoList"
+    }
+    //
+  component( &md )
+    $$ import CommentIcon from '@mui/icons-material/Comment'
+    $$ import IconButton from '@mui/material/IconButton'
+    state
+      @ repos []
+    did-mount
+      _ wz.fetch.get
+        @ '/api/v1/github/repo/stfnbssl'
+        [
+        =>
+          param err
+          param result
+          info 'err', err
+          info 'result', result
+          _ this.setState
+            {
+              @ repos result
+    render
+      return 
+          < List 
+              @ sx
+                  { 
+                      @ width '100%'
+                      @ maxWidth 360
+                      @ bgcolor 'background.paper'
+              { 
+                  _ this.state.repos.map 
+                    => 
+                        param value
+                        < ListItem 
+                            @ key {value.name}
+                            @ disableGutters
+                            @ secondaryAction
+                                $*
+                                < IconButton 
+                                    @ aria-label "comment"
+                                    < CommentIcon 
+                                *$
+                            < ListItemText 
+                                @ primary
+                                    `lit 
+                                        + Line item&nbsp;
+                                        @ value.name
+                                        

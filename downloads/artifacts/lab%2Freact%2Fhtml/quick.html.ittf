@@ -1,0 +1,34 @@
+html 
+  
+  $global
+    var locals = {
+      user: {}
+    }
+  
+  $
+    var opt = {
+      useReact: true,
+      react: {}
+    }
+    //
+
+  layouts/site(&opt)
+    # root
+
+    $append body-scripts
+      script
+        type text/babel
+        module
+          kind react
+          var i = 0
+          function Demo
+              return 
+                  div
+                    @ style
+                      {
+                        @ margin '30px'
+                    h1 
+                      + Hello
+          _ ReactDOM.render
+              < Demo 
+              _ document.getElementById('root')        

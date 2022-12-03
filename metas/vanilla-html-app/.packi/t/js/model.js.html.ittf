@@ -1,0 +1,146 @@
+$group
+    $
+      var myName = 'Model';
+      //
+
+    iife_window( app, ${myName})
+        
+        function ${myName}
+            param storage
+            param defaults
+            set this.storage = storage
+            set this.defaults = defaults
+            set this.wzApi = api.Wizzi
+
+        set ${myName}.prototype.getTabelle
+            function 
+                param_callback( required, Method: ${myName}.getTabelle )
+                _ this.storage.findTabelle
+                  =>
+                    param item
+                    _ callback
+                      @ item
+
+
+        set ${myName}.prototype.getRepeats
+            function 
+                param_callback( required, Method: ${myName}.getRepeats )
+                _ this.storage.findRepeats
+                  =>
+                    param item
+                    _ callback
+                      @ item
+
+        set ${myName}.prototype.getGuide
+            function 
+                param activeSearchTerm
+                param activeCategoria
+                param activeTitolo
+                param_callback( required, Method: ${myName}.getGuide )
+                _ this.storage.findAllGuide
+                  =>
+                    param items
+                    _ this.getTabelle
+                      =>
+                        param data
+                        var categorie = data.categorie
+                        var titoli = data.titoli
+                        _ this.getRepeats
+                          =>
+                            param repeats
+                            _ callback
+                              _ items.filter
+                                =>
+                                  param item
+                                  $$ log '${myName}.getProduction.item', item.__selected, viewKind
+                                  if item.tipo != "2" 
+                                    return false
+                                  set item.categoria_label = categorie[item.categoria]
+                                  set item.titolo_label = titoli[item.titolo]
+                                  set item.abstract_label = item.abstract + ' (repeat ' + repeats[item.id].max + ')'
+                                  set item.repeats = repeats[item.id].repeats
+                                  var okCatTit = true
+                                  if activeCategoria != '0'
+                                    set okCatTit = okCatTit && item.categoria == activeCategoria
+                                  if activeTitolo != '0'
+                                    set okCatTit = okCatTit && item.titolo == activeTitolo
+                                  var ok = okCatTit
+                                  if ok && activeSearchTerm && activeSearchTerm.length > 0
+                                    set ok = containsTerm(item.abstract_label, activeSearchTerm)
+                                      \b || containsTerm(item.titolo_label, activeSearchTerm)
+                                      \b || containsTerm(item.categoria_label, activeSearchTerm)
+                                      \b || containsTerm(item.testoNoHtml, activeSearchTerm)
+                                  return ok
+
+        set ${myName}.prototype.getGuida
+            function 
+                param id
+                param_callback( required, Method: ${myName}.getGuide )
+                _ this.storage.findGuida
+                  @ id
+                  =>
+                    param item
+                    _ callback
+                      @ item
+
+        set ${myName}.prototype.getDuplicati
+            function 
+                param_callback( required, Method: ${myName}.getDuplicati )
+                _ this.storage.findAllDuplicati
+                  =>
+                    param dups
+                    const resultObj = {}
+                    for const dup of dups
+                      const k = parseInt(dup.idMaster) + parseInt(dup.id)
+                      set resultObj[k]
+                        {
+                          @ id dup.id
+                          @ idMaster dup.idMaster
+                          @ checkString dup.checkString.replaceAll('_', ' ')
+                    const result = []
+                    for const k of Object.keys(resultObj)
+                      _ result.push(resultObj[k])
+                    _ callback
+                      @ result
+
+        set ${myName}.prototype.getDuplicato
+            function 
+                param id
+                param idMaster
+                param_callback( required, Method: ${myName}.getGuide )
+                _ this.storage.findGuida
+                  @ id
+                  =>
+                    param itema
+                    _ this.storage.findGuida
+                      @ idMaster
+                      =>
+                        param itemb
+                        _ callback
+                          {
+                            @ a itema
+                            @ b itemb
+
+        set ${myName}.prototype.getGuideValue
+            function 
+                param name
+                param defaultValue
+                return
+                  _ this.storage.getLocalValue
+                    @ name
+                    @ defaultValue
+
+        set ${myName}.prototype.setGuideValue
+            function 
+                param name
+                param value
+                _ this.storage.setLocalValue
+                  @ name
+                  @ value
+
+        function containsTerm
+          param str
+          param term
+          set str = str || ""
+          set term = term || ""
+          return str.toLowerCase().indexOf(term.toLowerCase()) > -1

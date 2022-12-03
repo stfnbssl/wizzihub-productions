@@ -1,0 +1,26 @@
+module
+    $ 
+      var md = {
+        Name: 'Slider',
+        htmlName: 'Span',
+      }
+    
+    react-forward-function(&md)
+      $append imports
+        import Thumb from './thumb'
+      return 
+        < SliderUnstyled 
+          @ {...props}
+          @ ref {ref}
+          @ components
+            { 
+              @ Thumb
+          @ componentsProps
+            { 
+              { root
+                @ className 'w-full relative inline-block h-2 cursor-pointer'
+              { rail
+                @ className 'bg-slate-100 dark:bg-slate-700 h-2 w-full rounded-full block absolute'
+              { track
+                @ className 'bg-cyan-500 dark:bg-cyan-400 h-2 absolute rounded-full'    
+

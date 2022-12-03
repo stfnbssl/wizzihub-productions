@@ -1,0 +1,26 @@
+html
+
+    $ 
+        var opt = {
+            section: 'Project',
+        }
+        var ca = 'm-s color-header font-x font-w-s';
+
+    html/layouts/site( &opt )
+
+        h1 ISSUES 1
+        p In the Packi Editor the '$' ITTF Command must be followed by a space otherwise sinthax highlighting does not work correctly.
+
+        h1 Productions repository
+        p The global context artifact 'wzctx' should be optional 
+        
+        h1 Packi editor
+        p The editor must show production name and kind (artifact|package|meta|tFolder).
+        p Make a decent splitter work between edit content and result pane.
+        p Result pane icons should be inside the pane. And should be decent.
+        p The 'saved' message should be: 'Not modified', or 'Not yet saved' or 'Saved x seconds|minutes|hours ago'. 
+        p SavedPacki and PackiOptions are the same
+        p pageforms: debounce checkname 1 second
+        p pageforms: reset checkname error color when valid
+        p checkname maybe unnecessary in apiv1* controllers
+

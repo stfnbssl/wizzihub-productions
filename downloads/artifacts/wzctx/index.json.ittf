@@ -1,0 +1,5 @@
+{
+  author "Stefano"
+  cloudHost "https://www.wizzihub.com"
+  localHost "http://localhost:5000"
+  currentHost "http://localhost:5000"

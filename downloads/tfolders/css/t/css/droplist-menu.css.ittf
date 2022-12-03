@@ -1,0 +1,283 @@
+$group
+    #
+        # 
+        # * css only - responsive click/tap action droplist menu
+        # * (c) 2014 - CSSplay - Stu Nicholls
+        # *
+        # * http://www.cssplay.co.uk
+        # *
+        # 
+    # defaults
+    < html
+        + body
+        padding 0
+        margin 0
+    . content
+        width 100%
+        margin 0 auto
+        max-width 1200px
+    . content img
+        width 100%
+    . content h2
+        padding 0 20px
+        margin 0
+        font normal 26px/50px 'texgyreadventorregular', 'lucida sans', arial, sans-serif
+        color #069
+    . content h3
+        padding 0 20px
+        margin 0
+        font normal 22px/40px 'texgyreadventorregular', 'lucida sans', arial, sans-serif
+        color #c60
+    . content h5
+        padding 0 20px
+        margin 0
+        font normal 12px/20px 'texgyreadventorregular', 'lucida sans', arial, sans-serif
+        color #888
+    . content p
+        padding 5px 20px
+        margin 0
+        font normal 14px/18px 'texgyreadventorregular', 'lucida sans', arial, sans-serif
+        color #666
+    . content ol li
+        padding 5px 0
+        margin 0
+        font normal 14px/18px 'texgyreadventorregular', 'lucida sans', arial, sans-serif
+        color #888
+    . content ol li a
+        color #080
+    # menu
+    . nav input
+        + #togglemenu
+        position absolute
+        left -9999px
+        display none
+    . nav label.togglemenu
+        display none
+    . nav
+        width 100%
+        max-width 1200px
+        margin 50px auto 0 auto
+    . nav ul
+        position relative
+        margin 0
+        padding 0
+        list-style none
+        z-index 100
+    . nav > ul > li
+        float left
+        max-width 180px
+        margin 0 5px 0 0
+    . nav > ul > li:before
+        position relative
+        top 10px
+        left 10px
+        content ""
+        height 4px
+        width 4px
+        border 2px solid #666
+        border-color transparent #666 #666 transparent
+        float left
+        margin 5px 0 0 0
+        z-index 100
+        transform rotate(45deg)
+        -webkit-transform rotate(45deg)
+        -ms-transform rotate(45deg)
+    . nav ul > li > div
+        display block
+        position absolute
+        top 87px
+        left 0
+        max-height 0
+        width 100%
+        overflow hidden
+        background rgba(237,230,224,0.9)
+        z-index 0
+        transition 0.25s
+        -webkit-transition 0.25s
+    . nav ul > li > div ul
+        display inline-block
+        width 30%
+        margin 0 2%
+        padding 45px 0 30px 0
+        vertical-align top
+    . nav ul > li > div ul:last-child
+        margin 0
+    . nav ul li label
+        display block
+        font bold 15px/15px arial, sans-serif
+        color #333
+        padding 16px 30px
+        cursor pointer
+        position relative
+        height 55px
+        border-radius 10px 10px 0 0
+    . nav ul li label.openmenu
+        background rgba(217,210,204,0)
+        transition 0.25s
+        -webkit-transition 0.25s
+    . nav ul li label.opentop
+        background rgba(217,210,204,0)
+        transition 0.5s
+        -webkit-transition 0.5s
+    . nav ul li label span
+        display block
+        font normal 12px/14px arial, sans-serif
+        color #888
+        margin 10px 0 0 0
+        text-transform uppercase
+    . nav ul li label.closetop
+        width 100%
+        padding 0
+        height 75px
+        margin-top -75px
+        display none
+    . nav #closemenu
+        display none
+        position fixed
+        top 0
+        left 0
+        height 100%
+        width 100%
+        z-index 80
+    . nav ul ul li
+        padding 1px 0
+        border-top 1px solid #aaa
+    . nav ul ul li:last-child
+        border-bottom 1px solid #aaa
+    . nav ul ul li a
+        display block
+        font normal 12px/12px arial, sans-serif
+        padding 10px 30px
+        color #555 !important
+        text-decoration none
+        padding 6px 20px
+    . nav ul ul li.noborder
+        border 0
+        padding 0
+    . nav ul ul li.noborder img
+        display block
+        width 100%
+    . nav ul ul li a img
+        display block
+        margin 0 auto
+        border 0
+    . nav ul ul li a:hover
+        color #fff !important
+        background rgb(167,160,154)
+    . nav ul ul li.noborder a:hover
+        background transparent
+    . nav ul ul li.noborder a
+        padding 0 0 5px 0
+    . nav #p1:checked ~ ul > li:nth-of-type(1) > div
+        + .nav #p2:checked ~ ul > li:nth-of-type(2) > div
+        + .nav #p3:checked ~ ul > li:nth-of-type(3) > div
+        + .nav #p4:checked ~ ul > li:nth-of-type(4) > div
+        max-height 500px
+        z-index 1
+        box-shadow 0 10px 8px -8px rgba(0,0,0,0.3)
+        transition 0.25s 0.25s
+        -webkit-transition 0.25s 0.25s
+    . nav #p1:checked ~ ul > li:nth-of-type(1) > label.opentop
+        + .nav #p2:checked ~ ul > li:nth-of-type(2) > label.opentop
+        + .nav #p3:checked ~ ul > li:nth-of-type(3) > label.opentop
+        + .nav #p4:checked ~ ul > li:nth-of-type(4) > label.opentop
+        background rgba(217,210,204,0.9)
+    . nav #p1:checked ~ ul > li:nth-of-type(1) .closetop
+        + .nav #p2:checked ~ ul > li:nth-of-type(2) .closetop
+        + .nav #p3:checked ~ ul > li:nth-of-type(3) .closetop
+        + .nav #p4:checked ~ ul > li:nth-of-type(4) .closetop
+        + .nav #p1:checked ~ #closemenu
+        + .nav #p2:checked ~ #closemenu
+        + .nav #p3:checked ~ #closemenu
+        + .nav #p4:checked ~ #closemenu
+        display block
+    media only screen and (max-width: 768px)
+        . nav label
+            display block
+            cursor pointer
+        . nav ul li label
+            height auto
+            border-radius 0
+        . nav label.togglemenu
+            float right
+            display block
+            cursor pointer
+            position relative
+            z-index 100
+            font normal 22px/22px arial, sans-serif
+            color #000
+            margin 0 20px 20px 0
+        . nav > ul
+            max-height 0
+            overflow hidden
+            width 100%
+            background #555
+            padding 0
+            clear both
+            transition 0.5s
+            -webkit-transition 0.5s
+        . nav ul li label.closetop
+            height 48px
+            margin-top -48px
+        . nav > ul > li:before
+            border-color transparent #fff #fff transparent
+        . nav ul li label.opentop
+            color #fff
+            border-top 1px solid #fff
+            text-align left
+        . nav ul li label span
+            color #fff
+            display inline
+            margin-left 10px
+        . nav > ul > li
+            width 100%
+            max-width 100%
+            text-align center
+        . nav ul > li > div
+            position static
+            padding 0
+        . nav ul > li > div ul
+            width 100%
+            max-width 100%
+            display block
+            padding 0 0 0 10px
+            margin 0
+            background #333
+        . nav ul div ul:last-child
+            display none
+        . nav #togglemenu:checked ~ ul
+            max-height 700px
+        . nav #p1:checked ~ ul > li:nth-of-type(1) > label.opentop
+            + .nav #p2:checked ~ ul > li:nth-of-type(2) > label.opentop
+            + .nav #p3:checked ~ ul > li:nth-of-type(3) > label.opentop
+            + .nav #p4:checked ~ ul > li:nth-of-type(4) > label.opentop
+            background #333
+        . nav ul ul li
+            border 0
+            padding 0
+            text-align left
+        . nav ul ul li:last-child
+            border 0
+        . nav ul ul li a
+            display block
+            padding 10px 20px
+            color #fff !important
+            background #555
+            border-top 1px solid #ccc
+        . nav ul ul li a:hover
+            background #333
+        . nav ul ul li.noborder a
+            padding-top 5px
+        . nav ul > li:nth-of-type(1) > div
+            + .nav ul > li:nth-of-type(2) > div
+            + .nav ul > li:nth-of-type(3) > div
+            + .nav ul > li:nth-of-type(4) > div
+            transition 0.4s
+            -webkit-transition 0.4s
+        . nav #p1:checked ~ ul > li:nth-of-type(1) > div
+            + .nav #p2:checked ~ ul > li:nth-of-type(2) > div
+            + .nav #p3:checked ~ ul > li:nth-of-type(3) > div
+            + .nav #p4:checked ~ ul > li:nth-of-type(4) > div
+            box-shadow none
+            transition 1.5s
+            -webkit-transition 1.5s

@@ -1,0 +1,23 @@
+{
+    { meta
+        $$ name "..name.."
+        { cliCtx"
+            kind "artifact" $$ file|artifact
+            $$ filePath ".packi/cliCtx.json.ittf" $$ when kind = "file"
+            { artifact
+                $$ name "..name.." $$ when kind = "artifact"
+            [ contexts
+                {
+                    $$ propertyName "..name.."
+                    $$ artifactName "..name.."
+    [ tfolders
+        {
+            name "vanillajs-core"
+        {
+            name "vanillajs-forms"
+        {
+            name "vanillajs-controls"
+    [ contexts
+        {
+            $$ propertyName "..name.."
+            $$ artifactName "..name.."

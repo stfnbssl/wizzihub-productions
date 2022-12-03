@@ -1,0 +1,81 @@
+${$2}group
+    ${$2}
+      var myName = 'Model';
+      //
+
+    iife_window${$p2} app, ${$2}{myName})
+        
+        function ${$2}{myName}
+            param storage
+            param defaults
+            set this.storage = storage
+            set this.defaults = defaults
+            set this.wzApi = api.Wizzi
+
+        set ${$2}{myName}.prototype.getTabelle
+            function 
+                param_callback${$p2} required, Method: ${$2}{myName}.getTabelle )
+                _ this.storage.findTabelle
+                  =>
+                    param item
+                    _ callback
+                      @ item
+
+
+        set ${$2}{myName}.prototype.getMedia
+            function 
+                param activeSearchTerm
+                param activeCategoria
+                param_callback${$p2} required, Method: ${$2}{myName}.getMedia )
+                _ this.storage.findAllMedia
+                  =>
+                    param items
+                    _ callback
+                        _ items.filter
+                            =>
+                                param item
+                                ${$2}${$2} log '${$2}{myName}.getProduction.item', item.__selected, viewKind
+                                var okCatTit = true
+                                if activeCategoria != '0'
+                                    set okCatTit = okCatTit && item.categoria == activeCategoria
+                                var ok = okCatTit
+                                if ok && activeSearchTerm && activeSearchTerm.length > 0
+                                    set ok = containsTerm(item.name, activeSearchTerm)
+                                        \b || containsTerm(item.categoria, activeSearchTerm)
+                                return ok
+
+        set ${$2}{myName}.prototype.getMediaItem
+            function 
+                param id
+                param_callback${$p2} required, Method: ${$2}{myName}.getMediaItem )
+                _ this.storage.findMediaItem
+                  @ id
+                  =>
+                    param item
+                    _ callback
+                      @ item
+
+
+        set ${$2}{myName}.prototype.getMediaValue
+            function 
+                param name
+                param defaultValue
+                return
+                  _ this.storage.getLocalValue
+                    @ name
+                    @ defaultValue
+
+        set ${$2}{myName}.prototype.setMediaValue
+            function 
+                param name
+                param value
+                _ this.storage.setLocalValue
+                  @ name
+                  @ value
+
+        function containsTerm
+          param str
+          param term
+          set str = str || ""
+          set term = term || ""
+          return str.toLowerCase().indexOf(term.toLowerCase()) > -1

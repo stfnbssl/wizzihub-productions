@@ -1,0 +1,8 @@
+html 
+    $$ one: https://medium.com/codingthesmartway-com-blog/pure-javascript-building-a-real-world-application-from-scratch-5213591cfcd6
+    $$ $include one/main
+    $$ two: https://github.com/tastejs/todomvc/tree/gh-pages/examples/vanillajs
+    $$ $include two/main
+    script
+      set window.__filename = 'browser'
+    $include three/main

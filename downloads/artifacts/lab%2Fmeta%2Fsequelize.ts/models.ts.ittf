@@ -1,0 +1,46 @@
+
+module
+    _ require("dotenv").config()
+    const Sequelize = require("sequelize")
+    var env = process.env.NODE_ENV || 'development'
+    var config = require('./../config/config.js')[env]
+    const 
+        { 
+            @ Model
+            @ DataTypes
+        = require("sequelize")
+    var sequelize
+    if config.use_env_variable
+        set sequelize = new Sequelize(process.env[config.use_env_variable])
+    else
+        set sequelize = new Sequelize(config.database, config.username, config.password, config)
+    #
+      #
+      # Define models
+      #
+    $foreach tb in db.tables
+      $ tb.__db = db
+      t/model(&tb)
+    var db
+        { 
+        #
+          #
+          # Create models
+          #
+    var model
+    $foreach tb in db.tables
+      set model = ${tb.Name}(sequelize, Sequelize.DataTypes)
+      set db[model.name] = model
+    _ Object.keys(db).forEach
+      function 
+          param modelName
+          if db[modelName].associate
+              _ db[modelName].associate(db)
+      #
+        #
+        # Extra setup
+        #
+
+    set module.exports =
+        { 
+            @ sequelize 

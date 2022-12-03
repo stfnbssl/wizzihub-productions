@@ -1,0 +1,18 @@
+{
+    { meta
+        $$ name "..name.."
+        { cliCtx
+            kind "file" $$ file|artifact
+            filePath ".packi/cliCtx.json.ittf" $$ when kind = "file"
+            artifactName "..name.." $$ when kind = "artifact"
+            [ contexts
+                {
+                    $$ propertyName "..name.."
+                    $$ artifactName "..name.."
+    [ tfolders
+        {
+            $$ name "..name.."
+    [ contexts
+        {
+            $$ propertyName "..name.."
+            $$ artifactName "..name.."

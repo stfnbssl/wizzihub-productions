@@ -1,0 +1,158 @@
+$group
+    $
+      var myName = 'Store';
+      //
+    
+    iife_window( app, ${myName})
+        # globals api.Wizzi, mvc.LocalObjectStore
+        function ${myName}
+            param name
+            set this.name = name
+            set this.wzApi = api.Wizzi
+            set this.lsGuida = new mvc.LocalObjectStore('cosieGuide')
+            set this.guide = null
+            set this.tabelle = null
+
+        set ${myName}.prototype.findTabelle
+            function 
+                param_callback( required, Method: ${myName}.findTabelle )
+                if this.tabelle
+                  return
+                    _ callback
+                      @ this.tabelle
+                _ fetch('/public/data/cosie/tabelle.json').then
+                    => 
+                        param response
+                        if !response.ok
+                            throw new Error("HTTP error " + response.status)
+                        return response.json()
+                    ._ then
+                        => 
+                            param json
+                            _ console.log(json);
+                            set this.tabelle = json
+                            _ callback
+                              @ json
+                    ._ catch
+                        function 
+                            set this.dataError = true
+
+        set ${myName}.prototype.findAllGuide
+            function 
+                param_callback( required, Method: ${myName}.findAllGuide )
+                if this.guide
+                  return
+                    _ callback
+                      @ this.guide
+                _ fetch('/public/data/cosie/guide.json').then
+                    => 
+                        param response
+                        if !response.ok
+                            throw new Error("HTTP error " + response.status)
+                        return response.json()
+                    ._ then
+                        => 
+                            param json
+                            const guide = json.sort(compareTitolo)
+                            _ console.log(guide);
+                            set this.guide = guide
+                            _ callback
+                              @ guide
+                    ._ catch
+                        function 
+                            set this.dataError = true
+
+        set ${myName}.prototype.findAllDuplicati
+            function 
+                param_callback( required, Method: ${myName}.findAllDuplicati )
+                if this.duplicati
+                  return
+                    _ callback
+                      @ this.duplicati
+                _ fetch('/public/data/cosie/guide_duplicati.json').then
+                    => 
+                        param response
+                        if !response.ok
+                            throw new Error("HTTP error " + response.status)
+                        return response.json()
+                    ._ then
+                        => 
+                            param json
+                            _ console.log(json);
+                            set this.duplicati = json
+                            _ callback
+                              @ json
+                    ._ catch
+                        function 
+                            set this.dataError = true
+
+        set ${myName}.prototype.findRepeats
+            function 
+                param_callback( required, Method: ${myName}.findRepeats )
+                if this.repeats
+                  return
+                    _ callback
+                      @ this.repeats
+                _ fetch('/public/data/cosie/guide_repeats.json').then
+                    => 
+                        param response
+                        if !response.ok
+                            throw new Error("HTTP error " + response.status)
+                        return response.json()
+                    ._ then
+                        => 
+                            param json
+                            _ console.log(json);
+                            set this.repeats = json
+                            _ callback
+                              @ json
+                    ._ catch
+                        function 
+                            set this.dataError = true
+
+
+        set ${myName}.prototype.findGuida
+            function 
+                param id
+                param_callback( required, Method: ${myName}.findGuida )
+                _ this.findAllGuide
+                  =>
+                    param items
+                    foreach item in items
+                      if item.id == id
+                        return
+                          _ callback
+                            @ item
+                    throw new Error('${myName}.findGuida.err not found: ' + guidaKind + '/' + owner + '/' + id)
+        
+
+        set ${myName}.prototype.getLocalValue
+            function 
+                param name
+                param defaultValue
+                var lsStore = this.lsGuida
+                return
+                  _ lsStore.getValue
+                    @ name
+                    @ defaultValue
+
+        set ${myName}.prototype.setLocalValue
+            function 
+                param name
+                param value
+                var lsStore = this.lsGuida
+                return
+                  _ lsStore.setValue
+                    @ name
+                    @ value
+
+        function compareTitolo
+            param a
+            param b
+            const at = parseInt(a.titolo)
+            const bt = parseInt(b.titolo)
+            if at < bt
+                return 1
+            if at > bt
+                return -1
+            return 0

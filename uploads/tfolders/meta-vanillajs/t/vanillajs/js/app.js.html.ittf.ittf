@@ -1,0 +1,22 @@
+${$2}group
+    ${$2}
+      var myName = 'Media';
+      //
+    
+    iife_window${$p2} app, ${$2}{myName}) 
+        function ${$2}{myName}
+            param name
+            set this.storage = new app.Store(name)
+            set this.model = new app.Model(this.storage, app.Defaults)
+            set this.template = new app.Template()
+            set this.view = new app.View(this.template, app.Styles)
+            set this.controller = new app.Controller(this.model, this.view)
+        var media = new ${$2}{myName}('media')
+        ${$2}${$2} temp
+        set app.media = media
+        function setView
+            log 'App ${$2}{myName}.setView'
+            _ media.controller.initialize
+              @ document.location.hash
+        _ $on(window, 'load', setView)
+        _ $on(window, 'hashchange', setView)

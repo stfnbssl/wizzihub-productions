@@ -1,0 +1,8 @@
+{
+    [ tfolders
+        {
+            $$ name "..."
+    [ contexts
+        {
+            $$ propertyName "..."
+            $$ artifactName "..."

@@ -1,0 +1,2893 @@
+$group
+    { gAnni
+        { 7
+            numero 7
+            [ guide
+                { 
+                    n 6
+                    titolo "Alimentazione"
+                    categoria "Alimentazione"
+                    [ anni
+                        7 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a0 true
+                { 
+                    n 4
+                    titolo "I rituali di famiglia"
+                    categoria "Temi caldi"
+                    [ anni
+                        7 
+                        11 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a0 true
+                    a4 true
+                { 
+                    n 12
+                    titolo "Gli effetti dei media e la pubblicità"
+                    categoria "Alimentazione"
+                    [ anni
+                        7 
+                        12 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a0 true
+                    a5 true
+                { 
+                    n 5
+                    titolo "CONTINUARE A LEGGERE INSIEME"
+                    categoria "NpLNpM"
+                    [ anni
+                        7 
+                    url "https://docs.google.com/document/d/1x5u7kMgJ4KZcoV6GHAvt11N4iy0mA4_XiuhTEqJY4hM/edit"
+                    pediatra "Maddalena"
+                    a0 true
+                { 
+                    n 6
+                    titolo "L’ansia non è solo una cosa da grandi"
+                    categoria "Famiglia"
+                    [ anni
+                        7 
+                    url "https://docs.google.com/document/d/1P6RJPjfBDrYEPMxUMMWCOLWZ7M0OyScgZWUjqH4ApFk/edit"
+                    pediatra "Francesca"
+                    a0 true
+                { 
+                    n 7
+                    titolo "Dire dei “no”"
+                    categoria "Famiglia"
+                    [ anni
+                        7 
+                    url "https://drive.google.com/drive/folders/1-1_cv0KCnXT4jCgTDH3Eyg-yGe7BNlSM"
+                    pediatra "Francesca"
+                    a0 true
+                { 
+                    n 9
+                    titolo "Rispettare l’ambiente"
+                    categoria "Famiglia"
+                    [ anni
+                        7 
+                        13 
+                    url "https://docs.google.com/document/d/1JUHyLM5QsTBvmgVXHeXgjhUGCGRAC4nSbw2gmCZNqkw/edit"
+                    message "correggere per i 13 anni l'uso della bicicletta"
+                    pediatra "Francesca"
+                    a0 true
+                    a6 true
+            { categorie
+                { Alimentazione
+                    numero 2
+                    [ guide
+                        { 
+                            n 6
+                            titolo "Alimentazione"
+                            categoria "Alimentazione"
+                            [ anni
+                                7 
+                            url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                            pediatra "Costantino"
+                            a0 true
+                        { 
+                            n 12
+                            titolo "Gli effetti dei media e la pubblicità"
+                            categoria "Alimentazione"
+                            [ anni
+                                7 
+                                12 
+                            url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                            pediatra "Costantino"
+                            a0 true
+                            a5 true
+                { Temi caldi
+                    numero 1
+                    [ guide
+                        { 
+                            n 4
+                            titolo "I rituali di famiglia"
+                            categoria "Temi caldi"
+                            [ anni
+                                7 
+                                11 
+                            url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                            pediatra "Costantino"
+                            a0 true
+                            a4 true
+                { NpLNpM
+                    numero 1
+                    [ guide
+                        { 
+                            n 5
+                            titolo "CONTINUARE A LEGGERE INSIEME"
+                            categoria "NpLNpM"
+                            [ anni
+                                7 
+                            url "https://docs.google.com/document/d/1x5u7kMgJ4KZcoV6GHAvt11N4iy0mA4_XiuhTEqJY4hM/edit"
+                            pediatra "Maddalena"
+                            a0 true
+                { Famiglia
+                    numero 3
+                    [ guide
+                        { 
+                            n 6
+                            titolo "L’ansia non è solo una cosa da grandi"
+                            categoria "Famiglia"
+                            [ anni
+                                7 
+                            url "https://docs.google.com/document/d/1P6RJPjfBDrYEPMxUMMWCOLWZ7M0OyScgZWUjqH4ApFk/edit"
+                            pediatra "Francesca"
+                            a0 true
+                        { 
+                            n 7
+                            titolo "Dire dei “no”"
+                            categoria "Famiglia"
+                            [ anni
+                                7 
+                            url "https://drive.google.com/drive/folders/1-1_cv0KCnXT4jCgTDH3Eyg-yGe7BNlSM"
+                            pediatra "Francesca"
+                            a0 true
+                        { 
+                            n 9
+                            titolo "Rispettare l’ambiente"
+                            categoria "Famiglia"
+                            [ anni
+                                7 
+                                13 
+                            url "https://docs.google.com/document/d/1JUHyLM5QsTBvmgVXHeXgjhUGCGRAC4nSbw2gmCZNqkw/edit"
+                            message "correggere per i 13 anni l'uso della bicicletta"
+                            pediatra "Francesca"
+                            a0 true
+                            a6 true
+        { 8
+            numero 7
+            [ guide
+                { 
+                    n 2
+                    titolo "Le bevande"
+                    categoria "Alimentazione"
+                    [ anni
+                        8 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a1 true
+                { 
+                    n 7
+                    titolo "I videogiochi"
+                    categoria "Pediatra"
+                    [ anni
+                        8 
+                        11 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a1 true
+                    a4 true
+                { 
+                    n 9
+                    titolo "Le punizioni fisiche"
+                    categoria "Pediatra"
+                    [ anni
+                        8 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    message "Vedere come integrarlo con le guide di Anna"
+                    pediatra "Costantino"
+                    a1 true
+                { 
+                    n 2
+                    titolo "I commenti dei compagni sul proprio corpo possono fare male"
+                    categoria "Bambino"
+                    [ anni
+                        8 
+                    url "https://docs.google.com/document/d/1tALH-EylrdHlz5YdEopZxwNh2bCBRMBO9TLhx9eYa04/edit"
+                    pediatra "Maddalena"
+                    a1 true
+                { 
+                    n 7
+                    titolo "IMPARARE A SUONARE UNO STRUMENTO MUSICALE"
+                    categoria "NpLNpM"
+                    [ anni
+                        8 
+                    url "https://docs.google.com/document/d/1x5u7kMgJ4KZcoV6GHAvt11N4iy0mA4_XiuhTEqJY4hM/edit"
+                    pediatra "Maddalena"
+                    a1 true
+                { 
+                    n 2
+                    titolo "Autonomia"
+                    categoria "Famiglia"
+                    [ anni
+                        8 
+                    url "https://docs.google.com/document/d/1to1Q1iMZYtBmev9-J0O9yEzUIoyVpXWWWDUnNie3-Gg/edit"
+                    pediatra "Francesca"
+                    a1 true
+                { 
+                    n 1
+                    titolo "Di quanta attività fisica ha bisogno il mio bambino ogni giorno?"
+                    categoria "Giochi-Movimento"
+                    [ anni
+                        8 
+                    url "https://drive.google.com/drive/folders/1dI4Npbdg5ANJ1we_d0kyGH8R1eZBIvkT"
+                    pediatra "Anna"
+                    a1 true
+            { categorie
+                { Alimentazione
+                    numero 1
+                    [ guide
+                        { 
+                            n 2
+                            titolo "Le bevande"
+                            categoria "Alimentazione"
+                            [ anni
+                                8 
+                            url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                            pediatra "Costantino"
+                            a1 true
+                { Pediatra
+                    numero 2
+                    [ guide
+                        { 
+                            n 7
+                            titolo "I videogiochi"
+                            categoria "Pediatra"
+                            [ anni
+                                8 
+                                11 
+                            url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                            pediatra "Costantino"
+                            a1 true
+                            a4 true
+                        { 
+                            n 9
+                            titolo "Le punizioni fisiche"
+                            categoria "Pediatra"
+                            [ anni
+                                8 
+                            url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                            message "Vedere come integrarlo con le guide di Anna"
+                            pediatra "Costantino"
+                            a1 true
+                { Bambino
+                    numero 1
+                    [ guide
+                        { 
+                            n 2
+                            titolo "I commenti dei compagni sul proprio corpo possono fare male"
+                            categoria "Bambino"
+                            [ anni
+                                8 
+                            url "https://docs.google.com/document/d/1tALH-EylrdHlz5YdEopZxwNh2bCBRMBO9TLhx9eYa04/edit"
+                            pediatra "Maddalena"
+                            a1 true
+                { NpLNpM
+                    numero 1
+                    [ guide
+                        { 
+                            n 7
+                            titolo "IMPARARE A SUONARE UNO STRUMENTO MUSICALE"
+                            categoria "NpLNpM"
+                            [ anni
+                                8 
+                            url "https://docs.google.com/document/d/1x5u7kMgJ4KZcoV6GHAvt11N4iy0mA4_XiuhTEqJY4hM/edit"
+                            pediatra "Maddalena"
+                            a1 true
+                { Famiglia
+                    numero 1
+                    [ guide
+                        { 
+                            n 2
+                            titolo "Autonomia"
+                            categoria "Famiglia"
+                            [ anni
+                                8 
+                            url "https://docs.google.com/document/d/1to1Q1iMZYtBmev9-J0O9yEzUIoyVpXWWWDUnNie3-Gg/edit"
+                            pediatra "Francesca"
+                            a1 true
+                { Giochi-Movimento
+                    numero 1
+                    [ guide
+                        { 
+                            n 1
+                            titolo "Di quanta attività fisica ha bisogno il mio bambino ogni giorno?"
+                            categoria "Giochi-Movimento"
+                            [ anni
+                                8 
+                            url "https://drive.google.com/drive/folders/1dI4Npbdg5ANJ1we_d0kyGH8R1eZBIvkT"
+                            pediatra "Anna"
+                            a1 true
+        { 9
+            numero 9
+            [ guide
+                { 
+                    n 3
+                    titolo "Il sonno"
+                    categoria "Pediatra"
+                    [ anni
+                        9 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a2 true
+                { 
+                    n 8
+                    titolo "La disciplina"
+                    categoria "Pediatra"
+                    [ anni
+                        9 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a2 true
+                { 
+                    n 11
+                    titolo "Il pediatra"
+                    categoria "Pediatra"
+                    [ anni
+                        9 
+                        13 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a2 true
+                    a6 true
+                { 
+                    n 1
+                    titolo "Coltivare una buona immagine di sé"
+                    categoria "Bambino"
+                    [ anni
+                        9 
+                    url "https://docs.google.com/document/d/1tALH-EylrdHlz5YdEopZxwNh2bCBRMBO9TLhx9eYa04/edit"
+                    pediatra "Maddalena"
+                    a2 true
+                { 
+                    n 6
+                    titolo "CRESCERE LEGGENDO"
+                    categoria "NpLNpM"
+                    [ anni
+                        9 
+                    url "https://docs.google.com/document/d/1x5u7kMgJ4KZcoV6GHAvt11N4iy0mA4_XiuhTEqJY4hM/edit"
+                    pediatra "Maddalena"
+                    a2 true
+                { 
+                    n 10
+                    titolo "SVILUPPO PUBERALE, Un corpo che cambia"
+                    categoria "Bambino"
+                    [ anni
+                        9 
+                    url "https://docs.google.com/document/d/1XbfRKh-i9_mqvKvLkUMw7a8H2uPBD3xydGO-_4NNmEE/edit"
+                    pediatra "Maddalena"
+                    a2 true
+                { 
+                    n 1
+                    titolo "Adolescenza, famiglia e amici"
+                    categoria "Famiglia"
+                    [ anni
+                        9 
+                    url "https://docs.google.com/document/d/1to1Q1iMZYtBmev9-J0O9yEzUIoyVpXWWWDUnNie3-Gg/edit"
+                    pediatra "Francesca"
+                    a2 true
+                { 
+                    n 8
+                    titolo "Temo che mio figlio sia troppo remissivo"
+                    categoria "Famiglia"
+                    [ anni
+                        9 
+                    url "https://docs.google.com/document/d/1huLqch39VdWRlwiQEUoKi_zTfdWAsnksIR9DPYwTus8/edit"
+                    pediatra "Francesca"
+                    a2 true
+                { 
+                    n 2
+                    titolo "Attività fisica e salute"
+                    categoria "Giochi-Movimento"
+                    [ anni
+                        9 
+                    url "https://drive.google.com/drive/folders/1dI4Npbdg5ANJ1we_d0kyGH8R1eZBIvkT"
+                    pediatra "Anna"
+                    a2 true
+            { categorie
+                { Pediatra
+                    numero 3
+                    [ guide
+                        { 
+                            n 3
+                            titolo "Il sonno"
+                            categoria "Pediatra"
+                            [ anni
+                                9 
+                            url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                            pediatra "Costantino"
+                            a2 true
+                        { 
+                            n 8
+                            titolo "La disciplina"
+                            categoria "Pediatra"
+                            [ anni
+                                9 
+                            url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                            pediatra "Costantino"
+                            a2 true
+                        { 
+                            n 11
+                            titolo "Il pediatra"
+                            categoria "Pediatra"
+                            [ anni
+                                9 
+                                13 
+                            url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                            pediatra "Costantino"
+                            a2 true
+                            a6 true
+                { Bambino
+                    numero 2
+                    [ guide
+                        { 
+                            n 1
+                            titolo "Coltivare una buona immagine di sé"
+                            categoria "Bambino"
+                            [ anni
+                                9 
+                            url "https://docs.google.com/document/d/1tALH-EylrdHlz5YdEopZxwNh2bCBRMBO9TLhx9eYa04/edit"
+                            pediatra "Maddalena"
+                            a2 true
+                        { 
+                            n 10
+                            titolo "SVILUPPO PUBERALE, Un corpo che cambia"
+                            categoria "Bambino"
+                            [ anni
+                                9 
+                            url "https://docs.google.com/document/d/1XbfRKh-i9_mqvKvLkUMw7a8H2uPBD3xydGO-_4NNmEE/edit"
+                            pediatra "Maddalena"
+                            a2 true
+                { NpLNpM
+                    numero 1
+                    [ guide
+                        { 
+                            n 6
+                            titolo "CRESCERE LEGGENDO"
+                            categoria "NpLNpM"
+                            [ anni
+                                9 
+                            url "https://docs.google.com/document/d/1x5u7kMgJ4KZcoV6GHAvt11N4iy0mA4_XiuhTEqJY4hM/edit"
+                            pediatra "Maddalena"
+                            a2 true
+                { Famiglia
+                    numero 2
+                    [ guide
+                        { 
+                            n 1
+                            titolo "Adolescenza, famiglia e amici"
+                            categoria "Famiglia"
+                            [ anni
+                                9 
+                            url "https://docs.google.com/document/d/1to1Q1iMZYtBmev9-J0O9yEzUIoyVpXWWWDUnNie3-Gg/edit"
+                            pediatra "Francesca"
+                            a2 true
+                        { 
+                            n 8
+                            titolo "Temo che mio figlio sia troppo remissivo"
+                            categoria "Famiglia"
+                            [ anni
+                                9 
+                            url "https://docs.google.com/document/d/1huLqch39VdWRlwiQEUoKi_zTfdWAsnksIR9DPYwTus8/edit"
+                            pediatra "Francesca"
+                            a2 true
+                { Giochi-Movimento
+                    numero 1
+                    [ guide
+                        { 
+                            n 2
+                            titolo "Attività fisica e salute"
+                            categoria "Giochi-Movimento"
+                            [ anni
+                                9 
+                            url "https://drive.google.com/drive/folders/1dI4Npbdg5ANJ1we_d0kyGH8R1eZBIvkT"
+                            pediatra "Anna"
+                            a2 true
+        { 10
+            numero 4
+            [ guide
+                { 
+                    n 1
+                    titolo "Gli impegni di un ragazzo o una ragazza che cresce"
+                    categoria "Temi caldi"
+                    [ anni
+                        10 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a3 true
+                { 
+                    n 9
+                    titolo "PREVENZIONE DEI DISTURBI DEL COMPORTAMENTO ALIMENTARE"
+                    categoria "Bambino"
+                    [ anni
+                        10 
+                    url "https://docs.google.com/document/d/1lxptsbxE98XF_en0jktlpEmsvkxAbqtRRGwZ3-f94pM/edit"
+                    message "categoria Bambino o Temi caldi"
+                    pediatra "Maddalena"
+                    a3 true
+                { 
+                    n 5
+                    titolo "I disturbi alimentari"
+                    categoria "Famiglia"
+                    [ anni
+                        10 
+                    url "https://docs.google.com/document/d/1J-_BJBn9AANVhIE9lYsoOpQLgnmgInA4Vvu38vckiTc/edit"
+                    pediatra "Francesca"
+                    a3 true
+                { 
+                    n 3
+                    titolo "Cosa possono fare i genitori per promuovere l’attività fisica a questa età?"
+                    categoria "Giochi-Movimento"
+                    [ anni
+                        10 
+                    url "https://drive.google.com/drive/folders/1dI4Npbdg5ANJ1we_d0kyGH8R1eZBIvkT"
+                    pediatra "Anna"
+                    a3 true
+            { categorie
+                { Temi caldi
+                    numero 1
+                    [ guide
+                        { 
+                            n 1
+                            titolo "Gli impegni di un ragazzo o una ragazza che cresce"
+                            categoria "Temi caldi"
+                            [ anni
+                                10 
+                            url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                            pediatra "Costantino"
+                            a3 true
+                { Bambino
+                    numero 1
+                    [ guide
+                        { 
+                            n 9
+                            titolo "PREVENZIONE DEI DISTURBI DEL COMPORTAMENTO ALIMENTARE"
+                            categoria "Bambino"
+                            [ anni
+                                10 
+                            url "https://docs.google.com/document/d/1lxptsbxE98XF_en0jktlpEmsvkxAbqtRRGwZ3-f94pM/edit"
+                            message "categoria Bambino o Temi caldi"
+                            pediatra "Maddalena"
+                            a3 true
+                { Famiglia
+                    numero 1
+                    [ guide
+                        { 
+                            n 5
+                            titolo "I disturbi alimentari"
+                            categoria "Famiglia"
+                            [ anni
+                                10 
+                            url "https://docs.google.com/document/d/1J-_BJBn9AANVhIE9lYsoOpQLgnmgInA4Vvu38vckiTc/edit"
+                            pediatra "Francesca"
+                            a3 true
+                { Giochi-Movimento
+                    numero 1
+                    [ guide
+                        { 
+                            n 3
+                            titolo "Cosa possono fare i genitori per promuovere l’attività fisica a questa età?"
+                            categoria "Giochi-Movimento"
+                            [ anni
+                                10 
+                            url "https://drive.google.com/drive/folders/1dI4Npbdg5ANJ1we_d0kyGH8R1eZBIvkT"
+                            pediatra "Anna"
+                            a3 true
+        { 11
+            numero 7
+            [ guide
+                { 
+                    n 4
+                    titolo "I rituali di famiglia"
+                    categoria "Temi caldi"
+                    [ anni
+                        7 
+                        11 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a0 true
+                    a4 true
+                { 
+                    n 5
+                    titolo "Il telefono cellulare"
+                    categoria "Temi caldi"
+                    [ anni
+                        11 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    message "Gli anni non ci sono, presi quelli del n 4"
+                    pediatra "Costantino"
+                    a4 true
+                { 
+                    n 7
+                    titolo "I videogiochi"
+                    categoria "Pediatra"
+                    [ anni
+                        8 
+                        11 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a1 true
+                    a4 true
+                { 
+                    n 3
+                    titolo "Bullismo 1"
+                    categoria "Famiglia"
+                    [ anni
+                        11 
+                    url "https://docs.google.com/document/d/1T6EcCfjJlWgbexY1WgSRXkF7QSM6wUve7fnImHiR3tw/edit"
+                    pediatra "Francesca"
+                    a4 true
+                { 
+                    n 4
+                    titolo "Bullismo 2, Ma chi sono i bulli?"
+                    categoria "Famiglia"
+                    [ anni
+                        11 
+                    url "https://docs.google.com/document/d/1T6EcCfjJlWgbexY1WgSRXkF7QSM6wUve7fnImHiR3tw/edit"
+                    pediatra "Francesca"
+                    a4 true
+                { 
+                    n 4
+                    titolo "Il gioco libero e lo sport"
+                    categoria "Giochi-Movimento"
+                    [ anni
+                        11 
+                    url "https://drive.google.com/drive/folders/1dI4Npbdg5ANJ1we_d0kyGH8R1eZBIvkT"
+                    pediatra "Anna"
+                    a4 true
+                { 
+                    n 5
+                    titolo "Il coraggio si impara"
+                    categoria "Giochi-Movimento"
+                    [ anni
+                        11 
+                    url "https://drive.google.com/drive/folders/1dI4Npbdg5ANJ1we_d0kyGH8R1eZBIvkT"
+                    pediatra "Anna"
+                    a4 true
+            { categorie
+                { Temi caldi
+                    numero 2
+                    [ guide
+                        { 
+                            n 4
+                            titolo "I rituali di famiglia"
+                            categoria "Temi caldi"
+                            [ anni
+                                7 
+                                11 
+                            url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                            pediatra "Costantino"
+                            a0 true
+                            a4 true
+                        { 
+                            n 5
+                            titolo "Il telefono cellulare"
+                            categoria "Temi caldi"
+                            [ anni
+                                11 
+                            url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                            message "Gli anni non ci sono, presi quelli del n 4"
+                            pediatra "Costantino"
+                            a4 true
+                { Pediatra
+                    numero 1
+                    [ guide
+                        { 
+                            n 7
+                            titolo "I videogiochi"
+                            categoria "Pediatra"
+                            [ anni
+                                8 
+                                11 
+                            url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                            pediatra "Costantino"
+                            a1 true
+                            a4 true
+                { Famiglia
+                    numero 2
+                    [ guide
+                        { 
+                            n 3
+                            titolo "Bullismo 1"
+                            categoria "Famiglia"
+                            [ anni
+                                11 
+                            url "https://docs.google.com/document/d/1T6EcCfjJlWgbexY1WgSRXkF7QSM6wUve7fnImHiR3tw/edit"
+                            pediatra "Francesca"
+                            a4 true
+                        { 
+                            n 4
+                            titolo "Bullismo 2, Ma chi sono i bulli?"
+                            categoria "Famiglia"
+                            [ anni
+                                11 
+                            url "https://docs.google.com/document/d/1T6EcCfjJlWgbexY1WgSRXkF7QSM6wUve7fnImHiR3tw/edit"
+                            pediatra "Francesca"
+                            a4 true
+                { Giochi-Movimento
+                    numero 2
+                    [ guide
+                        { 
+                            n 4
+                            titolo "Il gioco libero e lo sport"
+                            categoria "Giochi-Movimento"
+                            [ anni
+                                11 
+                            url "https://drive.google.com/drive/folders/1dI4Npbdg5ANJ1we_d0kyGH8R1eZBIvkT"
+                            pediatra "Anna"
+                            a4 true
+                        { 
+                            n 5
+                            titolo "Il coraggio si impara"
+                            categoria "Giochi-Movimento"
+                            [ anni
+                                11 
+                            url "https://drive.google.com/drive/folders/1dI4Npbdg5ANJ1we_d0kyGH8R1eZBIvkT"
+                            pediatra "Anna"
+                            a4 true
+        { 12
+            numero 3
+            [ guide
+                { 
+                    n 12
+                    titolo "Gli effetti dei media e la pubblicità"
+                    categoria "Alimentazione"
+                    [ anni
+                        7 
+                        12 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a0 true
+                    a5 true
+                { 
+                    n 3
+                    titolo "NON MANDIAMO IL CERVELLO IN FUMO!"
+                    categoria "Temi caldi"
+                    [ anni
+                        12 
+                    url "https://docs.google.com/document/d/1440gM7SZI-zLj46lHB9Y6OmRuYOPJOs6XXmjfJiJGc4/edit"
+                    pediatra "Maddalena"
+                    a5 true
+                { 
+                    n 8
+                    titolo "SUONARE INSIEME"
+                    categoria "NpLNpM"
+                    [ anni
+                        12 
+                    url "https://docs.google.com/document/d/1x5u7kMgJ4KZcoV6GHAvt11N4iy0mA4_XiuhTEqJY4hM/edit"
+                    pediatra "Maddalena"
+                    a5 true
+            { categorie
+                { Alimentazione
+                    numero 1
+                    [ guide
+                        { 
+                            n 12
+                            titolo "Gli effetti dei media e la pubblicità"
+                            categoria "Alimentazione"
+                            [ anni
+                                7 
+                                12 
+                            url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                            pediatra "Costantino"
+                            a0 true
+                            a5 true
+                { Temi caldi
+                    numero 1
+                    [ guide
+                        { 
+                            n 3
+                            titolo "NON MANDIAMO IL CERVELLO IN FUMO!"
+                            categoria "Temi caldi"
+                            [ anni
+                                12 
+                            url "https://docs.google.com/document/d/1440gM7SZI-zLj46lHB9Y6OmRuYOPJOs6XXmjfJiJGc4/edit"
+                            pediatra "Maddalena"
+                            a5 true
+                { NpLNpM
+                    numero 1
+                    [ guide
+                        { 
+                            n 8
+                            titolo "SUONARE INSIEME"
+                            categoria "NpLNpM"
+                            [ anni
+                                12 
+                            url "https://docs.google.com/document/d/1x5u7kMgJ4KZcoV6GHAvt11N4iy0mA4_XiuhTEqJY4hM/edit"
+                            pediatra "Maddalena"
+                            a5 true
+        { 13
+            numero 3
+            [ guide
+                { 
+                    n 11
+                    titolo "Il pediatra"
+                    categoria "Pediatra"
+                    [ anni
+                        9 
+                        13 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a2 true
+                    a6 true
+                { 
+                    n 4
+                    titolo "Fumo di sigaretta e Nicotina"
+                    categoria "Pediatra"
+                    [ anni
+                        13 
+                    url "https://docs.google.com/document/d/1440gM7SZI-zLj46lHB9Y6OmRuYOPJOs6XXmjfJiJGc4/edit"
+                    pediatra "Maddalena"
+                    a6 true
+                { 
+                    n 9
+                    titolo "Rispettare l’ambiente"
+                    categoria "Famiglia"
+                    [ anni
+                        7 
+                        13 
+                    url "https://docs.google.com/document/d/1JUHyLM5QsTBvmgVXHeXgjhUGCGRAC4nSbw2gmCZNqkw/edit"
+                    message "correggere per i 13 anni l'uso della bicicletta"
+                    pediatra "Francesca"
+                    a0 true
+                    a6 true
+            { categorie
+                { Pediatra
+                    numero 2
+                    [ guide
+                        { 
+                            n 11
+                            titolo "Il pediatra"
+                            categoria "Pediatra"
+                            [ anni
+                                9 
+                                13 
+                            url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                            pediatra "Costantino"
+                            a2 true
+                            a6 true
+                        { 
+                            n 4
+                            titolo "Fumo di sigaretta e Nicotina"
+                            categoria "Pediatra"
+                            [ anni
+                                13 
+                            url "https://docs.google.com/document/d/1440gM7SZI-zLj46lHB9Y6OmRuYOPJOs6XXmjfJiJGc4/edit"
+                            pediatra "Maddalena"
+                            a6 true
+                { Famiglia
+                    numero 1
+                    [ guide
+                        { 
+                            n 9
+                            titolo "Rispettare l’ambiente"
+                            categoria "Famiglia"
+                            [ anni
+                                7 
+                                13 
+                            url "https://docs.google.com/document/d/1JUHyLM5QsTBvmgVXHeXgjhUGCGRAC4nSbw2gmCZNqkw/edit"
+                            message "correggere per i 13 anni l'uso della bicicletta"
+                            pediatra "Francesca"
+                            a0 true
+                            a6 true
+    { gCategorie
+        { Temi caldi
+            numero 4
+            [ guide
+                { 
+                    n 1
+                    titolo "Gli impegni di un ragazzo o una ragazza che cresce"
+                    categoria "Temi caldi"
+                    [ anni
+                        10 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a3 true
+                { 
+                    n 4
+                    titolo "I rituali di famiglia"
+                    categoria "Temi caldi"
+                    [ anni
+                        7 
+                        11 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a0 true
+                    a4 true
+                { 
+                    n 5
+                    titolo "Il telefono cellulare"
+                    categoria "Temi caldi"
+                    [ anni
+                        11 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    message "Gli anni non ci sono, presi quelli del n 4"
+                    pediatra "Costantino"
+                    a4 true
+                { 
+                    n 3
+                    titolo "NON MANDIAMO IL CERVELLO IN FUMO!"
+                    categoria "Temi caldi"
+                    [ anni
+                        12 
+                    url "https://docs.google.com/document/d/1440gM7SZI-zLj46lHB9Y6OmRuYOPJOs6XXmjfJiJGc4/edit"
+                    pediatra "Maddalena"
+                    a5 true
+            { anni
+                { 7
+                    numero 1
+                    [ guide
+                        { 
+                            n 4
+                            titolo "I rituali di famiglia"
+                            categoria "Temi caldi"
+                            [ anni
+                                7 
+                                11 
+                            url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                            pediatra "Costantino"
+                            a0 true
+                            a4 true
+                { 10
+                    numero 1
+                    [ guide
+                        { 
+                            n 1
+                            titolo "Gli impegni di un ragazzo o una ragazza che cresce"
+                            categoria "Temi caldi"
+                            [ anni
+                                10 
+                            url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                            pediatra "Costantino"
+                            a3 true
+                { 11
+                    numero 2
+                    [ guide
+                        { 
+                            n 4
+                            titolo "I rituali di famiglia"
+                            categoria "Temi caldi"
+                            [ anni
+                                7 
+                                11 
+                            url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                            pediatra "Costantino"
+                            a0 true
+                            a4 true
+                        { 
+                            n 5
+                            titolo "Il telefono cellulare"
+                            categoria "Temi caldi"
+                            [ anni
+                                11 
+                            url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                            message "Gli anni non ci sono, presi quelli del n 4"
+                            pediatra "Costantino"
+                            a4 true
+                { 12
+                    numero 1
+                    [ guide
+                        { 
+                            n 3
+                            titolo "NON MANDIAMO IL CERVELLO IN FUMO!"
+                            categoria "Temi caldi"
+                            [ anni
+                                12 
+                            url "https://docs.google.com/document/d/1440gM7SZI-zLj46lHB9Y6OmRuYOPJOs6XXmjfJiJGc4/edit"
+                            pediatra "Maddalena"
+                            a5 true
+        { Alimentazione
+            numero 3
+            [ guide
+                { 
+                    n 2
+                    titolo "Le bevande"
+                    categoria "Alimentazione"
+                    [ anni
+                        8 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a1 true
+                { 
+                    n 6
+                    titolo "Alimentazione"
+                    categoria "Alimentazione"
+                    [ anni
+                        7 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a0 true
+                { 
+                    n 12
+                    titolo "Gli effetti dei media e la pubblicità"
+                    categoria "Alimentazione"
+                    [ anni
+                        7 
+                        12 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a0 true
+                    a5 true
+            { anni
+                { 7
+                    numero 2
+                    [ guide
+                        { 
+                            n 6
+                            titolo "Alimentazione"
+                            categoria "Alimentazione"
+                            [ anni
+                                7 
+                            url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                            pediatra "Costantino"
+                            a0 true
+                        { 
+                            n 12
+                            titolo "Gli effetti dei media e la pubblicità"
+                            categoria "Alimentazione"
+                            [ anni
+                                7 
+                                12 
+                            url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                            pediatra "Costantino"
+                            a0 true
+                            a5 true
+                { 8
+                    numero 1
+                    [ guide
+                        { 
+                            n 2
+                            titolo "Le bevande"
+                            categoria "Alimentazione"
+                            [ anni
+                                8 
+                            url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                            pediatra "Costantino"
+                            a1 true
+                { 12
+                    numero 1
+                    [ guide
+                        { 
+                            n 12
+                            titolo "Gli effetti dei media e la pubblicità"
+                            categoria "Alimentazione"
+                            [ anni
+                                7 
+                                12 
+                            url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                            pediatra "Costantino"
+                            a0 true
+                            a5 true
+        { Pediatra
+            numero 6
+            [ guide
+                { 
+                    n 3
+                    titolo "Il sonno"
+                    categoria "Pediatra"
+                    [ anni
+                        9 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a2 true
+                { 
+                    n 7
+                    titolo "I videogiochi"
+                    categoria "Pediatra"
+                    [ anni
+                        8 
+                        11 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a1 true
+                    a4 true
+                { 
+                    n 8
+                    titolo "La disciplina"
+                    categoria "Pediatra"
+                    [ anni
+                        9 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a2 true
+                { 
+                    n 9
+                    titolo "Le punizioni fisiche"
+                    categoria "Pediatra"
+                    [ anni
+                        8 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    message "Vedere come integrarlo con le guide di Anna"
+                    pediatra "Costantino"
+                    a1 true
+                { 
+                    n 11
+                    titolo "Il pediatra"
+                    categoria "Pediatra"
+                    [ anni
+                        9 
+                        13 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a2 true
+                    a6 true
+                { 
+                    n 4
+                    titolo "Fumo di sigaretta e Nicotina"
+                    categoria "Pediatra"
+                    [ anni
+                        13 
+                    url "https://docs.google.com/document/d/1440gM7SZI-zLj46lHB9Y6OmRuYOPJOs6XXmjfJiJGc4/edit"
+                    pediatra "Maddalena"
+                    a6 true
+            { anni
+                { 8
+                    numero 2
+                    [ guide
+                        { 
+                            n 7
+                            titolo "I videogiochi"
+                            categoria "Pediatra"
+                            [ anni
+                                8 
+                                11 
+                            url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                            pediatra "Costantino"
+                            a1 true
+                            a4 true
+                        { 
+                            n 9
+                            titolo "Le punizioni fisiche"
+                            categoria "Pediatra"
+                            [ anni
+                                8 
+                            url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                            message "Vedere come integrarlo con le guide di Anna"
+                            pediatra "Costantino"
+                            a1 true
+                { 9
+                    numero 3
+                    [ guide
+                        { 
+                            n 3
+                            titolo "Il sonno"
+                            categoria "Pediatra"
+                            [ anni
+                                9 
+                            url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                            pediatra "Costantino"
+                            a2 true
+                        { 
+                            n 8
+                            titolo "La disciplina"
+                            categoria "Pediatra"
+                            [ anni
+                                9 
+                            url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                            pediatra "Costantino"
+                            a2 true
+                        { 
+                            n 11
+                            titolo "Il pediatra"
+                            categoria "Pediatra"
+                            [ anni
+                                9 
+                                13 
+                            url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                            pediatra "Costantino"
+                            a2 true
+                            a6 true
+                { 11
+                    numero 1
+                    [ guide
+                        { 
+                            n 7
+                            titolo "I videogiochi"
+                            categoria "Pediatra"
+                            [ anni
+                                8 
+                                11 
+                            url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                            pediatra "Costantino"
+                            a1 true
+                            a4 true
+                { 13
+                    numero 2
+                    [ guide
+                        { 
+                            n 11
+                            titolo "Il pediatra"
+                            categoria "Pediatra"
+                            [ anni
+                                9 
+                                13 
+                            url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                            pediatra "Costantino"
+                            a2 true
+                            a6 true
+                        { 
+                            n 4
+                            titolo "Fumo di sigaretta e Nicotina"
+                            categoria "Pediatra"
+                            [ anni
+                                13 
+                            url "https://docs.google.com/document/d/1440gM7SZI-zLj46lHB9Y6OmRuYOPJOs6XXmjfJiJGc4/edit"
+                            pediatra "Maddalena"
+                            a6 true
+        { Bambino
+            numero 4
+            [ guide
+                { 
+                    n 1
+                    titolo "Coltivare una buona immagine di sé"
+                    categoria "Bambino"
+                    [ anni
+                        9 
+                    url "https://docs.google.com/document/d/1tALH-EylrdHlz5YdEopZxwNh2bCBRMBO9TLhx9eYa04/edit"
+                    pediatra "Maddalena"
+                    a2 true
+                { 
+                    n 2
+                    titolo "I commenti dei compagni sul proprio corpo possono fare male"
+                    categoria "Bambino"
+                    [ anni
+                        8 
+                    url "https://docs.google.com/document/d/1tALH-EylrdHlz5YdEopZxwNh2bCBRMBO9TLhx9eYa04/edit"
+                    pediatra "Maddalena"
+                    a1 true
+                { 
+                    n 9
+                    titolo "PREVENZIONE DEI DISTURBI DEL COMPORTAMENTO ALIMENTARE"
+                    categoria "Bambino"
+                    [ anni
+                        10 
+                    url "https://docs.google.com/document/d/1lxptsbxE98XF_en0jktlpEmsvkxAbqtRRGwZ3-f94pM/edit"
+                    message "categoria Bambino o Temi caldi"
+                    pediatra "Maddalena"
+                    a3 true
+                { 
+                    n 10
+                    titolo "SVILUPPO PUBERALE, Un corpo che cambia"
+                    categoria "Bambino"
+                    [ anni
+                        9 
+                    url "https://docs.google.com/document/d/1XbfRKh-i9_mqvKvLkUMw7a8H2uPBD3xydGO-_4NNmEE/edit"
+                    pediatra "Maddalena"
+                    a2 true
+            { anni
+                { 8
+                    numero 1
+                    [ guide
+                        { 
+                            n 2
+                            titolo "I commenti dei compagni sul proprio corpo possono fare male"
+                            categoria "Bambino"
+                            [ anni
+                                8 
+                            url "https://docs.google.com/document/d/1tALH-EylrdHlz5YdEopZxwNh2bCBRMBO9TLhx9eYa04/edit"
+                            pediatra "Maddalena"
+                            a1 true
+                { 9
+                    numero 2
+                    [ guide
+                        { 
+                            n 1
+                            titolo "Coltivare una buona immagine di sé"
+                            categoria "Bambino"
+                            [ anni
+                                9 
+                            url "https://docs.google.com/document/d/1tALH-EylrdHlz5YdEopZxwNh2bCBRMBO9TLhx9eYa04/edit"
+                            pediatra "Maddalena"
+                            a2 true
+                        { 
+                            n 10
+                            titolo "SVILUPPO PUBERALE, Un corpo che cambia"
+                            categoria "Bambino"
+                            [ anni
+                                9 
+                            url "https://docs.google.com/document/d/1XbfRKh-i9_mqvKvLkUMw7a8H2uPBD3xydGO-_4NNmEE/edit"
+                            pediatra "Maddalena"
+                            a2 true
+                { 10
+                    numero 1
+                    [ guide
+                        { 
+                            n 9
+                            titolo "PREVENZIONE DEI DISTURBI DEL COMPORTAMENTO ALIMENTARE"
+                            categoria "Bambino"
+                            [ anni
+                                10 
+                            url "https://docs.google.com/document/d/1lxptsbxE98XF_en0jktlpEmsvkxAbqtRRGwZ3-f94pM/edit"
+                            message "categoria Bambino o Temi caldi"
+                            pediatra "Maddalena"
+                            a3 true
+        { NpLNpM
+            numero 4
+            [ guide
+                { 
+                    n 5
+                    titolo "CONTINUARE A LEGGERE INSIEME"
+                    categoria "NpLNpM"
+                    [ anni
+                        7 
+                    url "https://docs.google.com/document/d/1x5u7kMgJ4KZcoV6GHAvt11N4iy0mA4_XiuhTEqJY4hM/edit"
+                    pediatra "Maddalena"
+                    a0 true
+                { 
+                    n 6
+                    titolo "CRESCERE LEGGENDO"
+                    categoria "NpLNpM"
+                    [ anni
+                        9 
+                    url "https://docs.google.com/document/d/1x5u7kMgJ4KZcoV6GHAvt11N4iy0mA4_XiuhTEqJY4hM/edit"
+                    pediatra "Maddalena"
+                    a2 true
+                { 
+                    n 7
+                    titolo "IMPARARE A SUONARE UNO STRUMENTO MUSICALE"
+                    categoria "NpLNpM"
+                    [ anni
+                        8 
+                    url "https://docs.google.com/document/d/1x5u7kMgJ4KZcoV6GHAvt11N4iy0mA4_XiuhTEqJY4hM/edit"
+                    pediatra "Maddalena"
+                    a1 true
+                { 
+                    n 8
+                    titolo "SUONARE INSIEME"
+                    categoria "NpLNpM"
+                    [ anni
+                        12 
+                    url "https://docs.google.com/document/d/1x5u7kMgJ4KZcoV6GHAvt11N4iy0mA4_XiuhTEqJY4hM/edit"
+                    pediatra "Maddalena"
+                    a5 true
+            { anni
+                { 7
+                    numero 1
+                    [ guide
+                        { 
+                            n 5
+                            titolo "CONTINUARE A LEGGERE INSIEME"
+                            categoria "NpLNpM"
+                            [ anni
+                                7 
+                            url "https://docs.google.com/document/d/1x5u7kMgJ4KZcoV6GHAvt11N4iy0mA4_XiuhTEqJY4hM/edit"
+                            pediatra "Maddalena"
+                            a0 true
+                { 8
+                    numero 1
+                    [ guide
+                        { 
+                            n 7
+                            titolo "IMPARARE A SUONARE UNO STRUMENTO MUSICALE"
+                            categoria "NpLNpM"
+                            [ anni
+                                8 
+                            url "https://docs.google.com/document/d/1x5u7kMgJ4KZcoV6GHAvt11N4iy0mA4_XiuhTEqJY4hM/edit"
+                            pediatra "Maddalena"
+                            a1 true
+                { 9
+                    numero 1
+                    [ guide
+                        { 
+                            n 6
+                            titolo "CRESCERE LEGGENDO"
+                            categoria "NpLNpM"
+                            [ anni
+                                9 
+                            url "https://docs.google.com/document/d/1x5u7kMgJ4KZcoV6GHAvt11N4iy0mA4_XiuhTEqJY4hM/edit"
+                            pediatra "Maddalena"
+                            a2 true
+                { 12
+                    numero 1
+                    [ guide
+                        { 
+                            n 8
+                            titolo "SUONARE INSIEME"
+                            categoria "NpLNpM"
+                            [ anni
+                                12 
+                            url "https://docs.google.com/document/d/1x5u7kMgJ4KZcoV6GHAvt11N4iy0mA4_XiuhTEqJY4hM/edit"
+                            pediatra "Maddalena"
+                            a5 true
+        { Famiglia
+            numero 9
+            [ guide
+                { 
+                    n 1
+                    titolo "Adolescenza, famiglia e amici"
+                    categoria "Famiglia"
+                    [ anni
+                        9 
+                    url "https://docs.google.com/document/d/1to1Q1iMZYtBmev9-J0O9yEzUIoyVpXWWWDUnNie3-Gg/edit"
+                    pediatra "Francesca"
+                    a2 true
+                { 
+                    n 2
+                    titolo "Autonomia"
+                    categoria "Famiglia"
+                    [ anni
+                        8 
+                    url "https://docs.google.com/document/d/1to1Q1iMZYtBmev9-J0O9yEzUIoyVpXWWWDUnNie3-Gg/edit"
+                    pediatra "Francesca"
+                    a1 true
+                { 
+                    n 3
+                    titolo "Bullismo 1"
+                    categoria "Famiglia"
+                    [ anni
+                        11 
+                    url "https://docs.google.com/document/d/1T6EcCfjJlWgbexY1WgSRXkF7QSM6wUve7fnImHiR3tw/edit"
+                    pediatra "Francesca"
+                    a4 true
+                { 
+                    n 4
+                    titolo "Bullismo 2, Ma chi sono i bulli?"
+                    categoria "Famiglia"
+                    [ anni
+                        11 
+                    url "https://docs.google.com/document/d/1T6EcCfjJlWgbexY1WgSRXkF7QSM6wUve7fnImHiR3tw/edit"
+                    pediatra "Francesca"
+                    a4 true
+                { 
+                    n 5
+                    titolo "I disturbi alimentari"
+                    categoria "Famiglia"
+                    [ anni
+                        10 
+                    url "https://docs.google.com/document/d/1J-_BJBn9AANVhIE9lYsoOpQLgnmgInA4Vvu38vckiTc/edit"
+                    pediatra "Francesca"
+                    a3 true
+                { 
+                    n 6
+                    titolo "L’ansia non è solo una cosa da grandi"
+                    categoria "Famiglia"
+                    [ anni
+                        7 
+                    url "https://docs.google.com/document/d/1P6RJPjfBDrYEPMxUMMWCOLWZ7M0OyScgZWUjqH4ApFk/edit"
+                    pediatra "Francesca"
+                    a0 true
+                { 
+                    n 7
+                    titolo "Dire dei “no”"
+                    categoria "Famiglia"
+                    [ anni
+                        7 
+                    url "https://drive.google.com/drive/folders/1-1_cv0KCnXT4jCgTDH3Eyg-yGe7BNlSM"
+                    pediatra "Francesca"
+                    a0 true
+                { 
+                    n 8
+                    titolo "Temo che mio figlio sia troppo remissivo"
+                    categoria "Famiglia"
+                    [ anni
+                        9 
+                    url "https://docs.google.com/document/d/1huLqch39VdWRlwiQEUoKi_zTfdWAsnksIR9DPYwTus8/edit"
+                    pediatra "Francesca"
+                    a2 true
+                { 
+                    n 9
+                    titolo "Rispettare l’ambiente"
+                    categoria "Famiglia"
+                    [ anni
+                        7 
+                        13 
+                    url "https://docs.google.com/document/d/1JUHyLM5QsTBvmgVXHeXgjhUGCGRAC4nSbw2gmCZNqkw/edit"
+                    message "correggere per i 13 anni l'uso della bicicletta"
+                    pediatra "Francesca"
+                    a0 true
+                    a6 true
+            { anni
+                { 7
+                    numero 3
+                    [ guide
+                        { 
+                            n 6
+                            titolo "L’ansia non è solo una cosa da grandi"
+                            categoria "Famiglia"
+                            [ anni
+                                7 
+                            url "https://docs.google.com/document/d/1P6RJPjfBDrYEPMxUMMWCOLWZ7M0OyScgZWUjqH4ApFk/edit"
+                            pediatra "Francesca"
+                            a0 true
+                        { 
+                            n 7
+                            titolo "Dire dei “no”"
+                            categoria "Famiglia"
+                            [ anni
+                                7 
+                            url "https://drive.google.com/drive/folders/1-1_cv0KCnXT4jCgTDH3Eyg-yGe7BNlSM"
+                            pediatra "Francesca"
+                            a0 true
+                        { 
+                            n 9
+                            titolo "Rispettare l’ambiente"
+                            categoria "Famiglia"
+                            [ anni
+                                7 
+                                13 
+                            url "https://docs.google.com/document/d/1JUHyLM5QsTBvmgVXHeXgjhUGCGRAC4nSbw2gmCZNqkw/edit"
+                            message "correggere per i 13 anni l'uso della bicicletta"
+                            pediatra "Francesca"
+                            a0 true
+                            a6 true
+                { 8
+                    numero 1
+                    [ guide
+                        { 
+                            n 2
+                            titolo "Autonomia"
+                            categoria "Famiglia"
+                            [ anni
+                                8 
+                            url "https://docs.google.com/document/d/1to1Q1iMZYtBmev9-J0O9yEzUIoyVpXWWWDUnNie3-Gg/edit"
+                            pediatra "Francesca"
+                            a1 true
+                { 9
+                    numero 2
+                    [ guide
+                        { 
+                            n 1
+                            titolo "Adolescenza, famiglia e amici"
+                            categoria "Famiglia"
+                            [ anni
+                                9 
+                            url "https://docs.google.com/document/d/1to1Q1iMZYtBmev9-J0O9yEzUIoyVpXWWWDUnNie3-Gg/edit"
+                            pediatra "Francesca"
+                            a2 true
+                        { 
+                            n 8
+                            titolo "Temo che mio figlio sia troppo remissivo"
+                            categoria "Famiglia"
+                            [ anni
+                                9 
+                            url "https://docs.google.com/document/d/1huLqch39VdWRlwiQEUoKi_zTfdWAsnksIR9DPYwTus8/edit"
+                            pediatra "Francesca"
+                            a2 true
+                { 10
+                    numero 1
+                    [ guide
+                        { 
+                            n 5
+                            titolo "I disturbi alimentari"
+                            categoria "Famiglia"
+                            [ anni
+                                10 
+                            url "https://docs.google.com/document/d/1J-_BJBn9AANVhIE9lYsoOpQLgnmgInA4Vvu38vckiTc/edit"
+                            pediatra "Francesca"
+                            a3 true
+                { 11
+                    numero 2
+                    [ guide
+                        { 
+                            n 3
+                            titolo "Bullismo 1"
+                            categoria "Famiglia"
+                            [ anni
+                                11 
+                            url "https://docs.google.com/document/d/1T6EcCfjJlWgbexY1WgSRXkF7QSM6wUve7fnImHiR3tw/edit"
+                            pediatra "Francesca"
+                            a4 true
+                        { 
+                            n 4
+                            titolo "Bullismo 2, Ma chi sono i bulli?"
+                            categoria "Famiglia"
+                            [ anni
+                                11 
+                            url "https://docs.google.com/document/d/1T6EcCfjJlWgbexY1WgSRXkF7QSM6wUve7fnImHiR3tw/edit"
+                            pediatra "Francesca"
+                            a4 true
+                { 13
+                    numero 1
+                    [ guide
+                        { 
+                            n 9
+                            titolo "Rispettare l’ambiente"
+                            categoria "Famiglia"
+                            [ anni
+                                7 
+                                13 
+                            url "https://docs.google.com/document/d/1JUHyLM5QsTBvmgVXHeXgjhUGCGRAC4nSbw2gmCZNqkw/edit"
+                            message "correggere per i 13 anni l'uso della bicicletta"
+                            pediatra "Francesca"
+                            a0 true
+                            a6 true
+        { Giochi-Movimento
+            numero 5
+            [ guide
+                { 
+                    n 1
+                    titolo "Di quanta attività fisica ha bisogno il mio bambino ogni giorno?"
+                    categoria "Giochi-Movimento"
+                    [ anni
+                        8 
+                    url "https://drive.google.com/drive/folders/1dI4Npbdg5ANJ1we_d0kyGH8R1eZBIvkT"
+                    pediatra "Anna"
+                    a1 true
+                { 
+                    n 2
+                    titolo "Attività fisica e salute"
+                    categoria "Giochi-Movimento"
+                    [ anni
+                        9 
+                    url "https://drive.google.com/drive/folders/1dI4Npbdg5ANJ1we_d0kyGH8R1eZBIvkT"
+                    pediatra "Anna"
+                    a2 true
+                { 
+                    n 3
+                    titolo "Cosa possono fare i genitori per promuovere l’attività fisica a questa età?"
+                    categoria "Giochi-Movimento"
+                    [ anni
+                        10 
+                    url "https://drive.google.com/drive/folders/1dI4Npbdg5ANJ1we_d0kyGH8R1eZBIvkT"
+                    pediatra "Anna"
+                    a3 true
+                { 
+                    n 4
+                    titolo "Il gioco libero e lo sport"
+                    categoria "Giochi-Movimento"
+                    [ anni
+                        11 
+                    url "https://drive.google.com/drive/folders/1dI4Npbdg5ANJ1we_d0kyGH8R1eZBIvkT"
+                    pediatra "Anna"
+                    a4 true
+                { 
+                    n 5
+                    titolo "Il coraggio si impara"
+                    categoria "Giochi-Movimento"
+                    [ anni
+                        11 
+                    url "https://drive.google.com/drive/folders/1dI4Npbdg5ANJ1we_d0kyGH8R1eZBIvkT"
+                    pediatra "Anna"
+                    a4 true
+            { anni
+                { 8
+                    numero 1
+                    [ guide
+                        { 
+                            n 1
+                            titolo "Di quanta attività fisica ha bisogno il mio bambino ogni giorno?"
+                            categoria "Giochi-Movimento"
+                            [ anni
+                                8 
+                            url "https://drive.google.com/drive/folders/1dI4Npbdg5ANJ1we_d0kyGH8R1eZBIvkT"
+                            pediatra "Anna"
+                            a1 true
+                { 9
+                    numero 1
+                    [ guide
+                        { 
+                            n 2
+                            titolo "Attività fisica e salute"
+                            categoria "Giochi-Movimento"
+                            [ anni
+                                9 
+                            url "https://drive.google.com/drive/folders/1dI4Npbdg5ANJ1we_d0kyGH8R1eZBIvkT"
+                            pediatra "Anna"
+                            a2 true
+                { 10
+                    numero 1
+                    [ guide
+                        { 
+                            n 3
+                            titolo "Cosa possono fare i genitori per promuovere l’attività fisica a questa età?"
+                            categoria "Giochi-Movimento"
+                            [ anni
+                                10 
+                            url "https://drive.google.com/drive/folders/1dI4Npbdg5ANJ1we_d0kyGH8R1eZBIvkT"
+                            pediatra "Anna"
+                            a3 true
+                { 11
+                    numero 2
+                    [ guide
+                        { 
+                            n 4
+                            titolo "Il gioco libero e lo sport"
+                            categoria "Giochi-Movimento"
+                            [ anni
+                                11 
+                            url "https://drive.google.com/drive/folders/1dI4Npbdg5ANJ1we_d0kyGH8R1eZBIvkT"
+                            pediatra "Anna"
+                            a4 true
+                        { 
+                            n 5
+                            titolo "Il coraggio si impara"
+                            categoria "Giochi-Movimento"
+                            [ anni
+                                11 
+                            url "https://drive.google.com/drive/folders/1dI4Npbdg5ANJ1we_d0kyGH8R1eZBIvkT"
+                            pediatra "Anna"
+                            a4 true
+    [ matrix
+        [ 
+            { 
+                nome "Famiglia"
+                numero 3
+                [ guide
+                    { 
+                        n 6
+                        titolo "L’ansia non è solo una cosa da grandi"
+                        categoria "Famiglia"
+                        [ anni
+                            7 
+                        url "https://docs.google.com/document/d/1P6RJPjfBDrYEPMxUMMWCOLWZ7M0OyScgZWUjqH4ApFk/edit"
+                        pediatra "Francesca"
+                        a0 true
+                    { 
+                        n 7
+                        titolo "Dire dei “no”"
+                        categoria "Famiglia"
+                        [ anni
+                            7 
+                        url "https://drive.google.com/drive/folders/1-1_cv0KCnXT4jCgTDH3Eyg-yGe7BNlSM"
+                        pediatra "Francesca"
+                        a0 true
+                    { 
+                        n 9
+                        titolo "Rispettare l’ambiente"
+                        categoria "Famiglia"
+                        [ anni
+                            7 
+                            13 
+                        url "https://docs.google.com/document/d/1JUHyLM5QsTBvmgVXHeXgjhUGCGRAC4nSbw2gmCZNqkw/edit"
+                        message "correggere per i 13 anni l'uso della bicicletta"
+                        pediatra "Francesca"
+                        a0 true
+                        a6 true
+            { 
+                nome null
+                numero 0
+                [ guide
+            { 
+                nome "Temi caldi"
+                numero 1
+                [ guide
+                    { 
+                        n 4
+                        titolo "I rituali di famiglia"
+                        categoria "Temi caldi"
+                        [ anni
+                            7 
+                            11 
+                        url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                        pediatra "Costantino"
+                        a0 true
+                        a4 true
+            { 
+                nome "Alimentazione"
+                numero 2
+                [ guide
+                    { 
+                        n 6
+                        titolo "Alimentazione"
+                        categoria "Alimentazione"
+                        [ anni
+                            7 
+                        url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                        pediatra "Costantino"
+                        a0 true
+                    { 
+                        n 12
+                        titolo "Gli effetti dei media e la pubblicità"
+                        categoria "Alimentazione"
+                        [ anni
+                            7 
+                            12 
+                        url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                        pediatra "Costantino"
+                        a0 true
+                        a5 true
+            { 
+                nome "NpLNpM"
+                numero 1
+                [ guide
+                    { 
+                        n 5
+                        titolo "CONTINUARE A LEGGERE INSIEME"
+                        categoria "NpLNpM"
+                        [ anni
+                            7 
+                        url "https://docs.google.com/document/d/1x5u7kMgJ4KZcoV6GHAvt11N4iy0mA4_XiuhTEqJY4hM/edit"
+                        pediatra "Maddalena"
+                        a0 true
+            { 
+                nome null
+                numero 0
+                [ guide
+            { 
+                nome null
+                numero 0
+                [ guide
+        [ 
+            { 
+                nome "Famiglia"
+                numero 1
+                [ guide
+                    { 
+                        n 2
+                        titolo "Autonomia"
+                        categoria "Famiglia"
+                        [ anni
+                            8 
+                        url "https://docs.google.com/document/d/1to1Q1iMZYtBmev9-J0O9yEzUIoyVpXWWWDUnNie3-Gg/edit"
+                        pediatra "Francesca"
+                        a1 true
+            { 
+                nome "Pediatra"
+                numero 2
+                [ guide
+                    { 
+                        n 7
+                        titolo "I videogiochi"
+                        categoria "Pediatra"
+                        [ anni
+                            8 
+                            11 
+                        url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                        pediatra "Costantino"
+                        a1 true
+                        a4 true
+                    { 
+                        n 9
+                        titolo "Le punizioni fisiche"
+                        categoria "Pediatra"
+                        [ anni
+                            8 
+                        url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                        message "Vedere come integrarlo con le guide di Anna"
+                        pediatra "Costantino"
+                        a1 true
+            { 
+                nome null
+                numero 0
+                [ guide
+            { 
+                nome "Alimentazione"
+                numero 1
+                [ guide
+                    { 
+                        n 2
+                        titolo "Le bevande"
+                        categoria "Alimentazione"
+                        [ anni
+                            8 
+                        url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                        pediatra "Costantino"
+                        a1 true
+            { 
+                nome "NpLNpM"
+                numero 1
+                [ guide
+                    { 
+                        n 7
+                        titolo "IMPARARE A SUONARE UNO STRUMENTO MUSICALE"
+                        categoria "NpLNpM"
+                        [ anni
+                            8 
+                        url "https://docs.google.com/document/d/1x5u7kMgJ4KZcoV6GHAvt11N4iy0mA4_XiuhTEqJY4hM/edit"
+                        pediatra "Maddalena"
+                        a1 true
+            { 
+                nome "Bambino"
+                numero 1
+                [ guide
+                    { 
+                        n 2
+                        titolo "I commenti dei compagni sul proprio corpo possono fare male"
+                        categoria "Bambino"
+                        [ anni
+                            8 
+                        url "https://docs.google.com/document/d/1tALH-EylrdHlz5YdEopZxwNh2bCBRMBO9TLhx9eYa04/edit"
+                        pediatra "Maddalena"
+                        a1 true
+            { 
+                nome "Giochi-Movimento"
+                numero 1
+                [ guide
+                    { 
+                        n 1
+                        titolo "Di quanta attività fisica ha bisogno il mio bambino ogni giorno?"
+                        categoria "Giochi-Movimento"
+                        [ anni
+                            8 
+                        url "https://drive.google.com/drive/folders/1dI4Npbdg5ANJ1we_d0kyGH8R1eZBIvkT"
+                        pediatra "Anna"
+                        a1 true
+        [ 
+            { 
+                nome "Famiglia"
+                numero 2
+                [ guide
+                    { 
+                        n 1
+                        titolo "Adolescenza, famiglia e amici"
+                        categoria "Famiglia"
+                        [ anni
+                            9 
+                        url "https://docs.google.com/document/d/1to1Q1iMZYtBmev9-J0O9yEzUIoyVpXWWWDUnNie3-Gg/edit"
+                        pediatra "Francesca"
+                        a2 true
+                    { 
+                        n 8
+                        titolo "Temo che mio figlio sia troppo remissivo"
+                        categoria "Famiglia"
+                        [ anni
+                            9 
+                        url "https://docs.google.com/document/d/1huLqch39VdWRlwiQEUoKi_zTfdWAsnksIR9DPYwTus8/edit"
+                        pediatra "Francesca"
+                        a2 true
+            { 
+                nome "Pediatra"
+                numero 3
+                [ guide
+                    { 
+                        n 3
+                        titolo "Il sonno"
+                        categoria "Pediatra"
+                        [ anni
+                            9 
+                        url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                        pediatra "Costantino"
+                        a2 true
+                    { 
+                        n 8
+                        titolo "La disciplina"
+                        categoria "Pediatra"
+                        [ anni
+                            9 
+                        url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                        pediatra "Costantino"
+                        a2 true
+                    { 
+                        n 11
+                        titolo "Il pediatra"
+                        categoria "Pediatra"
+                        [ anni
+                            9 
+                            13 
+                        url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                        pediatra "Costantino"
+                        a2 true
+                        a6 true
+            { 
+                nome null
+                numero 0
+                [ guide
+            { 
+                nome null
+                numero 0
+                [ guide
+            { 
+                nome "NpLNpM"
+                numero 1
+                [ guide
+                    { 
+                        n 6
+                        titolo "CRESCERE LEGGENDO"
+                        categoria "NpLNpM"
+                        [ anni
+                            9 
+                        url "https://docs.google.com/document/d/1x5u7kMgJ4KZcoV6GHAvt11N4iy0mA4_XiuhTEqJY4hM/edit"
+                        pediatra "Maddalena"
+                        a2 true
+            { 
+                nome "Bambino"
+                numero 2
+                [ guide
+                    { 
+                        n 1
+                        titolo "Coltivare una buona immagine di sé"
+                        categoria "Bambino"
+                        [ anni
+                            9 
+                        url "https://docs.google.com/document/d/1tALH-EylrdHlz5YdEopZxwNh2bCBRMBO9TLhx9eYa04/edit"
+                        pediatra "Maddalena"
+                        a2 true
+                    { 
+                        n 10
+                        titolo "SVILUPPO PUBERALE, Un corpo che cambia"
+                        categoria "Bambino"
+                        [ anni
+                            9 
+                        url "https://docs.google.com/document/d/1XbfRKh-i9_mqvKvLkUMw7a8H2uPBD3xydGO-_4NNmEE/edit"
+                        pediatra "Maddalena"
+                        a2 true
+            { 
+                nome "Giochi-Movimento"
+                numero 1
+                [ guide
+                    { 
+                        n 2
+                        titolo "Attività fisica e salute"
+                        categoria "Giochi-Movimento"
+                        [ anni
+                            9 
+                        url "https://drive.google.com/drive/folders/1dI4Npbdg5ANJ1we_d0kyGH8R1eZBIvkT"
+                        pediatra "Anna"
+                        a2 true
+        [ 
+            { 
+                nome "Famiglia"
+                numero 1
+                [ guide
+                    { 
+                        n 5
+                        titolo "I disturbi alimentari"
+                        categoria "Famiglia"
+                        [ anni
+                            10 
+                        url "https://docs.google.com/document/d/1J-_BJBn9AANVhIE9lYsoOpQLgnmgInA4Vvu38vckiTc/edit"
+                        pediatra "Francesca"
+                        a3 true
+            { 
+                nome null
+                numero 0
+                [ guide
+            { 
+                nome "Temi caldi"
+                numero 1
+                [ guide
+                    { 
+                        n 1
+                        titolo "Gli impegni di un ragazzo o una ragazza che cresce"
+                        categoria "Temi caldi"
+                        [ anni
+                            10 
+                        url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                        pediatra "Costantino"
+                        a3 true
+            { 
+                nome null
+                numero 0
+                [ guide
+            { 
+                nome null
+                numero 0
+                [ guide
+            { 
+                nome "Bambino"
+                numero 1
+                [ guide
+                    { 
+                        n 9
+                        titolo "PREVENZIONE DEI DISTURBI DEL COMPORTAMENTO ALIMENTARE"
+                        categoria "Bambino"
+                        [ anni
+                            10 
+                        url "https://docs.google.com/document/d/1lxptsbxE98XF_en0jktlpEmsvkxAbqtRRGwZ3-f94pM/edit"
+                        message "categoria Bambino o Temi caldi"
+                        pediatra "Maddalena"
+                        a3 true
+            { 
+                nome "Giochi-Movimento"
+                numero 1
+                [ guide
+                    { 
+                        n 3
+                        titolo "Cosa possono fare i genitori per promuovere l’attività fisica a questa età?"
+                        categoria "Giochi-Movimento"
+                        [ anni
+                            10 
+                        url "https://drive.google.com/drive/folders/1dI4Npbdg5ANJ1we_d0kyGH8R1eZBIvkT"
+                        pediatra "Anna"
+                        a3 true
+        [ 
+            { 
+                nome "Famiglia"
+                numero 2
+                [ guide
+                    { 
+                        n 3
+                        titolo "Bullismo 1"
+                        categoria "Famiglia"
+                        [ anni
+                            11 
+                        url "https://docs.google.com/document/d/1T6EcCfjJlWgbexY1WgSRXkF7QSM6wUve7fnImHiR3tw/edit"
+                        pediatra "Francesca"
+                        a4 true
+                    { 
+                        n 4
+                        titolo "Bullismo 2, Ma chi sono i bulli?"
+                        categoria "Famiglia"
+                        [ anni
+                            11 
+                        url "https://docs.google.com/document/d/1T6EcCfjJlWgbexY1WgSRXkF7QSM6wUve7fnImHiR3tw/edit"
+                        pediatra "Francesca"
+                        a4 true
+            { 
+                nome "Pediatra"
+                numero 1
+                [ guide
+                    { 
+                        n 7
+                        titolo "I videogiochi"
+                        categoria "Pediatra"
+                        [ anni
+                            8 
+                            11 
+                        url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                        pediatra "Costantino"
+                        a1 true
+                        a4 true
+            { 
+                nome "Temi caldi"
+                numero 2
+                [ guide
+                    { 
+                        n 4
+                        titolo "I rituali di famiglia"
+                        categoria "Temi caldi"
+                        [ anni
+                            7 
+                            11 
+                        url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                        pediatra "Costantino"
+                        a0 true
+                        a4 true
+                    { 
+                        n 5
+                        titolo "Il telefono cellulare"
+                        categoria "Temi caldi"
+                        [ anni
+                            11 
+                        url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                        message "Gli anni non ci sono, presi quelli del n 4"
+                        pediatra "Costantino"
+                        a4 true
+            { 
+                nome null
+                numero 0
+                [ guide
+            { 
+                nome null
+                numero 0
+                [ guide
+            { 
+                nome null
+                numero 0
+                [ guide
+            { 
+                nome "Giochi-Movimento"
+                numero 2
+                [ guide
+                    { 
+                        n 4
+                        titolo "Il gioco libero e lo sport"
+                        categoria "Giochi-Movimento"
+                        [ anni
+                            11 
+                        url "https://drive.google.com/drive/folders/1dI4Npbdg5ANJ1we_d0kyGH8R1eZBIvkT"
+                        pediatra "Anna"
+                        a4 true
+                    { 
+                        n 5
+                        titolo "Il coraggio si impara"
+                        categoria "Giochi-Movimento"
+                        [ anni
+                            11 
+                        url "https://drive.google.com/drive/folders/1dI4Npbdg5ANJ1we_d0kyGH8R1eZBIvkT"
+                        pediatra "Anna"
+                        a4 true
+        [ 
+            { 
+                nome null
+                numero 0
+                [ guide
+            { 
+                nome null
+                numero 0
+                [ guide
+            { 
+                nome "Temi caldi"
+                numero 1
+                [ guide
+                    { 
+                        n 3
+                        titolo "NON MANDIAMO IL CERVELLO IN FUMO!"
+                        categoria "Temi caldi"
+                        [ anni
+                            12 
+                        url "https://docs.google.com/document/d/1440gM7SZI-zLj46lHB9Y6OmRuYOPJOs6XXmjfJiJGc4/edit"
+                        pediatra "Maddalena"
+                        a5 true
+            { 
+                nome "Alimentazione"
+                numero 1
+                [ guide
+                    { 
+                        n 12
+                        titolo "Gli effetti dei media e la pubblicità"
+                        categoria "Alimentazione"
+                        [ anni
+                            7 
+                            12 
+                        url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                        pediatra "Costantino"
+                        a0 true
+                        a5 true
+            { 
+                nome "NpLNpM"
+                numero 1
+                [ guide
+                    { 
+                        n 8
+                        titolo "SUONARE INSIEME"
+                        categoria "NpLNpM"
+                        [ anni
+                            12 
+                        url "https://docs.google.com/document/d/1x5u7kMgJ4KZcoV6GHAvt11N4iy0mA4_XiuhTEqJY4hM/edit"
+                        pediatra "Maddalena"
+                        a5 true
+            { 
+                nome null
+                numero 0
+                [ guide
+            { 
+                nome null
+                numero 0
+                [ guide
+        [ 
+            { 
+                nome "Famiglia"
+                numero 1
+                [ guide
+                    { 
+                        n 9
+                        titolo "Rispettare l’ambiente"
+                        categoria "Famiglia"
+                        [ anni
+                            7 
+                            13 
+                        url "https://docs.google.com/document/d/1JUHyLM5QsTBvmgVXHeXgjhUGCGRAC4nSbw2gmCZNqkw/edit"
+                        message "correggere per i 13 anni l'uso della bicicletta"
+                        pediatra "Francesca"
+                        a0 true
+                        a6 true
+            { 
+                nome "Pediatra"
+                numero 2
+                [ guide
+                    { 
+                        n 11
+                        titolo "Il pediatra"
+                        categoria "Pediatra"
+                        [ anni
+                            9 
+                            13 
+                        url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                        pediatra "Costantino"
+                        a2 true
+                        a6 true
+                    { 
+                        n 4
+                        titolo "Fumo di sigaretta e Nicotina"
+                        categoria "Pediatra"
+                        [ anni
+                            13 
+                        url "https://docs.google.com/document/d/1440gM7SZI-zLj46lHB9Y6OmRuYOPJOs6XXmjfJiJGc4/edit"
+                        pediatra "Maddalena"
+                        a6 true
+            { 
+                nome null
+                numero 0
+                [ guide
+            { 
+                nome null
+                numero 0
+                [ guide
+            { 
+                nome null
+                numero 0
+                [ guide
+            { 
+                nome null
+                numero 0
+                [ guide
+            { 
+                nome null
+                numero 0
+                [ guide
+    [ agenda
+        [ 
+            { 
+                { guida
+                    n 6
+                    titolo "Alimentazione"
+                    categoria "Alimentazione"
+                    [ anni
+                        7 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a0 true
+                daSettimana 364
+                aSettimana 371
+                inizio 0
+                durata 7.428571428571429
+            { 
+                { guida
+                    n 6
+                    titolo "L’ansia non è solo una cosa da grandi"
+                    categoria "Famiglia"
+                    [ anni
+                        7 
+                    url "https://docs.google.com/document/d/1P6RJPjfBDrYEPMxUMMWCOLWZ7M0OyScgZWUjqH4ApFk/edit"
+                    pediatra "Francesca"
+                    a0 true
+                daSettimana 371
+                aSettimana 378
+                inizio 7.428571428571429
+                durata 7.428571428571429
+            { 
+                { guida
+                    n 4
+                    titolo "I rituali di famiglia"
+                    categoria "Temi caldi"
+                    [ anni
+                        7 
+                        11 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a0 true
+                    a4 true
+                daSettimana 378
+                aSettimana 386
+                inizio 14.857142857142858
+                durata 7.428571428571429
+            { 
+                { guida
+                    n 5
+                    titolo "CONTINUARE A LEGGERE INSIEME"
+                    categoria "NpLNpM"
+                    [ anni
+                        7 
+                    url "https://docs.google.com/document/d/1x5u7kMgJ4KZcoV6GHAvt11N4iy0mA4_XiuhTEqJY4hM/edit"
+                    pediatra "Maddalena"
+                    a0 true
+                daSettimana 386
+                aSettimana 393
+                inizio 22.285714285714285
+                durata 7.428571428571429
+            { 
+                { guida
+                    n 12
+                    titolo "Gli effetti dei media e la pubblicità"
+                    categoria "Alimentazione"
+                    [ anni
+                        7 
+                        12 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a0 true
+                    a5 true
+                daSettimana 393
+                aSettimana 401
+                inizio 29.714285714285715
+                durata 7.428571428571429
+            { 
+                { guida
+                    n 7
+                    titolo "Dire dei “no”"
+                    categoria "Famiglia"
+                    [ anni
+                        7 
+                    url "https://drive.google.com/drive/folders/1-1_cv0KCnXT4jCgTDH3Eyg-yGe7BNlSM"
+                    pediatra "Francesca"
+                    a0 true
+                daSettimana 401
+                aSettimana 408
+                inizio 37.142857142857146
+                durata 7.428571428571429
+            { 
+                { guida
+                    n 9
+                    titolo "Rispettare l’ambiente"
+                    categoria "Famiglia"
+                    [ anni
+                        7 
+                        13 
+                    url "https://docs.google.com/document/d/1JUHyLM5QsTBvmgVXHeXgjhUGCGRAC4nSbw2gmCZNqkw/edit"
+                    message "correggere per i 13 anni l'uso della bicicletta"
+                    pediatra "Francesca"
+                    a0 true
+                    a6 true
+                daSettimana 408
+                aSettimana 416
+                inizio 44.57142857142857
+                durata 7.428571428571429
+        [ 
+            { 
+                { guida
+                    n 2
+                    titolo "I commenti dei compagni sul proprio corpo possono fare male"
+                    categoria "Bambino"
+                    [ anni
+                        8 
+                    url "https://docs.google.com/document/d/1tALH-EylrdHlz5YdEopZxwNh2bCBRMBO9TLhx9eYa04/edit"
+                    pediatra "Maddalena"
+                    a1 true
+                daSettimana 416
+                aSettimana 423
+                inizio 0
+                durata 7.428571428571429
+            { 
+                { guida
+                    n 2
+                    titolo "Le bevande"
+                    categoria "Alimentazione"
+                    [ anni
+                        8 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a1 true
+                daSettimana 423
+                aSettimana 430
+                inizio 7.428571428571429
+                durata 7.428571428571429
+            { 
+                { guida
+                    n 1
+                    titolo "Di quanta attività fisica ha bisogno il mio bambino ogni giorno?"
+                    categoria "Giochi-Movimento"
+                    [ anni
+                        8 
+                    url "https://drive.google.com/drive/folders/1dI4Npbdg5ANJ1we_d0kyGH8R1eZBIvkT"
+                    pediatra "Anna"
+                    a1 true
+                daSettimana 430
+                aSettimana 438
+                inizio 14.857142857142858
+                durata 7.428571428571429
+            { 
+                { guida
+                    n 2
+                    titolo "Autonomia"
+                    categoria "Famiglia"
+                    [ anni
+                        8 
+                    url "https://docs.google.com/document/d/1to1Q1iMZYtBmev9-J0O9yEzUIoyVpXWWWDUnNie3-Gg/edit"
+                    pediatra "Francesca"
+                    a1 true
+                daSettimana 438
+                aSettimana 445
+                inizio 22.285714285714285
+                durata 7.428571428571429
+            { 
+                { guida
+                    n 7
+                    titolo "I videogiochi"
+                    categoria "Pediatra"
+                    [ anni
+                        8 
+                        11 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a1 true
+                    a4 true
+                daSettimana 445
+                aSettimana 453
+                inizio 29.714285714285715
+                durata 7.428571428571429
+            { 
+                { guida
+                    n 7
+                    titolo "IMPARARE A SUONARE UNO STRUMENTO MUSICALE"
+                    categoria "NpLNpM"
+                    [ anni
+                        8 
+                    url "https://docs.google.com/document/d/1x5u7kMgJ4KZcoV6GHAvt11N4iy0mA4_XiuhTEqJY4hM/edit"
+                    pediatra "Maddalena"
+                    a1 true
+                daSettimana 453
+                aSettimana 460
+                inizio 37.142857142857146
+                durata 7.428571428571429
+            { 
+                { guida
+                    n 9
+                    titolo "Le punizioni fisiche"
+                    categoria "Pediatra"
+                    [ anni
+                        8 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    message "Vedere come integrarlo con le guide di Anna"
+                    pediatra "Costantino"
+                    a1 true
+                daSettimana 460
+                aSettimana 468
+                inizio 44.57142857142857
+                durata 7.428571428571429
+        [ 
+            { 
+                { guida
+                    n 1
+                    titolo "Coltivare una buona immagine di sé"
+                    categoria "Bambino"
+                    [ anni
+                        9 
+                    url "https://docs.google.com/document/d/1tALH-EylrdHlz5YdEopZxwNh2bCBRMBO9TLhx9eYa04/edit"
+                    pediatra "Maddalena"
+                    a2 true
+                daSettimana 468
+                aSettimana 473
+                inizio 0
+                durata 5.777777777777778
+            { 
+                { guida
+                    n 2
+                    titolo "Attività fisica e salute"
+                    categoria "Giochi-Movimento"
+                    [ anni
+                        9 
+                    url "https://drive.google.com/drive/folders/1dI4Npbdg5ANJ1we_d0kyGH8R1eZBIvkT"
+                    pediatra "Anna"
+                    a2 true
+                daSettimana 473
+                aSettimana 479
+                inizio 5.777777777777778
+                durata 5.777777777777778
+            { 
+                { guida
+                    n 1
+                    titolo "Adolescenza, famiglia e amici"
+                    categoria "Famiglia"
+                    [ anni
+                        9 
+                    url "https://docs.google.com/document/d/1to1Q1iMZYtBmev9-J0O9yEzUIoyVpXWWWDUnNie3-Gg/edit"
+                    pediatra "Francesca"
+                    a2 true
+                daSettimana 479
+                aSettimana 485
+                inizio 11.555555555555555
+                durata 5.777777777777778
+            { 
+                { guida
+                    n 3
+                    titolo "Il sonno"
+                    categoria "Pediatra"
+                    [ anni
+                        9 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a2 true
+                daSettimana 485
+                aSettimana 491
+                inizio 17.333333333333332
+                durata 5.777777777777778
+            { 
+                { guida
+                    n 6
+                    titolo "CRESCERE LEGGENDO"
+                    categoria "NpLNpM"
+                    [ anni
+                        9 
+                    url "https://docs.google.com/document/d/1x5u7kMgJ4KZcoV6GHAvt11N4iy0mA4_XiuhTEqJY4hM/edit"
+                    pediatra "Maddalena"
+                    a2 true
+                daSettimana 491
+                aSettimana 496
+                inizio 23.11111111111111
+                durata 5.777777777777778
+            { 
+                { guida
+                    n 10
+                    titolo "SVILUPPO PUBERALE, Un corpo che cambia"
+                    categoria "Bambino"
+                    [ anni
+                        9 
+                    url "https://docs.google.com/document/d/1XbfRKh-i9_mqvKvLkUMw7a8H2uPBD3xydGO-_4NNmEE/edit"
+                    pediatra "Maddalena"
+                    a2 true
+                daSettimana 496
+                aSettimana 502
+                inizio 28.88888888888889
+                durata 5.777777777777778
+            { 
+                { guida
+                    n 8
+                    titolo "Temo che mio figlio sia troppo remissivo"
+                    categoria "Famiglia"
+                    [ anni
+                        9 
+                    url "https://docs.google.com/document/d/1huLqch39VdWRlwiQEUoKi_zTfdWAsnksIR9DPYwTus8/edit"
+                    pediatra "Francesca"
+                    a2 true
+                daSettimana 502
+                aSettimana 508
+                inizio 34.666666666666664
+                durata 5.777777777777778
+            { 
+                { guida
+                    n 8
+                    titolo "La disciplina"
+                    categoria "Pediatra"
+                    [ anni
+                        9 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a2 true
+                daSettimana 508
+                aSettimana 514
+                inizio 40.44444444444444
+                durata 5.777777777777778
+            { 
+                { guida
+                    n 11
+                    titolo "Il pediatra"
+                    categoria "Pediatra"
+                    [ anni
+                        9 
+                        13 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a2 true
+                    a6 true
+                daSettimana 514
+                aSettimana 520
+                inizio 46.22222222222222
+                durata 5.777777777777778
+        [ 
+            { 
+                { guida
+                    n 9
+                    titolo "PREVENZIONE DEI DISTURBI DEL COMPORTAMENTO ALIMENTARE"
+                    categoria "Bambino"
+                    [ anni
+                        10 
+                    url "https://docs.google.com/document/d/1lxptsbxE98XF_en0jktlpEmsvkxAbqtRRGwZ3-f94pM/edit"
+                    message "categoria Bambino o Temi caldi"
+                    pediatra "Maddalena"
+                    a3 true
+                daSettimana 520
+                aSettimana 533
+                inizio 0
+                durata 13
+            { 
+                { guida
+                    n 3
+                    titolo "Cosa possono fare i genitori per promuovere l’attività fisica a questa età?"
+                    categoria "Giochi-Movimento"
+                    [ anni
+                        10 
+                    url "https://drive.google.com/drive/folders/1dI4Npbdg5ANJ1we_d0kyGH8R1eZBIvkT"
+                    pediatra "Anna"
+                    a3 true
+                daSettimana 533
+                aSettimana 546
+                inizio 13
+                durata 13
+            { 
+                { guida
+                    n 5
+                    titolo "I disturbi alimentari"
+                    categoria "Famiglia"
+                    [ anni
+                        10 
+                    url "https://docs.google.com/document/d/1J-_BJBn9AANVhIE9lYsoOpQLgnmgInA4Vvu38vckiTc/edit"
+                    pediatra "Francesca"
+                    a3 true
+                daSettimana 546
+                aSettimana 559
+                inizio 26
+                durata 13
+            { 
+                { guida
+                    n 1
+                    titolo "Gli impegni di un ragazzo o una ragazza che cresce"
+                    categoria "Temi caldi"
+                    [ anni
+                        10 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a3 true
+                daSettimana 559
+                aSettimana 572
+                inizio 39
+                durata 13
+        [ 
+            { 
+                { guida
+                    n 4
+                    titolo "Il gioco libero e lo sport"
+                    categoria "Giochi-Movimento"
+                    [ anni
+                        11 
+                    url "https://drive.google.com/drive/folders/1dI4Npbdg5ANJ1we_d0kyGH8R1eZBIvkT"
+                    pediatra "Anna"
+                    a4 true
+                daSettimana 572
+                aSettimana 579
+                inizio 0
+                durata 7.428571428571429
+            { 
+                { guida
+                    n 3
+                    titolo "Bullismo 1"
+                    categoria "Famiglia"
+                    [ anni
+                        11 
+                    url "https://docs.google.com/document/d/1T6EcCfjJlWgbexY1WgSRXkF7QSM6wUve7fnImHiR3tw/edit"
+                    pediatra "Francesca"
+                    a4 true
+                daSettimana 579
+                aSettimana 586
+                inizio 7.428571428571429
+                durata 7.428571428571429
+            { 
+                { guida
+                    n 4
+                    titolo "I rituali di famiglia"
+                    categoria "Temi caldi"
+                    [ anni
+                        7 
+                        11 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a0 true
+                    a4 true
+                daSettimana 586
+                aSettimana 594
+                inizio 14.857142857142858
+                durata 7.428571428571429
+            { 
+                { guida
+                    n 7
+                    titolo "I videogiochi"
+                    categoria "Pediatra"
+                    [ anni
+                        8 
+                        11 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a1 true
+                    a4 true
+                daSettimana 594
+                aSettimana 601
+                inizio 22.285714285714285
+                durata 7.428571428571429
+            { 
+                { guida
+                    n 5
+                    titolo "Il coraggio si impara"
+                    categoria "Giochi-Movimento"
+                    [ anni
+                        11 
+                    url "https://drive.google.com/drive/folders/1dI4Npbdg5ANJ1we_d0kyGH8R1eZBIvkT"
+                    pediatra "Anna"
+                    a4 true
+                daSettimana 601
+                aSettimana 609
+                inizio 29.714285714285715
+                durata 7.428571428571429
+            { 
+                { guida
+                    n 4
+                    titolo "Bullismo 2, Ma chi sono i bulli?"
+                    categoria "Famiglia"
+                    [ anni
+                        11 
+                    url "https://docs.google.com/document/d/1T6EcCfjJlWgbexY1WgSRXkF7QSM6wUve7fnImHiR3tw/edit"
+                    pediatra "Francesca"
+                    a4 true
+                daSettimana 609
+                aSettimana 616
+                inizio 37.142857142857146
+                durata 7.428571428571429
+            { 
+                { guida
+                    n 5
+                    titolo "Il telefono cellulare"
+                    categoria "Temi caldi"
+                    [ anni
+                        11 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    message "Gli anni non ci sono, presi quelli del n 4"
+                    pediatra "Costantino"
+                    a4 true
+                daSettimana 616
+                aSettimana 624
+                inizio 44.57142857142857
+                durata 7.428571428571429
+        [ 
+            { 
+                { guida
+                    n 12
+                    titolo "Gli effetti dei media e la pubblicità"
+                    categoria "Alimentazione"
+                    [ anni
+                        7 
+                        12 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a0 true
+                    a5 true
+                daSettimana 624
+                aSettimana 641
+                inizio 0
+                durata 17.333333333333332
+            { 
+                { guida
+                    n 3
+                    titolo "NON MANDIAMO IL CERVELLO IN FUMO!"
+                    categoria "Temi caldi"
+                    [ anni
+                        12 
+                    url "https://docs.google.com/document/d/1440gM7SZI-zLj46lHB9Y6OmRuYOPJOs6XXmjfJiJGc4/edit"
+                    pediatra "Maddalena"
+                    a5 true
+                daSettimana 641
+                aSettimana 658
+                inizio 17.333333333333332
+                durata 17.333333333333332
+            { 
+                { guida
+                    n 8
+                    titolo "SUONARE INSIEME"
+                    categoria "NpLNpM"
+                    [ anni
+                        12 
+                    url "https://docs.google.com/document/d/1x5u7kMgJ4KZcoV6GHAvt11N4iy0mA4_XiuhTEqJY4hM/edit"
+                    pediatra "Maddalena"
+                    a5 true
+                daSettimana 658
+                aSettimana 676
+                inizio 34.666666666666664
+                durata 17.333333333333332
+        [ 
+            { 
+                { guida
+                    n 9
+                    titolo "Rispettare l’ambiente"
+                    categoria "Famiglia"
+                    [ anni
+                        7 
+                        13 
+                    url "https://docs.google.com/document/d/1JUHyLM5QsTBvmgVXHeXgjhUGCGRAC4nSbw2gmCZNqkw/edit"
+                    message "correggere per i 13 anni l'uso della bicicletta"
+                    pediatra "Francesca"
+                    a0 true
+                    a6 true
+                daSettimana 676
+                aSettimana 693
+                inizio 0
+                durata 17.333333333333332
+            { 
+                { guida
+                    n 11
+                    titolo "Il pediatra"
+                    categoria "Pediatra"
+                    [ anni
+                        9 
+                        13 
+                    url "https://docs.google.com/document/d/1lWNsjWAWis3-TZR80_tfLjDdY0khCI7q/edit"
+                    pediatra "Costantino"
+                    a2 true
+                    a6 true
+                daSettimana 693
+                aSettimana 710
+                inizio 17.333333333333332
+                durata 17.333333333333332
+            { 
+                { guida
+                    n 4
+                    titolo "Fumo di sigaretta e Nicotina"
+                    categoria "Pediatra"
+                    [ anni
+                        13 
+                    url "https://docs.google.com/document/d/1440gM7SZI-zLj46lHB9Y6OmRuYOPJOs6XXmjfJiJGc4/edit"
+                    pediatra "Maddalena"
+                    a6 true
+                daSettimana 710
+                aSettimana 728
+                inizio 34.666666666666664
+                durata 17.333333333333332

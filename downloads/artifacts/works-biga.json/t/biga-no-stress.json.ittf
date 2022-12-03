@@ -1,0 +1,19 @@
+$group
+
+    {
+      kind "youtube"
+      id "9sfErJtDJho"
+      name "BIGA NO STRESS! - PIZZA NAPOLETANA CONTEMPORANEA - COTTA CON PIZZA PARTY ARDORE"
+      author "Luigi Schifano"
+      authorId "@Lapizzafattaamano"
+      categoria "Pane e pizza"
+      [ items
+        {
+          name "Miscelazione biga no stress"
+          time "2:20"
+        {
+          name "Lo staglio"
+          time "6:30"
+        {
+          name "Lo schiaffo"
+          time "8:23"

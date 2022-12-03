@@ -1,0 +1,49 @@
+$group
+  $global
+    var gAnni = {};
+    var i, i_items=gd.pediatri, i_len=gd.pediatri.length, p;
+    for (i=0; i<i_len; i++) {
+        p = gd.pediatri[i];
+        var j, j_items=p.guide, j_len=p.guide.length, g;
+        for (j=0; j<j_len; j++) {
+            g = p.guide[j];
+            var k, k_items=g.anni, k_len=g.anni.length, a;
+            for (k=0; k<k_len; k++) {
+                a = g.anni[k];
+                if (a in gAnni) {
+                    gAnni[a].numero++;
+                    gAnni[a].guide.push(g)
+                    if (g.categoria in gAnni[a].categorie) {
+                        gAnni[a].categorie[g.categoria].numero++;
+                        gAnni[a].categorie[g.categoria].guide.push(g)
+                    }
+                    else {
+                        gAnni[a].categorie[g.categoria] = {
+                            numero: 1, 
+                            guide: [
+                                g
+                            ]
+                        };
+                    }
+                }
+                else {
+                    gAnni[a] = {
+                        numero: 1, 
+                        guide: [
+                            g
+                        ], 
+                        categorie: {
+                            
+                        }
+                    };
+                    gAnni[a].categorie[g.categoria] = {
+                        numero: 1, 
+                        guide: [
+                            g
+                        ]
+                    };
+                }
+            }
+        }
+    }  
+    //

@@ -1,0 +1,30 @@
+html
+  head
+    style
+      $include player_1.css
+  body
+
+
+    $*
+    $foreach video in db.videos
+      $foreach item in video.items
+        div
+          h1 ${item.name}
+          time ${item.time}
+
+    iframe 
+        width 600
+        height 400
+        src https://www.youtube.com/embed/6Se-gtyAdIY
+        title BIGA - COME CREARLA E GESTIRLA - TUTTI I SEGRETI!
+        frameborder 0
+        @ allow accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture
+        allowfullscreen   
+    *$
+
+    $include player_1
+    
+    script
+      info "start"
+      $include player_1.js
+      

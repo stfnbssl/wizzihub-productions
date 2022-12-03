@@ -1,0 +1,193 @@
+$group
+  $$ https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio
+  svg
+      view-box -1 -1 162 92
+      xmlns http://www.w3.org/2000/svg
+      defs
+          path
+              id smiley
+              d M50,10 A40,40,1,1,1,50,90 A40,40,1,1,1,50,10 M30,40 Q36,35,42,40 M58,40 Q64,35,70,40 M30,60 Q50,75,70,60 Q50,75,30,60
+      rect xMidYMid meet
+          x 0
+          y 0
+          width 20
+          height 10
+      svg
+          view-box 0 0 100 100
+          width 20
+          height 10
+          preserve-aspect-ratio xMidYMid meet
+          x 0
+          y 0
+          use
+              href #smiley
+      rect xMinYMid meet
+          x 25
+          y 0
+          width 20
+          height 10
+      svg
+          view-box 0 0 100 100
+          width 20
+          height 10
+          preserve-aspect-ratio xMinYMid meet
+          x 25
+          y 0
+          use
+              href #smiley
+      $*
+      rect xMaxYMid meet
+          x 50
+          y 0
+          width 20
+          height 10
+      rect xMidYMin slice
+          x 0
+          y 15
+          width 20
+          height 10
+      rect xMidYMid slice
+          x 25
+          y 15
+          width 20
+          height 10
+      rect xMidYMax slice
+          x 50
+          y 15
+          width 20
+          height 10
+      rect xMidYMin meet
+          x 75
+          y 0
+          width 10
+          height 25
+      rect xMidYMid meet
+          x 90
+          y 0
+          width 10
+          height 25
+      rect xMidYMax meet
+          x 105
+          y 0
+          width 10
+          height 25
+      rect xMinYMid slice
+          x 120
+          y 0
+          width 10
+          height 25
+      rect xMidYMid slice
+          x 135
+          y 0
+          width 10
+          height 25
+      rect xMaxYMid slice
+          x 150
+          y 0
+          width 10
+          height 25
+      rect none
+          x 0
+          y 30
+          width 160
+          height 60
+      svg
+          view-box 0 0 100 100
+          width 20
+          height 10
+          preserve-aspect-ratio xMaxYMid meet
+          x 50
+          y 0
+          use
+              href #smiley
+      svg
+          view-box 0 0 100 100
+          width 20
+          height 10
+          preserve-aspect-ratio xMidYMin slice
+          x 0
+          y 15
+          use
+              href #smiley
+      svg
+          view-box 0 0 100 100
+          width 20
+          height 10
+          preserve-aspect-ratio xMidYMid slice
+          x 25
+          y 15
+          use
+              href #smiley
+      svg
+          view-box 0 0 100 100
+          width 20
+          height 10
+          preserve-aspect-ratio xMidYMax slice
+          x 50
+          y 15
+          use
+              href #smiley
+      svg
+          view-box 0 0 100 100
+          width 10
+          height 25
+          preserve-aspect-ratio xMidYMin meet
+          x 75
+          y 0
+          use
+              href #smiley
+      svg
+          view-box 0 0 100 100
+          width 10
+          height 25
+          preserve-aspect-ratio xMidYMid meet
+          x 90
+          y 0
+          use
+              href #smiley
+      svg
+          view-box 0 0 100 100
+          width 10
+          height 25
+          preserve-aspect-ratio xMidYMax meet
+          x 105
+          y 0
+          use
+              href #smiley
+      svg
+          view-box 0 0 100 100
+          width 10
+          height 25
+          preserve-aspect-ratio xMinYMid slice
+          x 120
+          y 0
+          use
+              href #smiley
+      svg
+          view-box 0 0 100 100
+          width 10
+          height 25
+          preserve-aspect-ratio xMidYMid slice
+          x 135
+          y 0
+          use
+              href #smiley
+      svg
+          view-box 0 0 100 100
+          width 10
+          height 25
+          preserve-aspect-ratio xMaxYMid slice
+          x 150
+          y 0
+          use
+              href #smiley
+      svg
+          view-box 0 0 100 100
+          width 160
+          height 60
+          preserve-aspect-ratio none
+          x 0
+          y 30
+          use
+              href #smiley
+    *$

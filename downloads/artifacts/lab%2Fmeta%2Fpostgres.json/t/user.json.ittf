@@ -1,0 +1,35 @@
+{
+  Name "User"
+  Names "Users"
+  name "user"
+  names "users"
+  descr "User"
+  [ indexes
+      { 
+        unique true
+        [ fields
+          {
+            name "username"
+      { 
+        unique true
+        [ fields
+          {
+            name "email"
+  [ fields
+      { 
+        name "id"
+        type "integer"
+        autoIncrement true
+        primaryKey true
+      { 
+        name "name"
+        type "string"
+        allowNull false
+      { 
+        name "username"
+        type "string"
+        allowNull false        
+      { 
+        name "email"
+        type "string"
+        allowNull false                

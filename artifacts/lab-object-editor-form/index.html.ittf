@@ -1,0 +1,93 @@
+html 
+    $$ one: https://medium.com/codingthesmartway-com-blog/pure-javascript-building-a-real-world-application-from-scratch-5213591cfcd6
+    $$ $include one/main
+    $$ two: https://github.com/tastejs/todomvc/tree/gh-pages/examples/vanillajs
+    $$ $include two/main
+    
+    head 
+        meta 
+            charset utf-8
+        @title Object editor form
+    css /~/stfnbssl/vanillajs-forms.css?filepath=index.css.ittf
+    style
+        $$ $include css/base.css            
+    body
+        $$ $include html/main
+        # object-editor
+        script
+            set window.__filename = 'browser'
+
+        js /~/stfnbssl/vanillajs-forms.js?filepath=index.js.ittf
+        script
+            module
+                kind es6
+                const formData
+                    {
+                        @ id "create-packi-file-form"
+                        @ title "Create file"
+                        @ class ""
+                        [ controls
+                            {
+                                @ type "group"
+                                @ direction "row"
+                                [ controls
+                                    {
+                                        @ id "owner"
+                                        @ label "owner"
+                                        @ type "text"
+                                        @ required true
+                                    {
+                                        @ id "name"
+                                        @ label "name"
+                                        @ type "text"
+                                        @ required true
+                            {
+                                @ id "filePath"
+                                @ label "path"
+                                @ type "text"
+                                @ required true
+                            {
+                                @ id "useWizzi"
+                                @ label "use Wizzi"
+                                @ type "object-condition"
+                                [ controls
+                                    {
+                                        @ id "useIttf"
+                                        @ valuePath "wizzi"
+                                        @ label "use ittf"
+                                        @ type "checkbox"
+                                    {
+                                        @ id "useGop"
+                                        @ valuePath "wizzi"
+                                        @ label "use gop"
+                                        @ type "object-condition"
+                                        [ controls
+                                            {
+                                                @ id "useGopA"
+                                                @ valuePath "wizzi.gop"
+                                                @ label "use gop A"
+                                                @ type "checkbox"
+                                            {
+                                                @ id "useGopB"
+                                                @ valuePath "wizzi.gop"
+                                                @ label "use gop B"
+                                                @ type "checkbox"
+
+
+
+                const originalValues
+                  {
+                _ mvc.Form.setup
+                  @ qs
+                  @ "#object-editor"
+                  @ formData
+                  @ originalValues
+                  {
+                      @ onSubmit
+                          =>
+                              param formValues
+                              log 'onSubmit formValues', formValues
+                      @ onCancel
+                          =>
+                              _ mvc.Form.dispose
+                                @ formData

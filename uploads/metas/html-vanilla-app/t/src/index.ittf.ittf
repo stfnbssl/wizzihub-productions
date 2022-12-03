@@ -1,0 +1,34 @@
+$group
+  
+  $file t/js/controller.js.html.ittf.ittf
+    $include vanillajs/js/controller.js.html.ittf 
+
+  $file t/js/model.js.html.ittf.ittf
+    $include vanillajs/js/model.js.html.ittf 
+
+  $file t/js/store.js.html.ittf.ittf
+    $include vanillajs/js/store.js.html.ittf 
+
+  $file t/js/template.js.html.ittf.ittf
+    $include vanillajs/js/template.js.html.ittf 
+
+  $file t/js/view.js.html.ittf.ittf
+    $include vanillajs/js/view.js.html.ittf 
+
+  $file t/iife_window.html.ittf.ittf
+    $include iife_window.html.ittf
+
+  $file t/param_callback.html.ittf.ittf
+    $include param_callback.html.ittf
+
+  $file t/param_options_callback.html.ittf.ittf
+    $include param_options_callback.html.ittf
+
+  $file t/catch_throw.html.ittf.ittf
+    $include catch_throw.html.ittf
+
+  $file t/a_then_catch_throw.html.ittf.ittf
+    $include a_then_catch_throw.html.ittf
+
+  $file t/assert_not_null.html.ittf.ittf
+    $include assert_not_null.html.ittf

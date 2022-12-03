@@ -1,0 +1,18 @@
+$group
+  $file t/friends.html.ittf.ittf
+    ${$2}
+      var friends = ["mary","arthur"];
+  $file t/lia.html.ittf.ittf
+    ${$2}group
+      ${$2}params text, href
+      li
+        a ${$2}{text}
+          href ${$2}{href}
+  $file index.html.ittf.ittf
+    html
+      ${$2}include ./friends
+      ul
+        lia.html${$p2} stefi, www.stefi.com
+        lia.html${$p2} annie, www.annie.com
+        ${$2}foreach f in friends
+          lia.html${$p2} ${$2}{f}, www.${$2}{f}.com

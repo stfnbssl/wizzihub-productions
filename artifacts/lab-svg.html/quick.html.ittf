@@ -1,0 +1,41 @@
+html
+  body
+    div
+      style margin:100px
+      div
+        style border:1px solid #00ff00; padding:100px
+        $$ h1 Hello
+        svg
+          xmlns http://www.w3.org/2000/svg
+          xmlns:xlink http://www.w3.org/1999/xlink
+          x 0px
+          y 0px
+          view-box 0 0 106.86 122.88
+          style enable-background:new 0 0 106.86 122.88
+          xml:space preserve
+          g
+              path 
+                  fill none
+                  stroke red
+                  $
+                    var x0 = 50;
+                    var y0 = 100;
+                    var w0 = 5;
+                    //
+                  d 
+                    \ M ${x0},${y0}
+                    \ l 30,30
+                    
+                    
+                    
+                    $*
+                    \ c 1.74,0,3.15,1.41,3.15,3.15
+                    \ c 0,1.74-1.41,3.15-3.15,3.15
+                    \ H ${w0}
+                    \ c -2.02,0 -3.85 -0.82 -5.18 -2.15 
+                    \ C 0.82,119.4, 0,117.57, 0,115.55
+                    \ V ${w0}
+                    \ c 0-2.02, 0.82-3.85,2.15-5.18
+                    \ C 3.48,0.82,5.31,0,${w0},0
+                    \ h 90.02
+                    *$

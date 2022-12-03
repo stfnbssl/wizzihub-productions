@@ -1,0 +1,8 @@
+{
+    [ tfolders
+        {
+            name "meta-vanillajs"
+    [ contexts
+        {
+            $$ propertyName "..name.."
+            $$ artifactName "..name.."
