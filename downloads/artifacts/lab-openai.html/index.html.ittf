@@ -1,0 +1,40 @@
+
+html 
+    lang en
+    head 
+        meta 
+            charset UTF-8
+        link 
+            rel icon
+            type image/svg+xml
+            href favicon.ico
+        meta 
+            name viewport
+            content width=device-width, initial-scale=1.0
+        @title Codex - Your AI
+        link 
+            rel stylesheet
+            href style.css
+        style
+          $include main.css
+    body 
+        div 
+            id app
+            div 
+                id chat_container
+            form 
+                textarea 
+                    name prompt
+                    rows 1
+                    cols 1
+                    placeholder Ask codex...
+                button 
+                    type submit
+                    img 
+                        src data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9IiNmZmZmZmYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBjbGFzcz0idy02IGgtNiI+CiAgICA8cGF0aCBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGQ9Ik02IDEyTDMuMjY5IDMuMTI2QTU5Ljc2OCA1OS43NjggMCAwMTIxLjQ4NSAxMiA1OS43NyA1OS43NyAwIDAxMy4yNyAyMC44NzZMNS45OTkgMTJ6bTAgMGg3LjUiIC8+Cjwvc3ZnPg==
+                        alt send
+            $$ js script.js
+            script
+              module
+                kind react
+                $include main.js

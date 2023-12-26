@@ -1,0 +1,51 @@
+html
+  body
+    # root
+    script
+      # var text = 'aa___schema___bb.ittf'
+      var text = 't/aa.ittf'
+      if false
+        _ log
+          _ interpolate_filename
+            @ text
+            {
+              @ schema 'db'
+      _ log
+        @ 'stripStartSlash'
+        _ stripStartSlash
+          @ '/alpha/beta/'
+      _ log
+        @ 'stripEndSlash'
+        _ stripEndSlash
+          @ '/alpha/beta/'
+      function interpolate_filename 
+        param text
+        param ctx
+        var result = []
+        var pos = text.indexOf('__')
+        while pos > -1
+          var first = text.substr(0, pos)
+          var remain = text.substring(pos + 2)
+          set pos = remain.indexOf('__')
+          if pos > -1
+            _ result.push(first)
+            if ctx[remain.substr(0, pos)]
+              _ result.push(ctx[remain.substr(0, pos)])
+            else
+              _ result.push(remain.substr(0, pos))
+            set remain = remain.substring(pos + 2)
+            set text = remain
+            set pos = text.indexOf('__')
+        _ result.push(text)
+        return result.join('')
+      function stripEndSlash
+          param path
+          return path.endsWith('/') ? path.substring(0, path.length - 1) : path
+      function stripStartSlash
+          param path
+          return path.startsWith('/') ? path.substring(1) : path
+      function log
+        var rootEl = document.getElementById('root')
+        set rootEl.innerHTML += '<br>'
+        foreach arg in arguments
+          set rootEl.innerHTML += arg.toString() + '  '

@@ -1,0 +1,140 @@
+$group
+    # import bot from './assets/bot.svg'
+    # import user from './assets/user.svg'
+    var bot = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0iI2ZmZiIgY2xhc3M9ImJpIGJpLXJvYm90IiB2aWV3Qm94PSIwIDAgMTYgMTYiPgogIDxwYXRoIGQ9Ik02IDEyLjVhLjUuNSAwIDAgMSAuNS0uNWgzYS41LjUgMCAwIDEgMCAxaC0zYS41LjUgMCAwIDEtLjUtLjVaTTMgOC4wNjJDMyA2Ljc2IDQuMjM1IDUuNzY1IDUuNTMgNS44ODZhMjYuNTggMjYuNTggMCAwIDAgNC45NCAwQzExLjc2NSA1Ljc2NSAxMyA2Ljc2IDEzIDguMDYydjEuMTU3YS45MzMuOTMzIDAgMCAxLS43NjUuOTM1Yy0uODQ1LjE0Ny0yLjM0LjM0Ni00LjIzNS4zNDYtMS44OTUgMC0zLjM5LS4yLTQuMjM1LS4zNDZBLjkzMy45MzMgMCAwIDEgMyA5LjIxOVY4LjA2MlptNC41NDItLjgyN2EuMjUuMjUgMCAwIDAtLjIxNy4wNjhsLS45Mi45YTI0Ljc2NyAyNC43NjcgMCAwIDEtMS44NzEtLjE4My4yNS4yNSAwIDAgMC0uMDY4LjQ5NWMuNTUuMDc2IDEuMjMyLjE0OSAyLjAyLjE5M2EuMjUuMjUgMCAwIDAgLjE4OS0uMDcxbC43NTQtLjczNi44NDcgMS43MWEuMjUuMjUgMCAwIDAgLjQwNC4wNjJsLjkzMi0uOTdhMjUuMjg2IDI1LjI4NiAwIDAgMCAxLjkyMi0uMTg4LjI1LjI1IDAgMCAwLS4wNjgtLjQ5NWMtLjUzOC4wNzQtMS4yMDcuMTQ1LTEuOTguMTg5YS4yNS4yNSAwIDAgMC0uMTY2LjA3NmwtLjc1NC43ODUtLjg0Mi0xLjdhLjI1LjI1IDAgMCAwLS4xODItLjEzNVoiLz4KICA8cGF0aCBkPSJNOC41IDEuODY2YTEgMSAwIDEgMC0xIDBWM2gtMkE0LjUgNC41IDAgMCAwIDEgNy41VjhhMSAxIDAgMCAwLTEgMXYyYTEgMSAwIDAgMCAxIDF2MWEyIDIgMCAwIDAgMiAyaDEwYTIgMiAwIDAgMCAyLTJ2LTFhMSAxIDAgMCAwIDEtMVY5YTEgMSAwIDAgMC0xLTF2LS41QTQuNSA0LjUgMCAwIDAgMTAuNSAzaC0yVjEuODY2Wk0xNCA3LjVWMTNhMSAxIDAgMCAxLTEgMUgzYTEgMSAwIDAgMS0xLTFWNy41QTMuNSAzLjUgMCAwIDEgNS41IDRoNUEzLjUgMy41IDAgMCAxIDE0IDcuNVoiLz4KPC9zdmc+"
+    var user = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0iI2ZmZiIgY2xhc3M9ImJpIGJpLXBlcnNvbiIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICA8cGF0aCBkPSJNOCA4YTMgMyAwIDEgMCAwLTYgMyAzIDAgMCAwIDAgNlptMi0zYTIgMiAwIDEgMS00IDAgMiAyIDAgMCAxIDQgMFptNCA4YzAgMS0xIDEtMSAxSDNzLTEgMC0xLTEgMS00IDYtNCA2IDMgNiA0Wm0tMS0uMDA0Yy0uMDAxLS4yNDYtLjE1NC0uOTg2LS44MzItMS42NjRDMTEuNTE2IDEwLjY4IDEwLjI4OSAxMCA4IDEwYy0yLjI5IDAtMy41MTYuNjgtNC4xNjggMS4zMzItLjY3OC42NzgtLjgzIDEuNDE4LS44MzIgMS42NjRoMTBaIi8+Cjwvc3ZnPg=="
+    var send = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9IiNmZmZmZmYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBjbGFzcz0idy02IGgtNiI+CiAgICA8cGF0aCBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGQ9Ik02IDEyTDMuMjY5IDMuMTI2QTU5Ljc2OCA1OS43NjggMCAwMTIxLjQ4NSAxMiA1OS43NyA1OS43NyAwIDAxMy4yNyAyMC44NzZMNS45OTkgMTJ6bTAgMGg3LjUiIC8+Cjwvc3ZnPg=="
+    const form = document.querySelector('form')
+    const chatContainer = document.querySelector('#chat_container')
+    let loadInterval
+    function loader
+        param element
+        set element.textContent = ''
+        set loadInterval =
+            _ setInterval
+                => 
+                    set element.textContent += '.'
+                        # Update the text content of the loading indicator
+                        # If the loading indicator has reached three dots, reset it
+                    if element.textContent === '....'
+                        set element.textContent = ''
+                @ 300
+    function typeText
+        param element
+        param text
+        let index = 0
+        let interval
+            _ setInterval
+                => 
+                    if index < text.length
+                        set element.innerHTML += text.charAt(index)
+                        set index++
+                    else
+                        _ clearInterval(interval)
+                @ 20
+        # generate unique ID for each message div of bot
+        # necessary for typing text effect for that specific reply
+        # without unique ID, typing text will work on every element
+    function generateUniqueId
+        const timestamp = Date.now()
+        const randomNumber = Math.random()
+        const hexadecimalString = randomNumber.toString(16)
+        return 
+            `lit 
+                + id-
+                @ timestamp
+                + -
+                @ hexadecimalString
+                + 
+        # generate unique ID for each message div of bot
+        # necessary for typing text effect for that specific reply
+        # without unique ID, typing text will work on every element
+    function chatStripe
+        param isAi
+        param value
+        param uniqueId
+        return 
+            `lit 
+                + &lf;
+                + &nbsp;       <div class="wrapper&nbsp;
+                @ isAi && 'ai'
+                + ">&lf;
+                + &nbsp;           <div class="chat">&lf;
+                + &nbsp;               <div class="profile">&lf;
+                + &nbsp;                   <img&nbsp;&lf;
+                + &nbsp;                     src="
+                @ isAi ? bot : user
+                + "&nbsp;&lf;
+                + &nbsp;                     alt="
+                @ isAi ? "bot" : "user"
+                + "&nbsp;&lf;
+                + &nbsp;                   />&lf;
+                + &nbsp;               </div>&lf;
+                + &nbsp;               <div class="message" id=
+                @ uniqueId
+                + >
+                @ value
+                + </div>&lf;
+                + &nbsp;           </div>&lf;
+                + &nbsp;       </div>&lf;
+                + &nbsp;  &nbsp;
+    const handleSubmit
+        async=> 
+            param e
+            _ e.preventDefault()
+            const data = new FormData(form)
+                # user's chatstripe
+            set chatContainer.innerHTML += chatStripe(false, data.get('prompt'))
+                # user's chatstripe
+                # to clear the textarea input
+            _ form.reset()
+                # to clear the textarea input
+                # bot's chatstripe
+            const uniqueId = generateUniqueId()
+                # bot's chatstripe
+            set chatContainer.innerHTML += chatStripe(true, " ", uniqueId)
+                # to focus scroll to the bottom
+            set chatContainer.scrollTop = chatContainer.scrollHeight
+                # to focus scroll to the bottom
+                # specific message div
+            const messageDiv = document.getElementById(uniqueId)
+                # specific message div
+                # messageDiv.innerHTML = "..."
+            _ loader(messageDiv)
+                # messageDiv.innerHTML = "..."
+            # _ alert("calling https://codex-lrs5.onrender.com/")
+            const response
+                await 
+                    _ fetch
+                        @ 'https://codex-lrs5.onrender.com/'
+                        { 
+                            @ method 'POST'
+                            { headers
+                                @ 'Content-Type' 'application/json'
+                            @ body
+                                _ JSON.stringify
+                                    { 
+                                        @ prompt data.get('prompt')
+            _ clearInterval(loadInterval)
+            set messageDiv.innerHTML = " "
+            if response.ok
+                const data
+                    await 
+                        _ response.json()
+                const parsedData = data.bot.trim()
+                    # trims any trailing spaces/'\n'
+                _ typeText(messageDiv, parsedData)
+                    # trims any trailing spaces/'\n'
+            else
+                const err
+                    await 
+                        _ response.text()
+                set messageDiv.innerHTML = "Something went wrong"
+                _ alert(err)
+    _ form.addEventListener('submit', handleSubmit)
+    _ form.addEventListener
+        @ 'keyup'
+        => 
+            param e
+            if e.keyCode === 13
+                _ handleSubmit(e)

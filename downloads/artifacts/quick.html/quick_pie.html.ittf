@@ -1,0 +1,73 @@
+html 
+    head 
+        @title Grafico a torta con canvas
+        @style 
+            css 
+                < canvas
+                    border 1px solid black
+    body 
+        canvas 
+            id grafico
+            width 400
+            height 400
+        script 
+            module 
+                kind react
+                var canvas = document.getElementById("grafico")
+                    # Recupero il riferimento al canvas
+                var context = canvas.getContext("2d")
+                    # Definisco le proprietà dei settori
+                var colors
+                    [ 
+                        @ "#FF6384"
+                        @ "#36A2EB"
+                        @ "#FFCE56"
+                    # Definisco le proprietà dei settori
+                var data
+                    [ 
+                        @ 35
+                        @ 45
+                        @ 20
+                var labels
+                    [ 
+                        @ "Settore 1"
+                        @ "Settore 2"
+                        @ "Settore 3"
+                    # Calcolo la somma dei dati
+                var dataTotal
+                    _ data.reduce
+                        function 
+                            param a
+                            param b
+                            return a + b
+                        @ 0
+                    # Calcolo la somma dei dati
+                    # Imposto il punto di partenza per il primo settore
+                var startAngle = 0
+                    # Imposto il punto di partenza per il primo settore
+                    # Disegno i settori
+                for var i = 0; i < data.length; i++
+                    var endAngle = startAngle + (Math.PI * 2 * (data[i] / dataTotal))
+                        # Calcolo l'angolo finale del settore
+                        # Disegno il settore
+                    _ context.beginPath()
+                        # Disegno il settore
+                    set context.fillStyle = colors[i]
+                    _ context.moveTo(canvas.width / 2, canvas.height / 2)
+                    _ context.arc(canvas.width / 2, canvas.height / 2, canvas.width / 2, startAngle, endAngle)
+                    _ context.lineTo(canvas.width / 2, canvas.height / 2)
+                    _ context.fill()
+                        # Aggiungo la label
+                    set context.font = "12pt sans-serif"
+                        # Aggiungo la label
+                    set context.fillStyle = "black"
+                    set context.textAlign = "center"
+                    set context.textBaseline = "middle"
+                    var labelAngle = startAngle + (endAngle - startAngle) / 2
+                    var labelX = canvas.width / 2 + Math.cos(labelAngle) * canvas.width * 0.4
+                    var labelY = canvas.height / 2 + Math.sin(labelAngle) * canvas.height * 0.4
+                    _ context.fillText(labels[i], labelX, labelY)
+                        # Imposto l'angolo di partenza per il prossimo settore
+                    set startAngle = endAngle
+                        # Imposto l'angolo di partenza per il prossimo settore
+                    # Disegno i settori

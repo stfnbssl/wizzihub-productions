@@ -37,3 +37,23 @@ $group
         {
           name "Perché l'Ungheria ha meno paura dei russi rispetto alla Polonia"
           time "10:02"
+    {
+      kind "youtube"
+      id "EE_b97k353g"
+      name "Geopolitica della Rete. Il governo di Internet e l’instabilità internazionale - Dario Fabbri"
+      author "Dario Fabbri"
+      authorId "@FondazioneCollegioSanCarlo"
+      categoria "Geopolitica"
+      [ items
+        {
+          name "Social networks e governi delle superpotenze"
+          time "14:58"
+        {
+          name "Multinazionali e governi"
+          time "15:25"
+        {
+          name "Social networks gestori di tecnologia"
+          time "16:00"
+        {
+          name "Origine della tecnologia informatica"
+          time "16:45"

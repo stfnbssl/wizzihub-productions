@@ -1,0 +1,97 @@
+$group
+  function drawAxes
+    param ctx
+    param baseX
+    param baseY
+    param chartWidth
+    var 
+        decl leftY
+        decl rightX
+    set leftY = 5
+    set rightX = baseX + chartWidth
+        # Draw y axis.
+    _ ctx.moveTo(baseX, leftY)
+        # Draw y axis.
+    _ ctx.lineTo(baseX, baseY)
+        # Draw arrow for y axis.
+    _ ctx.moveTo(baseX, leftY)
+        # Draw arrow for y axis.
+    _ ctx.lineTo(baseX + 5, leftY + 5)
+    _ ctx.moveTo(baseX, leftY)
+    _ ctx.lineTo(baseX - 5, leftY + 5)
+        # Draw x axis.
+    _ ctx.moveTo(baseX, baseY)
+        # Draw x axis.
+    _ ctx.lineTo(rightX, baseY)
+        # Draw arrow for x axis.
+    _ ctx.moveTo(rightX, baseY)
+        # Draw arrow for x axis.
+    _ ctx.lineTo(rightX - 5, baseY + 5)
+    _ ctx.moveTo(rightX, baseY)
+    _ ctx.lineTo(rightX - 5, baseY - 5)
+        # Define style and stroke lines.
+    set ctx.strokeStyle = "#000"
+        # Define style and stroke lines.
+    _ ctx.stroke()  
+  function semi_circle_1
+    param ctx
+    _ ctx.beginPath()
+    set ctx.fillStyle = 'rgba(0, 142,149, 1)'
+    _ ctx.arc(100, 100, 100, 1.5 * Math.PI, 0.5 * Math.PI)
+    _ ctx.fill()
+    _ ctx.stroke()
+    _ ctx.closePath()
+  function semi_circle_2
+    param ctx
+    _ ctx.beginPath()
+    set ctx.fillStyle = 'rgba(0, 142,149, 1)'
+    _ ctx.arc(100, 100, 100, 1.5 * Math.PI, 0.5 * Math.PI, true)
+    _ ctx.fill()
+    _ ctx.stroke()
+    _ ctx.closePath()
+  function circle_1
+    param ctx
+    _ ctx.beginPath()
+    set ctx.fillStyle = 'rgba(0, 142,149, 1)'
+    _ ctx.arc(100, 100, 100, 0, 2 * Math.PI)
+    _ ctx.fill()
+    _ ctx.stroke()
+    _ ctx.closePath()  
+  function draw_1
+    param ctx
+    _ ctx.beginPath()
+    set ctx.fillStyle = '#EF053D'
+    _ ctx.arc(100, 100, 100, 0, 1 * Math.PI, true)
+    _ ctx.fill()
+    _ ctx.closePath()
+    _ ctx.beginPath()
+    set ctx.fillStyle = 'rgba(24,30,40,0.1)'
+    _ ctx.arc(100, 100, 100, 0, 1 * Math.PI)
+    _ ctx.fill()
+    _ ctx.closePath()
+    _ ctx.beginPath()
+    set ctx.fillStyle = 'rgba(24,30,40,0.05)'
+    _ ctx.arc(100, 100, 100, 1.5 * Math.PI, 0.5 * Math.PI)
+    _ ctx.fill()
+    _ ctx.closePath()
+    _ ctx.beginPath()
+    _ ctx.moveTo(0, 100)
+    _ ctx.lineTo(200, 100)
+    set ctx.lineWidth = 8
+    _ ctx.stroke()
+    _ ctx.closePath()
+    _ ctx.beginPath()
+    set ctx.fillStyle = '#FCFCFC'
+    _ ctx.arc(100, 100, 32, 0, 2 * Math.PI, true)
+    _ ctx.fill()
+    set ctx.lineWidth = 8
+    _ ctx.stroke()
+    _ ctx.closePath()
+    _ ctx.beginPath()
+    set ctx.fillStyle = '#fff'
+    _ ctx.arc(100, 100, 22, 0, 2 * Math.PI, true)
+    _ ctx.fill()
+    set ctx.lineWidth = 2
+    set ctx.strokeStyle = 'lightgray'
+    _ ctx.stroke()
+    _ ctx.closePath()

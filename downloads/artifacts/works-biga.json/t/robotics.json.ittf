@@ -1,0 +1,14 @@
+$group
+
+    {
+      kind "youtube"
+      id "-e1_QhJ1EhQ"
+      name "Atlas Gets a Grip "
+      author "Boston Dynamics"
+      authorId "@BostonDynamics"
+      categoria "Robotics"
+      [ items
+        {
+          name "Atlas do the job (2/2023)"
+          time "0:10"
+ 

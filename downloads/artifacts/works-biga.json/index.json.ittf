@@ -3,4 +3,9 @@
     $include biga-come-crearla
     $include biga-no-stress
     $include biga-100per100-susta
+    $include biga-malati-pizza
     $include geop-fabbri
+    $include paella
+    $include AI
+    $include robotics
+    $include webdev

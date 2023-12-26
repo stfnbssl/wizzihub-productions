@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Page</title>
+    <style>
+      body {
+        background-color: #f2f2f2;
+        font-family: Arial, sans-serif;
+      }
+      .login-box {
+        margin: 10% auto;
+        width: 350px;
+        padding: 30px;
+        background-color: #ffffff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      }
+      .login-box h2 {
+        text-align: center;
+        color: #4b4b4b;
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+      .form-control {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 20px;
+      }
+      .form-control:focus {
+        outline: none;
+        border-bottom: 2px solid #4b4b4b;
+      }
+      .btn {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #4b4b4b;
+        color: #fff;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background-color: #333;
+      }
+      .social-login {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+      .social-btn {
+        width: 48%;
+        padding: 10px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .social-btn:hover {
+        background-color: #f2f2f2;
+      }
+      .github-btn {
+        color: #333;
+      }
+      .google-btn {
+        color: #d62d20;
+        border-color: #d62d20;
+      }
+      .google-btn:hover {
+        color: #fff;
+        background-color: #d62d20;
+      }
+      .btn-group {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-box">
+      <h2>Login</h2>
+      <form>
+        <div class="form-group">
+          <input type="email" class="form-control" placeholder="Email">
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" placeholder="Password">
+        </div>
+        <button type="submit" class="btn">Login</button>
+      </form>
+      <div class="btn-group">
+        <div class="social-login">
+          <a href="#" class="social-btn github-btn">
+            <i class="fab fa-github"></i>
+            Github
+          </a>
+          <a href="#" class="social-btn google-btn">
+            <i class="fab fa-google"></i>
+            Google
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

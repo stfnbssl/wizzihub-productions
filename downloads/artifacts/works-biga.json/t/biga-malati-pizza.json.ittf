@@ -1,0 +1,13 @@
+$group
+
+    {
+      kind "youtube"
+      id "Pacsux6cdGo"
+      name "Pizza Napoletana con BIGA 100%: RICETTA FACILE E ORIGINALE del maestro @pizzaiolonapoletano5242"
+      author "..."
+      authorId "@Malatidipizza"
+      categoria "Pane e pizza"
+      [ items
+        {
+          name "Completare impasto biga 100%"
+          time "6:40"

@@ -23,3 +23,18 @@ $group
         {
           name "Come giudicare quando la biga è pronta"
           time "10:00"
+
+    {
+      kind "youtube"
+      id "hMmL65NX_-0"
+      name "VINCENZO CAPUANO E I SEGRETI DELLA SUA BIGA"
+      author "Schifano_Luigi"
+      authorId "@Lapizzafattaamano"
+      categoria "Pane e pizza"
+      [ items
+        {
+          name "Calcolo lievito biga"
+          time "1:34:00"
+
+
+          

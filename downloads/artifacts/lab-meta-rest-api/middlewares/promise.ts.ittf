@@ -1,0 +1,61 @@
+module
+    
+    const handleResponse
+        => 
+            param res
+              :ref Response
+            param data
+              :any
+            _ res.status(200).send(data)
+    
+    const handleError
+        => 
+            param res
+              :ref Response
+              :any
+            param err
+                =
+                    { 
+            _ res.status(err.status || 500).send
+                { 
+                    @ error err.message 
+
+
+    set module.exports =
+        function promiseMiddleware
+            return 
+                => 
+                    param req
+                      :ref Request
+                    param res
+                      :ref Response
+                    param next
+                      :ref Function
+                    set res.promise =
+                        => 
+                            param p
+                              :any
+                            let promiseToResolve
+                            if p.then && p.catch
+                                set promiseToResolve = p
+                            else
+                                if typeof p === 'function'
+                                    set promiseToResolve =
+                                        _ Promise.resolve().then
+                                            => 
+                                                _ p()
+                                else
+                                    set promiseToResolve = Promise.resolve(p)
+                            return 
+                                _ promiseToResolve.then
+                                    => 
+                                        param data
+                                          :any
+                                        _ handleResponse(res, data)
+                                    ._ catch
+                                        => 
+                                            param e
+                                              :any
+                                            _ handleError(res, e)
+                    return next()
+

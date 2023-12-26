@@ -1,0 +1,57 @@
+html 
+    head 
+        @title Organigramma con canvas
+        @style 
+            css 
+                < canvas
+                    border 1px solid black
+    body 
+        canvas 
+            id organigramma
+            width 400
+            height 400
+        script 
+            module 
+                kind react
+                var canvas = document.getElementById("organigramma")
+                    # Recupero il riferimento al canvas
+                var context = canvas.getContext("2d")
+                    # Imposto le proprietà degli uffici
+                var uffici
+                    [ 
+                        { 
+                            @ nome "Ufficio 1"
+                            @ x 100
+                            @ y 100
+                        { 
+                            @ nome "Ufficio 2"
+                            @ x 200
+                            @ y 100
+                        { 
+                            @ nome "Ufficio 3"
+                            @ x 150
+                            @ y 200
+                    # Imposto le proprietà degli uffici
+                    # Disegno le connessioni tra gli uffici
+                _ context.beginPath()
+                    # Disegno le connessioni tra gli uffici
+                _ context.moveTo(uffici[0].x, uffici[0].y)
+                _ context.lineTo(uffici[2].x, uffici[2].y)
+                _ context.lineTo(uffici[1].x, uffici[1].y)
+                _ context.stroke()
+                    # Disegno gli uffici
+                for var i = 0; i < uffici.length; i++
+                    _ context.beginPath()
+                    _ context.arc(uffici[i].x, uffici[i].y, 40, 0, 2 * Math.PI)
+                    set context.fillStyle = "#F0F0F0"
+                    _ context.fill()
+                    set context.strokeStyle = "black"
+                    set context.lineWidth = 2
+                    _ context.stroke()
+                    set context.font = "bold 12pt sans-serif"
+                    set context.fillStyle = "black"
+                    set context.textAlign = "center"
+                    set context.textBaseline = "middle"
+                    _ context.fillText(uffici[i].nome, uffici[i].x, uffici[i].y)
+                    # Disegno gli uffici
+

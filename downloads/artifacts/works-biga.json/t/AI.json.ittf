@@ -1,0 +1,87 @@
+$group
+
+    {
+      kind "youtube"
+      id "-SV0D15Bg_Y"
+      name "you've been lied to about ChatGPT"
+      author "Elon Musk"
+      authorId "@ElonMuskZone"
+      categoria "AI"
+      [ items
+        {
+          name "Elon Musk created OpenAI"
+          time "0:17"
+        {
+          name "Elon Musk wants chatGPT be regulated"
+          time "1:28"
+    {
+      kind "youtube"
+      id "WLehkWESDJ8"
+      name "The Dark Side of AI: A Warning from Jordan Peterson (scary truth about ChatGPT)"
+      author "Jordan Peterson"
+      authorId "@SUCCESSCHASERS"
+      categoria "AI"
+      [ items
+        {
+          name "Jordan Peterson gloomy doom view"
+          time "0:08"
+    {
+      kind "youtube"
+      id "C75TROiiEa0"
+      name "ChatGPT for Data Analysts | Best Use Cases + Analyzing a Dataset"
+      author "Alex"
+      authorId "@AlexTheAnalyst"
+      categoria "AI"
+      [ items
+        {
+          name "Alex - explain code"
+          time "1:35"
+        {
+          name "Alex - generate code"
+          time "3:33"
+        {
+          name "Alex - generate comments"
+          time "8:15"
+        {
+          name "Alex - Optimize code"
+          time "9:25"
+        {
+          name "Alex - Analyzing Dataset"
+          time "14:04"
+    {
+      kind "youtube"
+      id "ng438SIXyW4"
+      name "How I Coded An Entire Website Using ChatGPT"
+      author "Nick White"
+      authorId "@NickWhite"
+      categoria "AI"
+      [ items
+        {
+          name "Nick - code an entire website"
+          time "2:25"
+    {
+      kind "youtube"
+      id "sTeoEFzVNSc"
+      name "ChatGPT Tutorial for Developers - 38 Ways to 10x Your Productivity"
+      author "Mosh"
+      authorId "@programmingwithmosh"
+      categoria "AI"
+      [ items
+        {
+          name "Mosh - Code General Examples"
+          time "5:00"
+        {
+          name "Mosh - Python Examples"
+          time "12:10"
+        {
+          name "Mosh - HTML & CSS Examples"
+          time "16:53"
+        {
+          name "Mosh - JavaScript Examples"
+          time "19:19"
+        {
+          name "Mosh - Node.js Examples"
+          time "22:04"
+        {
+          name "Mosh - SQL Examples"
+          time "24:13"

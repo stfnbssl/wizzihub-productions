@@ -1,0 +1,140 @@
+$group
+
+    {
+      kind "youtube"
+      id "tYevJ7HDJXM"
+      name "Come preparare la paella mista"
+      author "Masterchoof"
+      authorId "@Masterchoof"
+      categoria "Paella"
+      [ items
+        {
+          name "Choof - Salatura carne"
+          time "2:08"
+        {
+          name "Choof - Olio nella paella"
+          time "3:03"
+        {
+          name "Choof - Rosolatura carne"
+          time "5:25"
+        {
+          name "Choof - Riso nella paella"
+          time "10:48"
+        {
+          name "Choof - Brodo nella paella"
+          time "12:05"
+
+    {
+      kind "youtube"
+      id "I8RC8yUzgAs"
+      name "Paella di Mare, Paella di Pesce, Paella de Marisco."
+      author "Stefano Barbato"
+      authorId "@ChefStefanoBarbato"
+      categoria "Paella"
+      [ items
+        {
+          name "Barbato pesce - Ingredienti"
+          time "1:41"
+        {
+          name "Barbato pesce - Brodo di pesce"
+          time "3:41"
+        {
+          name "Barbato pesce - Brodo di pesce"
+          time "3:41"
+        {
+          name "Barbato mista - Olio nella paella"
+          time "4:38"
+        {
+          name "Barbato mista - Rosolatura gamberoni o scampi"
+          time "4:46"
+        {
+          name "Barbato mista - Verdure"
+          time "5:04"
+        {
+          name "Barbato mista - Zafferano e colorante"
+          time "5:30"
+        {
+          name "Barbato mista - Rosolatura pesce"
+          time "5:55"
+        {
+          name "Barbato mista - Riso"
+          time "6:50"
+        {
+          name "Barbato mista - Gamberi"
+          time "7:30"
+
+
+    {
+      kind "youtube"
+      id "OSgOrfva1hI"
+      name "Paella Mista - con Pollo, Pesce e Verdure"
+      author "Stefano Barbato"
+      authorId "@ChefStefanoBarbato"
+      categoria "Paella"
+      [ items
+        {
+          name "Barbato mista - Ingredienti"
+          time "0:37"
+        {
+          name "Barbato mista - Olio nella paella"
+          time "3:03"
+        {
+          name "Barbato mista - Rosolatura carne (8 min)"
+          time "3:55"
+        {
+          name "Barbato mista - Zafferano e colorante"
+          time "4:08"
+        {
+          name "Barbato mista - Verdure (10 min)"
+          time "4:55"
+        {
+          name "Barbato mista - Cottura pesce (a parte)"
+          time "5:25"
+        {
+          name "Barbato mista - Pomodoro"
+          time "6:08"
+        {
+          name "Barbato mista - Pesce (5 min)"
+          time "6:35"
+        {
+          name "Barbato mista - Riso nella paella (13 min)"
+          time "7:10"
+        {
+          name "Barbato mista - Gamberi (5 min)"
+          time "8:00"
+        {
+          name "Barbato mista - Forno (8 min)"
+          time "8:30"
+
+    {
+      kind "youtube"
+      id "RXQ4hUz7hAk"
+      name "Come cucinare la paella ( Discorso in italiano )"
+      author "Stefano Barbato"
+      authorId "@andaluciatube3496"
+      categoria "Paella"
+      [ items
+        {
+          name "Andalusa - Ingredienti"
+          time "0:35"
+        {
+          name "Andalusa - Verdure"
+          time "1:16"
+        {
+          name "Andalusa - Rosolatura pesce e carne (5 min)"
+          time "4:32"
+        {
+          name "Andalusa - Zafferano e colorante"
+          time "5:55"
+        {
+          name "Andalusa - Brodo nella paella (5 min)"
+          time "6:13"
+        {
+          name "Andalusa - Riso (12 min)"
+          time "7:03"
+
+        {
+          name "Andalusa - Gamberi e cozze (6 min)"
+          time "8:05"
+
+

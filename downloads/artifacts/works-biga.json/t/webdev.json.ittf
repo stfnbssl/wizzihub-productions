@@ -1,0 +1,27 @@
+$group
+    {
+      kind "youtube"
+      id "2FeymQoKvrk"
+      name "Build and Deploy Your Own ChatGPT AI App in JavaScript | OpenAI, Machine Learning"
+      author "JM"
+      authorId "@javascriptmastery"
+      categoria "Webdev"
+      [ items
+        {
+          name "JM App - Demo"
+          time "2:29"
+        {
+          name "JM App - Setup"
+          time "04:54"
+        {
+          name "JM App - ChatGPT Frontend"
+          time "04:54"
+        {
+          name "JM App - OpenAI Server"
+          time "11:26"
+        {
+          name "JM App - Connecting client and server"
+          time "39:05"
+        {
+          name "JM App - Deployment"
+          time "50:57"

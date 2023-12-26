@@ -1,0 +1,30 @@
+html 
+    head 
+        @title Canvas HTML Lab
+        @style 
+            css 
+                < canvas
+                    border 1px solid black
+    body 
+        canvas 
+            id mainCanvas
+            width 400
+            height 400
+        script 
+            module 
+                kind react
+                var __filename = ''
+                var canvas = document.getElementById("mainCanvas")
+                    # Recupero il riferimento al canvas
+                log 'canvas', canvas
+                var ctx = canvas.getContext("2d")
+                _ drawAxes
+                  @ ctx
+                  @ 100
+                  @ 300
+                  @ 300
+                # _ semi_circle_1(ctx)
+                # _ semi_circle_2(ctx)
+                # _ circle_1(ctx)
+                # _ draw_1(ctx)
+                $include graph_1.js
